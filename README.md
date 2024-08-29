@@ -16,7 +16,7 @@ If you appreciate[ WordPress Premium's](https://www.wordpress-premium.org/) serv
 
 ## Changelog
 
-### v6.0.66
+### v3.0.66 
 
 **Release Date:** July 10, 2024
 
