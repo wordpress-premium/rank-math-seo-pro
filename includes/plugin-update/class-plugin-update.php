@@ -654,7 +654,7 @@ class Plugin_Update {
 		}
 
 		$params = [
-			'site_url'     => is_multisite() ? network_site_url() : home_url(),
+			'site_url'     => untrailingslashit( is_multisite() ? network_site_url() : home_url() ),
 			'product_slug' => $this->slug,
 			'new_api'      => 2,
 			'v'            => RANK_MATH_PRO_VERSION,

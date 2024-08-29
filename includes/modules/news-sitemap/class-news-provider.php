@@ -169,9 +169,7 @@ class News_Provider extends Post_Type {
 
 		$terms_query = '';
 		foreach ( $post_types as $post_type ) {
-
 			$terms = current( Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms", [] ) );
-
 			if ( empty( $terms ) ) {
 				continue;
 			}
@@ -179,15 +177,23 @@ class News_Provider extends Post_Type {
 			array_map(
 				function ( $key ) use ( $terms, &$terms_query, $wpdb ) {
 					$placeholders = implode( ', ', array_fill( 0, count( $terms[ $key ] ), '%d' ) );
-					$terms_sql    = "
+					$terms_sql    = "(
                     {$wpdb->posts}.ID NOT IN (
                         SELECT object_id
                         FROM {$wpdb->term_relationships}
                         WHERE term_taxonomy_id IN ($placeholders)
-                    )
+                    )";
+					// Check mutiple category selected.
+					$terms_or_sql = "
+                    OR {$wpdb->posts}.ID IN (
+                        SELECT DISTINCT object_id
+                        FROM {$wpdb->term_relationships}
+                        WHERE term_taxonomy_id NOT IN ($placeholders)
+                    ))
                     AND";
 
 					$terms_query .= $wpdb->prepare( $terms_sql, $terms[ $key ] ); // phpcs:ignore
+					$terms_query .= $wpdb->prepare( $terms_or_sql, $terms[ $key ] ); // phpcs:ignore
 
 				},
 				array_keys( $terms )

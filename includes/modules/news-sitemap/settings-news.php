@@ -9,6 +9,7 @@
  */
 
 use RankMath\Helper;
+use RankMathPro\Sitemap\News_Sitemap_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -50,24 +51,19 @@ foreach ( $post_types as $post_type ) {
 	$post_type_obj   = get_post_type_object( $post_type );
 	$post_type_label = $post_type_obj->labels->singular_name;
 	$group_field_id  = '';
+
 	foreach ( $taxonomies as $taxonomy => $data ) {
 		if ( empty( $data->show_ui ) ) {
 			continue;
 		}
 
-		$terms = get_terms(
-			[
-				'taxonomy'               => $taxonomy,
-				'show_ui'                => true,
-				'fields'                 => 'id=>name',
-				'update_term_meta_cache' => false,
-			]
-		);
-
-		if ( 0 === count( $terms ) ) {
+		$selected = Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms.0.{$taxonomy}", [] );
+		$terms    = News_Sitemap_Helper::get_taxonomy_terms( $taxonomy, $selected );
+		if ( empty( $terms ) ) {
 			continue;
 		}
 
+		// Render each Taxonomy select, post label!
 		if ( ! $group_field_id ) {
 			$group_field_id = $cmb->add_field(
 				[
@@ -84,13 +80,18 @@ foreach ( $post_types as $post_type ) {
 		$cmb->add_group_field(
 			$group_field_id,
 			[
-				'name'    => '',
-				'id'      => $taxonomy,
-				'type'    => 'multicheck_inline',
-				'options' => $terms,
-				'classes' => 'cmb-field-list',
+				'name'            => '',
+				'id'              => esc_attr( $taxonomy ),
+				'type'            => 'textarea',
+				'classes'         => 'cmb-field-list',
 				/* translators: 1. Taxonomy Name 2. Post Type */
-				'desc'    => sprintf( esc_html__( '%1$s to exclude for %2$s.', 'rank-math-pro' ), $data->label, $post_type_label ),
+				'desc'            => sprintf( esc_html__( '%1$s to exclude for %2$s.', 'rank-math-pro' ), $data->label, $post_type_label ),
+				'attributes'      => [
+					'data-terms'    => wp_json_encode( $terms ),
+					'data-taxonomy' => $taxonomy,
+				],
+				'escape_cb'       => [ '\\RankMathPro\\Sitemap\\News_Sitemap_Helper', 'escape_exclude_terms_value' ],
+				'sanitization_cb' => [ '\\RankMathPro\\Sitemap\\News_Sitemap_Helper', 'sanitize_exclude_terms_value' ],
 			]
 		);
 	}

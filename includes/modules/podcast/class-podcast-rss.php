@@ -120,10 +120,10 @@ class Podcast_RSS {
 
 		$summary = Helper::get_settings( 'general.podcast_description' );
 		if ( $summary ) {
-			$this->newline( '<itunes:summary>' . esc_html( Helper::replace_vars( $summary ) ) . '</itunes:summary>', 1 );
+			$this->newline( '<itunes:summary>' . esc_html( trim( Helper::replace_vars( $summary ) ) ) . '</itunes:summary>', 1 );
 		}
 
-		$is_explicit = Helper::get_settings( 'general.podcast_explicit' ) ? 'yes' : 'clean';
+		$is_explicit = Helper::get_settings( 'general.podcast_explicit' ) ? 'true' : 'false';
 		$this->newline( '<itunes:explicit>' . $is_explicit . '</itunes:explicit>', 1 );
 
 		$copyright = Helper::get_settings( 'general.podcast_copyright_text' );
@@ -149,10 +149,10 @@ class Podcast_RSS {
 		$title          = ! empty( $podcast['name'] ) ? Helper::replace_vars( $podcast['name'], $post ) : '';
 		$description    = ! empty( $podcast['description'] ) ? Helper::replace_vars( $podcast['description'], $post ) : '';
 		$audio_file     = Helper::replace_vars( $podcast['associatedMedia']['contentUrl'], $post );
-		$duration       = ! empty( $podcast['timeRequired'] ) ? Helper::duration_to_seconds( $podcast['timeRequired'] ) : '';
+		$duration       = ! empty( $podcast['timeRequired'] ) ? Helper::duration_to_seconds( $podcast['timeRequired'] ) : 0 ;
 		$image          = ! empty( $podcast['thumbnailUrl'] ) ? Helper::replace_vars( $podcast['thumbnailUrl'], $post ) : '';
 		$author         = ! empty( $podcast['author'] ) ? Helper::replace_vars( $podcast['author']['name'], $post ) : '';
-		$is_explicit    = empty( $podcast['isFamilyFriendly'] ) ? 'yes' : 'clean';
+		$is_explicit    = empty( $podcast['isFamilyFriendly'] ) ? 'true' : 'false';
 		$episode_number = ! empty( $podcast['episodeNumber'] ) ? $podcast['episodeNumber'] : '';
 		$season_number  = ! empty( $podcast['partOfSeason'] ) && ! empty( $podcast['partOfSeason']['seasonNumber'] ) ? $podcast['partOfSeason']['seasonNumber'] : '';
 
@@ -161,7 +161,7 @@ class Podcast_RSS {
 		}
 
 		if ( $description ) {
-			$this->newline( '<itunes:summary>' . wp_kses_post( $description ) . '</itunes:summary>', 2 );
+			$this->newline( '<itunes:summary><![CDATA[' . mb_substr( wp_kses_post( $description ), 0, 3500 ) . ']]></itunes:summary>', 2 );
 		}
 
 		if ( $image ) {
@@ -197,6 +197,6 @@ class Podcast_RSS {
 	 * @param integer $indent  Count of indent.
 	 */
 	private function newline( $content, $indent = 0 ) {
-		echo str_repeat( "\t", $indent ) . $content . "\n";
+		echo str_repeat( "\t", $indent ) . $content . "\n";  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Both variables are escaped in the code that calls this function.
 	}
 }

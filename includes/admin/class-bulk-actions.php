@@ -31,6 +31,14 @@ class Bulk_Actions {
 	 * Register hooks.
 	 */
 	public function __construct() {
+		$this->action( 'current_screen', 'init' );
+		$this->action( 'save_post', 'save_post_primary_term' );
+	}
+
+	/**
+	 * Intialize.
+	 */
+	public function init() {
 		$post_types = Helper::get_accessible_post_types();
 		foreach ( $post_types as $post_type ) {
 			$this->filter( "handle_bulk_actions-edit-{$post_type}", 'handle_post_bulk_actions', 10, 3 );
@@ -42,8 +50,6 @@ class Bulk_Actions {
 		foreach ( $taxonomies as $taxonomy => $label ) {
 			$this->filter( "handle_bulk_actions-edit-{$taxonomy}", 'handle_tax_bulk_actions', 10, 3 );
 		}
-
-		$this->action( 'save_post', 'save_post_primary_term' );
 	}
 
 	/**

@@ -110,6 +110,6 @@ class Media_RSS {
 	 * @param integer $indent  Count of indent.
 	 */
 	private function newline( $content, $indent = 0 ) {
-		echo str_repeat( "\t", $indent ) . $content . "\n";
+		echo str_repeat( "\t", $indent ) . $content . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Both variables are escaped in the code that calls this function.
 	}
 }

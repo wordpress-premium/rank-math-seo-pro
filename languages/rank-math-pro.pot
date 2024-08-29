@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Rank Math\n"
 "Last-Translator: Rank Math\n"
-"POT-Creation-Date: 2024-02-21 06:27+0000\n"
+"POT-Creation-Date: 2024-07-10 05:56+0000\n"
 "Project-Id-Version: undefined\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -2028,11 +2028,21 @@ msgstr ""
 msgid "Sorry, no locations were found."
 msgstr ""
 
+#. translators: News Sitemap KB link
 msgid "News Sitemaps allow you to control which content you submit to Google News. More information: <a href=\"%s\" target=\"_blank\">News Sitemaps overview</a>"
 msgstr ""
 
 #. translators: News Sitemap Url
 msgid "Your News Sitemap index can be found here: : %s"
+msgstr ""
+
+msgid "Sorry, only authenticated users can research the keyword."
+msgstr ""
+
+msgid "Taxonomy to look for terms"
+msgstr ""
+
+msgid "Searched string"
 msgstr ""
 
 #. translators: Post Type
@@ -2612,16 +2622,10 @@ msgstr ""
 msgid "<strong>Min Size: 112Χ112px</strong>.<br /> A squared image is preferred by the search engines."
 msgstr ""
 
-msgid "URL of the item."
-msgstr ""
-
 msgid "Use Multiple Locations"
 msgstr ""
 
 msgid "Once you save the changes, we will create a new custom post type called \"Locations\" where you can add multiple locations of your business/organization."
-msgstr ""
-
-msgid "Search engines display your email address."
 msgstr ""
 
 msgid "Search engines may prominently display your contact phone number for mobile users."
@@ -2688,6 +2692,15 @@ msgid "Price Range"
 msgstr ""
 
 msgid "The price range of the business, for example $$$."
+msgstr ""
+
+msgid "Additional Info"
+msgstr ""
+
+msgid "Provide relevant details of your company to include in the Organization Schema."
+msgstr ""
+
+msgid "Add"
 msgstr ""
 
 msgid "Hide Opening Hours"

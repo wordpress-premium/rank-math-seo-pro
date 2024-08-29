@@ -10,10 +10,8 @@
 
 namespace RankMathPro\Sitemap;
 
-use RankMath\KB;
 use RankMath\Helper;
 use RankMath\Helpers\Locale;
-use RankMath\Sitemap\Cache_Watcher;
 use RankMath\Traits\Hooker;
 use RankMath\Sitemap\Router;
 
@@ -27,13 +25,6 @@ class News_Sitemap {
 	use Hooker;
 
 	/**
-	 * NEWS Publication.
-	 *
-	 * @var string
-	 */
-	protected $news_publication = null;
-
-	/**
 	 * Holds the Sitemap slug.
 	 *
 	 * @var string
@@ -44,12 +35,9 @@ class News_Sitemap {
 	 * The Constructor.
 	 */
 	public function __construct() {
-		if ( is_admin() ) {
-			$this->filter( 'rank_math/settings/sitemap', 'add_settings', 11 );
-		}
+		new News_Sitemap\Admin();
 
 		$sitemap_slug = Router::get_sitemap_slug( 'news' );
-		new News_Metabox();
 		$this->action( 'rank_math/head', 'robots', 10 );
 		$this->filter( 'rank_math/sitemap/providers', 'add_provider' );
 		$this->filter( 'rank_math/sitemap/' . $sitemap_slug . '_urlset', 'xml_urlset' );
@@ -59,29 +47,6 @@ class News_Sitemap {
 
 		$this->filter( 'rank_math/schema/default_type', 'change_default_schema_type', 10, 3 );
 		$this->filter( 'rank_math/snippet/rich_snippet_article_entity', 'add_copyrights_data' );
-
-		$this->action( 'admin_post_rank-math-options-sitemap', 'save_exclude_terms_data', 9 );
-		$this->action( 'transition_post_status', 'status_transition', 10, 3 );
-	}
-
-	/**
-	 * Function to pass empty array to exclude terms data when term is not selected for a Post type.
-	 * This code is needed to save empty group value since CMB2 doesn't allow it.
-	 *
-	 * @since  2.8.1
-	 * @return void
-	 */
-	public function save_exclude_terms_data() {
-		$post_types = Helper::get_settings( 'sitemap.news_sitemap_post_type', [] );
-		if ( empty( $post_types ) ) {
-			return;
-		}
-
-		foreach ( $post_types as $post_type ) {
-			if ( ! isset( $_POST["news_sitemap_exclude_{$post_type}_terms"] ) ) { //phpcs:ignore
-				$_POST["news_sitemap_exclude_{$post_type}_terms"] = []; //phpcs:ignore
-			}
-		}
 	}
 
 	/**
@@ -122,29 +87,6 @@ class News_Sitemap {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Add module settings into general optional panel.
-	 *
-	 * @param array $tabs Array of option panel tabs.
-	 *
-	 * @return array
-	 */
-	public function add_settings( $tabs ) {
-		$sitemap_slug         = Router::get_sitemap_slug( 'news' );
-		$sitemap_url          = Router::get_base_url( "{$sitemap_slug}-sitemap.xml" );
-		$tabs['news-sitemap'] = [
-			'icon'      => 'fa fa-newspaper-o',
-			'title'     => esc_html__( 'News Sitemap', 'rank-math-pro' ),
-			'icon'      => 'rm-icon rm-icon-post',
-			'desc'      => wp_kses_post( sprintf( __( 'News Sitemaps allow you to control which content you submit to Google News. More information: <a href="%s" target="_blank">News Sitemaps overview</a>', 'rank-math-pro' ), KB::get( 'news-sitemap', 'Options Panel Sitemap News Tab' ) ) ),
-			'file'      => dirname( __FILE__ ) . '/settings-news.php',
-			/* translators: News Sitemap Url */
-			'after_row' => '<div class="notice notice-alt notice-info info inline rank-math-notice"><p>' . sprintf( esc_html__( 'Your News Sitemap index can be found here: : %s', 'rank-math-pro' ), '<a href="' . $sitemap_url . '" target="_blank">' . $sitemap_url . '</a>' ) . '</p></div>',
-		];
-
-		return $tabs;
 	}
 
 	/**
@@ -208,7 +150,7 @@ class News_Sitemap {
 		$output .= $renderer->newline( '<loc>' . $renderer->encode_url_rfc3986( htmlspecialchars( $url['loc'] ) ) . '</loc>', 2 );
 
 		$output .= $renderer->newline( '<news:news>', 2 );
-		$output .= $this->get_news_publication( $renderer );
+		$output .= $this->get_news_publication( $renderer, $url );
 
 		$output .= empty( $date ) ? '' : $renderer->newline( '<news:publication_date>' . htmlspecialchars( $date ) . '</news:publication_date>', 3 );
 		$output .= $renderer->add_cdata( $url['title'], 'news:title', 3 );
@@ -224,29 +166,6 @@ class News_Sitemap {
 		 * @param array  $url    The sitemap url array on which the output is based.
 		 */
 		return $this->do_filter( 'sitemap_url', $output, $url );
-	}
-
-	/**
-	 * Get News Pub Tags.
-	 *
-	 * @param  Renderer $renderer Sitemap renderer class object.
-	 * @return string
-	 */
-	private function get_news_publication( $renderer ) {
-		if ( is_null( $this->news_publication ) ) {
-
-			$lang = Locale::get_site_language();
-			$name = Helper::get_settings( 'sitemap.news_sitemap_publication_name' );
-			$name = $name ? $name : get_bloginfo( 'name' );
-
-			$this->news_publication  = '';
-			$this->news_publication .= $renderer->newline( '<news:publication>', 3 );
-			$this->news_publication .= $renderer->newline( '<news:name>' . esc_html( $name ) . '</news:name>', 4 );
-			$this->news_publication .= $renderer->newline( '<news:language>' . $lang . '</news:language>', 4 );
-			$this->news_publication .= $renderer->newline( '</news:publication>', 3 );
-		}
-
-		return $this->news_publication;
 	}
 
 	/**
@@ -306,26 +225,31 @@ class News_Sitemap {
 	}
 
 	/**
-	 * Invalidate News Sitemap cache when a scheduled post is published.
+	 * Get News Pub Tags.
 	 *
-	 * @param string $new_status New Status.
-	 * @param string $old_status Old Status.
-	 * @param object $post       Post Object.
+	 * @param Renderer $renderer Sitemap renderer class object.
+	 * @param array    $entity   Array of parts that make up this entry.
+	 * @return string
 	 */
-	public function status_transition( $new_status, $old_status, $post ) {
-		if ( $old_status === $new_status || 'publish' !== $new_status ) {
-			return;
-		}
+	private function get_news_publication( $renderer, $entity ) {
+		$lang = Locale::get_site_language();
 
-		$news_post_types = (array) Helper::get_settings( 'sitemap.news_sitemap_post_type', [] );
-		if ( ! in_array( $post->post_type, $news_post_types, true ) ) {
-			return;
-		}
+		/**
+		 * Filter: 'rank_math/sitemap/news/language' - Allow changing the news language based on the entity.
+		 *
+		 * @param string $lang   Language code.
+		 * @param array  $entity Array of parts that make up this entry.
+		 */
+		$lang = $this->do_filter( 'sitemap/news/language', $lang, $entity );
+		$name = Helper::get_settings( 'sitemap.news_sitemap_publication_name' );
+		$name = $name ? $name : get_bloginfo( 'name' );
 
-		if ( false === Helper::is_post_indexable( $post->ID ) ) {
-			return;
-		}
+		$news_publication  = '';
+		$news_publication .= $renderer->newline( '<news:publication>', 3 );
+		$news_publication .= $renderer->newline( '<news:name>' . esc_html( $name ) . '</news:name>', 4 );
+		$news_publication .= $renderer->newline( '<news:language>' . $lang . '</news:language>', 4 );
+		$news_publication .= $renderer->newline( '</news:publication>', 3 );
 
-		Cache_Watcher::invalidate( 'news' );
+		return $news_publication;
 	}
 }

@@ -53,6 +53,7 @@ class Store_Locator {
 							<select name="rank-math-search-radius">
 								<?php
 								foreach ( [ 1, 5, 10, 20, 40, 50, 75, 100, 200, 300, 400, 500, 1000 ] as $value ) {
+									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaping not needed as it is a static value.
 									echo "<option value='{$value}' " . selected( $radius, $value, true ) . ">{$value}{$unit}</option>";
 								}
 								?>
@@ -82,7 +83,7 @@ class Store_Locator {
 					</div>
 				</form>
 		<?php
-					echo $this->get_results( $shortcode, $unit );
+					echo wp_kses_post( $this->get_results( $shortcode, $unit ) );
 				echo '</div>';
 		return ob_get_clean();
 	}

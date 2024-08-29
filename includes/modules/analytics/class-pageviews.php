@@ -91,6 +91,13 @@ class Pageviews {
 	 * @return array
 	 */
 	public static function get_pageviews_with_object( $args = [] ) {
+		if ( ! \RankMath\Google\Analytics::is_analytics_connected() ) {
+			return [
+				'rows'      => [],
+				'rowsFound' => 0,
+			];
+		}
+
 		global $wpdb;
 
 		Helper::enable_big_selects_for_queries();

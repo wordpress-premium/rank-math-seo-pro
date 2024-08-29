@@ -16,6 +16,8 @@ use WP_REST_Request;
 use RankMath\Helper;
 use RankMath\Traits\Cache;
 use RankMath\Traits\Hooker;
+use RankMath\Google\Console;
+use RankMath\Google\Analytics;
 use RankMath\Analytics\Stats;
 
 defined( 'ABSPATH' ) || exit;
@@ -88,7 +90,7 @@ class Posts {
 			$data['schemas_in_use'] = Helper::get_default_schema_type( $id, true, true );
 		}
 
-		if ( ! \RankMath\Google\Analytics::is_analytics_connected() ) {
+		if ( ! Console::is_console_connected() ) {
 			return $data;
 		}
 
@@ -324,7 +326,7 @@ class Posts {
 	 * @return array
 	 */
 	public function add_ranking_keywords( $post ) {
-		$page 	   = $post['page'];
+		$page      = $post['page'];
 		$sub_query = "AND page = '{$page}'";
 		$data      = Stats::get()->get_analytics_data(
 			[
@@ -335,7 +337,7 @@ class Posts {
 				'sub_where' => $sub_query,
 			]
 		);
-		$history = Keywords::get()->get_graph_data_for_keywords( \array_keys( $data ), $sub_query );
+		$history   = Keywords::get()->get_graph_data_for_keywords( \array_keys( $data ), $sub_query );
 
 		$post['rankingKeywords'] = Stats::get()->set_query_position( $data, $history ); // phpcs:ignore
 
@@ -484,7 +486,7 @@ class Posts {
 		$data = Stats::get()->get_merge_data_graph( $keywords, $data, $intervals['map'] );
 
 		// Step8. Get traffic data in case analytics is connected for each splitted data intervals.
-		if ( \RankMath\Google\Analytics::is_analytics_connected() ) {
+		if ( Analytics::is_analytics_connected() ) {
 			$query   = $wpdb->prepare(
 				"SELECT DATE_FORMAT( created, '%%Y-%%m-%%d') as date, SUM( pageviews ) as pageviews, {$sql_daterange}
 				FROM {$wpdb->prefix}rank_math_analytics_ga

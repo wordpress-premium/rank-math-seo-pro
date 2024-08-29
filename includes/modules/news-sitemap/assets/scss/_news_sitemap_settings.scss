@@ -1,0 +1,34 @@
+.tagify {
+	$tag-remove: #D39494 !default;
+	$tag-bg: #E5E5E5 !default;
+	$margin: 0.2em;
+
+	--tag-hover: $tag-bg;
+	--tag-remove-bg: #{rgba($tag-bg, .3)};
+
+	width: 100%;
+
+	&__tag{
+
+		border-radius: 0.2em;
+		background: $tag-bg;
+		margin: $margin;
+
+		> div,
+		.tagify__tag-text,
+		.tagify__tag__removeBtn {
+			background: $tag-bg;
+		}
+
+		&__removeBtn{
+			&:hover{
+				background: var(--tag-remove-btn-bg--hover);
+				+ div{
+					&::before{
+						box-shadow: 0 0 0 var(--tag-inset-shadow-size) var(--tag-remove-bg, rgba($tag-remove, .3)) inset !important;
+					}
+				}
+			}
+		}
+	}
+}

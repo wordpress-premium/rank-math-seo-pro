@@ -1,9 +1,9 @@
 {
   "name": "wordpress-premium/rank-math-seo-pro",
   "type": "wordpress-plugin",
-  "description": "",
-  "homepage": "https://polylang.pro",
-  "version": "3.0.56",
+  "description": "Rank Math is the most powerful way to get BEST WordPress SEO tools added to your website.",
+  "homepage": "https://rankmath.com",
+  "version": "3.0.66",
   "require": {
     "composer/installers": "^1.6"
   },

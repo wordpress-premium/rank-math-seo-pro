@@ -64,6 +64,11 @@ class Summary {
 			$summary = (object) $query->one();
 		}
 
+		$summary->pageviews = 0;
+		if ( ! \RankMath\Google\Analytics::is_analytics_connected() ) {
+			return $summary;
+		}
+
 		$summary->pageviews = DB::traffic()
 			->selectSum( 'pageviews', 'pageviews' )
 			->whereBetween( 'created', [ Stats::get()->start_date, Stats::get()->end_date ] )

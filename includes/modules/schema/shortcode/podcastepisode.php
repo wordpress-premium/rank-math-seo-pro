@@ -38,7 +38,7 @@ if ( isset( $schema['timeRequired'] ) && Helper::get_formatted_duration( $schema
 	$duration        = new \DateInterval( $schema['timeRequired'] );
 	$time_required[] = ! empty( $duration->h ) ? sprintf( esc_html__( '%d Hour', 'rank-math-pro' ), $duration->h ) : '';
 	$time_required[] = ! empty( $duration->i ) ? sprintf( esc_html__( '%d Min', 'rank-math-pro' ), $duration->i ) : '';
-	$time_required[] = ! empty( $duration->s ) ?sprintf( esc_html__( '%d Sec', 'rank-math-pro' ), $duration->s ) : '';
+	$time_required[] = ! empty( $duration->s ) ? sprintf( esc_html__( '%d Sec', 'rank-math-pro' ), $duration->s ) : '';
 	$time_required   = array_filter( $time_required );
 }
 
@@ -47,7 +47,8 @@ ob_start();
 <!-- wp:columns -->
 <div class="wp-block-columns" style="gap: 2em;">
 	<!-- wp:column -->
-	<?php if ( ! empty( $schema['thumbnailUrl'] ) && Url::is_url( $schema['thumbnailUrl'] ) ) {
+	<?php
+	if ( ! empty( $schema['thumbnailUrl'] ) && Url::is_url( $schema['thumbnailUrl'] ) ) {
 		$image_id = attachment_url_to_postid( $schema['thumbnailUrl'] );
 		$img      = '<img src="' . esc_url( $schema['thumbnailUrl'] ) . '" />';
 
@@ -71,7 +72,7 @@ ob_start();
 		<p>
 			<?php if ( ! empty( $schema['datePublished'] ) ) { ?>
 				<span class="rank-math-podcast-date">
-					<?php echo esc_html( date( "j F", strtotime( $schema['datePublished'] ) ) ); ?>
+					<?php echo esc_html( date( get_option( 'date_format' ), strtotime( $schema['datePublished'] ) ) ); ?>
 				</span> &#183;
 			<?php } ?>
 			<span>
@@ -105,7 +106,7 @@ ob_start();
 			<p>
 				<?php if ( ! empty( $time_required ) ) { ?>
 					<span>
-						<?php echo implode( ', ', $time_required ); ?>
+						<?php echo esc_html( implode( ', ', $time_required ) ); ?>
 					</span>
 					&#183;
 				<?php } ?>
@@ -131,4 +132,4 @@ ob_start();
 <?php } ?>
 <?php
 
-echo do_blocks( ob_get_clean() );
+echo wp_kses_post( do_blocks( ob_get_clean() ) );

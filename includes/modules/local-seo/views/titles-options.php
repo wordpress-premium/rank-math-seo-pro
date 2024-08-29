@@ -293,10 +293,10 @@ $cmb->add_field(
 
 $cmb->add_field(
 	[
-		'id'      => 'website_alternate_name',
-		'type'    => 'text',
-		'name'    => esc_html__( 'Website Alternate Name', 'rank-math-pro' ),
-		'desc'    => esc_html__( 'An alternate version of your site name (for example, an acronym or shorter name).', 'rank-math-pro' ),
+		'id'   => 'website_alternate_name',
+		'type' => 'text',
+		'name' => esc_html__( 'Website Alternate Name', 'rank-math-pro' ),
+		'desc' => esc_html__( 'An alternate version of your site name (for example, an acronym or shorter name).', 'rank-math-pro' ),
 	]
 );
 
@@ -307,6 +307,16 @@ $cmb->add_field(
 		'name'    => esc_html__( 'Person/Organization Name', 'rank-math-pro' ),
 		'desc'    => esc_html__( 'Your name or company name intended to feature in Google\'s Knowledge Panel.', 'rank-math-pro' ),
 		'default' => get_bloginfo( 'name' ),
+	]
+);
+
+$cmb->add_field(
+	[
+		'id'   => 'organization_description',
+		'type' => 'textarea_small',
+		'name' => esc_html__( 'Description', 'rank-math-pro' ),
+		'desc' => esc_html__( 'Provide a detailed description of your organization.', 'rank-math' ),
+		'dep'  => $hide_on_multiple_locations,
 	]
 );
 
@@ -325,7 +335,7 @@ $cmb->add_field(
 		'id'      => 'url',
 		'type'    => 'text_url',
 		'name'    => esc_html__( 'URL', 'rank-math-pro' ),
-		'desc'    => esc_html__( 'URL of the item.', 'rank-math-pro' ),
+		'desc'    => esc_html__( 'URL of your website or your company’s website.', 'rank-math' ),
 		'default' => home_url(),
 	]
 );
@@ -350,7 +360,7 @@ $cmb->add_field(
 		'id'   => 'email',
 		'type' => 'text',
 		'name' => esc_html__( 'Email', 'rank-math-pro' ),
-		'desc' => esc_html__( 'Search engines display your email address.', 'rank-math-pro' ),
+		'desc' => esc_html__( 'Enter the contact email address that could be displayed on search engines.', 'rank-math' ),
 	]
 );
 
@@ -496,6 +506,39 @@ $cmb->add_field(
 		'name' => esc_html__( 'Price Range', 'rank-math-pro' ),
 		'desc' => esc_html__( 'The price range of the business, for example $$$.', 'rank-math-pro' ),
 		'dep'  => $hide_on_multiple_locations,
+	]
+);
+
+$rank_math_additional_info = $cmb->add_field(
+	[
+		'id'      => 'additional_info',
+		'type'    => 'group',
+		'name'    => esc_html__( 'Additional Info', 'rank-math-pro' ),
+		'desc'    => esc_html__( 'Provide relevant details of your company to include in the Organization Schema.', 'rank-math-pro' ),
+		'options' => [
+			'add_button'    => esc_html__( 'Add', 'rank-math-pro' ),
+			'remove_button' => esc_html__( 'Remove', 'rank-math-pro' ),
+		],
+		'dep'     => $hide_on_multiple_locations,
+		'classes' => 'cmb-group-text-only',
+	]
+);
+
+$cmb->add_group_field(
+	$rank_math_additional_info,
+	[
+		'id'      => 'type',
+		'type'    => 'select',
+		'options' => Helper::choices_additional_organization_info(),
+		'default' => '',
+	]
+);
+
+$cmb->add_group_field(
+	$rank_math_additional_info,
+	[
+		'id'   => 'value',
+		'type' => 'text',
 	]
 );
 

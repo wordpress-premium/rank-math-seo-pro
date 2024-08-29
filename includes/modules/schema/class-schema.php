@@ -87,7 +87,7 @@ class Schema {
 	}
 
 	/**
-	 * FAQ rich snippet.
+	 * HowTo rich snippet.
 	 *
 	 * @param array $data  Array of JSON-LD data.
 	 * @param array $block JsonLD Instance.
@@ -106,11 +106,11 @@ class Schema {
 	}
 
 	/**
-	 * [build_estimated_cost description]
+	 * Add Estimated Cost section in the HowTo Block
 	 *
-	 * @param [type] $attrs [description].
+	 * @param array $attrs Block attributes.
 	 *
-	 * @return [type]        [description]
+	 * @return string Estimated Cost content.
 	 */
 	private function build_estimated_cost( $attrs ) {
 		if ( empty( $attrs['estimatedCost'] ) ) {
@@ -121,24 +121,24 @@ class Schema {
 
 		return sprintf(
 			'<p class="rank-math-howto-estimatedCost"><strong>%2$s</strong> <span>%1$s</span></p>',
-			$attrs['estimatedCost'] . ' ' . $currency,
-			__( 'Estimated Cost:', 'rank-math-pro' )
+			esc_html( $attrs['estimatedCost'] ) . ' ' . esc_html( $currency ),
+			esc_html__( 'Estimated Cost:', 'rank-math-pro' )
 		);
 	}
 
 	/**
-	 * [build_estimated_cost description]
+	 * Add Supplies data in the HowTo Block
 	 *
-	 * @param [type] $attrs [description].
+	 * @param array $attrs Block attributes.
 	 *
-	 * @return [type]        [description]
+	 * @return string Supplies content.
 	 */
 	private function build_supplies( $attrs ) {
 		if ( empty( $attrs['supply'] ) ) {
 			return;
 		}
 
-		$supplies = Str::to_arr_no_empty( $attrs['supply'] );
+		$supplies = Str::to_arr_no_empty( esc_html( $attrs['supply'] ) );
 		if ( empty( $supplies ) ) {
 			return;
 		}
@@ -152,18 +152,18 @@ class Schema {
 	}
 
 	/**
-	 * [build_estimated_cost description]
+	 * Add Tools data in the HowTo Block
 	 *
-	 * @param [type] $attrs [description].
+	 * @param array $attrs Block attributes.
 	 *
-	 * @return [type]        [description]
+	 * @return string Tools content.
 	 */
 	private function build_tools( $attrs ) {
 		if ( empty( $attrs['tools'] ) ) {
 			return;
 		}
 
-		$tools = Str::to_arr_no_empty( $attrs['tools'] );
+		$tools = Str::to_arr_no_empty( esc_html( $attrs['tools'] ) );
 		if ( empty( $tools ) ) {
 			return;
 		}
@@ -176,34 +176,29 @@ class Schema {
 	}
 
 	/**
-	 * [build_estimated_cost description]
+	 * Add Materials data in the HowTo Block
 	 *
-	 * @param [type] $attrs [description].
+	 * @param array $attrs Block attributes.
 	 *
-	 * @return [type]        [description]
+	 * @return string Materials content.
 	 */
 	private function build_materials( $attrs ) {
 		if ( empty( $attrs['material'] ) ) {
 			return;
 		}
 
-		$tools = Str::to_arr_no_empty( $attrs['tools'] );
-		if ( empty( $tools ) ) {
-			return;
-		}
-
 		return sprintf(
 			'<p class="rank-math-howto-tools"><strong>%2$s</strong> <span>%1$s</span></p>',
-			$attrs['material'],
+			esc_html( $attrs['material'] ),
 			__( 'Materials:', 'rank-math-pro' )
 		);
 	}
 
 	/**
-	 * Add Duration.
+	 * Add Estimated cost in HowTo Block schema.
 	 *
-	 * @param [type] $data  [description].
-	 * @param [type] $attrs [description].
+	 * @param array $data  Schema data.
+	 * @param array $attrs Block attributes.
 	 */
 	private function add_estimated_cost( &$data, $attrs ) {
 		if ( empty( $attrs['estimatedCost'] ) ) {
@@ -212,16 +207,16 @@ class Schema {
 
 		$data['estimatedCost'] = [
 			'@type'    => 'MonetaryAmount',
-			'currency' => ! empty( $attrs['estimatedCostCurrency'] ) ? $attrs['estimatedCostCurrency'] : 'USD',
-			'value'    => $attrs['estimatedCost'],
+			'currency' => ! empty( $attrs['estimatedCostCurrency'] ) ? esc_html( $attrs['estimatedCostCurrency'] ) : 'USD',
+			'value'    => esc_html( $attrs['estimatedCost'] ),
 		];
 	}
 
 	/**
-	 * Add Duration.
+	 * Add Supplies in HowTo Block schema.
 	 *
-	 * @param [type] $data  [description].
-	 * @param [type] $attrs [description].
+	 * @param array $data  Schema data.
+	 * @param array $attrs Block attributes.
 	 */
 	private function add_supplies( &$data, $attrs ) {
 		if ( empty( $attrs['supply'] ) ) {
@@ -237,7 +232,7 @@ class Schema {
 		foreach ( $supplies as $value ) {
 			$supply[] = [
 				'@type' => 'HowToSupply',
-				'name'  => $value,
+				'name'  => esc_html( $value ),
 			];
 		}
 
@@ -245,10 +240,10 @@ class Schema {
 	}
 
 	/**
-	 * Add Duration.
+	 * Add Tools in HowTo Block schema.
 	 *
-	 * @param [type] $data  [description].
-	 * @param [type] $attrs [description].
+	 * @param array $data  Schema data.
+	 * @param array $attrs Block attributes.
 	 */
 	private function add_tools( &$data, $attrs ) {
 		if ( empty( $attrs['tools'] ) ) {
@@ -256,7 +251,6 @@ class Schema {
 		}
 
 		$tools = Str::to_arr_no_empty( $attrs['tools'] );
-
 		if ( empty( $tools ) ) {
 			return;
 		}
@@ -265,7 +259,7 @@ class Schema {
 		foreach ( $tools as $value ) {
 			$tool[] = [
 				'@type' => 'HowToTool',
-				'name'  => $value,
+				'name'  => esc_html( $value ),
 			];
 		}
 
@@ -273,16 +267,16 @@ class Schema {
 	}
 
 	/**
-	 * Add Duration.
+	 * Add Materials in HowTo Block schema.
 	 *
-	 * @param [type] $data  [description].
-	 * @param [type] $attrs [description].
+	 * @param array $data  Schema data.
+	 * @param array $attrs Block attributes.
 	 */
 	private function add_materials( &$data, $attrs ) {
 		if ( empty( $attrs['material'] ) ) {
 			return;
 		}
 
-		$data['material'] = $attrs['material'];
+		$data['material'] = esc_html( $attrs['material'] );
 	}
 }

@@ -27,6 +27,7 @@ use RankMathPro\Analytics\Workflow\Jobs;
 use RankMathPro\Analytics\Workflow\Workflow;
 use RankMathPro\Admin\Admin_Helper as ProAdminHelper;
 use RankMathPro\Analytics\DB;
+use RankMath\Google\Analytics as GoogleAnalytics;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -61,6 +62,7 @@ class Analytics {
 		$this->action( 'cmb2_save_options-page_fields_rank-math-options-general_options', 'sync_global_settings', 25, 2 );
 		$this->filter( 'rank_math/metabox/post/values', 'add_metadata', 10, 2 );
 		$this->filter( 'rank_math/analytics/date_exists_tables', 'date_exists_tables', 10 );
+		$this->filter( 'rank_math/analytics/rows', 'add_analytics_rows', 10, 3 );
 
 		if ( Helper::has_cap( 'analytics' ) ) {
 			$this->action( 'rank_math/admin_bar/items', 'admin_bar_items', 11 );
@@ -80,6 +82,40 @@ class Analytics {
 		new Ajax();
 		new Email_Reports();
 		new Url_Inspection();
+	}
+
+	/**
+	 * Add analytics rows.
+	 *
+	 * @param array $rows     Analytics data rows.
+	 * @param array $args     Query arguments.
+	 * @param array $page_urls Page URLs.
+	 *
+	 * @return array
+	 */
+	public function add_analytics_rows( $rows, $args, $page_urls ) {
+		if ( ! GoogleAnalytics::is_analytics_connected() || ! $args['pageview'] || empty( $page_urls ) ) {
+			return $rows;
+		}
+
+		$pageviews = Pageviews::get_pageviews( [ 'pages' => $page_urls ] );
+		if ( empty( $pageviews['rows'] ) ) {
+			return $rows;
+		}
+
+		foreach ( $pageviews['rows'] as $row ) {
+			$page = $row['page'];
+			if ( ! isset( $rows[ $page ] ) ) {
+				$rows[ $page ] = [];
+			}
+
+			$rows[ $page ]['pageviews'] = [
+				'total'      => (int) $row['pageviews'],
+				'difference' => (int) $row['difference'],
+			];
+		}
+
+		return $rows;
 	}
 
 	/**
@@ -105,7 +141,7 @@ class Analytics {
 	 * @return array
 	 */
 	public function add_metadata( $values ) {
-		$values['isAnalyticsConnected'] = \RankMath\Google\Analytics::is_analytics_connected();
+		$values['isAnalyticsConnected'] = GoogleAnalytics::is_analytics_connected();
 
 		return $values;
 	}
@@ -120,7 +156,7 @@ class Analytics {
 		Helper::add_json( 'isAdsenseConnected', ! empty( Adsense::get_adsense_id() ) );
 		Helper::add_json( 'isLinkModuleActive', Helper::is_module_active( 'link-counter' ) );
 		Helper::add_json( 'isSchemaModuleActive', Helper::is_module_active( 'rich-snippet' ) );
-		Helper::add_json( 'isAnalyticsConnected', \RankMath\Google\Analytics::is_analytics_connected() );
+		Helper::add_json( 'isAnalyticsConnected', GoogleAnalytics::is_analytics_connected() );
 		Helper::add_json( 'dateFormat', get_option( 'date_format' ) );
 
 		$preference['topKeywords']['ctr']    = false;

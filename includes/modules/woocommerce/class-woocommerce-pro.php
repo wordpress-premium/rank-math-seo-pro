@@ -11,6 +11,7 @@ namespace RankMathPro;
 
 use RankMath\Helper;
 use RankMath\Traits\Hooker;
+use RankMath\Schema\DB;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -22,6 +23,13 @@ defined( 'ABSPATH' ) || exit;
 class WooCommerce {
 
 	use Hooker;
+
+	/**
+	 * Hold variesBy data to use in the ProductGroup schema.
+	 *
+	 * @var array
+	 */
+	private $varies_by = [];
 
 	/**
 	 * Constructor.
@@ -193,7 +201,7 @@ class WooCommerce {
 		}
 
 		echo '<span class="rank-math-gtin-wrapper">';
-		echo $this->get_formatted_value( $gtin_code );
+		echo esc_html( $this->get_formatted_value( $gtin_code ) );
 		echo '</span>';
 	}
 
@@ -247,12 +255,20 @@ class WooCommerce {
 	 * @return array
 	 */
 	public function add_variations_data( $entity ) {
-		$product = wc_get_product( get_the_ID() );
+		$product_id = get_the_ID();
+		$product    = wc_get_product( $product_id );
 		if ( ! $product->is_type( 'variable' ) ) {
 			return $entity;
 		}
 
-		if ( empty( $entity['offers']['@type'] ) || 'AggregateOffer' !== $entity['offers']['@type'] ) {
+		$schemas = array_filter(
+			DB::get_schemas( $product_id ),
+			function( $schema ) {
+				return $schema['@type'] === 'WooCommerceProduct';
+			}
+		);
+
+		if ( empty( $schemas ) && Helper::get_default_schema_type( $product_id ) !== 'WooCommerceProduct' ) {
 			return $entity;
 		}
 
@@ -261,32 +277,21 @@ class WooCommerce {
 			return $entity;
 		}
 
-		$this->add_variable_gtin( get_the_ID(), $entity['offers'] );
+		$entity['@type']          = 'ProductGroup';
+		$entity['url']            = $product->get_permalink();
+		$entity['productGroupID'] = ! empty( $entity['sku'] ) ? $entity['sku'] : $product_id;
 
-		$offers = [];
+		$this->add_variable_gtin( $product_id, $entity['offers'] );
+
+		$variants = [];
 		foreach ( $variations as $variation ) {
-			$price_valid_until = get_post_meta( $variation->get_id(), '_sale_price_dates_to', true );
-			if ( ! $price_valid_until ) {
-				$price_valid_until = strtotime( ( date( 'Y' ) + 1 ) . '-12-31' );
-			}
-
-			$offer_entity = [
-				'@type'           => 'Offer',
-				'description'     => wp_strip_all_tags( $variation->get_description() ),
-				'price'           => wc_get_price_to_display( $variation ),
-				'priceCurrency'   => get_woocommerce_currency(),
-				'availability'    => 'outofstock' === $variation->get_stock_status() ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
-				'itemCondition'   => 'NewCondition',
-				'priceValidUntil' => date_i18n( 'Y-m-d', $price_valid_until ),
-				'url'             => $product->get_permalink(),
-			];
-
-			$this->add_variable_gtin( $variation->get_id(), $offer_entity );
-
-			$offers[] = $offer_entity;
+			$variants[] = $this->get_variant_data( $variation, $product );
 		}
 
-		$entity['offers']['offers'] = $offers;
+		$this->add_varies_by( $entity );
+		$entity['hasVariant'] = $variants;
+
+		unset( $entity['offers'] );
 
 		return $entity;
 	}
@@ -306,6 +311,81 @@ class WooCommerce {
 	}
 
 	/**
+	 * Get Variant data.
+	 *
+	 * @param Object     $variation Variation Object.
+	 * @param WC_Product $product   Product Object.
+	 *
+	 * @since 3.0.57
+	 */
+	private function get_variant_data( $variation, $product ) {
+		$description = $this->get_variant_description( $variation, $product );
+		$description = $this->do_filter( 'product_description/apply_shortcode', false ) ? do_shortcode( $description ) : Helper::strip_shortcodes( $description );
+		$variant     = [
+			'@type'       => 'Product',
+			'sku'         => $variation->get_sku(),
+			'name'        => $variation->get_name(),
+			'description' => wp_strip_all_tags( $description, true ),
+			'image'       => wp_get_attachment_image_url( $variation->get_image_id() ),
+		];
+
+		$this->add_variable_attributes( $variation, $variant );
+		$this->add_variable_offer( $variation, $variant );
+		$this->add_variable_gtin( $variation->get_id(), $variant );
+
+		return $variant;
+	}
+
+	/**
+	 * Get Variant description.
+	 *
+	 * @param Object     $variation Variation Object.
+	 * @param WC_Product $product   Product Object.
+	 *
+	 * @since 3.0.61
+	 */
+	private function get_variant_description( $variation, $product ) {
+		if ( $variation->get_description() ) {
+			return $variation->get_description();
+		}
+
+		return $product->get_short_description() ? $product->get_short_description() : $product->get_description();
+	}
+
+	/**
+	 * Add variesBy property to product data.
+	 *
+	 * @param Object $entity Product data.
+	 *
+	 * @since 3.0.57
+	 */
+	private function add_varies_by( &$entity ) {
+		if ( empty( $this->varies_by ) ) {
+			return;
+		}
+
+		$valid_values = [
+			'color'    => 'https://schema.org/color',
+			'size'     => 'https://schema.org/size',
+			'age'      => 'https://schema.org/suggestedAge',
+			'gender'   => 'https://schema.org/suggestedGender',
+			'material' => 'https://schema.org/material',
+			'pattern'  => 'https://schema.org/pattern',
+		];
+
+		$varies_by = [];
+		foreach ( array_unique( $this->varies_by ) as $attribute ) {
+			if ( isset( $valid_values[ $attribute ] ) ) {
+				$varies_by[] = $valid_values[ $attribute ];
+			}
+		}
+
+		if ( ! empty( $varies_by ) ) {
+			$entity['variesBy'] = array_unique( $varies_by );
+		}
+	}
+
+	/**
 	 * Add gtin value in variable offer datta.
 	 *
 	 * @param int   $variation_id Variation ID.
@@ -319,6 +399,60 @@ class WooCommerce {
 		}
 
 		$entity[ $gtin_key ] = $gtin;
+	}
+
+	/**
+	 * Add gtin value in variable offer datta.
+	 *
+	 * @param Object $variation Variation Object.
+	 * @param array  $entity    Variant entity.
+	 *
+	 * @since 3.0.57
+	 */
+	private function add_variable_offer( $variation, &$entity ) {
+		$price_valid_until = get_post_meta( $variation->get_id(), '_sale_price_dates_to', true );
+		if ( ! $price_valid_until ) {
+			$price_valid_until = strtotime( ( date( 'Y' ) + 1 ) . '-12-31' );
+		}
+
+		$entity['offers'] = [
+			'@type'           => 'Offer',
+			'description'     => ! empty( $entity['description'] ) ? $entity['description'] : '',
+			'price'           => wc_get_price_to_display( $variation ),
+			'priceCurrency'   => get_woocommerce_currency(),
+			'availability'    => 'outofstock' === $variation->get_stock_status() ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+			'itemCondition'   => 'NewCondition',
+			'priceValidUntil' => date_i18n( 'Y-m-d', $price_valid_until ),
+			'url'             => $variation->get_permalink(),
+		];
+	}
+
+	/**
+	 * Add attributes value in variable offer datta.
+	 *
+	 * @param Object $variation Variation Object.
+	 * @param array  $variant   Variant entity.
+	 *
+	 * @since 3.0.57
+	 */
+	private function add_variable_attributes( $variation, &$variant ) {
+		if ( empty( $variation->get_attributes() ) ) {
+			return;
+		}
+
+		foreach ( $variation->get_attributes() as $key => $value ) {
+			if ( ! $value ) {
+				continue;
+			}
+
+			$key = str_replace( 'pa_', '', $key );
+			if ( ! in_array( $key, [ 'color', 'size', 'material', 'pattern', 'weight' ], true ) ) {
+				continue;
+			}
+
+			$variant[ $key ]   = $value;
+			$this->varies_by[] = $key;
+		}
 	}
 
 	/**

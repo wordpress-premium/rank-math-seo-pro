@@ -393,6 +393,10 @@ class Frontend {
 
 			$attributes = explode( ' ', $attrs['data-schema-attribute'] );
 			if ( in_array( 'about', $attributes, true ) ) {
+				if ( ! empty( $data['WebPage']['about'] ) && key( $data['WebPage']['about'] ) === '@id' ) {
+					$data['WebPage']['about'] = [ $data['WebPage']['about'] ];
+				}
+
 				$data['WebPage']['about'][] = [
 					'@type'  => 'Thing',
 					'name'   => wp_strip_all_tags( $link ),

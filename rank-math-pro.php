@@ -9,7 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Rank Math SEO PRO
- * Version:           3.0.56
+ * Version:           3.0.66
  * Plugin URI:        https://rankmath.com/wordpress/plugin/seo-suite/
  * Description:       Super-charge your website’s SEO with the Rank Math PRO options like Site Analytics, SEO Performance, Custom Schema Templates, News/Video Sitemaps, etc.
  * Author:            Rank Math
@@ -27,8 +27,8 @@ defined( 'ABSPATH' ) || exit;
 add_filter( 'rank_math/admin/sensitive_data_encryption', '__return_false' );
 
 update_option( 'rank_math_connect_data', [
-     'username'  => 'user420',
-     'email'     => 'user420@gmail.com',
+     'username'  => 'info',
+     'email'     => 'info@weadown.com',
      'api_key'   => '*********',
      'plan'      => 'business',
      'connected' => true,
@@ -76,14 +76,14 @@ final class RankMathPro {
 	 *
 	 * @var string
 	 */
-	public $version = '3.0.56';
+	public $version = '3.0.66';
 
 	/**
 	 * Minimum version of Rank Math SEO.
 	 *
 	 * @var string
 	 */
-	public $rank_math_min_version = '1.0.213';
+	public $rank_math_min_version = '1.0.223';
 
 	/**
 	 * Holds various class instances

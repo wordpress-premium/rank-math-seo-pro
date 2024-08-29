@@ -93,6 +93,6 @@ class CSV {
 	 * @return string
 	 */
 	public function escape_csv( $string ) {
-		return '"' . str_replace( [ "'", '"', '\\' ], [ "''", '""', '\\\\' ], $string ) . '"';
+		return '"' . str_replace( [ '"', '\\' ], [ '""', '\\\\' ], $string ) . '"';
 	}
 }

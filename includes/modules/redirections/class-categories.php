@@ -182,7 +182,7 @@ class Categories {
 
 		$terms = get_terms(
 			[
-				'taxonomy' => 'rank_math_redirection_category',
+				'taxonomy'   => 'rank_math_redirection_category',
 				'hide_empty' => false,
 			]
 		);
@@ -274,11 +274,11 @@ class Categories {
 	 * @return string
 	 */
 	public function category_column_content( $false, $item ) {
-		$format = '<span class="%1$s">%2$s</span>';
+		$format     = '<span class="%1$s">%2$s</span>';
 		$categories = $this->get_redirection_categories( $item['id'] );
-		$classes = '';
+		$classes    = '';
 
-		$cats = '';
+		$cats  = '';
 		$count = 0;
 		foreach ( $categories as $category ) {
 			$count++;
@@ -286,13 +286,13 @@ class Categories {
 				$cats .= '...';
 				break;
 			}
-			$url = Helper::get_admin_url( 'redirections', [ 'redirection_category' => $category->term_id ] );
+			$url   = Helper::get_admin_url( 'redirections', [ 'redirection_category' => $category->term_id ] );
 			$cats .= '<a href="' . $url . '">' . $category->name . '</a>, ';
 		}
 		$cats = rtrim( $cats, ', ' );
 
 		if ( empty( $cats ) ) {
-			$cats = __( 'Uncategorized', 'rank-math-pro' );
+			$cats     = __( 'Uncategorized', 'rank-math-pro' );
 			$classes .= ' uncategorized';
 		}
 		return sprintf( $format, $classes, $cats );
@@ -426,7 +426,7 @@ class Categories {
 		$categories    = rtrim( wp_dropdown_categories( $dropdown_args ) );
 		$submit_button = call_user_func_array( 'get_submit_button', $submit_args );
 
-		echo sprintf( '%1$s%2$s%3$s', $categories, $submit_button, $clear_button );
+		echo sprintf( '%1$s%2$s%3$s', $categories, $submit_button, $clear_button ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- All 3 variables are escaped above.
 	}
 
 	/**
