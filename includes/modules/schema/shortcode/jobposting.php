@@ -96,7 +96,7 @@ $shortcode->get_image();
 	$locations = $shortcode->get_field_value( 'applicantLocationRequirements' );
 	if ( ! empty( $locations ) ) {
 		$locations = array_map(
-			function( $location ) {
+			function ( $location ) {
 				return ! empty( $location['name'] ) ? $location['name'] : '';
 			},
 			$locations
@@ -120,7 +120,7 @@ $shortcode->get_image();
 	$education = $shortcode->get_field_value( 'educationRequirements' );
 	if ( is_array( $education ) && ! empty( $education ) ) {
 		$education = array_map(
-			function( $credential ) {
+			function ( $credential ) {
 				return ! empty( $credential['credentialCategory'] ) ? ucwords( $credential['credentialCategory'] ) : '';
 			},
 			$education

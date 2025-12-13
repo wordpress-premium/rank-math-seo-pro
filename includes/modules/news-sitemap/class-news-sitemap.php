@@ -169,6 +169,21 @@ class News_Sitemap {
 	}
 
 	/**
+	 * Get excluded post terms.
+	 *
+	 * @param string $post_type Post type.
+	 * @return array
+	 */
+	private static function get_exclude_terms( $post_type ) {
+		$exclude_terms = (array) Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms" );
+		if ( isset( $exclude_terms[0] ) ) {
+			return $exclude_terms[0];
+		}
+
+		return $exclude_terms;
+	}
+
+	/**
 	 * Change default schema type on News Posts.
 	 *
 	 * @param string $schema    Default schema type.
@@ -183,13 +198,14 @@ class News_Sitemap {
 			return $schema;
 		}
 
-		$exclude_terms = (array) Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms" );
-		if ( empty( $exclude_terms[0] ) ) {
+		$exclude_terms = self::get_exclude_terms( $post_type );
+
+		if ( empty( $exclude_terms ) ) {
 			return 'NewsArticle';
 		}
 
 		$has_excluded_term = false;
-		foreach ( $exclude_terms[0] as $taxonomy => $terms ) {
+		foreach ( $exclude_terms as $taxonomy => $terms ) {
 			if ( has_term( $terms, $taxonomy, $post_id ) ) {
 				$has_excluded_term = true;
 				break;

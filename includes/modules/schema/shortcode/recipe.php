@@ -163,7 +163,7 @@ $shortcode->get_image();
 
 					$data .= '<div class="inner-wrapper">';
 					$data .= '<div class="content-wrapper">';
-					$data .= '<h5><a href="' . esc_url( $url ) . '" target="_blank">' . esc_html__( $name ) . '</a></h5>';
+					$data .= '<h5><a href="' . esc_url( $url ) . '" target="_blank">' . esc_html( $name ) . '</a></h5>';
 					$data .= '<p>' . esc_html( $text ) . '</p>';
 					$data .= '</div>';
 					$data .= '<img src="' . esc_url( $image ) . '" />';

@@ -13,6 +13,7 @@
 namespace RankMathPro;
 
 use RankMath\Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Analytics\Workflow\Workflow;
 
 defined( 'ABSPATH' ) || exit;
@@ -98,12 +99,12 @@ class Installer {
 	 *
 	 * @param bool $activate True for plugin activation, false for de-activation.
 	 *
-	 * Forked from Yoast (https://github.com/Yoast/wordpress-seo/)
+	 * Forked from Yoast (https://github.com/Yoast/wordpress-seo/).
 	 */
 	private function network_activate_deactivate( $activate ) {
 		global $wpdb;
 
-		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs WHERE archived = '0' AND spam = '0' AND deleted = '0'" );
+		$blog_ids = DB_Helper::get_col( "SELECT blog_id FROM $wpdb->blogs WHERE archived = '0' AND spam = '0' AND deleted = '0'" );
 		if ( empty( $blog_ids ) ) {
 			return;
 		}
@@ -121,6 +122,7 @@ class Installer {
 	 * Runs on activation of the plugin.
 	 */
 	private function activate() {
+		\RankMathPro\Admin\Licence_Activation::activate_licence();
 		\RankMathPro\Admin\Api::get()->get_settings();
 		$this->create_options();
 
@@ -133,7 +135,7 @@ class Installer {
 			$task_name = 'rank_math/analytics/data_fetch';
 
 			if ( false === as_next_scheduled_action( $task_name ) ) {
-				$fetch_gap          = 3;
+				$fetch_gap          = 1;
 				$schedule_in_minute = wp_rand( 3, 1380 );
 				$time_to_schedule   = ( strtotime( 'tomorrow' ) + ( $schedule_in_minute * MINUTE_IN_SECONDS ) );
 

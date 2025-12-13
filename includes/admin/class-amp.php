@@ -34,7 +34,6 @@ class Amp {
 			$this->action( 'rank_math/redirection/post_updated', 'add_amp_redirect', 20 );
 			$this->action( 'rank_math/redirection/term_updated', 'add_amp_redirect', 20 );
 		}
-
 	}
 
 	/**
@@ -59,5 +58,4 @@ class Amp {
 		$redirection->add_destination( $url_to );
 		$redirection->save();
 	}
-
 }

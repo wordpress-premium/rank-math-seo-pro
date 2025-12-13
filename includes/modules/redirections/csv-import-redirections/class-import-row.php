@@ -147,14 +147,15 @@ class Import_Row {
 	 * @return mixed
 	 */
 	public function import_redirection( $data = [] ) {
-
-		$exist = DB::get_redirection( $data );
+		$exist = $this->get_redirection( $data );
 
 		/**
 		 * Filter to modify the redirection data before updating a redirection.
 		 * Pass a false value to skip the update and create a new redirection instead.
 		 *
+		 * @param bool|array $exist Redirection data.
 		 * @param array|false $data Redirection data.
+		 * @param Import_Row $instance Current instance.
 		 */
 		$exist = apply_filters( 'rank_math/admin/csv_import_redirection_update', $exist, $data, $this );
 		if ( $exist ) {
@@ -162,6 +163,23 @@ class Import_Row {
 		}
 
 		return $this->create_redirection();
+	}
+
+	/**
+	 * Get a redirection. First, look up by ID, then by other fields.
+	 *
+	 * @param array $data Redirection data.
+	 * @return mixed
+	 */
+	public function get_redirection( $data = [] ) {
+		if ( isset( $data['id'] ) ) {
+			$redirection = DB::get_redirection_by_id( $data['id'] );
+			if ( $redirection ) {
+				return $redirection;
+			}
+		}
+
+		return DB::get_redirection( $data );
 	}
 
 	/**
@@ -203,6 +221,8 @@ class Import_Row {
 	 * Edit an existing redirection.
 	 *
 	 * @param array $data Redirection exist.
+	 * @param array $input Redirection data.
+	 *
 	 * @return mixed
 	 */
 	public function update_redirection( $data, $input = [] ) {
@@ -219,7 +239,7 @@ class Import_Row {
 		}
 		$sources = array_unique( array_merge( $sources, $data['sources'] ), SORT_REGULAR );
 
-		$url_to = ! empty( $input['destination'] ) ? $input['destination'] : $data['url_to'];
+		$url_to      = ! empty( $input['destination'] ) ? $input['destination'] : $data['url_to'];
 		$header_code = ! empty( $input['type'] ) ? $input['type'] : $data['header_code'];
 
 		$redirection = Redirection::from(
@@ -292,5 +312,4 @@ class Import_Row {
 
 		return $sources;
 	}
-
 }

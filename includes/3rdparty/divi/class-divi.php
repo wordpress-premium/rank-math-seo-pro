@@ -70,20 +70,20 @@ class Divi {
 	/**
 	 * Get shortcode data.
 	 *
-	 * @param string       $string The string to search for shortcodes.
+	 * @param string       $text The string to search for shortcodes.
 	 * @param string|array $tagname The shortcode name as a string or an array of names.
 	 * @param bool         $check_for_schema Whether to only allow truthy schema attr shortcodes.
 	 *
 	 * @return array Array of all found shortcodes.
 	 */
-	public function get_shortcode_data( $string, $tagname, $check_for_schema = true ) {
+	public function get_shortcode_data( $text, $tagname, $check_for_schema = true ) {
 		$pattern = get_shortcode_regex( is_array( $tagname ) ? $tagname : [ $tagname ] );
-		if ( ! preg_match_all( "/$pattern/s", $string, $matches, PREG_SET_ORDER ) ) {
+		if ( ! preg_match_all( "/$pattern/s", $text, $matches, PREG_SET_ORDER ) ) {
 			return [];
 		}
 
 		return array_map(
-			function( $m ) use ( $check_for_schema ) {
+			function ( $m ) use ( $check_for_schema ) {
 				global $shortcode_tags;
 
 				// Allow [[foo]] syntax for escaping a tag.
@@ -230,6 +230,7 @@ class Divi {
 				'wp-hooks',
 				'wp-i18n',
 				'wp-plugins',
+				'wp-api-fetch',
 			],
 			RANK_MATH_PRO_VERSION,
 			true

@@ -38,7 +38,7 @@ $import_in_progress = (bool) get_option( 'rank_math_csv_import' );
 		<div class="rank-math-box-inner">
 			<form id="csv-panel-import" class="rank-math-import-form cmb2-form active-tab" action="#csv-box" method="post" enctype="multipart/form-data" accept-charset="<?php echo esc_attr( get_bloginfo( 'charset' ) ); ?>">
 				<?php if ( ! $import_in_progress ) : ?>
-					<p><label for="csv-import-me"><strong><?php esc_html_e( 'CSV File', 'rank-math-pro' ); ?></label></strong><p>
+					<p><label for="csv-import-me"><strong><?php esc_html_e( 'CSV File', 'rank-math-pro' ); ?></strong></label><p>
 					<input type="file" name="csv-import-me" id="csv-import-me" value="" accept=".csv">
 					<br>
 					<span class="validation-message"><?php esc_html_e( 'Please select a CSV file to import.', 'rank-math-pro' ); ?></span>
@@ -50,7 +50,7 @@ $import_in_progress = (bool) get_option( 'rank_math_csv_import' );
 							<?php printf( esc_html__( '%s It is recommended to save a database backup before using this option because importing malformed CSV can result in loss of data.', 'rank-math-pro' ), '<strong>' . esc_html__( 'Warning:', 'rank-math-pro' ) . '</strong> ' ); ?>
 						</p>
 					</div>
-				<?php else: ?>
+				<?php else : ?>
 					<div id="csv-import-progress-details">
 						<?php CSV_Import_Export::import_progress_details(); ?>
 					</div>
@@ -63,7 +63,7 @@ $import_in_progress = (bool) get_option( 'rank_math_csv_import' );
 					<?php if ( $import_in_progress ) : ?>
 						<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( [ 'rank_math_cancel_csv_import' => 1 ] ), 'rank_math_pro_cancel_csv_import' ) ); ?>" id="csv-import-cancel" class="button button-link-delete csv-import-cancel"><?php esc_html_e( 'Cancel Import', 'rank-math-pro' ); ?></a>
 						<span class="input-loading" style="visibility: visible;"></span>
-					<?php else: ?>
+					<?php else : ?>
 						<button type="submit" class="button button-primary"><?php esc_html_e( 'Import', 'rank-math-pro' ); ?></button>
 					<?php endif; ?>
 				</footer>
@@ -73,7 +73,7 @@ $import_in_progress = (bool) get_option( 'rank_math_csv_import' );
 					<?php foreach ( CSV_Import_Export::get_possible_object_types() as $object_type => $label ) : ?>
 						<li>
 							<input type="checkbox" class="cmb2-option" name="object_types[]" id="object_types_<?php echo sanitize_html_class( $object_type ); ?>" value="<?php echo sanitize_html_class( $object_type ); ?>" checked="checked"> <label for="object_types_<?php echo sanitize_html_class( $object_type ); ?>"><?php echo esc_html( $label ); ?></label>
-							<?php if ( 'post' === $object_type ): ?>
+							<?php if ( 'post' === $object_type ) : ?>
 								<div class="csv-advanced-options">
 									<p class="description csv-advanced-options-description"><?php esc_html_e( 'Post types:', 'rank-math-pro' ); ?></p>
 									<ul class="cmb2-checkbox-list no-select-all cmb2-list csv-advanced-options-list">
@@ -84,7 +84,7 @@ $import_in_progress = (bool) get_option( 'rank_math_csv_import' );
 										<?php endforeach; ?>
 									</ul>
 								</div>
-							<?php elseif ( 'term' === $object_type ): ?>
+							<?php elseif ( 'term' === $object_type ) : ?>
 								<div class="csv-advanced-options">
 									<p class="description csv-advanced-options-description"><?php esc_html_e( 'Taxonomies:', 'rank-math-pro' ); ?></p>
 									<ul class="cmb2-checkbox-list no-select-all cmb2-list csv-advanced-options-list">
@@ -95,7 +95,7 @@ $import_in_progress = (bool) get_option( 'rank_math_csv_import' );
 										<?php endforeach; ?>
 									</ul>
 								</div>
-							<?php elseif ( 'user' === $object_type ): ?>
+							<?php elseif ( 'user' === $object_type ) : ?>
 								<div class="csv-advanced-options">
 									<p class="description csv-advanced-options-description"><?php esc_html_e( 'User Roles:', 'rank-math-pro' ); ?></p>
 									<ul class="cmb2-checkbox-list no-select-all cmb2-list csv-advanced-options-list">

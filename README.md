@@ -10,21 +10,25 @@ This is the **fully activated pro version** of the plugin, brought to you by [wo
 
 **Note:** Using activated software may violate the original author's licensing terms and may not receive official support or updates. 
 
-## Donate
+## Support
 
-If you appreciate [WordPress Premium's](https://www.wordpress-premium.net/) service and would like to keep getting recent, malware-free updates, please consider [leaving a tip via PayPal](https://www.paypal.com/paypalme/thaikolja).
+> [!NOTE]
+>
+> If [WordPress Premium](https://www.wordpress-premium.net/) helps you access premium plugins safely, consider [supporting us via PayPal](https://www.paypal.com/paypalme/thaikolja) or via any [cryptocurrency](https://www.wordpress-premium.net/wallets/) to keep the service running.
+
+---
+
+🚨 **Note:** Keeping all plugins updated and malware-free takes a lot of time and effort. **If we do not receive donations, we are forced to shut down the free repositories and only sell to buying members.**
 
 ## Changelog
 
-### v3.0.81
+**Date:** December 3, 2025
 
-**Release Date:** February 12, 2025
-
-* Added: Product Carousel Schema will now be added to the Shop and Product Archive pages when [Remove Schema Markup on Shop Archives](https://rankmath.com/kb/general-settings/#remove-snippet-data) and [Remove Snippet Data](https://rankmath.com/kb/titles-and-meta/#product-categories-remove-snippet-data) for the archive are disabled
-* Fixed: [Podcast shortcode](https://rankmath.com/kb/podcast-schema/#gutenberg) was displaying incorrect date on some setups
-* Fixed: Incorrect country code was used for Serbia in [Analytics](https://rankmath.com/kb/general-settings/#analytics-settings)
-* Fixed: Prevented the strict selection of an [AdSense](https://rankmath.com/kb/general-settings/#adsense) account by adding a new `None`
-* Fixed: Invalid link was added to the [Episode Duration field description of the Podcast Schema](https://rankmath.com/kb/podcast-schema/#episode-duration)
+* **Added**: Compatibility with WordPress 6.9
+* **Fixed**: PHP warning on taxonomies when [Schema template](https://rankmath.com/kb/schema-templates/) is added
+* **Fixed**: [Content length indicator on Product pages](https://rankmath.com/kb/score-100-in-tests/#overall-content-length) was staying red even when content had more than 200 words
+* **Fixed**: UI issues in the [News Sitemap settings](https://rankmath.com/kb/news-sitemap/)
+* **Fixed**: Notice of [free 750 credits](https://rankmath.com/kb/content-ai-free/) was wrongly shown on sites using Business & Agency plans
 
 ---
 

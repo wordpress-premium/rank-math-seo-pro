@@ -1,0 +1,21 @@
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+parameters:
+    parallel:
+        maximumNumberOfProcesses: 1
+    level: 0
+    inferPrivatePropertyTypeFromConstructor: true
+    reportUnmatchedIgnoredErrors: false
+    paths:
+        - includes/
+        - rank-math-pro.php
+        - uninstall.php
+    bootstrapFiles:
+    scanDirectories:
+        - vendor/a5hleyrich/wp-background-processing/
+        - vendor/wpackagist-plugin/
+        - vendor/rankmath/
+    scanFiles:
+        - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+    excludePaths:
+        - */index.php

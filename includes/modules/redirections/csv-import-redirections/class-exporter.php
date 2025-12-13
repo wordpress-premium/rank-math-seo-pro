@@ -11,6 +11,7 @@
 namespace RankMathPro\Redirections\CSV_Import_Export_Redirections;
 
 use RankMath\Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Redirections\DB;
 use RankMath\Redirections\Cache;
 use RankMathPro\Admin\CSV;
@@ -74,47 +75,47 @@ class Exporter extends CSV {
 	 * Get value for given column.
 	 *
 	 * @param string $column Column name.
-	 * @param object $object WP_Post, WP_Term or WP_User.
+	 * @param object $item WP_Post, WP_Term or WP_User.
 	 *
 	 * @return string
 	 */
-	public function get_column_value( $column, $object ) {
+	public function get_column_value( $column, $item ) {
 		$val = '';
 
 		switch ( $column ) {
 			case 'id':
-				$val = $object->id;
+				$val = $item->id;
 				break;
 
 			case 'source':
-				$val = $object->source_processed;
+				$val = $item->source_processed;
 				break;
 
 			case 'matching':
-				$val = $object->matching_processed;
+				$val = $item->matching_processed;
 				break;
 
 			case 'destination':
-				$val = $object->url_to;
+				$val = $item->url_to;
 				break;
 
 			case 'type':
-				$val = $object->header_code;
+				$val = $item->header_code;
 				break;
 
 			case 'category':
-				$val = $object->categories_processed;
+				$val = $item->categories_processed;
 				break;
 
 			case 'status':
-				$val = $object->status;
+				$val = $item->status;
 				break;
 
 			case 'ignore':
-				$val = $object->ignore;
+				$val = $item->ignore;
 				break;
 		}
-		return $this->escape_csv( apply_filters( "rank_math/admin/csv_export_redirections_column_{$column}", $val, $object ) ); //phpcs:ignore
+		return $this->escape_csv( apply_filters( "rank_math/admin/csv_export_redirections_column_{$column}", $val, $item ) );
 	}
 
 	/**
@@ -130,7 +131,7 @@ class Exporter extends CSV {
 			$statuses[] = 'inactive';
 		}
 		$where    = 'status IN (\'' . join( '\',\'', $statuses ) . '\')';
-		$post_ids = $wpdb->get_col( "SELECT ID FROM {$table} WHERE $where" ); // phpcs:ignore
+		$post_ids = DB_Helper::get_col( "SELECT ID FROM {$table} WHERE $where" );
 
 		return $post_ids;
 	}
@@ -155,11 +156,11 @@ class Exporter extends CSV {
 		// Fetch 50 at a time rather than loading the entire table into memory.
 		while ( $next_batch = array_splice( $ids, 0, 50 ) ) { // phpcs:ignore
 			$where          = 'WHERE ' . $primary_column . ' IN (' . join( ',', $next_batch ) . ')';
-			$objects        = $wpdb->get_results( "SELECT * FROM {$table} $where" ); // phpcs:ignore
+			$objects        = DB_Helper::get_results( "SELECT * FROM {$table} $where" );
 			$current_object = 0;
 			// Begin Loop.
 			foreach ( $objects as $object ) {
-				$current_object++;
+				++$current_object;
 
 				$this->process_categories( $object );
 				$sources = maybe_unserialize( $object->sources, true );
@@ -186,15 +187,15 @@ class Exporter extends CSV {
 	/**
 	 * Process sources & categories data for export.
 	 *
-	 * @param object $object Redirection row.
+	 * @param object $item Redirection row.
 	 * @return void
 	 */
-	public function process_categories( &$object ) {
-		$object->categories_processed = '';
-		$terms                        = wp_get_object_terms( $object->id, 'rank_math_redirection_category' );
+	public function process_categories( &$item ) {
+		$item->categories_processed = '';
+		$terms                      = wp_get_object_terms( $item->id, 'rank_math_redirection_category' );
 		if ( is_a( $terms, 'WP_Error' ) || ! is_array( $terms ) || empty( $terms ) ) {
 			return;
 		}
-		$object->categories_processed = join( ', ', wp_list_pluck( $terms, 'slug' ) );
+		$item->categories_processed = join( ', ', wp_list_pluck( $terms, 'slug' ) );
 	}
 }

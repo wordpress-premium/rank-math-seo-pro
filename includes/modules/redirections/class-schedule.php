@@ -293,7 +293,7 @@ class Schedule {
 		$could_not_change = [];
 		foreach ( $ids as $id ) {
 			if ( $this->is_status_locked( $id ) ) {
-				$key = array_search( $id, $_REQUEST['redirection'] );
+				$key = array_search( $id, $_REQUEST['redirection'], true );
 				if ( false !== $key ) {
 					$could_not_change[] = $id;
 					unset( $_REQUEST['redirection'][ $key ] );
@@ -322,5 +322,4 @@ class Schedule {
 			$this->clear_scheduled_deactivation( $redirection_id );
 		}
 	}
-
 }

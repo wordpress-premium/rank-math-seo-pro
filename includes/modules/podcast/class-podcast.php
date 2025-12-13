@@ -26,6 +26,8 @@ class Podcast {
 
 	/**
 	 * Store podcast feed slug.
+	 *
+	 * @var string
 	 */
 	private $podcast;
 
@@ -96,10 +98,13 @@ class Podcast {
 					'icon'      => 'rm-icon rm-icon-podcast',
 					'title'     => esc_html__( 'Podcast', 'rank-math-pro' ),
 					/* translators: Link to kb article */
-					'desc'      => sprintf( esc_html__( 'Make your podcasts discoverable via Google Podcasts, Apple Podcasts, and similar services. %s.', 'rank-math' ), '<a href="' . KB::get( 'podcast-settings', 'Options Panel Podcast Tab' ) . '" target="_blank">' . esc_html__( 'Learn more', 'rank-math-pro' ) . '</a>' ),
-					'file'      => dirname( __FILE__ ) . '/views/options.php',
+					'desc'      => sprintf( esc_html__( 'Make your podcasts discoverable via Google Podcasts, Apple Podcasts, and similar services. %s.', 'rank-math-pro' ), '<a href="' . KB::get( 'podcast-settings', 'Options Panel Podcast Tab' ) . '" target="_blank">' . esc_html__( 'Learn more', 'rank-math-pro' ) . '</a>' ),
+					'file'      => __DIR__ . '/views/options.php',
 					/* translators: Link to Podcast RSS feed */
 					'after_row' => '<div class="notice notice-alt notice-info info inline rank-math-notice"><p>' . sprintf( esc_html__( 'Your Podcast RSS feed can be found here: %s', 'rank-math-pro' ), '<a href="' . get_feed_link( $this->podcast ) . '" target="_blank">' . get_feed_link( $this->podcast ) . '</a>' ) . '</p></div>',
+					'json'      => [
+						'podcastFeed' => get_feed_link( $this->podcast ),
+					],
 				],
 			],
 			12
@@ -112,7 +117,7 @@ class Podcast {
 	 * Add all podcasts feed to /feed/podcast.
 	 */
 	public function podcast_feed() {
-		require dirname( __FILE__ ) . '/views/feed-rss2.php';
+		require __DIR__ . '/views/feed-rss2.php';
 	}
 
 	/**
@@ -121,7 +126,7 @@ class Podcast {
 	public function get_podcasts() {
 		$post_types = array_filter(
 			Helper::get_accessible_post_types(),
-			function( $post_type ) {
+			function ( $post_type ) {
 				return 'attachment' !== $post_type;
 			}
 		);
@@ -142,5 +147,4 @@ class Podcast {
 
 		return new \WP_Query( $args );
 	}
-
 }

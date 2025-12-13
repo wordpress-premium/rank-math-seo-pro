@@ -23,6 +23,11 @@ defined( 'ABSPATH' ) || exit;
 class Adsense {
 
 	/**
+	 * Connection status key.
+	 */
+	const CONNECTION_STATUS_KEY = 'rank_math_adsense_connection_error';
+
+	/**
 	 * Get adsense accounts.
 	 *
 	 * @return array
@@ -51,15 +56,16 @@ class Adsense {
 	/**
 	 * Query adsense data from google client api.
 	 *
-	 * @param string $start_date Start date.
-	 * @param string $end_date   End date.
+	 * @param array $options Options to pass to the API.
 	 *
-	 * @return array
+	 * @return array|WP_Error|false
 	 */
 	public static function get_adsense( $options = [] ) {
 		$account_id = isset( $options['account_id'] ) ? $options['account_id'] : self::get_adsense_id();
-		$start_date = isset( $options['start_date'] ) ? $options['start_date'] : '';
-		$end_date   = isset( $options['end_date'] ) ? $options['end_date'] : '';
+
+		$dates      = Base::get_dates();
+		$start_date = isset( $options['start_date'] ) ? $options['start_date'] : $dates['start_date'];
+		$end_date   = isset( $options['end_date'] ) ? $options['end_date'] : $dates['end_date'];
 
 		if ( ! $account_id || ! $start_date || ! $end_date ) {
 			return false;
@@ -125,6 +131,20 @@ class Adsense {
 			[ 'adsense_id' => '' ]
 		);
 
-		return ! empty( $account['adsense_id'] );
+		return ! empty( $account['adsense_id'] ) && self::is_valid_connection();
+	}
+
+	/**
+	 * Is valid connection
+	 */
+	public static function is_valid_connection() {
+		return Api::get()->get_connection_status( self::CONNECTION_STATUS_KEY );
+	}
+
+	/**
+	 * Test connection
+	 */
+	public static function test_connection() {
+		return Api::get()->check_connection_status( self::CONNECTION_STATUS_KEY, [ __CLASS__, 'get_adsense' ] );
 	}
 }

@@ -47,6 +47,19 @@ class Email_Reports {
 	public $assets_url = '';
 
 	/**
+	 * Get instance of the class.
+	 */
+	public static function get() {
+		static $instance = null;
+
+		if ( is_null( $instance ) ) {
+			$instance = new self();
+		}
+
+		return $instance;
+	}
+
+	/**
 	 * The constructor.
 	 */
 	public function __construct() {
@@ -59,7 +72,7 @@ class Email_Reports {
 	 * @return void
 	 */
 	public function hooks() {
-		$this->views_path = dirname( __FILE__ ) . '/views/email-reports/';
+		$this->views_path = __DIR__ . '/views/email-reports/';
 		$this->assets_url = plugin_dir_url( __FILE__ ) . 'assets/';
 
 		// CMB hooks.
@@ -74,16 +87,6 @@ class Email_Reports {
 		$this->filter( 'rank_math/analytics/email_report_parameters', 'email_parameters' );
 		$this->filter( 'rank_math/analytics/email_report_image_atts', 'replace_logo', 10, 2 );
 		$this->filter( 'rank_math/analytics/email_report_periods', 'frequency_periods' );
-		$this->action( 'rank_math/analytics/options/wizard_after_email_report', 'wizard_options' );
-	}
-
-	/**
-	 * Output CSS for required for the Pro reports.
-	 *
-	 * @return void
-	 */
-	public function add_pro_css() {
-		$this->template_part( 'pro-style' );
 	}
 
 	/**
@@ -392,30 +395,6 @@ class Email_Reports {
 		$diff  = isset( $data[ $item ]['difference'] ) ? $data[ $item ]['difference'] : 0;
 
 		return compact( 'value', 'diff' );
-	}
-
-	/**
-	 * Output additional options in the Setup Wizard.
-	 *
-	 * @return void
-	 */
-	public function wizard_options() {
-		if ( ! ProAdminHelper::is_business_plan() ) {
-			return;
-		}
-
-		?>
-		<div class="cmb-row cmb-type-toggle cmb2-id-console-email-send-to" data-fieldtype="toggle">
-			<div class="cmb-th">
-				<label for="console_email_send"><?php esc_html_e( 'Report Email Address', 'rank-math-pro' ); ?></label>
-			</div>
-			<div class="cmb-td">
-				<input type="text" class="regular-text" name="console_email_send_to" id="console_email_send_to" value="<?php echo esc_attr( Helper::get_settings( 'general.console_email_send_to' ) ); ?>" data-hash="42cpi4bihms0">
-				<p class="cmb2-metabox-description"><?php esc_html_e( 'Address where the reports will be sent. You can add multiple recipients separated with commas.', 'rank-math-pro' ); ?></p>
-				<div class="rank-math-cmb-dependency hidden" data-relation="or"><span class="hidden" data-field="console_email_reports" data-comparison="=" data-value="on"></span></div>
-			</div>
-		</div>
-		<?php
 	}
 
 	/**

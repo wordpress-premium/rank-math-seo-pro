@@ -15,7 +15,9 @@ use RankMath\Helper;
 use RankMath\Helpers\Url;
 use RankMath\Helpers\Str;
 use RankMath\Helpers\Arr;
+use RankMath\Helpers\Param;
 use RankMath\Admin\Admin_Helper;
+use RankMath\Schema\DB;
 use RankMathPro\Admin\Admin_Helper as PROAdminHelper;
 
 
@@ -41,26 +43,26 @@ class Common {
 		$this->filter( 'rank_math/link/add_attributes', 'can_add_attributes' );
 
 		$this->filter( 'rank_math/researches/tests', 'add_product_tests', 10, 2 );
+		$this->filter( 'rank_math/recalculate_score/data', 'seo_score_tool_values', 10, 2 );
 		$this->action( 'rank_math/admin/editor_scripts', 'enqueue' );
+		$this->filter( 'rank_math/determine_search_intent', 'determine_search_intent', 9 );
 	}
 
 	/**
 	 * Increase the focus keyword max tags.
-	 *
-	 * @param int $limit The max tags limit.
 	 */
-	public function limit_maxtags( $limit ) {
+	public function limit_maxtags() {
 		return 100;
 	}
 
 	/**
 	 * Add Pinterest Rich Pins Validator to the top admin bar.
 	 *
-	 * @param object $object The Admin_Bar_Menu object.
+	 * @param object $menu_object The Admin_Bar_Menu object.
 	 */
-	public function add_admin_bar_items( $object ) {
+	public function add_admin_bar_items( $menu_object ) {
 		$url = rawurlencode( Url::get_current_url() );
-		$object->add_sub_menu(
+		$menu_object->add_sub_menu(
 			'rich-pins',
 			[
 				'title' => esc_html__( 'Rich Pins Validator', 'rank-math-pro' ),
@@ -87,9 +89,14 @@ class Common {
 			$values['trendsUpgradeLabel'] = esc_html__( 'Activate now', 'rank-math-pro' );
 		}
 
-		if ( Helper::is_woocommerce_active() && 'product' === PROAdminHelper::get_current_post_type() ) {
+		if (
+			Helper::is_woocommerce_active() &&
+			( 'product' === PROAdminHelper::get_current_post_type() || Param::get( 'page' ) === 'rank-math-status' )
+		) {
 			$values['assessor']['isReviewEnabled'] = 'yes' === get_option( 'woocommerce_enable_reviews', 'yes' );
 		}
+
+		$values['searchIntents'] = PROAdminHelper::get_search_intent();
 
 		return $values;
 	}
@@ -172,6 +179,43 @@ class Common {
 	}
 
 	/**
+	 * Update the values used in the Update SEO Score Database Tools.
+	 *
+	 * @since 3.0.81
+	 *
+	 * @param array  $values  Values used in Content analysis.
+	 * @param string $post_id Post ID.
+	 */
+	public function seo_score_tool_values( $values, $post_id ) {
+		$post_type      = get_post_type( $post_id );
+		$is_woocommerce = Helper::is_woocommerce_active() && 'product' === $post_type;
+		$is_edd         = Helper::is_edd_active() && 'download' === $post_type;
+		if ( ! $is_woocommerce && ! $is_edd ) {
+			return $values;
+		}
+
+		$values['isProduct'] = true;
+		$schemas             = DB::get_schemas( $post_id );
+		if ( empty( $schemas ) && Helper::get_default_schema_type( $post_id ) ) {
+			$schemas = [
+				[ '@type' => Helper::get_default_schema_type( $post_id ) ],
+			];
+		}
+
+		$schemas = array_filter(
+			$schemas,
+			function ( $schema ) {
+				return in_array( $schema['@type'], [ 'WooCommerceProduct', 'EDDProduct', 'Product' ], true );
+			}
+		);
+
+		$values['schemas'] = $schemas;
+		$values['content'] = $is_woocommerce ? $this->add_product_gallery_images( $post_id, $values['content'] ) : $values['content'];
+
+		return $values;
+	}
+
+	/**
 	 * Enqueue script to analyze product data.
 	 *
 	 * @since 3.0.7
@@ -190,6 +234,39 @@ class Common {
 		}
 
 		wp_enqueue_script( 'rank-math-gallery-analysis', RANK_MATH_PRO_URL . 'assets/admin/js/product-analysis.js', [ 'rank-math-editor' ], rank_math_pro()->version, true );
+	}
+
+	/**
+	 * Whether to add the Keyword Intent.
+	 */
+	public function determine_search_intent() {
+		return Helper::get_settings( 'general.determine_search_intent', true );
+	}
+
+	/**
+	 * Pass Product gallery images to the Update SEO Score tool.
+	 *
+	 * @param int    $post_id    Post ID.
+	 * @param string $content Post content.
+	 *
+	 * @since 3.0.81
+	 */
+	private function add_product_gallery_images( $post_id, $content ) {
+		$product = wc_get_product( $post_id );
+		if ( empty( $product ) ) {
+			return $content;
+		}
+
+		$attachment_ids = $product->get_gallery_image_ids();
+		if ( empty( $attachment_ids ) ) {
+			return $content;
+		}
+
+		foreach ( $attachment_ids as $attachment_id ) {
+			$content .= wp_get_attachment_image( $attachment_id );
+		}
+
+		return $content;
 	}
 
 	/**
@@ -212,5 +289,4 @@ class Common {
 		</g>
 	</svg>';
 	}
-
 }

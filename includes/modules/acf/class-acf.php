@@ -82,7 +82,7 @@ class ACF {
 			}
 
 			if ( 'flexible_content' === $field['type'] ) {
-				$this->get_flexible_content( $content, $field, $post_id );
+				$this->get_flexible_content( $content, $field );
 				continue;
 			}
 
@@ -122,9 +122,8 @@ class ACF {
 	 *
 	 * @param string $content Post content.
 	 * @param array  $field   Current field data.
-	 * @param int    $post_id Post ID.
 	 */
-	private function get_flexible_content( &$content, $field, $post_id ) {
+	private function get_flexible_content( &$content, $field ) {
 		if ( empty( $field['layouts'] ) || empty( current( $field['layouts'] ) ) ) {
 			return;
 		}
@@ -283,5 +282,4 @@ class ACF {
 
 		return $images;
 	}
-
 }

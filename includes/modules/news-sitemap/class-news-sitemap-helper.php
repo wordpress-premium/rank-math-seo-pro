@@ -89,7 +89,7 @@ class News_Sitemap_Helper {
 		}
 
 		return array_map(
-			function( $term ) {
+			function ( $term ) {
 				return $term['value'];
 			},
 			json_decode( stripslashes( $terms ), true )

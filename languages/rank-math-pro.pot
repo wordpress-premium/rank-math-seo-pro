@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Rank Math\n"
 "Last-Translator: Rank Math\n"
-"POT-Creation-Date: 2025-02-12 06:01+0000\n"
+"POT-Creation-Date: 2025-12-03 06:03+0000\n"
 "Project-Id-Version: undefined\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -74,6 +74,51 @@ msgstr ""
 msgid "Non-persistent random word chosen from a list. A new random word will be chosen on each page load."
 msgstr ""
 
+msgid "Please select a file to import."
+msgstr ""
+
+msgid "Something went wrong! Please try again later."
+msgstr ""
+
+msgid "API Key."
+msgstr ""
+
+msgid "Username."
+msgstr ""
+
+msgid "Plan."
+msgstr ""
+
+msgid "Keywords."
+msgstr ""
+
+msgid "Settings."
+msgstr ""
+
+msgid "The keyword used to determine the intent."
+msgstr ""
+
+msgid "Import successful."
+msgstr ""
+
+msgid "No settings found to be imported."
+msgstr ""
+
+msgid "No file selected."
+msgstr ""
+
+msgid "Settings file could not be imported:"
+msgstr ""
+
+msgid "Settings could not be imported:"
+msgstr ""
+
+msgid "Settings could not be imported: Upload failed."
+msgstr ""
+
+msgid "A Custom Watermark item could not be saved because the name field is empty."
+msgstr ""
+
 msgid "Off"
 msgstr ""
 
@@ -99,9 +144,6 @@ msgid "Add Image"
 msgstr ""
 
 msgid "Name*"
-msgstr ""
-
-msgid "A Custom Watermark item could not be saved because the name field is empty."
 msgstr ""
 
 msgid "Top Left"
@@ -551,12 +593,6 @@ msgstr ""
 msgid "Micronesia, Federated States of"
 msgstr ""
 
-msgid "Moldova, Republic of"
-msgstr ""
-
-msgid "Northern Mariana Islands"
-msgstr ""
-
 msgid "Monaco"
 msgstr ""
 
@@ -609,6 +645,9 @@ msgid "Niue"
 msgstr ""
 
 msgid "Norfolk Island"
+msgstr ""
+
+msgid "Northern Mariana Islands"
 msgstr ""
 
 msgid "Norway"
@@ -884,9 +923,6 @@ msgstr ""
 msgid "Czechia"
 msgstr ""
 
-msgid "Côte d'Ivoire"
-msgstr ""
-
 msgid "Falkland Islands (Islas Malvinas)"
 msgstr ""
 
@@ -998,7 +1034,23 @@ msgstr ""
 msgid "Unknown Region"
 msgstr ""
 
+msgid "Could not generate. Please try again later."
+msgstr ""
+
 msgid "Special Sitemaps:"
+msgstr ""
+
+msgid "Enable Search Intent"
+msgstr ""
+
+#. translators: placeholder is a link to "Read more".
+msgid "Determine the Keyword's Search Intent for Writing Tailored Content. %s"
+msgstr ""
+
+msgid "Read more"
+msgstr ""
+
+msgid "Unknown error, call getLastResponse() to find out what happened."
 msgstr ""
 
 #. translators: 1 The number of posts edited. 2 The post type name.
@@ -1018,6 +1070,46 @@ msgstr ""
 
 #. translators: 1 The number of posts edited. 2 The post type name.
 msgid "Custom Canonical URL removed from %1$d %2$s."
+msgstr ""
+
+#. translators: placeholder is the number of Keyword intent.
+msgid "Search Intent updated for %d Focus Keyword."
+msgid_plural "Search Intent updated for %d Focus Keywords."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Focus keywords are not added for the selected posts. Please add the Focus keywords and try again."
+msgstr ""
+
+msgid "Unable to validate Rank Math SEO registration data."
+msgstr ""
+
+msgid "Please try reconnecting."
+msgstr ""
+
+#. translators: KB Link
+msgid "If the issue persists, please try the solution described in our Knowledge Base article: %s"
+msgstr ""
+
+msgid "[3. Unable to Encrypt]"
+msgstr ""
+
+msgid "Activation failed: "
+msgstr ""
+
+msgid "Site not recognized or not registered with your license - please contact your Reseller."
+msgstr ""
+
+msgid "Invalid username or API key - please contact your Reseller."
+msgstr ""
+
+msgid "Activation denied: "
+msgstr ""
+
+msgid "Your account has been banned - please contact your Reseller for assistance."
+msgstr ""
+
+msgid "This website is blocked from using the plugin - please contact your Reseller."
 msgstr ""
 
 msgid "Affiliate Link Prefix"
@@ -1171,65 +1263,16 @@ msgstr ""
 msgid "&mdash; Not Selected &mdash;"
 msgstr ""
 
-msgid "Upload"
+msgid "Commercial"
 msgstr ""
 
-msgid "Select a Rank Math settings file on your computer and upload it to use the custom settings."
+msgid "Informational"
 msgstr ""
 
-#. translators: placeholder is a list of filetypes.
-msgid "Allowed filetypes: %s"
+msgid "Navigational"
 msgstr ""
 
-msgid "More information"
-msgstr ""
-
-msgid "Uploading..."
-msgstr ""
-
-msgid "Import finished. In the next steps you can review the settings."
-msgstr ""
-
-msgid "Import failed."
-msgstr ""
-
-#. translators: Option Description
-msgid "Easy %s"
-msgstr ""
-
-msgid "For websites where you only want to change the basics and let Rank Math do most of the heavy lifting. Most settings are set to default as per industry best practices. One just has to set it and forget it."
-msgstr ""
-
-#. translators: Option Description
-msgid "Advanced %s"
-msgstr ""
-
-msgid "For the advanced users who want to control every SEO aspect of the website. You are offered options to change everything and have full control over the website’s SEO."
-msgstr ""
-
-#. translators: Option Description
-msgid "Custom Mode %s"
-msgstr ""
-
-msgid "Select this if you have a custom Rank Math settings file you want to use."
-msgstr ""
-
-msgid "Import successful."
-msgstr ""
-
-msgid "No settings found to be imported."
-msgstr ""
-
-msgid "No file selected."
-msgstr ""
-
-msgid "Settings file could not be imported:"
-msgstr ""
-
-msgid "Settings could not be imported:"
-msgstr ""
-
-msgid "Settings could not be imported: Upload failed."
+msgid "Transactional"
 msgstr ""
 
 msgid "Rank Math PRO is installed but it is not connected to your account, so you are missing out on important SEO features."
@@ -1240,6 +1283,22 @@ msgid "%1$sConnect now%2$s. It only takes 20 seconds!"
 msgstr ""
 
 msgid "Enable updates"
+msgstr ""
+
+msgid "Check for updates"
+msgstr ""
+
+msgid "Sorry, you are not allowed to update plugins on this site."
+msgstr ""
+
+msgid "Checked for Rank Math SEO PRO updates."
+msgstr ""
+
+msgid "Network Admin → Updates"
+msgstr ""
+
+#. translators: 1: linked text "Network Admin → Updates"
+msgid "If an update is available, it will appear in %s."
 msgstr ""
 
 msgid "Automatic updates are not available."
@@ -1418,6 +1477,9 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
+msgid "Rank Math recommends optimizing your images to improve Core Web Vitals and search rankings in Google using Imagify."
+msgstr ""
+
 msgid "Are you sure you want to import meta data from this CSV file?"
 msgstr ""
 
@@ -1436,12 +1498,6 @@ msgstr ""
 msgid "Sorry, you are not allowed to export the content of this site."
 msgstr ""
 
-msgid "Please select a file to import."
-msgstr ""
-
-msgid "Sorry, you are not allowed to import contents to this site."
-msgstr ""
-
 msgid "CSV could not be imported:"
 msgstr ""
 
@@ -1458,12 +1514,6 @@ msgid "Terms"
 msgstr ""
 
 msgid "Users"
-msgstr ""
-
-msgid "Import could not be canceled: invalid nonce. Please try again."
-msgstr ""
-
-msgid "Import could not be canceled: you are not allowed to import content to this site."
 msgstr ""
 
 msgid "Import could not be canceled."
@@ -1518,79 +1568,6 @@ msgstr ""
 msgid "Unknown object type."
 msgstr ""
 
-msgid "Sitemap"
-msgstr ""
-
-#. translators: Link to How to Setup Sitemap KB article
-msgid "Choose your Sitemap configuration and select which type of posts or pages you want to include in your Sitemaps. %s"
-msgstr ""
-
-msgid "Learn more."
-msgstr ""
-
-msgid "Save and Continue"
-msgstr ""
-
-msgid "Sitemaps"
-msgstr ""
-
-msgid "XML Sitemaps help search engines index your website&#039;s content more effectively."
-msgstr ""
-
-msgid "Include Images"
-msgstr ""
-
-msgid "Include reference to images from the post content in sitemaps. This helps search engines index your images better."
-msgstr ""
-
-msgid "Public Post Types"
-msgstr ""
-
-msgid "Select post types to enable SEO options for them and include them in the sitemap."
-msgstr ""
-
-msgid "Public Taxonomies"
-msgstr ""
-
-msgid "Select taxonomies to enable SEO options for them and include them in the sitemap."
-msgstr ""
-
-msgid "News Sitemaps allow you to control which content you submit to Google News."
-msgstr ""
-
-msgid "News Sitemaps"
-msgstr ""
-
-msgid "You will generally only need a News Sitemap when your website is included in Google News."
-msgstr ""
-
-msgid "Google News Publication Name"
-msgstr ""
-
-msgid "The name of the news publication. It must match the name exactly as it appears on your articles in news.google.com, omitting any trailing parentheticals. <a href=\"https://support.google.com/news/publisher-center/answer/9606710\" target=\"_blank\">More information at support.google.com</a>"
-msgstr ""
-
-msgid "News Post Type"
-msgstr ""
-
-msgid "Select the post type you use for News articles."
-msgstr ""
-
-msgid "Video Sitemaps give search engines information about video content on your site."
-msgstr ""
-
-msgid "Video Sitemaps"
-msgstr ""
-
-msgid "You will generally only need a Video Sitemap when your website has video content."
-msgstr ""
-
-msgid "Video Post Type"
-msgstr ""
-
-msgid "Select the post type where you use videos and want them to be shown in the Video search."
-msgstr ""
-
 msgid "Export 404 Logs"
 msgstr ""
 
@@ -1624,6 +1601,15 @@ msgstr ""
 msgid "Data import will not work for this service as sufficient permissions are not given."
 msgstr ""
 
+msgid "AdSense"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "Select Account"
+msgstr ""
+
 msgid "Post Analytics"
 msgstr ""
 
@@ -1653,10 +1639,10 @@ msgstr ""
 msgid "Google Core Updates"
 msgstr ""
 
-msgid "AdSense"
+msgid "AdSense: "
 msgstr ""
 
-msgid "Analytics"
+msgid "Analytics: "
 msgstr ""
 
 msgid "Search Traffic:"
@@ -1779,13 +1765,68 @@ msgstr ""
 msgid "Rank Math [SEO Report] - %s"
 msgstr ""
 
-msgid "Sorry, no keyword found."
+msgid "An error occurred while running the SEO analysis."
 msgstr ""
 
-msgid "Sorry, no record id found."
+#. translators: %s: Error message
+msgid "SEO Analysis failed: %s"
 msgstr ""
 
-msgid "Sorry, no post id found."
+msgid "No results found for the SEO analysis."
+msgstr ""
+
+msgid "Keyword to search."
+msgstr ""
+
+msgid "Query to search."
+msgstr ""
+
+#. translators: %s: parameter name
+msgid "The %s parameter must not be empty."
+msgstr ""
+
+msgid "Keyword to add."
+msgstr ""
+
+msgid "Data to add."
+msgstr ""
+
+#. translators: %s: parameter name
+msgid "The %s parameter must be numeric."
+msgstr ""
+
+#. translators: %s: parameter name
+msgid "The %s parameter must be array."
+msgstr ""
+
+#. translators: %s: parameter name
+msgid "The %s parameter must be valid post type."
+msgstr ""
+
+#. translators: %s: parameter name
+msgid "The %s parameter must be boolean."
+msgstr ""
+
+msgid "Record id."
+msgstr ""
+
+#. translators: %s: parameter name
+msgid "The %s parameter must be integer."
+msgstr ""
+
+msgid "Post id."
+msgstr ""
+
+msgid "Force update pagespeed."
+msgstr ""
+
+msgid "Is admin bar."
+msgstr ""
+
+msgid "Order sort attribute ascending or descending."
+msgstr ""
+
+msgid "Sort collection by post attribute."
 msgstr ""
 
 msgid "Mark Unsolved."
@@ -1903,9 +1944,23 @@ msgstr ""
 msgid "Caption"
 msgstr ""
 
+#. translators: Description and link texts
+msgid "%1$s Install Imagify to automatically optimize all your images to improve site performance and enhance your SEO visibility. %2$s or %3$s"
+msgstr ""
+
+msgid "Optimize Images:"
+msgstr ""
+
+msgid "Install Now"
+msgstr ""
+
+msgid "Learn More."
+msgstr ""
+
 msgid "Local Sitemap"
 msgstr ""
 
+#. translators: KML File Url
 msgid "KML is a file format used to display geographic data in an Earth browser such as Google Earth. More information: <a href=\"%s\" target=\"_blank\">Locations KML</a>"
 msgstr ""
 
@@ -2046,6 +2101,18 @@ msgstr ""
 msgid "Searched string"
 msgstr ""
 
+msgid "Google News Publication Name"
+msgstr ""
+
+msgid "The name of the news publication. It must match the name exactly as it appears on your articles in news.google.com, omitting any trailing parentheticals. <a href=\"https://support.google.com/news/publisher-center/answer/9606710\" target=\"_blank\">More information at support.google.com</a>"
+msgstr ""
+
+msgid "News Post Type"
+msgstr ""
+
+msgid "Select the post type you use for News articles."
+msgstr ""
+
 #. translators: Post Type
 msgid "Exclude %s Terms "
 msgstr ""
@@ -2084,6 +2151,9 @@ msgid "Podcast channel image configured in the Rank Math Settings."
 msgstr ""
 
 #. translators: Link to kb article
+msgid "Make your podcasts discoverable via Google Podcasts, Apple Podcasts, and similar services. %s."
+msgstr ""
+
 msgid "Learn more"
 msgstr ""
 
@@ -2264,7 +2334,16 @@ msgstr ""
 msgid "Schema Templates"
 msgstr ""
 
-msgid "Schema to add."
+msgid "Post ID."
+msgstr ""
+
+msgid "Schema data."
+msgstr ""
+
+msgid "Cannot modify non-template posts."
+msgstr ""
+
+msgid "Sorry, you are not allowed to edit this template."
 msgstr ""
 
 msgid "Sorry, you are not allowed to save template."
@@ -2330,15 +2409,13 @@ msgstr ""
 msgid "Conversion started. A success message will be shown here once the process completes. You can close this page."
 msgstr ""
 
-msgid "Print"
-msgstr ""
-
 msgid "Free version"
 msgstr ""
 
 msgid "PRO version"
 msgstr ""
 
+#. translators: Video Sitemap Url
 msgid "Video Sitemaps give search engines information about video content on your site. More information: <a href=\"%s\" target=\"_blank\">Video Sitemaps</a>"
 msgstr ""
 
@@ -2350,6 +2427,12 @@ msgid "Hide Sitemap"
 msgstr ""
 
 msgid "Hide the sitemap from normal visitors?"
+msgstr ""
+
+msgid "Video Post Type"
+msgstr ""
+
+msgid "Select the post type where you use videos and want them to be shown in the Video search."
 msgstr ""
 
 msgid "YouTube API Key"
@@ -2494,6 +2577,9 @@ msgstr ""
 msgid "Opening Hours:"
 msgstr ""
 
+msgid " and "
+msgstr ""
+
 msgid "Closed"
 msgstr ""
 
@@ -2617,13 +2703,22 @@ msgstr ""
 msgid "Your name or company name intended to feature in Google's Knowledge Panel."
 msgstr ""
 
+msgid "Provide a detailed description of your organization."
+msgstr ""
+
 msgid "<strong>Min Size: 112Χ112px</strong>.<br /> A squared image is preferred by the search engines."
+msgstr ""
+
+msgid "URL of your website or your company’s website."
 msgstr ""
 
 msgid "Use Multiple Locations"
 msgstr ""
 
 msgid "Once you save the changes, we will create a new custom post type called \"Locations\" where you can add multiple locations of your business/organization."
+msgstr ""
+
+msgid "Enter the contact email address that could be displayed on search engines."
 msgstr ""
 
 msgid "Search engines may prominently display your contact phone number for mobile users."
@@ -2977,6 +3072,12 @@ msgstr ""
 msgid "Sorry, you are not allowed to import redirections on this site."
 msgstr ""
 
+msgid "Import could not be canceled: invalid nonce. Please try again."
+msgstr ""
+
+msgid "Import could not be canceled: you are not allowed to import content to this site."
+msgstr ""
+
 msgid "Created"
 msgstr ""
 
@@ -3103,12 +3204,15 @@ msgstr ""
 msgid "Date Created"
 msgstr ""
 
+#. translators: %d Time in hours
 msgid "%d Hour"
 msgstr ""
 
+#. translators: %d Time in minutes
 msgid "%d Min"
 msgstr ""
 
+#. translators: %d Time in seconds
 msgid "%d Sec"
 msgstr ""
 
@@ -3180,24 +3284,6 @@ msgstr ""
 
 #. translators: Placeholder is the image title.
 msgid "Video Thumbnail: %s"
-msgstr ""
-
-msgid "Competitor Analysis"
-msgstr ""
-
-msgid "Enter a site URL to see how it ranks for the same SEO criteria as your site."
-msgstr ""
-
-msgid "Start Audit"
-msgstr ""
-
-msgid "Complete"
-msgstr ""
-
-msgid "Note:"
-msgstr ""
-
-msgid "The total test count is different for the competitor as we don't have access to their database."
 msgstr ""
 
 msgid "SEO Report of Your Website"

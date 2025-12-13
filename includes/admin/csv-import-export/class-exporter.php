@@ -15,6 +15,7 @@ use RankMath\Traits\Hooker;
 use RankMath\Redirections\DB;
 use RankMath\Redirections\Cache;
 use RankMathPro\Admin\CSV;
+use RankMath\Helpers\DB as DB_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -154,27 +155,27 @@ class Exporter extends CSV {
 	 * Get value for given column.
 	 *
 	 * @param string $column Column name.
-	 * @param object $object WP_Post, WP_Term or WP_User.
+	 * @param object $item WP_Post, WP_Term or WP_User.
 	 *
 	 * @return string
 	 */
-	public function get_column_value( $column, $object ) {
+	public function get_column_value( $column, $item ) {
 		global $wpdb;
 
 		$value       = '';
 		$object_type = 'post';
-		if ( ! empty( $object->term_id ) ) {
+		if ( ! empty( $item->term_id ) ) {
 			$object_type = 'term';
-		} elseif ( ! empty( $object->user_login ) ) {
+		} elseif ( ! empty( $item->user_login ) ) {
 			$object_type = 'user';
 		}
 
 		$table          = "{$object_type}meta";
 		$primary_column = "{$object_type}_id";
-		$object_id      = isset( $object->ID ) ? $object->ID : $object->$primary_column;
+		$object_id      = isset( $item->ID ) ? $item->ID : $item->$primary_column;
 
 		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$meta_rows = $wpdb->get_results(
+		$meta_rows = DB_Helper::get_results(
 			$wpdb->prepare(
 				/* translators: %d: object id, %s: table name */
 				"SELECT * FROM {$wpdb->$table} WHERE {$primary_column} = %d AND meta_key LIKE %s",
@@ -206,11 +207,11 @@ class Exporter extends CSV {
 			case 'slug':
 				$slug = '';
 				if ( 'user' === $object_type ) {
-					$slug = $object->user_nicename;
+					$slug = $item->user_nicename;
 				} elseif ( 'post' === $object_type ) {
-					$slug = $object->post_name;
+					$slug = $item->post_name;
 				} elseif ( 'term' === $object_type ) {
-					$slug = $object->slug;
+					$slug = $item->slug;
 				}
 				$value = urldecode( $slug );
 				break;
@@ -361,7 +362,7 @@ class Exporter extends CSV {
 				break;
 		}
 
-		return $this->escape_csv( apply_filters( "rank_math/admin/csv_export_column_{$column}", $value, $object ) ); //phpcs:ignore
+		return $this->escape_csv( apply_filters( "rank_math/admin/csv_export_column_{$column}", $value, $item ) ); //phpcs:ignore
 	}
 
 	/**
@@ -495,7 +496,7 @@ class Exporter extends CSV {
 
 		$where = $this->get_posts_where();
 
-		$post_ids = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE $where" ); // phpcs:ignore
+		$post_ids = DB_Helper::get_col( "SELECT ID FROM {$wpdb->posts} WHERE $where" );
 		return $post_ids;
 	}
 
@@ -571,16 +572,16 @@ class Exporter extends CSV {
 		while ( $next_batch = array_splice( $ids, 0, 50 ) ) { // phpcs:ignore
 			$where = 'WHERE ' . $primary_column . ' IN (' . join( ',', $next_batch ) . ')';
 
-			$objects        = $wpdb->get_results( "SELECT * FROM {$wpdb->$object_type_plural} $where" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$objects        = DB_Helper::get_results( "SELECT * FROM {$wpdb->$object_type_plural} $where" );
 			$current_object = 0;
 
 			// Begin Loop.
 			foreach ( $objects as $object ) {
-				$current_object++;
+				++$current_object;
 				$current_col = 0;
 				$columns     = [];
 				foreach ( $cols as $column ) {
-					$current_col++;
+					++$current_col;
 					$columns[] = $this->get_column_value( $column, $object ); // phpcs:ignore
 				}
 				$this->data[] = $columns;
@@ -628,7 +629,7 @@ class Exporter extends CSV {
 		}
 		global $wpdb;
 		$where                        = 'term_id = ' . absint( $term_id ) . '';
-		$this->term_slugs[ $term_id ] = $wpdb->get_var( "SELECT slug FROM {$wpdb->terms} WHERE $where" ); // phpcs:ignore
+		$this->term_slugs[ $term_id ] = DB_Helper::get_var( "SELECT slug FROM {$wpdb->terms} WHERE $where" );
 
 		return $this->term_slugs[ $term_id ];
 	}
@@ -660,7 +661,7 @@ class Exporter extends CSV {
 	public function get_link_counts( $post_id ) {
 		global $wpdb;
 
-		$counts = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}rank_math_internal_meta WHERE object_id = {$post_id}" ); // phpcs:ignore
+		$counts = DB_Helper::get_row( "SELECT * FROM {$wpdb->prefix}rank_math_internal_meta WHERE object_id = {$post_id}" );
 		$counts = ! empty( $counts ) ? $counts : (object) [
 			'internal_link_count' => '',
 			'external_link_count' => '',

@@ -13,6 +13,7 @@ namespace RankMathPro\Analytics;
 use RankMath\Analytics\Stats;
 use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Helper;
+use RankMathPro\Admin\Admin_Helper as ProAdminHelper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -30,7 +31,6 @@ class Pageviews {
 	 */
 	public static function get_pageviews( $args = [] ) {
 		global $wpdb;
-
 		$args = wp_parse_args(
 			$args,
 			[
@@ -60,8 +60,12 @@ class Pageviews {
 		$sub_where = $args['sub_where'];
 		$order     = sprintf( 'ORDER BY %s %s', $args['orderBy'], $args['order'] );
 
+		if ( ProAdminHelper::ai_traffic_enabled() ) {
+			$sub_where .= " AND `referrer` != ''";
+		}
+
 		// phpcs:disable
-		$rows = $wpdb->get_results(
+		$rows = DB_Helper::get_results(
 			$wpdb->prepare(
 				"SELECT SQL_CALC_FOUND_ROWS t1.page as page, COALESCE( t1.pageviews, 0 ) as pageviews, COALESCE( t1.pageviews - t2.pageviews, 0 ) as difference
 				FROM ( SELECT page, SUM(pageviews) as pageviews FROM {$wpdb->prefix}rank_math_analytics_ga WHERE 1=1{$pages}{$dates}{$sub_where} GROUP BY page ) as t1
@@ -77,7 +81,7 @@ class Pageviews {
 			),
 			ARRAY_A
 		);
-		$rowsFound = $wpdb->get_var( 'SELECT FOUND_ROWS()' );
+		$rowsFound = DB_Helper::get_var( 'SELECT FOUND_ROWS()' );
 		// phpcs:enable
 
 		return \compact( 'rows', 'rowsFound' );
@@ -115,17 +119,21 @@ class Pageviews {
 		$limit    = $args['limit'];
 		$dates    = $args['dates'];
 		$subwhere = $args['sub_where'];
+		$where    = '';
+		if ( ProAdminHelper::ai_traffic_enabled() ) {
+			$where = " AND `referrer` != ''";
+		}
 
 		// phpcs:disable
-		$rows = $wpdb->get_results(
+		$rows = DB_Helper::get_results(
 			$wpdb->prepare(
 				"SELECT SQL_CALC_FOUND_ROWS o.*, COALESCE( traffic.pageviews, 0 ) as pageviews, COALESCE( traffic.difference, 0 ) as difference
 			FROM {$wpdb->prefix}rank_math_analytics_objects as o
 			LEFT JOIN (SELECT t1.page as page, COALESCE( t1.pageviews, 0 ) as pageviews, COALESCE( t1.pageviews - t2.pageviews, 0 ) as difference
 				FROM
-			    	( SELECT page, SUM(pageviews) as pageviews FROM {$wpdb->prefix}rank_math_analytics_ga WHERE 1=1{$dates} GROUP BY page ) as t1
+				( SELECT page, SUM(pageviews) as pageviews FROM {$wpdb->prefix}rank_math_analytics_ga WHERE 1=1{$dates} {$where} GROUP BY page ) as t1
 				LEFT JOIN
-			    	( SELECT page, SUM(pageviews) as pageviews FROM {$wpdb->prefix}rank_math_analytics_ga WHERE 1=1{$dates} GROUP BY page ) as t2
+				( SELECT page, SUM(pageviews) as pageviews FROM {$wpdb->prefix}rank_math_analytics_ga WHERE 1=1{$dates} {$where} GROUP BY page ) as t2
 				ON t1.page = t2.page ) traffic ON o.page = traffic.page
 			WHERE o.is_indexable = '1'{$subwhere}
 			ORDER BY pageviews {$order}
@@ -138,7 +146,7 @@ class Pageviews {
 			ARRAY_A
 		);
 
-		$rowsFound = $wpdb->get_var( 'SELECT FOUND_ROWS()' );
+		$rowsFound = DB_Helper::get_var( 'SELECT FOUND_ROWS()' );
 
 		// phpcs:enable
 		return \compact( 'rows', 'rowsFound' );
@@ -160,7 +168,7 @@ class Pageviews {
 		$placeholder = implode( ', ', array_fill( 0, count( $post_ids ), '%d' ) );
 
 		// phpcs:disable
-		$data = $wpdb->get_results(
+		$data = DB_Helper::get_results(
 			$wpdb->prepare(
 				"SELECT t2.object_id, SUM(t1.pageviews) AS traffic FROM {$wpdb->prefix}rank_math_analytics_ga AS t1 
 				Left JOIN {$wpdb->prefix}rank_math_analytics_objects AS t2 ON t1.page=t2.page 
@@ -191,7 +199,7 @@ class Pageviews {
 		$placeholder = implode( ', ', array_fill( 0, count( $post_ids ), '%d' ) );
 
 		// phpcs:disable
-		$data = $wpdb->get_results(
+		$data = DB_Helper::get_results(
 			$wpdb->prepare(
 				"SELECT t2.object_id, SUM(impressions) AS traffic FROM {$wpdb->prefix}rank_math_analytics_gsc AS t1 
 				Left JOIN {$wpdb->prefix}rank_math_analytics_objects AS t2 ON t1.page=t2.page 

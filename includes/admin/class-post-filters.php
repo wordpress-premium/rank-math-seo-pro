@@ -47,9 +47,15 @@ class Post_Filters {
 			'custom_canonical'   => __( 'Custom Canonical URL', 'rank-math-pro' ),
 			'custom_title'       => __( 'Custom Meta Title', 'rank-math-pro' ),
 			'custom_description' => __( 'Custom Meta Description', 'rank-math-pro' ),
-			'redirected'         => __( 'Redirected Posts', 'rank-math-pro' ),
-			'orphan'             => __( 'Orphan Posts', 'rank-math-pro' ),
 		];
+
+		if ( Helper::is_module_active( 'redirections' ) ) {
+			$new_options['redirected'] = __( 'Redirected Posts', 'rank-math-pro' );
+		}
+
+		if ( Helper::is_module_active( 'link-counter' ) ) {
+			$new_options['orphan'] = __( 'Orphan Posts', 'rank-math-pro' );
+		}
 
 		if ( Helper::is_module_active( 'rich-snippet' ) ) {
 			$new_options['schema_type'] = __( 'Filter by Schema Type', 'rank-math-pro' );
@@ -214,7 +220,7 @@ class Post_Filters {
 				'key'   => 'rank_math_rich_snippet',
 				'value' => 'off',
 			];
-			$this->filter( 'posts_where', 'posts_where_no_schema', 20, 2 );
+			$this->filter( 'posts_where', 'posts_where_no_schema', 20 );
 			return;
 		}
 
@@ -252,18 +258,17 @@ class Post_Filters {
 				'key'     => 'rank_math_rich_snippet',
 				'compare' => 'NOT EXISTS',
 			];
-			$this->filter( 'posts_where', 'posts_where_no_schema', 20, 2 );
+			$this->filter( 'posts_where', 'posts_where_no_schema', 20 );
 		}
 	}
 
 	/**
 	 * Add extra WHERE clause to find posts with no Schema.
 	 *
-	 * @param string    $where    Original WHERE clause string.
-	 * @param \WP_Query $wp_query WP_Query object.
+	 * @param string $where    Original WHERE clause string.
 	 * @return string
 	 */
-	public function posts_where_no_schema( $where, \WP_Query $wp_query ) {
+	public function posts_where_no_schema( $where ) {
 		global $wpdb;
 		$where .= " AND NOT EXISTS ( SELECT meta_id FROM {$wpdb->postmeta} WHERE post_id = {$wpdb->posts}.ID AND meta_key LIKE 'rank_math_schema_%' )";
 		// Remove this filter for subsequent queries.

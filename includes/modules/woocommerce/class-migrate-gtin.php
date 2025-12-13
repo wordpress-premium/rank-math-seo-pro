@@ -87,7 +87,7 @@ class Migrate_GTIN extends \WP_Background_Process {
 			}
 
 			return false;
-		} catch ( Exception $error ) {
+		} catch ( \Exception $error ) {
 			return true;
 		}
 	}
@@ -113,8 +113,8 @@ class Migrate_GTIN extends \WP_Background_Process {
 					[
 						'key'     => '_rank_math_gtin_code',
 						'compare' => 'EXISTS',
-					]
-				]
+					],
+				],
 			]
 		);
 		update_option( 'rank_math_gtin_products', $products, false );

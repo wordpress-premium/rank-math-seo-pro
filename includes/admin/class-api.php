@@ -11,6 +11,7 @@
 namespace RankMathPro\Admin;
 
 use RankMath\Admin\Admin_Helper;
+use WP_Error;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -199,9 +200,9 @@ class Api {
 	/**
 	 * Decode the response and format any error messages for debugging
 	 *
-	 * @param array $response The response from the curl request.
+	 * @param array|WP_Error $response The response from the curl request.
 	 *
-	 * @return array|false The JSON decoded into an array
+	 * @return array|false The JSON decoded into an array, or false on failure.
 	 */
 	protected function format_response( $response ) {
 		$this->last_response = $response;
@@ -220,7 +221,7 @@ class Api {
 	/**
 	 * Check if the response was successful or a failure. If it failed, store the error.
 	 *
-	 * @param array $response The response from the curl request.
+	 * @param array|WP_Error $response The response from the curl request.
 	 */
 	protected function determine_success( $response ) {
 		if ( is_wp_error( $response ) ) {
@@ -234,7 +235,18 @@ class Api {
 			return;
 		}
 
-		$this->last_error = 'Unknown error, call getLastResponse() to find out what happened.';
+		$message = esc_html__( 'Unknown error, call getLastResponse() to find out what happened.', 'rank-math-pro' );
+		$body    = wp_remote_retrieve_body( $response );
+		if ( ! empty( $body ) ) {
+			$body = json_decode( $body, true );
+			if ( ! empty( $body['error'] ) && ! empty( $body['error']['message'] ) ) {
+				$message = $body['error']['message'];
+			} elseif ( ! empty( $body['errors'] ) && is_array( $body['errors'] ) && ! empty( $body['errors'][0]['message'] ) ) {
+				$message = $body['errors'][0]['message'];
+			}
+		}
+
+		$this->last_error = $message;
 	}
 
 	/**
@@ -251,6 +263,9 @@ class Api {
 		];
 	}
 
+	/**
+	 * Get settings from RankMath.com.
+	 */
 	public function get_settings() {
 		$registered = Admin_Helper::get_registration_data();
 		if ( ! $registered || empty( $registered['username'] ) || empty( $registered['api_key'] ) ) {
@@ -277,6 +292,11 @@ class Api {
 		cmb2_update_option( 'rank-math-options-general', 'sync_global_setting', $response['settings']['analytics'] );
 	}
 
+	/**
+	 * Sync settings with RankMath.com.
+	 *
+	 * @param array $analytics Analytics data.
+	 */
 	public function sync_setting( $analytics ) {
 		$registered = Admin_Helper::get_registration_data();
 		if ( ! $registered || empty( $registered['username'] ) || empty( $registered['api_key'] ) ) {
@@ -284,7 +304,7 @@ class Api {
 		}
 
 		$this->is_blocking = false;
-		$response = $this->http_post(
+		$response          = $this->http_post(
 			'siteSettings',
 			[
 				'username'  => $registered['username'],
@@ -315,6 +335,8 @@ class Api {
 
 	/**
 	 * Send analytics summary to RankMath.com.
+	 *
+	 * @param array $summary Summary data.
 	 */
 	public function send_summary( $summary ) {
 		$this->is_blocking = false;

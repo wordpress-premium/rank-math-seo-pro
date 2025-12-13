@@ -69,10 +69,17 @@ class Summary {
 			return $summary;
 		}
 
-		$summary->pageviews = DB::traffic()
+		$ai_only = ProAdminHelper::ai_traffic_enabled();
+
+		$pageviews = DB::traffic()
 			->selectSum( 'pageviews', 'pageviews' )
-			->whereBetween( 'created', [ Stats::get()->start_date, Stats::get()->end_date ] )
-			->getVar();
+			->whereBetween( 'created', [ Stats::get()->start_date, Stats::get()->end_date ] );
+		if ( $ai_only ) {
+			$pageviews->where( 'referrer', '!=', '' );
+		}
+		$pageviews = $pageviews->getVar();
+
+		$summary->pageviews = $pageviews;
 
 		return $summary;
 	}
@@ -84,20 +91,29 @@ class Summary {
 	 * @return object
 	 */
 	public function get_pageviews_summary( $stats ) {
+		$ai_only = ProAdminHelper::ai_traffic_enabled();
+
 		$pageviews = DB::traffic()
 			->selectSum( 'pageviews', 'pageviews' )
-			->whereBetween( 'created', [ Stats::get()->start_date, Stats::get()->end_date ] )
-			->getVar();
+			->whereBetween( 'created', [ Stats::get()->start_date, Stats::get()->end_date ] );
+
+		if ( $ai_only ) {
+			$pageviews->where( 'referrer', '!=', '' );
+		}
+		$pageviews = $pageviews->getVar();
 
 		$old_pageviews = DB::traffic()
 			->selectSum( 'pageviews', 'pageviews' )
-			->whereBetween( 'created', [ Stats::get()->compare_start_date, Stats::get()->compare_end_date ] )
-			->getVar();
+			->whereBetween( 'created', [ Stats::get()->compare_start_date, Stats::get()->compare_end_date ] );
+		if ( $ai_only ) {
+			$old_pageviews->where( 'referrer', '!=', '' );
+		}
+		$old_pageviews = $old_pageviews->getVar();
 
 		$stats->pageviews = [
-			'total'      => (int) $pageviews,
-			'previous'   => (int) $old_pageviews,
-			'difference' => (int) $pageviews - (int) $old_pageviews,
+			'total'      => is_null( $pageviews ) ? 'n/a' : (int) $pageviews,
+			'previous'   => is_null( $old_pageviews ) ? 'n/a' : (int) $old_pageviews,
+			'difference' => is_null( $pageviews ) || is_null( $old_pageviews ) ? 'n/a' : (int) $pageviews - (int) $old_pageviews,
 		];
 
 		return $stats;
@@ -111,9 +127,9 @@ class Summary {
 	 */
 	public function get_adsense_summary( $stats ) {
 		$stats->adsense = [
-			'total'      => 0,
-			'previous'   => 0,
-			'difference' => 0,
+			'total'      => 'n/a',
+			'previous'   => 'n/a',
+			'difference' => 'n/a',
 		];
 
 		if ( DB_Helper::check_table_exists( 'rank_math_analytics_adsense' ) ) {
@@ -128,9 +144,9 @@ class Summary {
 				->getVar();
 
 			$stats->adsense = [
-				'total'      => (int) $earnings,
-				'previous'   => (int) $old_earnings,
-				'difference' => (int) $earnings - (int) $old_earnings,
+				'total'      => is_null( $earnings ) ? 'n/a' : (int) $earnings,
+				'previous'   => is_null( $old_earnings ) ? 'n/a' : (int) $old_earnings,
+				'difference' => is_null( $earnings ) || is_null( $old_earnings ) ? 'n/a' : (int) $earnings - (int) $old_earnings,
 			];
 		}
 
@@ -179,17 +195,20 @@ class Summary {
 	public function get_traffic_graph( $intervals ) {
 		global $wpdb;
 
+		$ai_only = ProAdminHelper::ai_traffic_enabled();
+
 		$sql_daterange = Stats::get()->get_sql_date_intervals( $intervals );
+		$where         = $ai_only ? " AND `referrer` != ''" : '';
 
 		$query        = $wpdb->prepare(
 			"SELECT DATE_FORMAT( created, '%%Y-%%m-%%d') as date, SUM(pageviews) as pageviews, {$sql_daterange}
 			FROM {$wpdb->prefix}rank_math_analytics_ga
-			WHERE created BETWEEN %s AND %s
+			WHERE created BETWEEN %s AND %s {$where}
 			GROUP BY range_group",
 			Stats::get()->start_date,
 			Stats::get()->end_date
 		);
-		$traffic_data = $wpdb->get_results( $query );
+		$traffic_data = DB_Helper::get_results( $query );
 		// phpcs:enable
 
 		return $traffic_data;
@@ -217,7 +236,7 @@ class Summary {
 				Stats::get()->start_date,
 				Stats::get()->end_date
 			);
-			$adsense_data = $wpdb->get_results( $query );
+			$adsense_data = DB_Helper::get_results( $query );
 			// phpcs:enable
 		}
 
@@ -242,9 +261,9 @@ class Summary {
 			->getVar();
 
 		$stats->clicks = [
-			'total'      => (int) $clicks,
-			'previous'   => (int) $old_clicks,
-			'difference' => $clicks - $old_clicks,
+			'total'      => is_null( $clicks ) ? 'n/a' : (int) $clicks,
+			'previous'   => is_null( $old_clicks ) ? 'n/a' : (int) $old_clicks,
+			'difference' => is_null( $clicks ) || is_null( $old_clicks ) ? 'n/a' : (int) $clicks - (int) $old_clicks,
 		];
 
 		return $stats;

@@ -245,7 +245,11 @@ class Admin {
 			return;
 		}
 
-		$gtin_code = $_POST['_rank_math_gtin_code_variable'][ $id ];
+		$gtin_code = isset( $_POST['_rank_math_gtin_code_variable'][ $id ] ) ? sanitize_text_field( $_POST['_rank_math_gtin_code_variable'][ $id ] ) : '';
+		if ( empty( $gtin_code ) ) {
+			return;
+		}
+
 		$variation = wc_get_product( $variation_id );
 		$variation->update_meta_data( '_rank_math_gtin_code', wc_clean( wp_unslash( $gtin_code ) ) );
 		$variation->save_meta_data();

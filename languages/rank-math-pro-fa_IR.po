@@ -1,38 +1,40 @@
-# Copyright (C) 2020 rank-math-pro
-# This file is distributed under the same license as the rank-math-pro package.
 msgid ""
 msgstr ""
 "Project-Id-Version: rank-math-pro\n"
-"POT-Creation-Date: 2020-11-16 19:55+0330\n"
-"PO-Revision-Date: \n"
+"Report-Msgid-Bugs-To: \n"
 "Last-Translator: Danial Rahimi <Fa.danial@gmail.com>\n"
 "Language-Team: wpnovin translate team\n"
-"Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-11-16 19:55+0330\n"
+"PO-Revision-Date: \n"
+"Language: fa_IR\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;"
-"esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Generator: Poedit 1.8.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/admin/class-bulk-actions.php:59 includes/admin/class-bulk-actions.php:85
+#: includes/admin/class-bulk-actions.php:59
+#: includes/admin/class-bulk-actions.php:85
 msgid "Set to noindex"
 msgstr "تنظیم حالت نو ایندکس"
 
-#: includes/admin/class-bulk-actions.php:60 includes/admin/class-bulk-actions.php:86
+#: includes/admin/class-bulk-actions.php:60
+#: includes/admin/class-bulk-actions.php:86
 msgid "Set to index"
 msgstr "تنظیم حالت ایندکس"
 
-#: includes/admin/class-bulk-actions.php:61 includes/admin/class-bulk-actions.php:87
+#: includes/admin/class-bulk-actions.php:61
+#: includes/admin/class-bulk-actions.php:87
 msgid "Set to nofollow"
 msgstr "تنظیم حالت نو فالو"
 
-#: includes/admin/class-bulk-actions.php:62 includes/admin/class-bulk-actions.php:88
+#: includes/admin/class-bulk-actions.php:62
+#: includes/admin/class-bulk-actions.php:88
 msgid "Set to follow"
 msgstr "تنظیم حالت فالو"
 
@@ -40,11 +42,13 @@ msgstr "تنظیم حالت فالو"
 msgid "Remove custom canonical URL"
 msgstr "حذف آدرس اینترنتی کنونیکال سفارشی"
 
-#: includes/admin/class-bulk-actions.php:65 includes/admin/class-bulk-actions.php:90
+#: includes/admin/class-bulk-actions.php:65
+#: includes/admin/class-bulk-actions.php:90
 msgid "Redirect"
 msgstr "ریدایرکت"
 
-#: includes/admin/class-bulk-actions.php:66 includes/admin/class-bulk-actions.php:91
+#: includes/admin/class-bulk-actions.php:66
+#: includes/admin/class-bulk-actions.php:91
 msgid "Remove redirection"
 msgstr "حذف ریدایرکت"
 
@@ -57,19 +61,22 @@ msgstr "تنظیم اسکیما: هیچ کدام"
 msgid "Set Schema: Default (%s)"
 msgstr "تنظیم اسکیما: پیش‌فرض (%s)"
 
-#: includes/admin/class-bulk-actions.php:161 includes/admin/class-bulk-actions.php:314
+#: includes/admin/class-bulk-actions.php:161
+#: includes/admin/class-bulk-actions.php:314
 #, php-format
 msgid "Robots meta edited for %1$d %2$s."
 msgstr "متای ربات برای %1$d %2$s ویرایش شد."
 
-#: includes/admin/class-bulk-actions.php:183 includes/admin/class-bulk-actions.php:336
+#: includes/admin/class-bulk-actions.php:183
+#: includes/admin/class-bulk-actions.php:336
 #, php-format
 msgid "%d redirection moved to Trash."
 msgid_plural "%d redirections moved to Trash."
 msgstr[0] "%d مورد از ریدایرکت‌ها به زباله‌دان منتقل شدند."
 msgstr[1] "%d ریدایرکت به زباله‌دان منتقل شد."
 
-#: includes/admin/class-bulk-actions.php:197 includes/admin/class-bulk-actions.php:211
+#: includes/admin/class-bulk-actions.php:197
+#: includes/admin/class-bulk-actions.php:211
 #, php-format
 msgid "Schema edited for %1$d %2$s."
 msgstr "اسکیما برای %1$d %2$s ویرایش شد."
@@ -80,24 +87,16 @@ msgid "Custom Canonical URL removed from %1$d %2$s."
 msgstr "آدرس اینترنتی کنونیکال سفارشی از %1$d %2$s حذف شد."
 
 #: includes/admin/class-bulk-actions.php:387
-msgid ""
-"Are you sure you want to change the Schema type for the selected posts? Doing so may irreversibly delete the existing "
-"Schema data."
-msgstr ""
-"آیا مطمئن هستید که می‌خواهید نوع اسکیما را برای پست‌های انتخاب شده تغییر دهید؟ با انجام این کار ممکن است داده‌های فعلی "
-"اسکیما به‌طور برگشت‌ناپذیر حذف شوند."
+msgid "Are you sure you want to change the Schema type for the selected posts? Doing so may irreversibly delete the existing Schema data."
+msgstr "آیا مطمئن هستید که می‌خواهید نوع اسکیما را برای پست‌های انتخاب شده تغییر دهید؟ با انجام این کار ممکن است داده‌های فعلی اسکیما به‌طور برگشت‌ناپذیر حذف شوند."
 
 #: includes/admin/class-links.php:79
 msgid "Affiliate Link Prefix"
 msgstr "پیشوند لینک همکاری در فروش"
 
 #: includes/admin/class-links.php:80
-msgid ""
-"Add the URI prefixes you use for affiliate (cloaked) links, which redirect to external sites. These will not count as "
-"internal links in the content analysis. Add one per line."
-msgstr ""
-"پیشوندهای آدرس اینترنتی مورد استفاده خود را برای لینک‌های همکاری در فروش (مخفی) که به سایت‌های خارجی ریدایرکت داده می‌شوند "
-"اضافه کنید. این‌ها به‌عنوان لینک‌های داخلی در تجزیه و تحلیل محتوا محسوب نمی‌شوند. در هر خط یکی اضافه کنید."
+msgid "Add the URI prefixes you use for affiliate (cloaked) links, which redirect to external sites. These will not count as internal links in the content analysis. Add one per line."
+msgstr "پیشوندهای آدرس اینترنتی مورد استفاده خود را برای لینک‌های همکاری در فروش (مخفی) که به سایت‌های خارجی ریدایرکت داده می‌شوند اضافه کنید. این‌ها به‌عنوان لینک‌های داخلی در تجزیه و تحلیل محتوا محسوب نمی‌شوند. در هر خط یکی اضافه کنید."
 
 #: includes/admin/class-links.php:87
 msgid "Example: /get/"
@@ -147,16 +146,19 @@ msgstr "فیلتر بر اساس نوع اسکیما"
 msgid "Turned Off"
 msgstr "خاموش"
 
-#: includes/admin/class-post-filters.php:70 includes/modules/schema/views/post-types.php:138
+#: includes/admin/class-post-filters.php:70
+#: includes/modules/schema/views/post-types.php:138
 #: includes/modules/schema/views/post-types.php:185
 msgid "Article"
 msgstr "مقاله"
 
-#: includes/admin/class-post-filters.php:71 includes/modules/schema/views/post-types.php:186
+#: includes/admin/class-post-filters.php:71
+#: includes/modules/schema/views/post-types.php:186
 msgid "Blog Post"
 msgstr "نوشته وبلاگ"
 
-#: includes/admin/class-post-filters.php:72 includes/modules/schema/views/post-types.php:187
+#: includes/admin/class-post-filters.php:72
+#: includes/modules/schema/views/post-types.php:187
 msgid "News Article"
 msgstr "مقاله خبری"
 
@@ -180,11 +182,13 @@ msgstr "آگهی استخدام"
 msgid "Music"
 msgstr "موسیقی"
 
-#: includes/admin/class-post-filters.php:78 includes/modules/local-seo/views/titles-options.php:274
+#: includes/admin/class-post-filters.php:78
+#: includes/modules/local-seo/views/titles-options.php:274
 msgid "Person"
 msgstr "شخص"
 
-#: includes/admin/class-post-filters.php:79 includes/modules/schema/views/post-types.php:122
+#: includes/admin/class-post-filters.php:79
+#: includes/modules/schema/views/post-types.php:122
 msgid "Product"
 msgstr "محصول"
 
@@ -208,7 +212,8 @@ msgstr "نرم افزار"
 msgid "Video"
 msgstr "ویدئو"
 
-#: includes/admin/class-post-filters.php:301 includes/admin/class-redirection.php:751
+#: includes/admin/class-post-filters.php:301
+#: includes/admin/class-redirection.php:751
 msgid "Clear Filter"
 msgstr "حذف فیلتر"
 
@@ -216,11 +221,13 @@ msgstr "حذف فیلتر"
 msgid "SEO Details"
 msgstr "جزئیات سئو"
 
-#: includes/admin/class-quick-edit.php:170 includes/modules/news-sitemap/metabox.php:18
+#: includes/admin/class-quick-edit.php:170
+#: includes/modules/news-sitemap/metabox.php:18
 msgid "Index"
 msgstr "ایندکس"
 
-#: includes/admin/class-quick-edit.php:171 includes/modules/news-sitemap/metabox.php:19
+#: includes/admin/class-quick-edit.php:171
+#: includes/modules/news-sitemap/metabox.php:19
 msgid "No Index"
 msgstr "نو ایندکس"
 
@@ -240,27 +247,33 @@ msgstr "تصویر نو ایندکس"
 msgid "No Snippet"
 msgstr "نو اسنیپت"
 
-#: includes/admin/class-quick-edit.php:185 includes/admin/class-quick-edit.php:288
+#: includes/admin/class-quick-edit.php:185
+#: includes/admin/class-quick-edit.php:288
 msgid "SEO Settings"
 msgstr "تنظیمات سئو"
 
-#: includes/admin/class-quick-edit.php:194 includes/admin/class-quick-edit.php:292
+#: includes/admin/class-quick-edit.php:194
+#: includes/admin/class-quick-edit.php:292
 msgid "SEO Title"
 msgstr "عنوان سئو"
 
-#: includes/admin/class-quick-edit.php:205 includes/admin/class-quick-edit.php:298
+#: includes/admin/class-quick-edit.php:205
+#: includes/admin/class-quick-edit.php:298
 msgid "SEO Description"
 msgstr "توضیحات سئو"
 
-#: includes/admin/class-quick-edit.php:212 includes/admin/class-quick-edit.php:302
+#: includes/admin/class-quick-edit.php:212
+#: includes/admin/class-quick-edit.php:302
 msgid "Robots Meta"
 msgstr "متای ربات"
 
-#: includes/admin/class-quick-edit.php:229 includes/admin/class-quick-edit.php:315
+#: includes/admin/class-quick-edit.php:229
+#: includes/admin/class-quick-edit.php:315
 msgid "Primary Focus Keyword"
 msgstr "کلمه کلیدی کانونی اصلی"
 
-#: includes/admin/class-quick-edit.php:235 includes/admin/class-quick-edit.php:321
+#: includes/admin/class-quick-edit.php:235
+#: includes/admin/class-quick-edit.php:321
 msgid "Canonical URL"
 msgstr "آدرس اینترنتی کنونیکال"
 
@@ -273,7 +286,8 @@ msgstr "%s اصلی"
 msgid "&mdash; Not Selected &mdash;"
 msgstr "&mdash; انتخاب نشده &mdash;"
 
-#: includes/admin/class-redirection.php:77 includes/admin/class-redirection.php:83
+#: includes/admin/class-redirection.php:77
+#: includes/admin/class-redirection.php:83
 msgid "Sync to .htaccess"
 msgstr "همگام‌سازی با htaccess."
 
@@ -281,7 +295,8 @@ msgstr "همگام‌سازی با htaccess."
 msgid "Copy all active redirections to the .htaccess file."
 msgstr "همۀ ریدایرکت‌های فعال را در فایل htaccess. کپی کنید."
 
-#: includes/admin/class-redirection.php:100 includes/admin/csv-import-export/class-csv-import-export.php:116
+#: includes/admin/class-redirection.php:100
+#: includes/admin/csv-import-export/class-csv-import-export.php:116
 #: includes/admin/csv-import-export/class-csv-import-export.php:147
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:203
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:229
@@ -305,7 +320,8 @@ msgstr "هیچ ریدایرکت معتبری یافت نشد."
 msgid "Redirections successfully synced to the .htaccess file."
 msgstr "ریدایرکت‌ها با موفقیت در فایل htaccess. همگام‌سازی شدند."
 
-#: includes/admin/class-redirection.php:302 includes/admin/class-redirection.php:490
+#: includes/admin/class-redirection.php:302
+#: includes/admin/class-redirection.php:490
 msgid "Manage Categories"
 msgstr "مدیریت دسته‌ها"
 
@@ -327,11 +343,13 @@ msgstr "جستجوی دسته‌های ریدایرکت‌ها"
 msgid "All Redirection Categories"
 msgstr "همۀ دسته‌های ریدایرکت‌ها"
 
-#: includes/admin/class-redirection.php:393 includes/modules/local-seo/class-local-seo.php:141
+#: includes/admin/class-redirection.php:393
+#: includes/modules/local-seo/class-local-seo.php:141
 msgid "Parent Category"
 msgstr "دستۀ مادر"
 
-#: includes/admin/class-redirection.php:394 includes/modules/local-seo/class-local-seo.php:142
+#: includes/admin/class-redirection.php:394
+#: includes/modules/local-seo/class-local-seo.php:142
 msgid "Parent Category:"
 msgstr "دستۀ مادر:"
 
@@ -392,7 +410,8 @@ msgstr "دسته"
 msgid "Uncategorized"
 msgstr "دسته‌بندی نشده"
 
-#: includes/admin/class-redirection.php:733 includes/modules/local-seo/shortcodes/class-map.php:82
+#: includes/admin/class-redirection.php:733
+#: includes/modules/local-seo/shortcodes/class-map.php:82
 #: includes/modules/local-seo/shortcodes/class-store-locator.php:66
 msgid "Select Category"
 msgstr "انتخاب دسته"
@@ -440,13 +459,8 @@ msgid "Easy %s"
 msgstr "آسان %s"
 
 #: includes/admin/class-setup-wizard.php:96
-msgid ""
-"For websites where you only want to change the basics and let Rank Math do most of the heavy lifting. Most settings are "
-"set to default as per industry best practices. One just has to set it and forget it."
-msgstr ""
-"این گزینه برای وبسایت‌هایی کاربرد دارد که صرفاً می‌خواهید تنظیمات پایه را تغییر دهید و اجازه دهید که رنک‌مث خودش اکثر "
-"تنظیمات جزئی و پیچیده را انجام دهد. بیشتر تنظیمات طبق بهترین استانداردهای بهینه‌سازی به صورت پیش‌فرض پیکربندی می‌شوند. فقط "
-"کافی است که یک بار تنظیمات را پیکربندی کنید و سپس آن را فراموش کنید."
+msgid "For websites where you only want to change the basics and let Rank Math do most of the heavy lifting. Most settings are set to default as per industry best practices. One just has to set it and forget it."
+msgstr "این گزینه برای وبسایت‌هایی کاربرد دارد که صرفاً می‌خواهید تنظیمات پایه را تغییر دهید و اجازه دهید که رنک‌مث خودش اکثر تنظیمات جزئی و پیچیده را انجام دهد. بیشتر تنظیمات طبق بهترین استانداردهای بهینه‌سازی به صورت پیش‌فرض پیکربندی می‌شوند. فقط کافی است که یک بار تنظیمات را پیکربندی کنید و سپس آن را فراموش کنید."
 
 #: includes/admin/class-setup-wizard.php:98
 #, php-format
@@ -454,12 +468,8 @@ msgid "Advanced %s"
 msgstr "%s پیشرفته"
 
 #: includes/admin/class-setup-wizard.php:98
-msgid ""
-"For the advanced users who want to control every SEO aspect of the website. You are offered options to change "
-"everything and have full control over the website’s SEO."
-msgstr ""
-"این گزینه برای کاربران حرفه‌ای کاربرد دارد که می‌خواهند در وبسایت خود تنظیمات سئو را با همۀ جزئیاتش بررسی و کنترل کنند. "
-"بنابراین به شما گزینه‌هایی داده می‌شود که بتوانید کنترل کاملی بر روی همۀ تنظیمات سئوی ساتتان داشته باشید."
+msgid "For the advanced users who want to control every SEO aspect of the website. You are offered options to change everything and have full control over the website’s SEO."
+msgstr "این گزینه برای کاربران حرفه‌ای کاربرد دارد که می‌خواهند در وبسایت خود تنظیمات سئو را با همۀ جزئیاتش بررسی و کنترل کنند. بنابراین به شما گزینه‌هایی داده می‌شود که بتوانید کنترل کاملی بر روی همۀ تنظیمات سئوی ساتتان داشته باشید."
 
 #: includes/admin/class-setup-wizard.php:100
 #, php-format
@@ -468,8 +478,7 @@ msgstr "حالت سفارشی %s"
 
 #: includes/admin/class-setup-wizard.php:100
 msgid "Select this if you have a custom Rank Math settings file you want to use."
-msgstr ""
-"این گزینه را فقط زمانی انتخاب کنید که از قبل یک فایل سفارشی از تنظیمات رنک‌مث داشته باشید و بخواهید از آن‌ها استفاده کنید."
+msgstr "این گزینه را فقط زمانی انتخاب کنید که از قبل یک فایل سفارشی از تنظیمات رنک‌مث داشته باشید و بخواهید از آن‌ها استفاده کنید."
 
 #: includes/admin/class-setup-wizard.php:125
 msgid "Import successful."
@@ -620,27 +629,30 @@ msgstr "درون‌ریزی خطوط زیر امکان‌پذیر نیست: "
 #: includes/admin/csv-import-export/class-import-background-process.php:79
 #, php-format
 msgid "CSV import in progress. You can see its progress and cancel it in the %1$sImport & Export panel%2$s."
-msgstr ""
-"درون‌ریزی CSV در حال انجام است. شما می‌توانید در %1$sپنل درون‌ریزی و برون‌بری%2$s پیشرفت آن را ببینید یا درون‌ریزی را لغو "
-"کنید."
+msgstr "درون‌ریزی CSV در حال انجام است. شما می‌توانید در %1$sپنل درون‌ریزی و برون‌بری%2$s پیشرفت آن را ببینید یا درون‌ریزی را لغو کنید."
 
-#: includes/admin/csv-import-export/class-importer.php:185 includes/admin/csv-import-redirections/class-importer.php:165
+#: includes/admin/csv-import-export/class-importer.php:185
+#: includes/admin/csv-import-redirections/class-importer.php:165
 msgid "Missing import file."
 msgstr "فایل درون‌ریزی وجود ندارد."
 
-#: includes/admin/csv-import-export/class-importer.php:192 includes/admin/csv-import-redirections/class-importer.php:172
+#: includes/admin/csv-import-export/class-importer.php:192
+#: includes/admin/csv-import-redirections/class-importer.php:172
 msgid "Missing CSV headers."
 msgstr "سربرگ‌های CSV وجود ندارند."
 
-#: includes/admin/csv-import-export/class-importer.php:198 includes/admin/csv-import-redirections/class-importer.php:178
+#: includes/admin/csv-import-export/class-importer.php:198
+#: includes/admin/csv-import-redirections/class-importer.php:178
 msgid "Missing one ore more required columns."
 msgstr "یک یا چند ستون ضروری وجود ندارد."
 
-#: includes/admin/csv-import-export/class-importer.php:208 includes/admin/csv-import-redirections/class-importer.php:188
+#: includes/admin/csv-import-export/class-importer.php:208
+#: includes/admin/csv-import-redirections/class-importer.php:188
 msgid "Empty column data."
 msgstr "داده‌های ستون خالی هستند."
 
-#: includes/admin/csv-import-export/class-importer.php:217 includes/admin/csv-import-redirections/class-importer.php:197
+#: includes/admin/csv-import-export/class-importer.php:217
+#: includes/admin/csv-import-redirections/class-importer.php:197
 msgid "Columns number mismatch."
 msgstr "تعداد ستون‌ها مطابقت ندارند."
 
@@ -655,21 +667,13 @@ msgstr "از ستون‌های زیر در فایل CSV استفاده کنید 
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:62
 #, php-format
-msgid ""
-"If the numeric ID is specified in the %s column, then the redirection will be edited. If it is not set or empty, then a "
-"new redirection will be created."
-msgstr ""
-"اگر شناسه عددی در ستون %s مشخص شده باشد، آن ریدایرکت ویرایش می‌شود. اگر تنظیم نباشد یا خالی باشد، یک ریدایرکت جدید ایجاد "
-"می‌شود."
+msgid "If the numeric ID is specified in the %s column, then the redirection will be edited. If it is not set or empty, then a new redirection will be created."
+msgstr "اگر شناسه عددی در ستون %s مشخص شده باشد، آن ریدایرکت ویرایش می‌شود. اگر تنظیم نباشد یا خالی باشد، یک ریدایرکت جدید ایجاد می‌شود."
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:65
 #, php-format
-msgid ""
-"You can specify multiple source URLs by using JSON format in the %1$s column. The value must be an array of objects "
-"with %2$s properties. The %3$s column will be ignored in this case."
-msgstr ""
-"با استفاده از الگوی JSON در ستون %1$s می‌توانید چندین آدرس اینترنتی منبع را تعیین کنید. مقدار باید آرایه‌ای از اشیاء با "
-"ویژگی %2$s باشد. ستون %3$s در این حالت نادیده گرفته خواهد شد."
+msgid "You can specify multiple source URLs by using JSON format in the %1$s column. The value must be an array of objects with %2$s properties. The %3$s column will be ignored in this case."
+msgstr "با استفاده از الگوی JSON در ستون %1$s می‌توانید چندین آدرس اینترنتی منبع را تعیین کنید. مقدار باید آرایه‌ای از اشیاء با ویژگی %2$s باشد. ستون %3$s در این حالت نادیده گرفته خواهد شد."
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:68
 #, php-format
@@ -681,18 +685,21 @@ msgid "CSV Import"
 msgstr "درون‌ریزی CSV"
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:89
-#: includes/views/csv-import-export-panel.php:65 includes/views/csv-import-redirections-panel.php:56
+#: includes/views/csv-import-export-panel.php:65
+#: includes/views/csv-import-redirections-panel.php:56
 msgid "Import"
 msgstr "درون‌ریزی"
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:111
-#: includes/views/csv-import-export-panel.php:16 includes/views/csv-import-export-panel.php:39
+#: includes/views/csv-import-export-panel.php:16
+#: includes/views/csv-import-export-panel.php:39
 #: includes/views/csv-import-redirections-panel.php:36
 msgid "CSV File"
 msgstr "فایل CSV"
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:114
-#: includes/views/csv-import-export-panel.php:42 includes/views/csv-import-redirections-panel.php:39
+#: includes/views/csv-import-export-panel.php:42
+#: includes/views/csv-import-redirections-panel.php:39
 msgid "Please select a CSV file to import."
 msgstr "لطفاً یک فایل CSV را برای درون‌ریزی انتخاب کنید."
 
@@ -706,7 +713,8 @@ msgid "More details"
 msgstr "جزئیات بیشتر"
 
 #: includes/admin/csv-import-redirections/class-csv-import-export-redirections.php:131
-#: includes/views/csv-import-export-panel.php:62 includes/views/csv-import-redirections-panel.php:53
+#: includes/views/csv-import-export-panel.php:62
+#: includes/views/csv-import-redirections-panel.php:53
 msgid "Cancel Import"
 msgstr "لغو درون‌ریزی"
 
@@ -754,8 +762,7 @@ msgstr "نقشه سایت"
 #: includes/admin/wizard/class-sitemap.php:38
 #, php-format
 msgid "Choose your Sitemap configuration and select which type of posts or pages you want to include in your Sitemaps. %s"
-msgstr ""
-"پیکربندی نقشه سایت خود را انتخاب کنید و پست‌تایپ‌ها یا صفحاتی را که می‌خواهید در نقشه سایت خود داشته باشید انتخاب کنید. %s"
+msgstr "پیکربندی نقشه سایت خود را انتخاب کنید و پست‌تایپ‌ها یا صفحاتی را که می‌خواهید در نقشه سایت خود داشته باشید انتخاب کنید. %s"
 
 #: includes/admin/wizard/class-sitemap.php:38
 msgid "Learn more."
@@ -779,9 +786,7 @@ msgstr "افزودن تصاویر"
 
 #: includes/admin/wizard/class-sitemap.php:75
 msgid "Include reference to images from the post content in sitemaps. This helps search engines index your images better."
-msgstr ""
-"منبع تصاویر خود را از داخل محتوای پست به نقشه سایت اضافه کنید. این کار به موتورهای جستجو کمک می‌کند که تصاویر شما را "
-"بهتر ایندکس کنند."
+msgstr "منبع تصاویر خود را از داخل محتوای پست به نقشه سایت اضافه کنید. این کار به موتورهای جستجو کمک می‌کند که تصاویر شما را بهتر ایندکس کنند."
 
 #: includes/admin/wizard/class-sitemap.php:88
 msgid "Public Post Types"
@@ -799,8 +804,10 @@ msgstr "طبقه‌بندی‌های عمومی"
 msgid "Select taxonomies to enable SEO options for them and include them in the sitemap."
 msgstr "طبقه‌بندی‌هایی را که می‌خواهید تنظیمات سئو برای آن‌ها فعال شوند و در نقشه سایت اضافه شوند انتخاب کنید."
 
-#: includes/admin/wizard/class-sitemap.php:118 includes/class-modules.php:52
-#: includes/modules/news-sitemap/class-news-metabox.php:77 includes/modules/news-sitemap/class-news-sitemap.php:108
+#: includes/admin/wizard/class-sitemap.php:118
+#: includes/class-modules.php:52
+#: includes/modules/news-sitemap/class-news-metabox.php:77
+#: includes/modules/news-sitemap/class-news-sitemap.php:108
 msgid "News Sitemap"
 msgstr "نقشه سایت خبری"
 
@@ -816,29 +823,28 @@ msgstr "نقشه سایت‌های خبری"
 msgid "You will generally only need a News Sitemap when your website is included in Google News."
 msgstr "به طور کلی تنها زمانی به یک نقشه سایت خبری نیاز دارید که وبسایت شما در گوگل نیوز باشد."
 
-#: includes/admin/wizard/class-sitemap.php:137 includes/modules/news-sitemap/settings-news.php:18
+#: includes/admin/wizard/class-sitemap.php:137
+#: includes/modules/news-sitemap/settings-news.php:18
 msgid "Google News Publication Name"
 msgstr "نام انتشارات گوگل نیوز"
 
-#: includes/admin/wizard/class-sitemap.php:139 includes/modules/news-sitemap/settings-news.php:19
-msgid ""
-"The name of the news publication. It must match the name exactly as it appears on your articles in news.google.com, "
-"omitting any trailing parentheticals. <a href=\"https://support.google.com/news/publisher-center/answer/9606710\" "
-"target=\"_blank\">More information at support.google.com</a>"
-msgstr ""
-"این نام انتشارات خبری است. این نام باید (بدون پرانتزهای انتهایی) دقیقاً با نامی مطابقت داشته باشد که در مقاله‌های شما در "
-"news.google.com نشان داده می‌شود. <a href=\"https://support.google.com/news/publisher-center/answer/9606710\" target="
-"\"_blank\">اطلاعات بیشتر را در support.google.com بخوانید</a>"
+#: includes/admin/wizard/class-sitemap.php:139
+#: includes/modules/news-sitemap/settings-news.php:19
+msgid "The name of the news publication. It must match the name exactly as it appears on your articles in news.google.com, omitting any trailing parentheticals. <a href=\"https://support.google.com/news/publisher-center/answer/9606710\" target=\"_blank\">More information at support.google.com</a>"
+msgstr "این نام انتشارات خبری است. این نام باید (بدون پرانتزهای انتهایی) دقیقاً با نامی مطابقت داشته باشد که در مقاله‌های شما در news.google.com نشان داده می‌شود. <a href=\"https://support.google.com/news/publisher-center/answer/9606710\" target=\"_blank\">اطلاعات بیشتر را در support.google.com بخوانید</a>"
 
-#: includes/admin/wizard/class-sitemap.php:149 includes/modules/news-sitemap/settings-news.php:49
+#: includes/admin/wizard/class-sitemap.php:149
+#: includes/modules/news-sitemap/settings-news.php:49
 msgid "News Post Type"
 msgstr "پست تایپ خبری"
 
-#: includes/admin/wizard/class-sitemap.php:150 includes/modules/news-sitemap/settings-news.php:50
+#: includes/admin/wizard/class-sitemap.php:150
+#: includes/modules/news-sitemap/settings-news.php:50
 msgid "Select the post type you use for News articles."
 msgstr "پست تایپی را که برای مقالات خبری استفاده می‌کنید انتخاب کنید."
 
-#: includes/admin/wizard/class-sitemap.php:162 includes/class-modules.php:63
+#: includes/admin/wizard/class-sitemap.php:162
+#: includes/class-modules.php:63
 #: includes/modules/video-sitemap/class-video-sitemap.php:58
 msgid "Video Sitemap"
 msgstr "نقشه سایت ویدئویی"
@@ -855,11 +861,13 @@ msgstr "نقشه سایت‌های ویدئویی"
 msgid "You will generally only need a Video Sitemap when your website has video content."
 msgstr "به طور کلی تنها زمانی به یک نقشه سایت ویدئویی نیاز دارید که وبسایت شما دارای محتوای ویدئویی باشد."
 
-#: includes/admin/wizard/class-sitemap.php:181 includes/modules/video-sitemap/settings-video.php:32
+#: includes/admin/wizard/class-sitemap.php:181
+#: includes/modules/video-sitemap/settings-video.php:32
 msgid "Video Post Type"
 msgstr "پست تایپ ویدئویی"
 
-#: includes/admin/wizard/class-sitemap.php:182 includes/modules/video-sitemap/settings-video.php:33
+#: includes/admin/wizard/class-sitemap.php:182
+#: includes/modules/video-sitemap/settings-video.php:33
 msgid "Select the post type where you use videos and want them to be shown in the Video search."
 msgstr "پست تایپی را که از محتوای ویدئویی استفاده می‌کنید و می‌خواهید در جستجوی ویدئوها نشان داده شوند انتخاب کنید."
 
@@ -872,23 +880,16 @@ msgid "Pinterest Debugger"
 msgstr "اشکال‌زادیی Pinterest"
 
 #: includes/class-modules.php:53
-msgid ""
-"Create a News Sitemap for your news-related content. You only need a News sitemap if you plan on posting news-related "
-"content on your website."
-msgstr ""
-"برای محتوای مرتبط با خبرهای خود یک نقشه سایت خبری ایجاد کنید. تنها درصورتی که قصد انتشار مطالب مرتبط با اخبار را در "
-"وبسایت خود دارید، به نقشه سایت خبری نیاز دارید."
+msgid "Create a News Sitemap for your news-related content. You only need a News sitemap if you plan on posting news-related content on your website."
+msgstr "برای محتوای مرتبط با خبرهای خود یک نقشه سایت خبری ایجاد کنید. تنها درصورتی که قصد انتشار مطالب مرتبط با اخبار را در وبسایت خود دارید، به نقشه سایت خبری نیاز دارید."
 
 #: includes/class-modules.php:59
 msgid "Please activate Sitemap module to use this module."
 msgstr "لطفاً برای استفاده از این ماژول، ابتدا ماژول \"نقشه سایت\" را فعال کنید."
 
 #: includes/class-modules.php:64
-msgid ""
-"For your video content, a Video Sitemap is a recommended step for better rankings and inclusion in the Video search."
-msgstr ""
-"برای محتوای ویدئویی شما، استفاده از یک نقشه سایت ویدئویی یک مرحله توصیه شده برای رتبه‌بندی بهتر و درج در جستجوی ویدئو "
-"است."
+msgid "For your video content, a Video Sitemap is a recommended step for better rankings and inclusion in the Video search."
+msgstr "برای محتوای ویدئویی شما، استفاده از یک نقشه سایت ویدئویی یک مرحله توصیه شده برای رتبه‌بندی بهتر و درج در جستجوی ویدئو است."
 
 #: includes/class-modules.php:70
 msgid "Please activate Schema & Sitemap module to use this module."
@@ -910,8 +911,10 @@ msgstr "واترمارک تصویری بیشتری اضافه کنید تا از
 msgid "Add Watermark"
 msgstr "افزودن واترمارک"
 
-#: includes/class-thumbnail-overlays.php:257 includes/modules/image-seo/options.php:153
-#: includes/modules/local-seo/views/titles-options.php:390 includes/modules/local-seo/views/titles-options.php:446
+#: includes/class-thumbnail-overlays.php:257
+#: includes/modules/image-seo/options.php:153
+#: includes/modules/local-seo/views/titles-options.php:390
+#: includes/modules/local-seo/views/titles-options.php:446
 msgid "Remove"
 msgstr "حذف کردن"
 
@@ -923,16 +926,17 @@ msgstr "افزودن تصویر"
 msgid "Name*"
 msgstr "نام*"
 
-#: includes/class-thumbnail-overlays.php:303 includes/class-thumbnail-overlays.php:327
+#: includes/class-thumbnail-overlays.php:303
+#: includes/class-thumbnail-overlays.php:327
 #: includes/class-thumbnail-overlays.php:350
 msgid "Default Thumbnail Watermark"
 msgstr "واترمارک بندانگشتی پیش‌فرض"
 
-#: includes/class-thumbnail-overlays.php:304 includes/class-thumbnail-overlays.php:328
+#: includes/class-thumbnail-overlays.php:304
+#: includes/class-thumbnail-overlays.php:328
 #: includes/class-thumbnail-overlays.php:351
 msgid "Select the default watermark that will be applied if no specific watermark is selected."
-msgstr ""
-"یک واترمارک پیش‌فرض انتخاب کنید تا در مواقعی که هیچ واترمارک مشخصی انتخاب نشده است، واترمارک پیش‌فرض نمایش داده شود."
+msgstr "یک واترمارک پیش‌فرض انتخاب کنید تا در مواقعی که هیچ واترمارک مشخصی انتخاب نشده است، واترمارک پیش‌فرض نمایش داده شود."
 
 #: includes/class-thumbnail-overlays.php:392
 msgid "A Custom Watermark item could not be saved because the name field is empty."
@@ -974,8 +978,10 @@ msgstr "پایین وسط"
 msgid "Bottom Right"
 msgstr "پایین راست"
 
-#: includes/modules/404-monitor/class-monitor-pro.php:48 includes/modules/404-monitor/class-monitor-pro.php:84
-#: includes/views/csv-import-export-panel.php:124 includes/views/csv-import-redirections-panel.php:68
+#: includes/modules/404-monitor/class-monitor-pro.php:48
+#: includes/modules/404-monitor/class-monitor-pro.php:84
+#: includes/views/csv-import-export-panel.php:124
+#: includes/views/csv-import-redirections-panel.php:68
 msgid "Export"
 msgstr "برون‌بری"
 
@@ -984,12 +990,8 @@ msgid "Export 404 Logs"
 msgstr "از گزارش‌های 404 خروجی بگیرید"
 
 #: includes/modules/404-monitor/class-monitor-pro.php:65
-msgid ""
-"Export and download 404 logs from a selected period of time in the form of a CSV file. Leave the from/to fields empty "
-"to export all logs."
-msgstr ""
-"گزارش‌های 404 مربوط به یک دوره زمانی مشخص را در قالب یک فایل CSV برون‌بری و دانلود کنید. برای برون‌بری همه گزارش‌ها، "
-"فیلدهای از/به را خالی بگذارید."
+msgid "Export and download 404 logs from a selected period of time in the form of a CSV file. Leave the from/to fields empty to export all logs."
+msgstr "گزارش‌های 404 مربوط به یک دوره زمانی مشخص را در قالب یک فایل CSV برون‌بری و دانلود کنید. برای برون‌بری همه گزارش‌ها، فیلدهای از/به را خالی بگذارید."
 
 #: includes/modules/404-monitor/class-monitor-pro.php:73
 msgid "From date"
@@ -1015,17 +1017,14 @@ msgstr "انتشار آنالیتیکس"
 msgid "Analytics Report"
 msgstr "گزارش‌گیری از آنالیتیکس"
 
-#: includes/modules/analytics/class-analytics.php:245 includes/modules/analytics/class-analytics.php:274
+#: includes/modules/analytics/class-analytics.php:245
+#: includes/modules/analytics/class-analytics.php:274
 msgid "Country"
 msgstr "کشور"
 
 #: includes/modules/analytics/class-analytics.php:347
-msgid ""
-"Enter the number of days to keep Analytics data in your database. The maximum allowed days are 180. Though, 2x data "
-"will be stored in the DB for calculating the difference properly."
-msgstr ""
-"تعداد روزهایی را که میخواهید داده‌های آنالیتیکس در پایگاه داده شما نگهداری شوند وارد کنید. حداکثر روزهای مجاز 180 است. "
-"اگرچه داده‌های 2x (دو برابر آن بازه زمانی) برای محاسبه صحیح تفاوت در پایگاه داده ذخیره می‌شوند."
+msgid "Enter the number of days to keep Analytics data in your database. The maximum allowed days are 180. Though, 2x data will be stored in the DB for calculating the difference properly."
+msgstr "تعداد روزهایی را که میخواهید داده‌های آنالیتیکس در پایگاه داده شما نگهداری شوند وارد کنید. حداکثر روزهای مجاز 180 است. اگرچه داده‌های 2x (دو برابر آن بازه زمانی) برای محاسبه صحیح تفاوت در پایگاه داده ذخیره می‌شوند."
 
 #: includes/modules/analytics/class-analytics.php:360
 msgid "Monitor SEO Performance"
@@ -1033,14 +1032,11 @@ msgstr "مانیتور عمکرد سئو"
 
 #: includes/modules/analytics/class-analytics.php:363
 #, php-format
-msgid ""
-"This option allows you to monitor the SEO performance of all of your sites in one centralized dashboard on RankMath."
-"com, so you can check up on sites at a glance. <a href=\"%1$s\" target=\"_blank\">Learn more</a>."
-msgstr ""
-"این گزینه به شما امکان می‌دهد عملکرد سئو کلیۀ سایت‌های خود را در یک پیشخوان متمرکز در سایت RankMath.com کنترل کنید، "
-"بنابراین می‌توانید با یک نگاه در سایت‌ها چک کنید. <a href=\"%1$s\" target=\"_blank\">در این مورد بیشتر بدانید</a>."
+msgid "This option allows you to monitor the SEO performance of all of your sites in one centralized dashboard on RankMath.com, so you can check up on sites at a glance. <a href=\"%1$s\" target=\"_blank\">Learn more</a>."
+msgstr "این گزینه به شما امکان می‌دهد عملکرد سئو کلیۀ سایت‌های خود را در یک پیشخوان متمرکز در سایت RankMath.com کنترل کنید، بنابراین می‌توانید با یک نگاه در سایت‌ها چک کنید. <a href=\"%1$s\" target=\"_blank\">در این مورد بیشتر بدانید</a>."
 
-#: includes/modules/analytics/class-rest.php:193 includes/modules/analytics/class-rest.php:217
+#: includes/modules/analytics/class-rest.php:193
+#: includes/modules/analytics/class-rest.php:217
 msgid "Sorry, no keyword found."
 msgstr "متأسفانه، هیچ کلمه کلیدی یافت نشد."
 
@@ -1070,12 +1066,8 @@ msgid "Add missing image caption"
 msgstr "زیرنویس تصویر را اضافه کنید"
 
 #: includes/modules/image-seo/options.php:14
-msgid ""
-"Add a caption for all images without a caption automatically. The caption is dynamically applied when the content is "
-"displayed, the stored content is not changed."
-msgstr ""
-"برای همه تصاویری که زیرنویس (کپشن) ندارند به‌صورت خودکار زیرنویس اضافه کنید. زیرنویس در لحظۀ نمایش محتوا به‌صورت پویا "
-"اعمال می‌شود، محتوای ذخیره شده تغییر نمی‌کند."
+msgid "Add a caption for all images without a caption automatically. The caption is dynamically applied when the content is displayed, the stored content is not changed."
+msgstr "برای همه تصاویری که زیرنویس (کپشن) ندارند به‌صورت خودکار زیرنویس اضافه کنید. زیرنویس در لحظۀ نمایش محتوا به‌صورت پویا اعمال می‌شود، محتوای ذخیره شده تغییر نمی‌کند."
 
 #: includes/modules/image-seo/options.php:24
 msgid "Caption format"
@@ -1090,12 +1082,8 @@ msgid "Add missing image description"
 msgstr "توضیحات تصویر را اضافه کنید"
 
 #: includes/modules/image-seo/options.php:40
-msgid ""
-"Add a description for all images without a description automatically. The description is dynamically applied when the "
-"content is displayed, the stored content is not changed."
-msgstr ""
-"برای همه تصاویری که توضیحات ندارند به‌صورت خودکار توضیحات اضافه کنید. توضیحات در لحظۀ نمایش محتوا به‌صورت پویا اعمال "
-"می‌شود، محتوای ذخیره شده تغییر نمی‌کند."
+msgid "Add a description for all images without a description automatically. The description is dynamically applied when the content is displayed, the stored content is not changed."
+msgstr "برای همه تصاویری که توضیحات ندارند به‌صورت خودکار توضیحات اضافه کنید. توضیحات در لحظۀ نمایش محتوا به‌صورت پویا اعمال می‌شود، محتوای ذخیره شده تغییر نمی‌کند."
 
 #: includes/modules/image-seo/options.php:50
 msgid "Description format"
@@ -1110,35 +1098,41 @@ msgid "Change title casing"
 msgstr "طرح نوشتاری عنوان را تغییر دهید"
 
 #: includes/modules/image-seo/options.php:66
-msgid ""
-"Capitalization settings for the <code>title</code> attribute values. This will be applied for <strong>all</strong> "
-"<code>title</code> attributes."
-msgstr ""
-"تنظیمات حروف بزرگ برای المان‌های <code>عنوان</code>. این تنظیم بر روی <strong>همه</strong> توابع <code>عنوان</code> "
-"اعمال خواهد شد."
+msgid "Capitalization settings for the <code>title</code> attribute values. This will be applied for <strong>all</strong> <code>title</code> attributes."
+msgstr "تنظیمات حروف بزرگ برای المان‌های <code>عنوان</code>. این تنظیم بر روی <strong>همه</strong> توابع <code>عنوان</code> اعمال خواهد شد."
 
-#: includes/modules/image-seo/options.php:69 includes/modules/image-seo/options.php:87
-#: includes/modules/image-seo/options.php:105 includes/modules/image-seo/options.php:124
+#: includes/modules/image-seo/options.php:69
+#: includes/modules/image-seo/options.php:87
+#: includes/modules/image-seo/options.php:105
+#: includes/modules/image-seo/options.php:124
 msgid "No change"
 msgstr "بدون تغییر"
 
-#: includes/modules/image-seo/options.php:70 includes/modules/image-seo/options.php:88
-#: includes/modules/image-seo/options.php:106 includes/modules/image-seo/options.php:125
+#: includes/modules/image-seo/options.php:70
+#: includes/modules/image-seo/options.php:88
+#: includes/modules/image-seo/options.php:106
+#: includes/modules/image-seo/options.php:125
 msgid "Title Casing"
 msgstr "طرح نوشتاری عنوان"
 
-#: includes/modules/image-seo/options.php:71 includes/modules/image-seo/options.php:89
-#: includes/modules/image-seo/options.php:107 includes/modules/image-seo/options.php:126
+#: includes/modules/image-seo/options.php:71
+#: includes/modules/image-seo/options.php:89
+#: includes/modules/image-seo/options.php:107
+#: includes/modules/image-seo/options.php:126
 msgid "Sentence casing"
 msgstr "طرح نوشتاری جمله"
 
-#: includes/modules/image-seo/options.php:72 includes/modules/image-seo/options.php:90
-#: includes/modules/image-seo/options.php:108 includes/modules/image-seo/options.php:127
+#: includes/modules/image-seo/options.php:72
+#: includes/modules/image-seo/options.php:90
+#: includes/modules/image-seo/options.php:108
+#: includes/modules/image-seo/options.php:127
 msgid "all lowercase"
 msgstr "همه با حروف کوچک"
 
-#: includes/modules/image-seo/options.php:73 includes/modules/image-seo/options.php:91
-#: includes/modules/image-seo/options.php:109 includes/modules/image-seo/options.php:128
+#: includes/modules/image-seo/options.php:73
+#: includes/modules/image-seo/options.php:91
+#: includes/modules/image-seo/options.php:109
+#: includes/modules/image-seo/options.php:128
 msgid "ALL UPPERCASE"
 msgstr "همه با حروف بزرگ"
 
@@ -1147,23 +1141,16 @@ msgid "Change alt attribute casing"
 msgstr "طرح نوشتاری نام عکس را تغییر دهید"
 
 #: includes/modules/image-seo/options.php:84
-msgid ""
-"Capitalization settings for the <code>alt</code> attribute values. This will be applied for <strong>all</strong> "
-"<code>alt</code> attributes."
-msgstr ""
-"تنظیمات حروف بزرگ برای المان‌های <code>نام عکس</code>. این تنظیم بر روی <strong>همه</strong> توابع <code> نام عکس </"
-"code> اعمال خواهد شد."
+msgid "Capitalization settings for the <code>alt</code> attribute values. This will be applied for <strong>all</strong> <code>alt</code> attributes."
+msgstr "تنظیمات حروف بزرگ برای المان‌های <code>نام عکس</code>. این تنظیم بر روی <strong>همه</strong> توابع <code> نام عکس </code> اعمال خواهد شد."
 
 #: includes/modules/image-seo/options.php:101
 msgid "Change description casing"
 msgstr "طرح نوشتاری توضیحات را تغییر دهید"
 
 #: includes/modules/image-seo/options.php:102
-msgid ""
-"Capitalization settings for the image descriptions. This will be applied for <strong>all</strong> image descriptions."
-msgstr ""
-"تنظیمات حروف بزرگ برای المان‌های <code>توضیحات عکس</code>. این تنظیم بر روی <strong>همه</strong> توابع <code> >توضیحات "
-"عکس </code> اعمال خواهد شد."
+msgid "Capitalization settings for the image descriptions. This will be applied for <strong>all</strong> image descriptions."
+msgstr "تنظیمات حروف بزرگ برای المان‌های <code>توضیحات عکس</code>. این تنظیم بر روی <strong>همه</strong> توابع <code> >توضیحات عکس </code> اعمال خواهد شد."
 
 #: includes/modules/image-seo/options.php:120
 msgid "Change caption casing"
@@ -1171,21 +1158,15 @@ msgstr "طرح نوشتاری توضیح زیر عکس را تغییر دهید"
 
 #: includes/modules/image-seo/options.php:121
 msgid "Capitalization settings for the image captions.  This will be applied for <strong>all</strong> image captions."
-msgstr ""
-"تنظیمات حروف بزرگ برای المان‌های <code> توضیح زیر عکس</code>. این تنظیم بر روی <strong>همه</strong> توابع <code> > توضیح "
-"زیر عکس</code> اعمال خواهد شد."
+msgstr "تنظیمات حروف بزرگ برای المان‌های <code> توضیح زیر عکس</code>. این تنظیم بر روی <strong>همه</strong> توابع <code> > توضیح زیر عکس</code> اعمال خواهد شد."
 
 #: includes/modules/image-seo/options.php:138
 msgid "Add ALT attributes for avatars"
 msgstr "اضافه کردن المان نام عکس به تصویر پروفایل (آواتار)"
 
 #: includes/modules/image-seo/options.php:139
-msgid ""
-"Add <code>alt</code> attributes for commenter profile pictures (avatars) automatically. The alt attribute value will be "
-"the username."
-msgstr ""
-"المان <code>نام عکس (alt)</code> را برای تصاویر پروفایل (آواتار) نظر دهنده‌ها به طور خودکار اضافه کنید. محتوای نام عکس "
-"(alt) با نام کاربری شخص (username) مقداردهی خواهد شد."
+msgid "Add <code>alt</code> attributes for commenter profile pictures (avatars) automatically. The alt attribute value will be the username."
+msgstr "المان <code>نام عکس (alt)</code> را برای تصاویر پروفایل (آواتار) نظر دهنده‌ها به طور خودکار اضافه کنید. محتوای نام عکس (alt) با نام کاربری شخص (username) مقداردهی خواهد شد."
 
 #: includes/modules/image-seo/options.php:149
 msgid "Replacements"
@@ -1244,7 +1225,8 @@ msgstr "ویرایش %s"
 msgid "Update %s"
 msgstr "به‌روزرسانی %s"
 
-#: includes/modules/local-seo/class-local-seo.php:88 includes/modules/local-seo/class-local-seo.php:90
+#: includes/modules/local-seo/class-local-seo.php:88
+#: includes/modules/local-seo/class-local-seo.php:90
 #, php-format
 msgid "View %s"
 msgstr "مشاهدۀ %s"
@@ -1254,7 +1236,8 @@ msgstr "مشاهدۀ %s"
 msgid "Search %s"
 msgstr "جستجوی %s"
 
-#: includes/modules/local-seo/class-local-seo.php:125 includes/modules/local-seo/class-local-seo.php:139
+#: includes/modules/local-seo/class-local-seo.php:125
+#: includes/modules/local-seo/class-local-seo.php:139
 #, php-format
 msgid "%s categories"
 msgstr "دسته‌های %s"
@@ -1307,7 +1290,8 @@ msgstr "کلید API"
 msgid "Sorry, no locations were found."
 msgstr "متأسفانه هیچ مکانی یافت نشد."
 
-#: includes/modules/local-seo/shortcodes/class-address.php:38 includes/modules/local-seo/views/titles-options.php:340
+#: includes/modules/local-seo/shortcodes/class-address.php:38
+#: includes/modules/local-seo/views/titles-options.php:340
 msgid "Phone"
 msgstr "تلفن"
 
@@ -1319,12 +1303,15 @@ msgstr "تلفن فرعی"
 msgid "Fax"
 msgstr "فکس"
 
-#: includes/modules/local-seo/shortcodes/class-address.php:50 includes/modules/local-seo/views/titles-options.php:331
+#: includes/modules/local-seo/shortcodes/class-address.php:50
+#: includes/modules/local-seo/views/titles-options.php:331
 msgid "Email"
 msgstr "ایمیل"
 
-#: includes/modules/local-seo/shortcodes/class-address.php:54 includes/modules/local-seo/views/titles-options.php:306
-#: includes/modules/schema/shortcode/claimreview.php:16 includes/modules/schema/shortcode/dataset.php:18
+#: includes/modules/local-seo/shortcodes/class-address.php:54
+#: includes/modules/local-seo/views/titles-options.php:306
+#: includes/modules/schema/shortcode/claimreview.php:16
+#: includes/modules/schema/shortcode/dataset.php:18
 #: includes/modules/schema/shortcode/dataset.php:103
 msgid "URL"
 msgstr "آدرس اینترنتی"
@@ -2385,7 +2372,8 @@ msgstr "سازمان"
 msgid "Choose whether the site represents a person or an organization."
 msgstr "اینکه آیا سایت شما نماینده یک شخص است یا یک سازمان را مشخص کنید."
 
-#: includes/modules/local-seo/views/titles-options.php:286 includes/modules/schema/shortcode/dataset.php:83
+#: includes/modules/local-seo/views/titles-options.php:286
+#: includes/modules/schema/shortcode/dataset.php:83
 msgid "Name"
 msgstr "نام"
 
@@ -2398,11 +2386,8 @@ msgid "Logo"
 msgstr "لوگو"
 
 #: includes/modules/local-seo/views/titles-options.php:297
-msgid ""
-"<strong>Min Size: 160Χ90px, Max Size: 1920X1080px</strong>.<br /> A squared image is preferred by the search engines."
-msgstr ""
-"‏<strong>حداقل اندازه: 160Χ90px و حداکثر اندازه: 1920X1080px می‌باشد</ strong>.<br/> موتورهای جستجو تصویر مربعی را بیشتر "
-"می‌پسندند."
+msgid "<strong>Min Size: 160Χ90px, Max Size: 1920X1080px</strong>.<br /> A squared image is preferred by the search engines."
+msgstr "‏<strong>حداقل اندازه: 160Χ90px و حداکثر اندازه: 1920X1080px می‌باشد</ strong>.<br/> موتورهای جستجو تصویر مربعی را بیشتر می‌پسندند."
 
 #: includes/modules/local-seo/views/titles-options.php:307
 msgid "URL of the item."
@@ -2413,23 +2398,25 @@ msgid "Use Multiple Locations"
 msgstr "استفاده از چندین مکان"
 
 #: includes/modules/local-seo/views/titles-options.php:317
-msgid ""
-"Once you save the changes, we will create a new custom post type called \"Locations\" where you can add multiple "
-"locations of your business/organization."
-msgstr ""
-"هنگامی که تغییرات را ذخیره کردید، یک پست تایپ سفارشی جدید به نام \"مکان‌ها\" ایجاد خواهیم کرد که در آن می‌توانید چندین "
-"مکان از کسب و کار یا سازمان خود را اضافه کنید."
+msgid "Once you save the changes, we will create a new custom post type called \"Locations\" where you can add multiple locations of your business/organization."
+msgstr "هنگامی که تغییرات را ذخیره کردید، یک پست تایپ سفارشی جدید به نام \"مکان‌ها\" ایجاد خواهیم کرد که در آن می‌توانید چندین مکان از کسب و کار یا سازمان خود را اضافه کنید."
 
-#: includes/modules/local-seo/views/titles-options.php:319 includes/modules/local-seo/views/titles-options.php:604
-#: includes/modules/local-seo/views/titles-options.php:618 includes/modules/local-seo/views/titles-options.php:633
-#: includes/modules/schema/views/others.php:94 includes/modules/schema/views/post-types.php:202
+#: includes/modules/local-seo/views/titles-options.php:319
+#: includes/modules/local-seo/views/titles-options.php:604
+#: includes/modules/local-seo/views/titles-options.php:618
+#: includes/modules/local-seo/views/titles-options.php:633
+#: includes/modules/schema/views/others.php:94
+#: includes/modules/schema/views/post-types.php:202
 #: includes/modules/schema/views/post-types.php:218
 msgid "Default"
 msgstr "پیش‌‌فرض"
 
-#: includes/modules/local-seo/views/titles-options.php:320 includes/modules/local-seo/views/titles-options.php:605
-#: includes/modules/local-seo/views/titles-options.php:619 includes/modules/local-seo/views/titles-options.php:634
-#: includes/modules/schema/views/others.php:95 includes/modules/schema/views/post-types.php:203
+#: includes/modules/local-seo/views/titles-options.php:320
+#: includes/modules/local-seo/views/titles-options.php:605
+#: includes/modules/local-seo/views/titles-options.php:619
+#: includes/modules/local-seo/views/titles-options.php:634
+#: includes/modules/schema/views/others.php:95
+#: includes/modules/schema/views/post-types.php:203
 #: includes/modules/schema/views/post-types.php:219
 msgid "Custom"
 msgstr "سفارشی"
@@ -2438,7 +2425,8 @@ msgstr "سفارشی"
 msgid "Search engines display your email address."
 msgstr "موتورهای جستجو آدرس ایمیل شما را نمایش می‌دهند."
 
-#: includes/modules/local-seo/views/titles-options.php:341 includes/modules/local-seo/views/titles-options.php:443
+#: includes/modules/local-seo/views/titles-options.php:341
+#: includes/modules/local-seo/views/titles-options.php:443
 msgid "Search engines may prominently display your contact phone number for mobile users."
 msgstr "موتورهای جستجو ممکن است شماره تلفن شما را به کاربرانی که با موبایل هستند، به‌صورت برجسته نمایش دهند."
 
@@ -2451,12 +2439,8 @@ msgid "Address Format"
 msgstr "فرمت آدرس"
 
 #: includes/modules/local-seo/views/titles-options.php:360
-msgid ""
-"Format used when the address is displayed using the <code>[rank_math_contact_info]</code> shortcode."
-"<br><strong>Available Tags: {address}, {locality}, {region}, {postalcode}, {country}, {gps}</strong>"
-msgstr ""
-"فرمتی که هنگام نمایش آدرس با استفاده از کد کوتاه <code>[rank_math_contact_info]</code> استفاده می‌شود.<br><strong>تگ‌های "
-"موجود: {address} ، {locality} ، {region} ، {postalcode} ، {country} ، {gps}</strong>"
+msgid "Format used when the address is displayed using the <code>[rank_math_contact_info]</code> shortcode.<br><strong>Available Tags: {address}, {locality}, {region}, {postalcode}, {country}, {gps}</strong>"
+msgstr "فرمتی که هنگام نمایش آدرس با استفاده از کد کوتاه <code>[rank_math_contact_info]</code> استفاده می‌شود.<br><strong>تگ‌های موجود: {address} ، {locality} ، {region} ، {postalcode} ، {country} ، {gps}</strong>"
 
 #: includes/modules/local-seo/views/titles-options.php:375
 msgid "Business Type"
@@ -2467,12 +2451,8 @@ msgid "Opening Hours"
 msgstr "ساعات کاری"
 
 #: includes/modules/local-seo/views/titles-options.php:387
-msgid ""
-"Select opening hours. You can add multiple sets if you have different opening or closing hours on some days or if you "
-"have a mid-day break. Times are specified using 24:00 time."
-msgstr ""
-"ساعات کاری را انتخاب کنید. اگر در بعضی از روزها در ساعت‌های مختلفی کسب و کار خود را باز می‌کنید یا تعطیل می‌کنید یا "
-"می‌خواهید یک استراحت در اواسط روز داشته باشید، می‌توانید چندین مجموعه اضافه کنید. زمان‌ها با فرمت 24:00 ساعته مشخص می‌شوند."
+msgid "Select opening hours. You can add multiple sets if you have different opening or closing hours on some days or if you have a mid-day break. Times are specified using 24:00 time."
+msgstr "ساعات کاری را انتخاب کنید. اگر در بعضی از روزها در ساعت‌های مختلفی کسب و کار خود را باز می‌کنید یا تعطیل می‌کنید یا می‌خواهید یک استراحت در اواسط روز داشته باشید، می‌توانید چندین مجموعه اضافه کنید. زمان‌ها با فرمت 24:00 ساعته مشخص می‌شوند."
 
 #: includes/modules/local-seo/views/titles-options.php:389
 msgid "Add time"
@@ -2683,7 +2663,8 @@ msgstr "برچسب جمع پست تایپ مکان‌ها"
 msgid "Search RM Locations"
 msgstr "جستجوی مکان‌های رنک‌مث"
 
-#: includes/modules/local-seo/views/titles-options.php:708 includes/modules/local-seo/views/titles-options.php:724
+#: includes/modules/local-seo/views/titles-options.php:708
+#: includes/modules/local-seo/views/titles-options.php:724
 msgid "Select Page"
 msgstr "انتخاب صفحه"
 
@@ -2691,7 +2672,8 @@ msgstr "انتخاب صفحه"
 msgid "About Page"
 msgstr "صفحه درباره ما"
 
-#: includes/modules/local-seo/views/titles-options.php:718 includes/modules/local-seo/views/titles-options.php:734
+#: includes/modules/local-seo/views/titles-options.php:718
+#: includes/modules/local-seo/views/titles-options.php:734
 msgid "Select a page on your site where you want to show the LocalBusiness meta data."
 msgstr "صفحه‌ای را در سایت خود انتخاب کنید که می‌خواهید متادیتاهای محلی کسب و کار خود را در نشان دهید."
 
@@ -2704,12 +2686,8 @@ msgid "This tab contains news sitemap options."
 msgstr "این صفحه شامل گزینه‌های نقشه سایت خبری است."
 
 #: includes/modules/news-sitemap/class-news-sitemap.php:110
-msgid ""
-"News Sitemaps allow you to control which content you submit to Google News. More information: <a href=\"https://"
-"rankmath.com/kb/news-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">News Sitemaps overview</a>"
-msgstr ""
-"نقشه سایت خبری به شما اجازه می‌دهد تا کنترل کنید که چه محتوایی در گوگل نیوز ثبت شود. <a href=\"https://rankmath.com/kb/"
-"news-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">بررسی اجمالی نقشه سایت خبری</a>zs"
+msgid "News Sitemaps allow you to control which content you submit to Google News. More information: <a href=\"https://rankmath.com/kb/news-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">News Sitemaps overview</a>"
+msgstr "نقشه سایت خبری به شما اجازه می‌دهد تا کنترل کنید که چه محتوایی در گوگل نیوز ثبت شود. <a href=\"https://rankmath.com/kb/news-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">بررسی اجمالی نقشه سایت خبری</a>zs"
 
 #: includes/modules/news-sitemap/class-news-sitemap.php:113
 #, php-format
@@ -2724,27 +2702,33 @@ msgstr "ایندکس گوگل بات نیوز"
 msgid "Using noindex allows you to prevent articles from appearing in Google News."
 msgstr "استفاده از حالت نو ایندکس به شما امکان می‌دهد تا از نمایش مقالات در گوگل نیوز جلوگیری کنید."
 
-#: includes/modules/news-sitemap/metabox.php:30 includes/modules/news-sitemap/settings-news.php:28
+#: includes/modules/news-sitemap/metabox.php:30
+#: includes/modules/news-sitemap/settings-news.php:28
 msgid "Blog"
 msgstr "بلاگ"
 
-#: includes/modules/news-sitemap/metabox.php:31 includes/modules/news-sitemap/settings-news.php:29
+#: includes/modules/news-sitemap/metabox.php:31
+#: includes/modules/news-sitemap/settings-news.php:29
 msgid "Press Release"
 msgstr "انتشار مطبوعات"
 
-#: includes/modules/news-sitemap/metabox.php:32 includes/modules/news-sitemap/settings-news.php:30
+#: includes/modules/news-sitemap/metabox.php:32
+#: includes/modules/news-sitemap/settings-news.php:30
 msgid "Satire"
 msgstr "طنز"
 
-#: includes/modules/news-sitemap/metabox.php:33 includes/modules/news-sitemap/settings-news.php:31
+#: includes/modules/news-sitemap/metabox.php:33
+#: includes/modules/news-sitemap/settings-news.php:31
 msgid "Op-Ed"
 msgstr "بخش نظرات"
 
-#: includes/modules/news-sitemap/metabox.php:34 includes/modules/news-sitemap/settings-news.php:32
+#: includes/modules/news-sitemap/metabox.php:34
+#: includes/modules/news-sitemap/settings-news.php:32
 msgid "Opinion"
 msgstr "دیدگاه"
 
-#: includes/modules/news-sitemap/metabox.php:35 includes/modules/news-sitemap/settings-news.php:33
+#: includes/modules/news-sitemap/metabox.php:35
+#: includes/modules/news-sitemap/settings-news.php:33
 msgid "User Generated"
 msgstr "کاربر ایجاد شده"
 
@@ -2752,7 +2736,8 @@ msgstr "کاربر ایجاد شده"
 msgid "Genres"
 msgstr "ژانرها"
 
-#: includes/modules/news-sitemap/metabox.php:38 includes/modules/news-sitemap/settings-news.php:36
+#: includes/modules/news-sitemap/metabox.php:38
+#: includes/modules/news-sitemap/settings-news.php:36
 msgid "Label(s) characterizing the content of the article."
 msgstr "برچسب(های) مشخص کننده محتوای مقاله."
 
@@ -2761,12 +2746,8 @@ msgid "Stock Tickers"
 msgstr "نماد سهام"
 
 #: includes/modules/news-sitemap/metabox.php:48
-msgid ""
-"A comma-separated list of up to 5 stock tickers of the companies, mutual funds, or other financial entities that are "
-"the main subject of the article. Relevant primarily for business articles."
-msgstr ""
-"لیستی از 5 مورد از نمادهای سهام شرکت‌ها، صندوق‌های سرمایه‌گذاری مشترک یا سایر نهادهای مالی که در موضوع اصلی مقاله هستند با "
-"کاما از هم جدا کنید. در درجه اول مربوط به مقالات تجاری است."
+msgid "A comma-separated list of up to 5 stock tickers of the companies, mutual funds, or other financial entities that are the main subject of the article. Relevant primarily for business articles."
+msgstr "لیستی از 5 مورد از نمادهای سهام شرکت‌ها، صندوق‌های سرمایه‌گذاری مشترک یا سایر نهادهای مالی که در موضوع اصلی مقاله هستند با کاما از هم جدا کنید. در درجه اول مربوط به مقالات تجاری است."
 
 #: includes/modules/news-sitemap/settings-news.php:35
 msgid "Default Genres"
@@ -2782,21 +2763,19 @@ msgstr "به استثنای %s"
 msgid "%1$s to exclude for %2$s."
 msgstr "مستثنا کردن %1$s از داخل %2$s."
 
-#: includes/modules/news-sitemap/sitemap-xsl.php:107 includes/modules/video-sitemap/sitemap-xsl.php:103
+#: includes/modules/news-sitemap/sitemap-xsl.php:107
+#: includes/modules/video-sitemap/sitemap-xsl.php:103
 msgid "XML Sitemap"
 msgstr "نقشه سایت XML"
 
-#: includes/modules/news-sitemap/sitemap-xsl.php:114 includes/modules/video-sitemap/sitemap-xsl.php:110
+#: includes/modules/news-sitemap/sitemap-xsl.php:114
+#: includes/modules/video-sitemap/sitemap-xsl.php:110
 #, php-format
-msgid ""
-"This XML Sitemap is generated by <a href=\"%s\" target=\"_blank\">Rank Math WordPress SEO Plugin</a>. It is what search "
-"engines like Google use to crawl and re-crawl posts/pages/products/images/archives on your website."
-msgstr ""
-"این نقشه سایت XML توسط <a href=\"%s\" target=\"_blank\">افزونه سئوی وردپرس رنک مث</a> ایجاد شده است. این نقشه سایت "
-"دقیقاً همان چیزی است که موتورهای جستجو مانند گوگل از آن استفاده می‌کنند تا بتوانند با خزیدن در پست‌ها/صفحه‌ها/محصولات/"
-"تصاویر/بایگانی‌های سایت شما، محتواهایتان را ایندکس کنند."
+msgid "This XML Sitemap is generated by <a href=\"%s\" target=\"_blank\">Rank Math WordPress SEO Plugin</a>. It is what search engines like Google use to crawl and re-crawl posts/pages/products/images/archives on your website."
+msgstr "این نقشه سایت XML توسط <a href=\"%s\" target=\"_blank\">افزونه سئوی وردپرس رنک مث</a> ایجاد شده است. این نقشه سایت دقیقاً همان چیزی است که موتورهای جستجو مانند گوگل از آن استفاده می‌کنند تا بتوانند با خزیدن در پست‌ها/صفحه‌ها/محصولات/تصاویر/بایگانی‌های سایت شما، محتواهایتان را ایندکس کنند."
 
-#: includes/modules/news-sitemap/sitemap-xsl.php:127 includes/modules/video-sitemap/sitemap-xsl.php:123
+#: includes/modules/news-sitemap/sitemap-xsl.php:127
+#: includes/modules/video-sitemap/sitemap-xsl.php:123
 #, php-format
 msgid "Learn more about <a href=\"%s\" target=\"_blank\">XML Sitemaps</a>."
 msgstr "در مورد <a href=\"%s\" target=\"_blank\">XML Sitemaps</a> بیشتر بدانید."
@@ -2831,7 +2810,8 @@ msgstr "بررسی واقعیت"
 msgid "Movie"
 msgstr "فیلم"
 
-#: includes/modules/schema/class-admin.php:65 includes/modules/schema/views/post-types.php:139
+#: includes/modules/schema/class-admin.php:65
+#: includes/modules/schema/views/post-types.php:139
 msgid "None (Click here to set one)"
 msgstr "هیچ‌کدام (برای تنظیم یک مورد اینجا کلیک کنید)"
 
@@ -2893,7 +2873,8 @@ msgstr "اسکیما"
 msgid "Schemas"
 msgstr "اسکیماها"
 
-#: includes/modules/schema/class-post-type.php:43 includes/modules/schema/class-post-type.php:55
+#: includes/modules/schema/class-post-type.php:43
+#: includes/modules/schema/class-post-type.php:55
 msgid "Schema"
 msgstr "اسکیما"
 
@@ -2933,7 +2914,8 @@ msgstr "جستجوی اسکیماها"
 msgid "Rank Math Schema Templates"
 msgstr "الگوهای اسکیمای رنک مث"
 
-#: includes/modules/schema/class-post-type.php:84 includes/modules/schema/class-post-type.php:85
+#: includes/modules/schema/class-post-type.php:84
+#: includes/modules/schema/class-post-type.php:85
 msgid "Schema Templates"
 msgstr "الگوهای اسکیما"
 
@@ -2961,8 +2943,10 @@ msgstr "ابزارها:"
 msgid "Materials:"
 msgstr "اطلاعات تکمیلی:"
 
-#: includes/modules/schema/class-video.php:62 includes/modules/schema/class-video.php:63
-#: includes/modules/schema/class-video.php:64 includes/modules/schema/class-video.php:65
+#: includes/modules/schema/class-video.php:62
+#: includes/modules/schema/class-video.php:63
+#: includes/modules/schema/class-video.php:64
+#: includes/modules/schema/class-video.php:65
 msgid "Learn more"
 msgstr "بیشتر بدانید"
 
@@ -3011,11 +2995,13 @@ msgstr "صفحه وب مرجع "
 msgid "Identifier"
 msgstr "شناسه"
 
-#: includes/modules/schema/shortcode/dataset.php:46 includes/views/compare-keywords.php:24
+#: includes/modules/schema/shortcode/dataset.php:46
+#: includes/views/compare-keywords.php:24
 msgid "Keywords"
 msgstr "کلمات کلیدی"
 
-#: includes/modules/schema/shortcode/dataset.php:54 includes/modules/schema/shortcode/dataset.php:85
+#: includes/modules/schema/shortcode/dataset.php:54
+#: includes/modules/schema/shortcode/dataset.php:85
 msgid "License"
 msgstr "مجوز"
 
@@ -3031,7 +3017,8 @@ msgstr "پوشش زمانی"
 msgid "Special Coverage"
 msgstr "پوشش ویژه"
 
-#: includes/modules/schema/shortcode/dataset.php:84 includes/modules/schema/views/post-types.php:162
+#: includes/modules/schema/shortcode/dataset.php:84
+#: includes/modules/schema/views/post-types.php:162
 msgid "Description"
 msgstr "توضیحات"
 
@@ -3064,12 +3051,8 @@ msgid "Show SEO Score"
 msgstr "نمایش نمره سئو"
 
 #: includes/modules/schema/views/others.php:19
-msgid ""
-"Show the calculated SEO Score as a badge on the front end for selected post types. It can be disabled for specific "
-"posts."
-msgstr ""
-"نمرات سئو محاسبه شده را به‌عنوان علامت در فرانت‌اِند برای پست‌تایپ‌های انتخاب شده نشان دهید. این مورد می‌تواند برای پست‌های "
-"خاص غیرفعال باشد."
+msgid "Show the calculated SEO Score as a badge on the front end for selected post types. It can be disabled for specific posts."
+msgstr "نمرات سئو محاسبه شده را به‌عنوان علامت در فرانت‌اِند برای پست‌تایپ‌های انتخاب شده نشان دهید. این مورد می‌تواند برای پست‌های خاص غیرفعال باشد."
 
 #: includes/modules/schema/views/others.php:30
 msgid "SEO Score Post Types"
@@ -3097,12 +3080,8 @@ msgstr "جایگاه نمره سئو"
 
 #: includes/modules/schema/views/others.php:59
 #, php-format
-msgid ""
-"Display the badges automatically, or insert the %1$s shortcode in your posts and the %2$s template tag in your theme "
-"template files."
-msgstr ""
-"علامت‌ها را به‌صورت خودکار نمایش دهید یا کدکوتاه %1$s را در نوشته‌های خود و تگ الگوی %2$s را در فایل‌های الگوی قالب خود "
-"درون‌ریزی کنید."
+msgid "Display the badges automatically, or insert the %1$s shortcode in your posts and the %2$s template tag in your theme template files."
+msgstr "علامت‌ها را به‌صورت خودکار نمایش دهید یا کدکوتاه %1$s را در نوشته‌های خود و تگ الگوی %2$s را در فایل‌های الگوی قالب خود درون‌ریزی کنید."
 
 #: includes/modules/schema/views/others.php:66
 msgid "Below Content"
@@ -3126,18 +3105,15 @@ msgstr "ما را با یک لینک پشتیبانی کنید"
 
 #: includes/modules/schema/views/others.php:81
 #, php-format
-msgid ""
-"If you are showing the SEO scores on the front end, this option will insert a %1$s backlink to RankMath.com to show "
-"your support. You can change the link & the text by using this %2$s."
-msgstr ""
-"اگر در بخش فرانت‌اِند سایت خود نمرات سئو را نشان می‌دهید، این گزینه یک بک لینک %1$s را در RankMath.com درج می‌کند تا "
-"پشتیبانی شما را نشان دهد. با استفاده از این %2$s می‌توانید لینک و متن را تغییر دهید."
+msgid "If you are showing the SEO scores on the front end, this option will insert a %1$s backlink to RankMath.com to show your support. You can change the link & the text by using this %2$s."
+msgstr "اگر در بخش فرانت‌اِند سایت خود نمرات سئو را نشان می‌دهید، این گزینه یک بک لینک %1$s را در RankMath.com درج می‌کند تا پشتیبانی شما را نشان دهد. با استفاده از این %2$s می‌توانید لینک و متن را تغییر دهید."
 
 #: includes/modules/schema/views/others.php:81
 msgid "filter"
 msgstr "فیلتر"
 
-#: includes/modules/schema/views/others.php:91 includes/modules/schema/views/others.php:92
+#: includes/modules/schema/views/others.php:91
+#: includes/modules/schema/views/others.php:92
 msgid "Remove Media Data from RSS feed"
 msgstr "حذف داده‌های رسانه از فید RSS"
 
@@ -3169,9 +3145,7 @@ msgstr "عنوان %s تکی"
 #: includes/modules/schema/views/post-types.php:53
 #, php-format
 msgid "Default title tag for single %s pages. This can be changed on a per-post basis on the post editor screen."
-msgstr ""
-"تگ عنوان پیش‌فرض که برای صفحه‌های %s تکی استفاده می‌شود. این تگ می‌تواند بر اساس هر نوشتۀ مجزا در صفحه ویرایشگر آن نوشته "
-"تغییر یابد."
+msgstr "تگ عنوان پیش‌فرض که برای صفحه‌های %s تکی استفاده می‌شود. این تگ می‌تواند بر اساس هر نوشتۀ مجزا در صفحه ویرایشگر آن نوشته تغییر یابد."
 
 #: includes/modules/schema/views/post-types.php:66
 #, php-format
@@ -3181,9 +3155,7 @@ msgstr "توضیحات %s تکی"
 #: includes/modules/schema/views/post-types.php:68
 #, php-format
 msgid "Default description for single %s pages. This can be changed on a per-post basis on the post editor screen."
-msgstr ""
-"توضیحات پیش‌فرض که برای صفحه‌های تکی %s استفاده می‌شود. این تگ می‌تواند بر اساس هر نوشتۀ مجزا در صفحه ویرایشگر آن نوشته "
-"تغییر یابد."
+msgstr "توضیحات پیش‌فرض که برای صفحه‌های تکی %s استفاده می‌شود. این تگ می‌تواند بر اساس هر نوشتۀ مجزا در صفحه ویرایشگر آن نوشته تغییر یابد."
 
 #: includes/modules/schema/views/post-types.php:85
 #, php-format
@@ -3205,7 +3177,8 @@ msgstr "توضیحات بایگانی %s"
 msgid "Description for %s archive pages."
 msgstr "این توضیحات برای صفحات بایگانی %s می‌باشد."
 
-#: includes/modules/schema/views/post-types.php:117 includes/modules/schema/views/post-types.php:134
+#: includes/modules/schema/views/post-types.php:117
+#: includes/modules/schema/views/post-types.php:134
 msgid "Schema Type"
 msgstr "نوع اسکیما"
 
@@ -3213,7 +3186,8 @@ msgstr "نوع اسکیما"
 msgid "Default rich snippet selected when creating a new product."
 msgstr "ریچ اسنیپت پیش‌فرض در هنگام ایجاد یک محصول جدید انتخاب شده است."
 
-#: includes/modules/schema/views/post-types.php:121 includes/modules/schema/views/post-types.php:137
+#: includes/modules/schema/views/post-types.php:121
+#: includes/modules/schema/views/post-types.php:137
 msgid "None"
 msgstr "هیچ کدام"
 
@@ -3227,12 +3201,8 @@ msgstr "عنوان"
 
 #: includes/modules/schema/views/post-types.php:178
 #, php-format
-msgid ""
-"Google does not allow Person as the Publisher for articles. Organization will be used instead. You can read more about "
-"this <a href=\"%s\" target=\"_blank\">here</a>."
-msgstr ""
-"گوگل برای مقالات به \"شخص\" به‌عنوان \"ناشر\" مجوز نمی‌دهد. در عوض از سازمان استفاده خواهد شد. می‌توانید اطلاعات بیشتری در "
-"این مورد از <a href=\"%s\" target=\"_blank\">اینجا</a> بخوانید."
+msgid "Google does not allow Person as the Publisher for articles. Organization will be used instead. You can read more about this <a href=\"%s\" target=\"_blank\">here</a>."
+msgstr "گوگل برای مقالات به \"شخص\" به‌عنوان \"ناشر\" مجوز نمی‌دهد. در عوض از سازمان استفاده خواهد شد. می‌توانید اطلاعات بیشتری در این مورد از <a href=\"%s\" target=\"_blank\">اینجا</a> بخوانید."
 
 #: includes/modules/schema/views/post-types.php:183
 msgid "Article Type"
@@ -3246,19 +3216,16 @@ msgstr "شناسایی خودکار ویدئو"
 msgid "Populate automatic Video Schema by auto-detecting any video in the content."
 msgstr "با شناسایی خودکار هر ویدئویی در محتوا، اسکیمای ویدئو را به‌صورت اتوماتیک تکمیل کنید."
 
-#: includes/modules/schema/views/post-types.php:214 includes/modules/schema/views/post-types.php:231
+#: includes/modules/schema/views/post-types.php:214
+#: includes/modules/schema/views/post-types.php:231
 #, php-format
 msgid "%s Robots Meta"
 msgstr "متای ربات %s"
 
 #: includes/modules/schema/views/post-types.php:216
 #, php-format
-msgid ""
-"Select custom robots meta, such as <code>nofollow</code>, <code>noarchive</code>, etc. for single %s pages. Otherwise "
-"the default meta will be used, as set in the Global Meta tab."
-msgstr ""
-"برای صفحه‌های تکی %s، متای ربات سفارشی، مانند <code>نو فالو</code> یا <code>نو آرشیو</code> یا... را انتخاب کنید. در غیر "
-"این صورت، از متای پیش‌فرض استفاده می‌شود، بر طبق همان تنظیماتی که در زبانۀ \"متای سراسری\" پیکربدی شده است."
+msgid "Select custom robots meta, such as <code>nofollow</code>, <code>noarchive</code>, etc. for single %s pages. Otherwise the default meta will be used, as set in the Global Meta tab."
+msgstr "برای صفحه‌های تکی %s، متای ربات سفارشی، مانند <code>نو فالو</code> یا <code>نو آرشیو</code> یا... را انتخاب کنید. در غیر این صورت، از متای پیش‌فرض استفاده می‌شود، بر طبق همان تنظیماتی که در زبانۀ \"متای سراسری\" پیکربدی شده است."
 
 #: includes/modules/schema/views/post-types.php:233
 #, php-format
@@ -3308,30 +3275,31 @@ msgid "Thumbnail for Facebook"
 msgstr "تصویر بندانگشتی برای فیس‌بوک"
 
 #: includes/modules/schema/views/post-types.php:302
-msgid ""
-"Image displayed when your page is shared on Facebook and other social networks. Use images that are at least 1200 x 630 "
-"pixels for the best display on high resolution devices."
-msgstr ""
-"این تصویر زمانی که صفحۀ شما در فیس‌بوک یا سایر شبکه‌های اجتماعی به اشتراک گذاشته شود نمایش داده می‌شود. برای داشتن بهترین "
-"نمایش در دستگاه‌های با وضوح بالا از تصاویری استفاده کنید که حداقل 1200x630 پیکسل باشند."
+msgid "Image displayed when your page is shared on Facebook and other social networks. Use images that are at least 1200 x 630 pixels for the best display on high resolution devices."
+msgstr "این تصویر زمانی که صفحۀ شما در فیس‌بوک یا سایر شبکه‌های اجتماعی به اشتراک گذاشته شود نمایش داده می‌شود. برای داشتن بهترین نمایش در دستگاه‌های با وضوح بالا از تصاویری استفاده کنید که حداقل 1200x630 پیکسل باشند."
 
-#: includes/modules/schema/views/post-types.php:312 includes/modules/schema/views/post-types.php:339
+#: includes/modules/schema/views/post-types.php:312
+#: includes/modules/schema/views/post-types.php:339
 msgid "Bulk Editing"
 msgstr "ویرایش دسته‌جمعی"
 
-#: includes/modules/schema/views/post-types.php:313 includes/modules/schema/views/post-types.php:340
+#: includes/modules/schema/views/post-types.php:313
+#: includes/modules/schema/views/post-types.php:340
 msgid "Add bulk editing columns to the post listing screen."
 msgstr "ستون‌های ویرایش دسته‌جمعی را به صفحۀ لیست نوشته‌ها اضافه کنید."
 
-#: includes/modules/schema/views/post-types.php:315 includes/modules/schema/views/post-types.php:342
+#: includes/modules/schema/views/post-types.php:315
+#: includes/modules/schema/views/post-types.php:342
 msgid "Disabled"
 msgstr "غیرفعال شده"
 
-#: includes/modules/schema/views/post-types.php:316 includes/modules/schema/views/post-types.php:343
+#: includes/modules/schema/views/post-types.php:316
+#: includes/modules/schema/views/post-types.php:343
 msgid "Enabled"
 msgstr "فعال شده"
 
-#: includes/modules/schema/views/post-types.php:317 includes/modules/schema/views/post-types.php:344
+#: includes/modules/schema/views/post-types.php:317
+#: includes/modules/schema/views/post-types.php:344
 msgid "Read Only"
 msgstr "فقط خواندنی"
 
@@ -3343,7 +3311,8 @@ msgstr "افزودن جعبه متای سئو"
 msgid "Add the SEO Meta Box for the editor screen to customize SEO options for posts in this post type."
 msgstr "جعبه متای سئو را برای سفارشی‌سازی تنظیمات سئو در نوشته‌ها برای این پست تایپ در ویرایشگر اضافه کنید."
 
-#: includes/modules/schema/views/post-types.php:356 includes/modules/video-sitemap/settings-video.php:43
+#: includes/modules/schema/views/post-types.php:356
+#: includes/modules/video-sitemap/settings-video.php:43
 msgid "Custom Fields"
 msgstr "فیلدهای سفارشی"
 
@@ -3352,12 +3321,8 @@ msgid "List of custom fields name to include in the Page analysis. Add one per l
 msgstr "لیست نام فیلدهای سفارشی برای تجزیه و تحلیل صفحه را درج کنید. هر کدام را در یک خط اضافه کنید."
 
 #: includes/modules/video-sitemap/class-video-sitemap.php:59
-msgid ""
-"Video Sitemaps give search engines information about video content on your site. More information: <a href=\"https://"
-"rankmath.com/kb/video-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">Video Sitemaps</a>"
-msgstr ""
-"نقشه سایت ویدئویی اطلاعاتی را درمورد محتوای ویدئوی سایت شما به موتورهای جستجو می‌دهد. اطلاعات تکمیلی: <a href=\"https://"
-"rankmath.com/kb/video-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">نقشه سایت ویدئویی</a>"
+msgid "Video Sitemaps give search engines information about video content on your site. More information: <a href=\"https://rankmath.com/kb/video-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">Video Sitemaps</a>"
+msgstr "نقشه سایت ویدئویی اطلاعاتی را درمورد محتوای ویدئوی سایت شما به موتورهای جستجو می‌دهد. اطلاعات تکمیلی: <a href=\"https://rankmath.com/kb/video-sitemap/?utm_source=Plugin&utm_campaign=WP\" target=\"_blank\">نقشه سایت ویدئویی</a>"
 
 #: includes/modules/video-sitemap/class-video-sitemap.php:62
 #, php-format
@@ -3403,12 +3368,8 @@ msgstr "سئو مهم‌ترین و مؤثرترین منبع جذب ترافی�
 
 #: includes/plugin-update/class-plugin-update.php:263
 #, php-format
-msgid ""
-"We created %1$sRank Math, a WordPress SEO plugin%2$s, to help every website owner get access to the SEO tools they need "
-"to improve their SEO and attract more traffic to their website."
-msgstr ""
-"ما %1$sرنک مث، افزونه سئوی وردپرس%2$s را ساختیم، تا به همۀ مدیران وبسایت‌ها کمک کنیم تا به ابزار سئوی حرفه‌ای که برای "
-"بهبود سئو و افزایش ترافیک وبسایتشان نیاز دارند دسترسی داشته باشند."
+msgid "We created %1$sRank Math, a WordPress SEO plugin%2$s, to help every website owner get access to the SEO tools they need to improve their SEO and attract more traffic to their website."
+msgstr "ما %1$sرنک مث، افزونه سئوی وردپرس%2$s را ساختیم، تا به همۀ مدیران وبسایت‌ها کمک کنیم تا به ابزار سئوی حرفه‌ای که برای بهبود سئو و افزایش ترافیک وبسایتشان نیاز دارند دسترسی داشته باشند."
 
 #: includes/plugin-update/class-plugin-update.php:418
 msgid "Please update the free version before updating Rank Math SEO PRO."
@@ -3417,8 +3378,7 @@ msgstr "لطفاً قبل از اینکه \"رنک مث پرو\" را به‌ر�
 #: includes/plugin-update/class-plugin-update.php:421
 #, php-format
 msgid "It seems that you don't have an active subscription for %1$s. Please see %2$sdetails and pricing%3$s."
-msgstr ""
-"به نظر می‌رسد که شما هیچ اشتراک فعالی را برای %1$s در حساب کاربری خود ندارید. لطفاً %2$sجزئیات و قیمت%3$s را ببینید."
+msgstr "به نظر می‌رسد که شما هیچ اشتراک فعالی را برای %1$s در حساب کاربری خود ندارید. لطفاً %2$sجزئیات و قیمت%3$s را ببینید."
 
 #: includes/plugin-update/class-plugin-update.php:428
 #, php-format
@@ -3471,12 +3431,8 @@ msgstr "برای درون‌ریزی متافیلدها این گزینه را �
 
 #: includes/views/csv-import-export-panel.php:48
 #, php-format
-msgid ""
-"%s It is recommended to save a database backup before using this option because importing malformed CSV can result in "
-"loss of data."
-msgstr ""
-"%s توصیه می‌شود قبل از استفاده از این گزینه، یک نسخه پشتیبان از پایگاه داده سایت خود ذخیره کنید زیرا اگر درون‌ریزی CSV با "
-"مشکل مواجه شود منجر به از دست رفتن داده‌ها می‌شود."
+msgid "%s It is recommended to save a database backup before using this option because importing malformed CSV can result in loss of data."
+msgstr "%s توصیه می‌شود قبل از استفاده از این گزینه، یک نسخه پشتیبان از پایگاه داده سایت خود ذخیره کنید زیرا اگر درون‌ریزی CSV با مشکل مواجه شود منجر به از دست رفتن داده‌ها می‌شود."
 
 #: includes/views/csv-import-export-panel.php:48
 msgid "Warning:"
@@ -3540,31 +3496,17 @@ msgstr "لطفاً قبل از اینکه نسخۀ پرو را فعال نمائ
 
 #: rank-math-pro.php:113
 #, php-format
-msgid ""
-"Your account does not have any active subscription. <a href=\"%1$s\" target=\"_blank\">Please buy the Rank Math PRO "
-"version here</a> or <a href=\"%2$s\">reconnect your account here</a>."
-msgstr ""
-"هیچ اشتراک فعالی در حساب کاربری شما وجود ندارد. <a href=\"%1$s\" target=\"_blank\">لطفاً افزونه \"رنک مث پرو\" را از "
-"اینجا خریداری نمائید</a> یا <a href=\"%2$s\">حساب خود را از اینجا متصل کنید</a>."
+msgid "Your account does not have any active subscription. <a href=\"%1$s\" target=\"_blank\">Please buy the Rank Math PRO version here</a> or <a href=\"%2$s\">reconnect your account here</a>."
+msgstr "هیچ اشتراک فعالی در حساب کاربری شما وجود ندارد. <a href=\"%1$s\" target=\"_blank\">لطفاً افزونه \"رنک مث پرو\" را از اینجا خریداری نمائید</a> یا <a href=\"%2$s\">حساب خود را از اینجا متصل کنید</a>."
 
 #: rank-math-pro.php:141
 msgid "Rank Math free version is required to run Rank Math Pro. Both plugins are now disabled."
-msgstr ""
-"برای اجرای افزونۀ \"رنک مث پرو\" به افزونۀ \"رنک مث رایگان\" در مخزن وردپرس نیاز است. هر دو افزونه در حال حاضر غیرفعال "
-"هستند."
+msgstr "برای اجرای افزونۀ \"رنک مث پرو\" به افزونۀ \"رنک مث رایگان\" در مخزن وردپرس نیاز است. هر دو افزونه در حال حاضر غیرفعال هستند."
 
 #: rank-math-pro.php:145
-msgid ""
-"Rank Math free version is required to run Rank Math Pro, but it could not be installed automatically. Please install "
-"and activate the free version first."
-msgstr ""
-"برای اجرای افزونۀ \"رنک مث پرو\" به افزونۀ \"رنک مث رایگان\" در مخزن وردپرس نیاز است، اما نمی‌تواند به طور خودکار نصب "
-"شود. لطفاً ابتدا نسخه رایگان را نصب و فعال کنید."
+msgid "Rank Math free version is required to run Rank Math Pro, but it could not be installed automatically. Please install and activate the free version first."
+msgstr "برای اجرای افزونۀ \"رنک مث پرو\" به افزونۀ \"رنک مث رایگان\" در مخزن وردپرس نیاز است، اما نمی‌تواند به طور خودکار نصب شود. لطفاً ابتدا نسخه رایگان را نصب و فعال کنید."
 
 #: rank-math-pro.php:151
-msgid ""
-"Rank Math free version is required to run Rank Math Pro, but it could not be activated automatically. Please install "
-"and activate the free version first."
-msgstr ""
-"برای اجرای افزونۀ \"رنک مث پرو\" به افزونۀ \"رنک مث رایگان\" در مخزن وردپرس نیاز است، اما نمی‌تواند به طور خودکار فعال "
-"شود. لطفاً ابتدا نسخه رایگان را نصب و فعال کنید."
+msgid "Rank Math free version is required to run Rank Math Pro, but it could not be activated automatically. Please install and activate the free version first."
+msgstr "برای اجرای افزونۀ \"رنک مث پرو\" به افزونۀ \"رنک مث رایگان\" در مخزن وردپرس نیاز است، اما نمی‌تواند به طور خودکار فعال شود. لطفاً ابتدا نسخه رایگان را نصب و فعال کنید."

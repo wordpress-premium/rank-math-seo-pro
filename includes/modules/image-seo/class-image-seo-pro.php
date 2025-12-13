@@ -52,6 +52,7 @@ class Image_Seo_Pro {
 	 */
 	public function __construct() {
 		$this->action( 'rank_math/admin/settings/images', 'add_options' );
+		$this->filter( 'rank_math/settings/sanitize_fields', 'sanitize_fields', 10, 3 );
 
 		if ( Helper::get_settings( 'general.add_avatar_alt' ) ) {
 			$this->filter( 'get_avatar', 'avatar_add_missing_alt', 99, 6 );
@@ -66,7 +67,7 @@ class Image_Seo_Pro {
 			$this->filter( 'the_content', 'add_description', 99 );
 		}
 
-		$replacements = Helper::get_settings( 'general.image_replacements' );
+		$replacements = array_filter( Helper::get_settings( 'general.image_replacements', [] ) );
 		if ( ! empty( $replacements ) ) {
 			$this->filter( 'the_content', 'attribute_caption_replacements', 100 );
 			$this->filter( 'post_thumbnail_html', 'attribute_caption_replacements', 20 );
@@ -450,7 +451,7 @@ class Image_Seo_Pro {
 	 * @return string         New post content.
 	 */
 	public function attribute_caption_replacements( $content ) {
-		$replacements = Helper::get_settings( 'general.image_replacements' );
+		$replacements = array_filter( Helper::get_settings( 'general.image_replacements' ) );
 		foreach ( $replacements as $replacement_id => $replacement ) {
 			if ( ! count( array_intersect( $replacement['replace_in'], [ 'alt', 'title', 'caption' ] ) ) ) {
 				continue;
@@ -518,7 +519,7 @@ class Image_Seo_Pro {
 	 * @return string New shortcode output.
 	 */
 	public function caption_replacements( $out, $pairs, $atts ) {
-		$replacements = Helper::get_settings( 'general.image_replacements' );
+		$replacements = array_filter( Helper::get_settings( 'general.image_replacements' ) );
 		foreach ( $replacements as $replacement_id => $replacement ) {
 			if ( ! in_array( 'caption', $replacement['replace_in'], true ) ) {
 				continue;
@@ -546,7 +547,24 @@ class Image_Seo_Pro {
 		$field_ids       = wp_list_pluck( $cmb->prop( 'fields' ), 'id' );
 		$fields_position = array_search( 'img_title_format', array_keys( $field_ids ), true ) + 1;
 
-		include_once dirname( __FILE__ ) . '/options.php';
+		include_once __DIR__ . '/options.php';
+	}
+
+	/**
+	 * Sanitize the Image SEO options.
+	 *
+	 * @param string $sanitized_value The sanitized value.
+	 * @param string $value           Original field value.
+	 * @param string $field_id        Field ID.
+	 *
+	 * @return string
+	 */
+	public function sanitize_fields( $sanitized_value, $value, $field_id ) {
+		if ( ! in_array( $field_id, [ 'find', 'replace' ], true ) ) {
+			return $sanitized_value;
+		}
+
+		return self::is_space( $value ) ? $value : sanitize_text_field( $value );
 	}
 
 	/**
@@ -605,12 +623,12 @@ class Image_Seo_Pro {
 	/**
 	 * Turn first character of every sentence to uppercase.
 	 *
-	 * @param  string $string Original sring.
+	 * @param  string $value Original string value.
 	 *
-	 * @return string         New string.
+	 * @return string New string.
 	 */
-	private function sentence_case( $string ) {
-		$sentences  = preg_split( '/([.?!]+)/', $string, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+	private function sentence_case( $value ) {
+		$sentences  = preg_split( '/([.?!]+)/', $value, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
 		$new_string = '';
 		foreach ( $sentences as $key => $sentence ) {
 			$new_string .= ( $key & 1 ) === 0 ?
@@ -624,23 +642,23 @@ class Image_Seo_Pro {
 	/**
 	 * Multibyte ucfirst().
 	 *
-	 * @param  string $string String.
+	 * @param  string $value String value.
 	 *
-	 * @return string         New string.
+	 * @return string New string.
 	 */
-	private function mb_ucfirst( $string ) {
-		return mb_strtoupper( mb_substr( $string, 0, 1 ) ) . mb_strtolower( mb_substr( $string, 1 ) );
+	private function mb_ucfirst( $value ) {
+		return mb_strtoupper( mb_substr( $value, 0, 1 ) ) . mb_strtolower( mb_substr( $value, 1 ) );
 	}
 
 	/**
 	 * Change case of string.
 	 *
-	 * @param  string $string String to change.
-	 * @param  string $case   Case type to change to.
+	 * @param  string $value       String to change.
+	 * @param  string $string_case Case type to change to.
 	 *
 	 * @return string         New string.
 	 */
-	private function change_case( $string, $case ) {
+	private function change_case( $value, $string_case ) {
 		$cases_hash = [
 			'titlecase'    => MB_CASE_TITLE,
 			'sentencecase' => MB_CASE_LOWER,
@@ -648,15 +666,15 @@ class Image_Seo_Pro {
 			'uppercase'    => MB_CASE_UPPER,
 		];
 
-		if ( ! isset( $cases_hash[ $case ] ) ) {
-			return $string;
+		if ( ! isset( $cases_hash[ $string_case ] ) ) {
+			return $value;
 		}
 
-		if ( 'sentencecase' === $case ) {
-			return $this->sentence_case( $string );
+		if ( 'sentencecase' === $string_case ) {
+			return $this->sentence_case( $value );
 		}
 
-		return mb_convert_case( $string, $cases_hash[ $case ] );
+		return mb_convert_case( $value, $cases_hash[ $string_case ] );
 	}
 
 	/**

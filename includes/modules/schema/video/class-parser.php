@@ -71,6 +71,8 @@ class Parser {
 			return;
 		}
 
+		$content = apply_filters( 'the_content', $content );
+
 		/**
 		 * Filter to change the content passed to the Video Parser.
 		 *
@@ -79,7 +81,7 @@ class Parser {
 		 *
 		 * @return string Content.
 		 */
-		$content    = apply_filters( 'rank_math/video/parser_content', apply_filters( 'the_content', $content ), $this->post );
+		$content    = apply_filters( 'rank_math/video/parser_content', $content, $this->post );
 		$this->urls = $this->get_video_urls( $content );
 
 		if ( ! $save ) {
@@ -309,7 +311,9 @@ class Parser {
 			$matches
 		);
 
-		return $this->shortcode_ids = empty( $matches ) || empty( $matches[1] ) ? [] : $matches[1];
+		$this->shortcode_ids = empty( $matches ) || empty( $matches[1] ) ? [] : $matches[1];
+
+		return $this->shortcode_ids;
 	}
 
 	/**
@@ -331,7 +335,7 @@ class Parser {
 		}
 
 		if ( ! class_exists( 'WP_Http' ) ) {
-			include_once( ABSPATH . WPINC . '/class-http.php' );
+			include_once ABSPATH . WPINC . '/class-http.php';
 		}
 
 		$url      = explode( '?', $url )[0];
@@ -391,7 +395,7 @@ class Parser {
 		$attach_id = wp_insert_attachment( $post_info, $file_path, $this->post->ID );
 
 		// Include image.php.
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		require_once ABSPATH . 'wp-admin/includes/image.php'; // @phpstan-ignore-line
 
 		// Define attachment metadata.
 		$attach_data = wp_generate_attachment_metadata( $attach_id, $file_path );
@@ -464,8 +468,6 @@ class Parser {
 	 *
 	 * @param int   $meta_id    Meta id.
 	 * @param array $meta_value Schema data.
-	 *
-	 * @return array
 	 */
 	private function maybe_update_upload_date( $meta_id, $meta_value ) {
 		if ( empty( $meta_value['uploadDate'] ) ) {
@@ -523,7 +525,7 @@ class Parser {
 		if ( empty( $id ) ) {
 			return false;
 		}
-		$pattern = '/https:\/\/(?:(www\.)?youtu\.?be(?:(-nocookie)?\.com)?(\/)?(embed|watch\?v=)?)(\/)?' .current( $id ) . '/';
+		$pattern = '/https:\/\/(?:(www\.)?youtu\.?be(?:(-nocookie)?\.com)?(\/)?(embed|watch\?v=)?)(\/)?' . current( $id ) . '/';
 		return 1 === preg_match( $pattern, $content );
 	}
 }

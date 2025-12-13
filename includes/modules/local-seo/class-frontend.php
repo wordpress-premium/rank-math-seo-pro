@@ -146,8 +146,6 @@ class Frontend {
 	 *
 	 * @param array  $data    Array of json-ld data.
 	 * @param JsonLD $jsonld Instance of jsonld.
-	 *
-	 * @return array
 	 */
 	private function validate_publisher_data( &$data, $jsonld ) {
 		if ( empty( $data['publisher'] ) ) {

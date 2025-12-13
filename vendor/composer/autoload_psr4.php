@@ -6,4 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WPMedia\\PluginFamily\\' => array($vendorDir . '/wp-media/plugin-family/src'),
 );

@@ -11,6 +11,7 @@
 namespace RankMathPro\Redirections\CSV_Import_Export_Redirections;
 
 use RankMath\Helpers\Arr;
+use RankMath\Helpers\DB as DB_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -114,7 +115,7 @@ class Importer {
 		$file->seek( $count );
 		$contents = $file->current();
 		if ( empty( trim( $contents ) ) ) {
-			$count--;
+			--$count;
 		}
 
 		// Unlock file.
@@ -246,17 +247,15 @@ class Importer {
 
 		global $wpdb;
 		$where                        = $wpdb->prepare( 'slug = %s', $term_slug );
-		self::$term_ids[ $term_slug ] = $wpdb->get_var( "SELECT term_id FROM {$wpdb->terms} WHERE $where" ); // phpcs:ignore
+		self::$term_ids[ $term_slug ] = DB_Helper::get_var( "SELECT term_id FROM {$wpdb->terms} WHERE $where" );
 
 		return self::$term_ids[ $term_slug ];
 	}
 
 	/**
 	 * After each batch is finished.
-	 *
-	 * @param array $items Processed items.
 	 */
-	public function batch_done( $items ) {
+	public function batch_done() {
 		unset( $this->spl );
 
 		$status = (array) get_option( 'rank_math_csv_import_redirections_status', [] );
@@ -313,7 +312,7 @@ class Importer {
 			if ( ! isset( $this->actions[ $action ] ) ) {
 				$this->actions[ $action ] = 0;
 			}
-			$this->actions[ $action ]++;
+			++$this->actions[ $action ];
 		}
 	}
 
@@ -358,6 +357,4 @@ class Importer {
 		}
 		$this->errors[ $error_id ] = $error_message;
 	}
-
-
 }

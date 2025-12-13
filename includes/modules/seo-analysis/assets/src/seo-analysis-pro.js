@@ -1,52 +1,107 @@
-const initCompetitorAnalysis = function() {
-	jQuery( '#competitor_url' ).on( 'keyup', function( event ) {
-		if ( 'Enter' === event.key ) {
-			// If the input is empty, don't do anything.
-			if ( '' === event.target.value ) {
-				return
+/**
+ * External Dependencies
+ */
+import { map } from 'lodash'
+
+/**
+ * WordPress Dependencies
+ */
+import { addFilter } from '@wordpress/hooks'
+import domReady from '@wordpress/dom-ready'
+import { __ } from '@wordpress/i18n'
+
+/**
+ * Internal Dependencies
+ */
+import PrintButton from './components/PrintButton'
+import { getStore } from './store'
+import CompetitorAnalysis from './components/CompetitorAnalysis'
+import SideBySide from './components/SideBySide'
+
+getStore()
+
+domReady( () => {
+	if ( ! rankMath.isWpRocketActive ) {
+		addFilter(
+			'rank_math_analysis_category_notice',
+			'rank-math-pro',
+			( notice, category ) => {
+				if ( 'performance' !== category ) {
+					return notice
+				}
+
+				return (
+					<div className="rank-math-seo-analysis-notice rank-math-seo-analysis-notice-wp-rocket">
+						<a
+							href="https://wp-rocket.me/rankmath-and-wp-rocket/?utm_campaign=rankmath-benefits&utm_source=rankmath&utm_medium=partners"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{ __(
+								'Install WP Rocket to get the Performance Boost',
+								'rank-math-pro'
+							) }
+						</a>
+					</div>
+				)
 			}
-
-			event.preventDefault()
-			document.querySelector( '.rank-math-recheck' ).click()
-			document.querySelector( '#competitor_url' ).blur()
-		}
-	} ).on( 'input', function( event ) {
-		if ( '' === event.target.value ) {
-			document.querySelector( '.rank-math-recheck' ).disabled = true
-		} else {
-			document.querySelector( '.rank-math-recheck' ).disabled = false
-		}
-	} ).trigger( 'input' )
-}
-
-jQuery( function() {
-	if ( jQuery( '#competitor_url' ).length ) {
-		initCompetitorAnalysis()
+		)
 	}
 
-	jQuery( '#rank-math-print-results' ).on( 'click', function( event ) {
-		let uri = window.location.href
-		uri = uri.split( '#' )[ 0 ]
-		if ( -1 === uri.indexOf( '?' ) ) {
-			uri += '?'
-		} else {
-			uri += '&'
+	// Overwrite Competitor Analysis view & add Side By Side Tab.
+	addFilter(
+		'rank_math_analyzer_tabs',
+		'rank-math-pro',
+		( tabs ) => {
+			tabs = map( tabs, ( field ) => {
+				if ( field.name === 'competitor_analyzer' ) {
+					return {
+						...field,
+						view: CompetitorAnalysis,
+					}
+				}
+				return field
+			} )
+
+			const sideBySideTab = {
+				name: 'side_by_side',
+				title: (
+					<>
+						<i className="dashicons dashicons-columns" />
+						{ __( 'Side By Side', 'rank-math' ) }
+					</>
+				),
+				view: SideBySide,
+			}
+
+			tabs.splice( 1, 0, sideBySideTab ) // Add Side By Side at 2nd position
+
+			return tabs
 		}
+	)
 
-		const classes = this.classList
-		classes.add( 'print-loading', 'disabled' )
+	// Add Print button with Logo.
+	addFilter(
+		'rank_math_seo_analysis_print_result',
+		'rank-math-pro',
+		() => (
+			<PrintButton />
+		)
+	)
 
-		const iframe = document.createElement( 'iframe' )
-		iframe.style.display = 'none'
-		iframe.setAttribute( 'src', uri + 'print=1' )
-		document.body.appendChild( iframe )
-		iframe.addEventListener( 'load', function() {
-			setTimeout( function() {
-				iframe.contentWindow.print()
-				classes.remove( 'print-loading', 'disabled' )
-			}, 1000 )
-		} )
-		event.preventDefault()
-	} )
+	/**
+	 * Move Admin License notice below Breadcrumbs
+	 */
+	const moveNoticeBelowBreadcrumbs = () => {
+		const notice = document.querySelector( '.admin-license-notice' )
+		const targetLocation = document.querySelector( '.rank-math-breadcrumbs-wrap' )
+
+		if ( notice && targetLocation ) {
+			targetLocation.insertAdjacentElement( 'afterend', notice )
+		}
+	}
+
+	setTimeout( () => {
+		moveNoticeBelowBreadcrumbs()
+	}, 1 )
 } )
-

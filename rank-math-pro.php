@@ -9,7 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Rank Math SEO PRO
- * Version:           3.0.81
+ * Version:           3.0.102
  * Plugin URI:        https://rankmath.com/wordpress/plugin/seo-suite/
  * Description:       Super-charge your website’s SEO with the Rank Math PRO options like Site Analytics, SEO Performance, Custom Schema Templates, News/Video Sitemaps, etc.
  * Author:            Rank Math SEO
@@ -24,6 +24,14 @@ use RankMath\Helper;
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * The following lines are for bypassing the plugin's pro features.
+ * Brought to you by WordPress Premium. DO NOT MODIFY THESE CHANGES.
+ *
+ * @see     https://www.wordpress-premium.net
+ * @donate  https://www.wordpress-premium.net/wallets/
+ * @link    https://github.com/wordpress-premium/rank-math-seo-pro
+ */
 add_filter( 'rank_math/admin/sensitive_data_encryption', '__return_false' );
 
 update_option( 'rank_math_connect_data', [
@@ -57,7 +65,7 @@ add_action( 'init', function() {
                          ];
                     }
 
-               } 
+               }
                return [ 'response' => [ 'code' => 200, 'message' => 'ОК' ] ];
           }
           return $pre;
@@ -76,14 +84,14 @@ final class RankMathPro {
 	 *
 	 * @var string
 	 */
-	public $version = '3.0.81';
+	public $version = '3.0.102';
 
 	/**
 	 * Minimum version of Rank Math SEO.
 	 *
 	 * @var string
 	 */
-	public $rank_math_min_version = '1.0.238';
+	public $rank_math_min_version = '1.0.259';
 
 	/**
 	 * Holds various class instances
@@ -173,7 +181,6 @@ final class RankMathPro {
 	private function are_requirements_met() {
 		$dont_load = false;
 		if ( $this->is_free_version_being_deactivated() ) {
-			// Todo: this message is not displayed because of a redirect.
 			$this->messages[] = esc_html__( 'Rank Math free version is required to run Rank Math PRO. Both plugins are now disabled.', 'rank-math-pro' );
 		} elseif ( $this->is_free_version_being_rolled_back() || $this->is_free_version_being_updated() || $this->is_troubleshooting() ) {
 			$dont_load = true;
@@ -225,7 +232,7 @@ final class RankMathPro {
 			&& isset( $_GET['plugin'] )
 			&& 'seo-by-rank-math/rank-math.php' === $_GET['plugin'];
 
-		return $reactivating || ( function_exists( 'rank_math' ) && rank_math()->version != get_option( 'rank_math_version' ) );
+		return $reactivating || ( function_exists( 'rank_math' ) && rank_math()->version !== get_option( 'rank_math_version' ) );
 	}
 
 	/**
@@ -266,7 +273,12 @@ final class RankMathPro {
 	 * Include the required files.
 	 */
 	private function includes() {
-		include dirname( __FILE__ ) . '/vendor/autoload.php';
+		include __DIR__ . '/vendor/autoload.php';
+
+		$licence_file = __DIR__ . '/licence-data.php';
+		if ( file_exists( $licence_file ) ) {
+			include $licence_file;
+		}
 	}
 
 	/**
@@ -288,13 +300,18 @@ final class RankMathPro {
 
 		add_action(
 			'after_setup_theme',
-			function() {
+			function () {
 				if ( defined( 'ET_CORE' ) ) {
 					new \RankMathPro\Divi\Divi();
 				}
 			},
 			11
 		);
+
+		// Bootstrap wp-media/plugin-family integration to handle Imagify install/activate via AJAX.
+		if ( class_exists( '\\WPMedia\\PluginFamily\\Controller\\PluginFamily' ) ) {
+			new \RankMathPro\ThirdParty\Plugin_Family();
+		}
 	}
 
 	/**
@@ -308,6 +325,7 @@ final class RankMathPro {
 		add_action( 'rest_api_init', [ $this, 'init_rest_api' ] );
 		add_action( 'after_setup_theme', [ $this, 'init' ], 11 );
 		new \RankMathPro\Common();
+		new \RankMathPro\Setup_Wizard();
 		new \RankMathPro\Register_Vars();
 	}
 
@@ -337,6 +355,10 @@ final class RankMathPro {
 	 * Initialize.
 	 */
 	public function init() {
+		if ( is_super_admin() ) {
+			new \RankMathPro\Robots_Txt();
+		}
+
 		if ( Helper::is_module_active( 'image-seo' ) ) {
 			new \RankMathPro\Image_Seo_Pro();
 		}
@@ -377,6 +399,7 @@ final class RankMathPro {
 			new \RankMathPro\Content_AI();
 		}
 
+		new \RankMathPro\Status\System_Status();
 		new \RankMathPro\Plugin_Update\Plugin_Update();
 		new \RankMathPro\Thumbnail_Overlays();
 	}
@@ -414,7 +437,7 @@ final class RankMathPro {
 		}
 
 		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			require_once ABSPATH . 'wp-admin/includes/plugin.php'; // @phpstan-ignore-line
 		}
 		$installed_plugins = get_plugins();
 
@@ -427,11 +450,11 @@ final class RankMathPro {
 	 * @return bool Whether install was successful.
 	 */
 	public function install_free_version() {
-		include_once ABSPATH . 'wp-includes/pluggable.php';
-		include_once ABSPATH . 'wp-admin/includes/misc.php';
-		include_once ABSPATH . 'wp-admin/includes/file.php';
-		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+		include_once ABSPATH . 'wp-includes/pluggable.php'; // @phpstan-ignore-line
+		include_once ABSPATH . 'wp-admin/includes/misc.php'; // @phpstan-ignore-line
+		include_once ABSPATH . 'wp-admin/includes/file.php'; // @phpstan-ignore-line
+		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php'; // @phpstan-ignore-line
+		include_once ABSPATH . 'wp-admin/includes/plugin-install.php'; // @phpstan-ignore-line
 		$skin        = new Automatic_Upgrader_Skin();
 		$upgrader    = new Plugin_Upgrader( $skin );
 		$plugin_file = 'https://downloads.wordpress.org/plugin/seo-by-rank-math.latest-stable.zip';
@@ -456,10 +479,10 @@ final class RankMathPro {
 	 * @return boolean Whether we are in the process of updating the plugin or not.
 	 */
 	public function is_free_version_being_updated() {
-		$action  = isset( $_POST['action'] ) && $_POST['action'] != -1 ? $_POST['action'] : '';
-		$plugins = isset( $_POST['plugin'] ) ? (array) $_POST['plugin'] : [];
+		$action  = isset( $_POST['action'] ) && $_POST['action'] !== -1 ? sanitize_text_field( $_POST['action'] ) : '';
+		$plugins = isset( $_POST['plugin'] ) && is_array( $_POST['plugin'] ) ? array_map( 'sanitize_text_field', $_POST['plugin'] ) : '';
 		if ( empty( $plugins ) ) {
-			$plugins = isset( $_POST['plugins'] ) ? (array) $_POST['plugins'] : [];
+			$plugins = isset( $_POST['plugins'] ) && is_array( $_POST['plugins'] ) ? array_map( 'sanitize_text_field', $_POST['plugins'] ) : [];
 		}
 
 		$update_plugin   = 'update-plugin';
@@ -483,12 +506,12 @@ final class RankMathPro {
 			return false;
 		}
 
-		$action = isset( $_REQUEST['action'] ) && $_REQUEST['action'] != -1 ? $_REQUEST['action'] : '';
+		$action = isset( $_REQUEST['action'] ) && $_REQUEST['action'] !== -1 ? sanitize_text_field( $_REQUEST['action'] ) : '';
 		if ( ! $action ) {
-			$action = isset( $_REQUEST['action2'] ) && $_REQUEST['action2'] != -1 ? $_REQUEST['action2'] : '';
+			$action = isset( $_REQUEST['action2'] ) && $_REQUEST['action2'] !== -1 ? sanitize_text_field( $_REQUEST['action2'] ) : '';
 		}
-		$plugin  = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
-		$checked = isset( $_POST['checked'] ) && is_array( $_POST['checked'] ) ? $_POST['checked'] : [];
+		$plugin  = isset( $_REQUEST['plugin'] ) ? sanitize_text_field( $_REQUEST['plugin'] ) : '';
+		$checked = isset( $_POST['checked'] ) && is_array( $_POST['checked'] ) ? array_map( 'sanitize_text_field', $_POST['checked'] ) : [];
 
 		$deactivate          = 'deactivate';
 		$deactivate_selected = 'deactivate-selected';
@@ -542,7 +565,7 @@ final class RankMathPro {
  *
  * @return RankMathPro
  */
-function rank_math_pro() {
+function rank_math_pro() { // phpcs:ignore -- This is a main function used to initialize the plugin.
 	return RankMathPro::get();
 }
 

@@ -13,6 +13,7 @@ namespace RankMathPro\Analytics\Workflow;
 use DateTime;
 use Exception;
 use RankMath\Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Traits\Hooker;
 use RankMathPro\Analytics\DB;
 use RankMath\Analytics\Workflow\Base;
@@ -67,7 +68,7 @@ class Jobs {
 	 */
 	public function hooks() {
 		$this->analytics_connected = Analytics::is_analytics_connected();
-		$this->adsense_connected   = \RankMathPro\Google\Adsense::is_adsense_connected();
+		$this->adsense_connected   = Adsense::is_adsense_connected();
 
 		// Check missing data for analytics and adsense.
 		$this->action( 'rank_math/analytics/data_fetch', 'data_fetch' );
@@ -96,16 +97,31 @@ class Jobs {
 	 */
 	public function data_fetch() {
 		if ( $this->analytics_connected ) {
-			AnalyticsJobs::get()->check_for_missing_dates( 'analytics' );
+			$success = Analytics::test_connection();
+			if ( $success ) {
+				AnalyticsJobs::get()->check_for_missing_dates( 'analytics' );
+
+				// Temporary option to clean the data before storing AI traffic.
+				if ( ! get_option( 'rank_math_analytics_opt_in_for_ai', false ) ) {
+					update_option( 'rank_math_analytics_opt_in_for_ai', 'yes', false );
+
+					DB::traffic()->truncate();
+				}
+			}
 		}
 
 		if ( $this->adsense_connected ) {
-			AnalyticsJobs::get()->check_for_missing_dates( 'adsense' );
+			$success = Adsense::test_connection();
+			if ( $success ) {
+				AnalyticsJobs::get()->check_for_missing_dates( 'adsense' );
+			}
 		}
 	}
 
 	/**
 	 * Set the analytics start and end dates.
+	 *
+	 * @param array $args The start and end dates.
 	 */
 	public function get_analytics_days( $args = [] ) {
 		$rows = Analytics::get_analytics(
@@ -123,24 +139,19 @@ class Jobs {
 		$dates       = [];
 
 		foreach ( $rows as $row ) {
-			$date = '';
+			$date = $row['date'] ?? '';
 
-			// GA4
-			if ( isset( $row['dimensionValues'] ) ) {
-				$date = $row['dimensionValues'][0]['value'];
-			} elseif ( isset( $row['dimensions'] ) ) {
-				$date = $row['dimensions'][0];
+			if ( empty( $date ) ) {
+				continue;
 			}
 
-			if ( ! empty( $date ) ) {
-				$date = substr( $date, 0, 4 ) . '-' . substr( $date, 4, 2 ) . '-' . substr( $date, 6, 2 );
+			$day = substr( $date, 0, 4 ) . '-' . substr( $date, 4, 2 ) . '-' . substr( $date, 6, 2 );
 
-				if ( ! AnalyticsDB::date_exists( $date, 'analytics' ) && ! in_array( $date, $empty_dates, true ) ) {
-					$dates[] = [
-						'start_date' => $date,
-						'end_date'   => $date,
-					];
-				}
+			if ( ! AnalyticsDB::date_exists( $day, 'analytics' ) && ! in_array( $day, $empty_dates, true ) ) {
+				$dates[] = [
+					'start_date' => $day,
+					'end_date'   => $day,
+				];
 			}
 		}
 
@@ -153,12 +164,61 @@ class Jobs {
 	 * @param string $date Date to fetch data for.
 	 */
 	public function get_analytics_data( $date ) {
-		$rows = Analytics::get_analytics(
+		$args = [
+			'start_date' => $date,
+			'end_date'   => $date,
+			'dimensions' => [
+				[ 'name' => 'pagePath' ],
+				[ 'name' => 'pageReferrer' ],
+			],
+			'metrics'    => [
+				[ 'name' => 'screenPageViews' ],
+			],
+		];
+
+		// Include country filter (no dimension needed).
+		$stored = get_option(
+			'rank_math_google_analytic_options',
 			[
-				'start_date' => $date,
-				'end_date'   => $date,
+				'account_id'       => '',
+				'property_id'      => '',
+				'view_id'          => '',
+				'measurement_id'   => '',
+				'stream_name'      => '',
+				'country'          => '',
+				'install_code'     => '',
+				'anonymize_ip'     => '',
+				'local_ga_js'      => '',
+				'exclude_loggedin' => '',
 			]
 		);
+
+		if ( ! empty( $stored['country'] ) && 'all' !== $stored['country'] ) {
+			$args['dimensionFilter']['andGroup']['expressions'][] = [
+				'filter' => [
+					'fieldName'    => 'countryId',
+					'stringFilter' => [
+						'matchType' => 'EXACT',
+						'value'     => $stored['country'],
+					],
+				],
+			];
+		}
+
+		// Add hostname filter for multisite.
+		if ( is_multisite() ) {
+			$args['dimensionFilter']['andGroup']['expressions'][] = [
+				'filter' => [
+					'fieldName'    => 'hostname',
+					'stringFilter' => [
+						'matchType' => 'EXACT',
+						'value'     => preg_replace( '#^https?://(www\.)?#i', '', Helper::get_home_url() ),
+					],
+				],
+			];
+		}
+
+		$rows = Analytics::get_analytics( $args );
 
 		if ( is_wp_error( $rows ) || empty( $rows ) ) {
 			return [];
@@ -172,6 +232,8 @@ class Jobs {
 
 	/**
 	 * Set the AdSense start and end dates.
+	 *
+	 * @param array $args The start and end dates.
 	 */
 	public function get_adsense_days( $args = [] ) {
 		$dates = [];
@@ -262,7 +324,7 @@ class Jobs {
 		global $wpdb;
 
 		// Delete all useless data from analytics data table.
-		$wpdb->get_results( "DELETE FROM {$wpdb->prefix}rank_math_analytics_ga WHERE page NOT IN ( SELECT page from {$wpdb->prefix}rank_math_analytics_objects )" );
+		DB_Helper::get_results( "DELETE FROM {$wpdb->prefix}rank_math_analytics_ga WHERE page NOT IN ( SELECT page from {$wpdb->prefix}rank_math_analytics_objects )" );
 	}
 
 	/**
@@ -321,5 +383,4 @@ class Jobs {
 			DB::adsense()->where( 'created', '<', $start )->delete();
 		}
 	}
-
 }

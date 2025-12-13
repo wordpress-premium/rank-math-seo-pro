@@ -13,6 +13,7 @@ namespace RankMathPro\Redirections;
 use RankMath\Helper;
 use RankMath\Traits\Hooker;
 use RankMath\Helpers\Param;
+use RankMath\Helpers\DB as DB_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -48,7 +49,7 @@ class Categories {
 
 		$this->action( 'wp_loaded', 'filter_category', 5 );
 		$this->action( 'rank_math/redirection/extra_tablenav', 'category_filter', 20, 1 );
-		$this->action( 'rank_math/redirection/get_redirections_query', 'get_redirections_query', 20, 2 );
+		$this->action( 'rank_math/redirection/get_redirections_query', 'get_redirections_query', 20 );
 		$this->action( 'rank_math/redirection/after_import', 'import_redirection_categories', 20, 2 );
 		$this->action( 'rank_math_redirection_category_add_form', 'back_to_redirections_link', 20 );
 
@@ -57,7 +58,7 @@ class Categories {
 		$this->filter( 'rank_math/redirection/admin_columns', 'add_category_column', 20, 1 );
 		$this->filter( 'rank_math/redirection/admin_column_category', 'category_column_content', 20, 2 );
 		$this->filter( 'parent_file', 'fix_categories_parent_menu', 20, 1 );
-		$this->filter( 'submenu_file', 'fix_categories_sub_menu', 20, 2 );
+		$this->filter( 'submenu_file', 'fix_categories_sub_menu', 20 );
 
 		$this->filter( 'rank_math/redirections/page_title_actions', 'page_title_actions', 20, 1 );
 	}
@@ -135,12 +136,19 @@ class Categories {
 
 		check_admin_referer( 'bulk-redirections' );
 
-		$category_filter = ! empty( $_POST['redirection_category_filter_top'] ) ? $_POST['redirection_category_filter_top'] : $_POST['redirection_category_filter_bottom'];
+		$top    = isset( $_POST['redirection_category_filter_top'] ) ? sanitize_text_field( $_POST['redirection_category_filter_top'] ) : false;
+		$bottom = isset( $_POST['redirection_category_filter_bottom'] ) ? sanitize_text_field( $_POST['redirection_category_filter_bottom'] ) : false;
+
+		$category_filter = ! empty( $_POST['redirection_category_filter_top'] ) ? $top : $bottom;
 		if ( empty( $category_filter ) ) {
 			return;
 		}
+		$redirection = isset( $_REQUEST['redirection'] ) ? array_map( 'sanitize_text_field', $_REQUEST['redirection'] ) : [];
+		if ( empty( $redirection ) ) {
+			return;
+		}
 
-		$ids = (array) wp_parse_id_list( $_REQUEST['redirection'] );
+		$ids = (array) wp_parse_id_list( $redirection );
 		if ( empty( $ids ) ) {
 			Helper::add_notification( __( 'No valid ID provided.', 'rank-math-pro' ) );
 			return;
@@ -174,10 +182,9 @@ class Categories {
 	 * Select correct submenu item when we are editing the Redirection Categories.
 	 *
 	 * @param string $submenu_file Original submenu file.
-	 * @param string $parent_file Selected parent file.
 	 * @return string
 	 */
-	public function fix_categories_sub_menu( $submenu_file, $parent_file ) {
+	public function fix_categories_sub_menu( $submenu_file ) {
 		global $pagenow;
 
 		if ( in_array( $pagenow, [ 'edit-tags.php', 'term.php' ], true ) && Param::get( 'taxonomy' ) === 'rank_math_redirection_category' ) {
@@ -201,11 +208,11 @@ class Categories {
 	/**
 	 * Add content in the new "Category" column fields.
 	 *
-	 * @param bool  $false False.
+	 * @param bool  $defaults False.
 	 * @param array $item  Item data.
 	 * @return string
 	 */
-	public function category_column_content( $false, $item ) {
+	public function category_column_content( $defaults, $item ) {
 		$format     = '<span class="%1$s">%2$s</span>';
 		$categories = $this->get_redirection_categories( $item['id'] );
 		$classes    = '';
@@ -213,7 +220,7 @@ class Categories {
 		$cats  = '';
 		$count = 0;
 		foreach ( $categories as $category ) {
-			$count++;
+			++$count;
 			if ( $count > 10 ) {
 				$cats .= '...';
 				break;
@@ -259,7 +266,10 @@ class Categories {
 			return;
 		}
 
-		$category_filter = isset( $_POST['rank_math_filter_redirections_top'] ) ? $_POST['redirection_category_filter_top'] : $_POST['redirection_category_filter_bottom'];
+		$top    = isset( $_POST['redirection_category_filter_top'] ) ? sanitize_text_field( $_POST['redirection_category_filter_top'] ) : false;
+		$bottom = isset( $_POST['redirection_category_filter_bottom'] ) ? sanitize_text_field( $_POST['redirection_category_filter_bottom'] ) : false;
+
+		$category_filter = isset( $_POST['rank_math_filter_redirections_top'] ) ? $top : $bottom;
 		if ( ! $category_filter || 'none' === $category_filter ) {
 			wp_safe_redirect( Helper::get_admin_url( 'redirections' ) );
 			exit;
@@ -276,11 +286,11 @@ class Categories {
 	 * @param array  $params      Redirection parameters.
 	 */
 	public function save_category_after_add( $redirection, $params ) {
-		if ( ! isset( $params['categories'] ) ) {
+		if ( ! isset( $params['redirection_category'] ) || ! isset( $params['redirection_category']['categories'] ) ) {
 			return;
 		}
 
-		wp_set_object_terms( $redirection->get_id(), array_map( 'absint', $params['categories'] ), 'rank_math_redirection_category' );
+		wp_set_object_terms( $redirection->get_id(), array_map( 'absint', $params['redirection_category']['categories'] ), 'rank_math_redirection_category' );
 	}
 
 	/**
@@ -336,17 +346,16 @@ class Categories {
 		$categories    = rtrim( wp_dropdown_categories( $dropdown_args ) );
 		$submit_button = call_user_func_array( 'get_submit_button', $submit_args );
 
-		echo sprintf( '%1$s%2$s%3$s', $categories, $submit_button, $clear_button ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- All 3 variables are escaped above.
+		printf( '%1$s%2$s%3$s', $categories, $submit_button, $clear_button ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- All 3 variables are escaped above.
 	}
 
 	/**
 	 * Extend get_redirections query to filter by category.
 	 *
 	 * @param object $table Table object.
-	 * @param array  $args Get redirections function args.
 	 * @return void
 	 */
-	public function get_redirections_query( $table, $args ) {
+	public function get_redirections_query( $table ) {
 		$categories = Param::get( 'redirection_category' );
 		if ( ! $categories ) {
 			return;
@@ -388,7 +397,7 @@ class Categories {
 		global $wpdb;
 
 		$count = 0;
-		$rows  = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}redirection_groups" );
+		$rows  = DB_Helper::get_results( "SELECT * FROM {$wpdb->prefix}redirection_groups" );
 
 		$this->import_categories = [];
 
@@ -412,11 +421,9 @@ class Categories {
 	/**
 	 * Show link to go back to the Redirections from the Redirections Categories screen.
 	 *
-	 * @param string $taxonomy Current taxonomy.
-	 *
 	 * @return void
 	 */
-	public function back_to_redirections_link( $taxonomy ) {
+	public function back_to_redirections_link() {
 		$link = Helper::get_admin_url( 'redirections' );
 		echo '<p><a href="' . esc_url( $link ) . '">' . esc_html__( '&larr; Go Back to the Redirections', 'rank-math-pro' ) . '</a></p>';
 	}

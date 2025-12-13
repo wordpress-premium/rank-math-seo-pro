@@ -32,11 +32,11 @@ class Video {
 			$this->filter( 'rank_math/tools/generate_video_schema', 'generate_video_schema' );
 		}
 
+		$this->filter( 'rank_math/database/tools', 'generate_video_schema_tool' );
 		$this->action( 'rank_math/pre_update_metadata', 'detect_video_in_content', 10, 3 );
 		if ( is_admin() ) {
 			$this->action( 'cmb2_admin_init', 'add_video_settings' );
 			$this->action( 'rank_math/admin/settings/others', 'add_media_rss_field' );
-			$this->filter( 'rank_math/database/tools', 'generate_video_schema_tool' );
 
 			return;
 		}

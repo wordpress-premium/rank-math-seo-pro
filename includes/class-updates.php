@@ -37,7 +37,10 @@ class Updates {
 		'3.0.32' => 'updates/update-3.0.32.php',
 		'3.0.60' => 'updates/update-3.0.60.php',
 		'3.0.72' => 'updates/update-3.0.72.php',
-		'3.0.81-beta' => 'updates/update-3.0.81.php',
+		'3.0.81' => 'updates/update-3.0.81.php',
+		'3.0.91' => 'updates/update-3.0.91.php',
+		'3.0.94' => 'updates/update-3.0.94.php',
+		'3.0.97' => 'updates/update-3.0.97.php',
 	];
 
 	/**

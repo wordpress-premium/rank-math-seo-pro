@@ -16,6 +16,7 @@ use RankMath\Traits\Hooker;
 use RankMath\Analytics\Stats;
 use RankMath\Helper;
 use RankMath\Helpers\Param;
+use RankMath\Helpers\DB as DB_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -24,7 +25,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class Keywords {
 
-	use Hooker, Cache;
+	use Hooker;
+	use Cache;
 
 	/**
 	 * Main instance
@@ -63,7 +65,7 @@ class Keywords {
 		}
 
 		$post_types = array_map(
-			function( $post_type ) {
+			function ( $post_type ) {
 				return 'attachment' === $post_type ? false : Helper::get_post_type_label( $post_type );
 			},
 			Helper::get_accessible_post_types()
@@ -120,8 +122,8 @@ class Keywords {
 
 		// Check if keywords already exists.
 		$keywords_joined = "'" . join( "', '", array_map( 'esc_sql', $keywords_to_add ) ) . "'";
-		$query           = "SELECT keyword FROM {$wpdb->prefix}rank_math_analytics_keyword_manager as km WHERE km.keyword IN ( $keywords_joined )";
-		$data            = $wpdb->get_results( $query ); // phpcs:ignore
+
+		$data = DB_Helper::get_results( "SELECT keyword FROM {$wpdb->prefix}rank_math_analytics_keyword_manager as km WHERE km.keyword IN ( $keywords_joined )" );
 
 		// Filter out non-existing keywords.
 		foreach ( $data as $row ) {
@@ -308,7 +310,7 @@ class Keywords {
 		if ( 'default' === $orderby ) {
 			uasort(
 				$data,
-				function( $a, $b ) use ( $orderby ) {
+				function ( $a, $b ) use ( $orderby ) {
 					if ( false === array_key_exists( 'position', $a ) ) {
 						$a['position'] = [ 'total' => 0 ];
 					}
@@ -341,7 +343,7 @@ class Keywords {
 
 		if ( empty( $data ) ) {
 			$result['response'] = 'No Data';
-		} else {
+		} elseif ( $keyword ) {
 			$search_data     = $this->get_tracked_keywords_data( $args );
 			$result['total'] = count( $search_data );
 
@@ -383,42 +385,41 @@ class Keywords {
 		$order       = sprintf( 'ORDER BY %s %s', $args['orderBy'], $args['order'] );
 		$dates_query = sprintf( " AND created BETWEEN '%s' AND '%s' ", Stats::get()->start_date, Stats::get()->end_date );
 		// Step1. Get most recent data row id for each keyword.
-		// phpcs:disable
 		$where_like_keyword = $wpdb->prepare( ' WHERE keyword LIKE %s', '%' . $wpdb->esc_like( $keyword ) . '%' );
 		if ( empty( $keyword ) ) {
 			$where_like_keyword = '';
 		}
 
-		$query = $wpdb->prepare(
-			"SELECT id
-			FROM {$wpdb->prefix}rank_math_analytics_gsc AS new
-			INNER JOIN (
-				SELECT query, MAX(created)as created FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE 1 = 1 {$dates_query} AND {$dimension} IN ( SELECT keyword from {$wpdb->prefix}rank_math_analytics_keyword_manager {$where_like_keyword} GROUP BY keyword ) GROUP BY {$dimension}
-			)mc
-			ON new.query = mc.query
-			AND new.created = mc.created"
-		);
-		$ids = $wpdb->get_results( $query );
+		$ids = DB_Helper::get_results( // phpcs:disable -- The $dates_query, $where_like_keyword are sanitized.
+			$wpdb->prepare(
+				"SELECT MAX(id) as id
+				FROM {$wpdb->prefix}rank_math_analytics_gsc
+				WHERE 1 = 1 {$dates_query}
+				AND %i IN (SELECT DISTINCT keyword FROM {$wpdb->prefix}rank_math_analytics_keyword_manager {$where_like_keyword} GROUP BY %i)
+				GROUP BY query",
+				$dimension,
+				$dimension
+			)
+		); // phpcs:enable
 
-		// phpcs:enable
 		// Step2. Get id list from above result.
 		$ids       = wp_list_pluck( $ids, 'id' );
 		$ids_where = " AND id IN ('" . join( "', '", $ids ) . "')";
 
 		// Step3. Get most recent data row id for each keyword (for comparison).
-		// phpcs:disable
 		$dates_query = sprintf( " AND created BETWEEN '%s' AND '%s' ", Stats::get()->compare_start_date, Stats::get()->compare_end_date );
 
-		$query = $wpdb->prepare(
-			"SELECT id
-			FROM {$wpdb->prefix}rank_math_analytics_gsc AS old
-			INNER JOIN (
-				SELECT query, MAX(created)as created FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE 1 = 1 {$dates_query} AND {$dimension} IN ( SELECT keyword from {$wpdb->prefix}rank_math_analytics_keyword_manager {$where_like_keyword} GROUP BY keyword ) GROUP BY {$dimension}
-			)mc
-			ON old.query = mc.query
-			AND old.created = mc.created"
-		);
-		$old_ids = $wpdb->get_results( $query );
+		$old_ids = DB_Helper::get_results( // phpcs:disable -- The $dates_query, $where_like_keyword are sanitized.
+			$wpdb->prepare(
+				"SELECT MAX(id) as id
+				FROM {$wpdb->prefix}rank_math_analytics_gsc
+				WHERE 1 = 1 {$dates_query}
+				AND %i IN (SELECT DISTINCT keyword FROM {$wpdb->prefix}rank_math_analytics_keyword_manager {$where_like_keyword} GROUP BY %i)
+				GROUP BY query",
+				$dimension,
+				$dimension,
+			)
+		); // phpcs:enable
 
 		// Step4. Get id list from above result.
 		$old_ids       = wp_list_pluck( $old_ids, 'id' );
@@ -430,30 +431,39 @@ class Keywords {
 			$where_like_keyword1 = '';
 		}
 
-		$positions = $wpdb->get_results(
-			"SELECT DISTINCT(km.keyword) as {$dimension}, COALESCE(t.position, 0) as position, COALESCE(t.diffPosition, 0) as diffPosition, COALESCE(t.diffPosition, 100) as diffPosition1, COALESCE(t.impressions, 0) as impressions, COALESCE(t.diffImpressions, 0) as diffImpressions, COALESCE(t.clicks, 0) as clicks, COALESCE(t.diffClicks, 0) as diffClicks, COALESCE(t.ctr, 0) as ctr, COALESCE(t.diffCtr, 0) as diffCtr
+		$positions = DB_Helper::get_results( // phpcs:disable -- The $ids_where, $old_ids_where, $where_like_keyword1, $where, $order, $limit are sanitized.
+			$wpdb->prepare(
+				"SELECT DISTINCT(km.keyword) as %i, COALESCE(t.position, 0) as position, COALESCE(t.diffPosition, 0) as diffPosition, COALESCE(t.diffPosition, 100) as diffPosition1, COALESCE(t.impressions, 0) as impressions, COALESCE(t.diffImpressions, 0) as diffImpressions, COALESCE(t.clicks, 0) as clicks, COALESCE(t.diffClicks, 0) as diffClicks, COALESCE(t.ctr, 0) as ctr, COALESCE(t.diffCtr, 0) as diffCtr
 			FROM {$wpdb->prefix}rank_math_analytics_keyword_manager km
 			LEFT JOIN (
 				SELECT
-					t1.{$dimension} as {$dimension}, ROUND( t1.position, 0 ) as position, ROUND( t1.impressions, 0 ) as impressions, ROUND( t1.clicks, 0 ) as clicks, ROUND( t1.ctr, 0 ) as ctr,
+					t1.%i as %i, ROUND( t1.position, 0 ) as position, ROUND( t1.impressions, 0 ) as impressions, ROUND( t1.clicks, 0 ) as clicks, ROUND( t1.ctr, 0 ) as ctr,
 					COALESCE( ROUND( t1.position - COALESCE( t2.position, 100 ), 0 ), 0 ) as diffPosition,
 					COALESCE( ROUND( t1.impressions - COALESCE( t2.impressions, 100 ), 0 ), 0 ) as diffImpressions,
 					COALESCE( ROUND( t1.clicks - COALESCE( t2.clicks, 100 ), 0 ), 0 ) as diffClicks,
 					COALESCE( ROUND( t1.ctr - COALESCE( t2.ctr, 100 ), 0 ), 0 ) as diffCtr
 				FROM
-					(SELECT a.{$dimension}, a.position, a.impressions,a.clicks,a.ctr FROM {$wpdb->prefix}rank_math_analytics_gsc AS a
-					 WHERE 1 = 1{$ids_where}) AS t1
+					(SELECT a.%i, a.position, a.impressions,a.clicks,a.ctr FROM {$wpdb->prefix}rank_math_analytics_gsc AS a
+					WHERE 1 = 1{$ids_where}) AS t1
 				LEFT JOIN
-					(SELECT a.{$dimension}, a.position, a.impressions,a.clicks,a.ctr FROM {$wpdb->prefix}rank_math_analytics_gsc AS a
-					 WHERE 1 = 1{$old_ids_where}) AS t2
-				ON t1.{$dimension} = t2.{$dimension}) AS t on t.{$dimension} = km.keyword
+					(SELECT a.%i, a.position, a.impressions,a.clicks,a.ctr FROM {$wpdb->prefix}rank_math_analytics_gsc AS a
+					WHERE 1 = 1{$old_ids_where}) AS t2
+				ON t1.%i = t2.%i) AS t on t.%i = km.keyword
 				{$where_like_keyword1}
 			{$where}
 			{$order}
 			{$limit}",
+				$dimension,
+				$dimension,
+				$dimension,
+				$dimension,
+				$dimension,
+				$dimension,
+				$dimension,
+				$dimension,
+			),
 			ARRAY_A
-		);
-		// phpcs:enable
+		); // phpcs:enable
 
 		// Step6. Get keywords list from above results.
 		$keywords = array_column( $positions, 'query' );
@@ -462,22 +472,32 @@ class Keywords {
 		$keywords = '(\'' . join( '\', \'', $keywords ) . '\')';
 
 		// step7. Get other metrics data.
-		$query   = $wpdb->prepare(
-			"SELECT t1.{$dimension} as {$dimension}, t1.clicks, t1.impressions, t1.ctr,
+		$metrics = DB_Helper::get_results( // phpcs:disable -- The $dates, $keywords are sanitized.
+			$wpdb->prepare(
+				"SELECT t1.%i as %i, t1.clicks, t1.impressions, t1.ctr,
 				COALESCE( t1.clicks - t2.clicks, 0 ) as diffClicks,
 				COALESCE( t1.impressions - t2.impressions, 0 ) as diffImpressions,
 				COALESCE( t1.ctr - t2.ctr, 0 ) as diffCtr
 			FROM
-				( SELECT {$dimension}, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(position) as position, AVG(ctr) as ctr FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE 1 = 1{$dates} AND {$dimension} IN {$keywords} GROUP BY {$dimension}) as t1
+				( SELECT %i, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(position) as position, AVG(ctr) as ctr FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE 1 = 1{$dates} AND %i IN {$keywords} GROUP BY %i) as t1
 			LEFT JOIN
-				( SELECT {$dimension}, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(position) as position, AVG(ctr) as ctr FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE 1 = 1{$dates} AND {$dimension} IN {$keywords} GROUP BY {$dimension}) as t2
+				( SELECT %i, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(position) as position, AVG(ctr) as ctr FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE 1 = 1{$dates} AND %i IN {$keywords} GROUP BY %i) as t2
 			ON t1.query = t2.query",
-			Stats::get()->start_date,
-			Stats::get()->end_date,
-			Stats::get()->compare_start_date,
-			Stats::get()->compare_end_date
-		);
-		$metrics = $wpdb->get_results( $query, ARRAY_A );
+				$dimension,
+				$dimension,
+				$dimension,
+				Stats::get()->start_date,
+				Stats::get()->end_date,
+				$dimension,
+				$dimension,
+				$dimension,
+				Stats::get()->compare_start_date,
+				Stats::get()->compare_end_date,
+				$dimension,
+				$dimension,
+			),
+			ARRAY_A
+		); // phpcs:enable
 
 		// Step8. Merge above two results.
 		$positions = Stats::get()->set_dimension_as_key( $positions, $dimension );
@@ -528,7 +548,7 @@ class Keywords {
 	 * @param  string $order    The order to sort by.
 	 */
 	public function sort_data( $data, $order_by, $order ) {
-		$order_by = 'keyword' === $order_by ? 'query' : $order_by;
+		$order_by    = 'keyword' === $order_by ? 'query' : $order_by;
 		$sort_order  = 'ASC' === $order ? SORT_ASC : SORT_DESC;
 		$sort_column = in_array( $order_by, [ 'query', 'clicks', 'impressions', 'position', 'ctr' ], true ) ? $order_by : 'position';
 
@@ -607,15 +627,16 @@ class Keywords {
 	public function get_recent_keywords() {
 		global $wpdb;
 
-		$query = $wpdb->prepare(
-			"SELECT query
+		$data = DB_Helper::get_results( // phpcs:ignore -- DB call is required.
+			$wpdb->prepare(
+				"SELECT query
 			FROM {$wpdb->prefix}rank_math_analytics_gsc
 			WHERE DATE(created) = (SELECT MAX(DATE(created)) FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE created BETWEEN %s AND %s)
 			GROUP BY query",
-			Stats::get()->start_date,
-			Stats::get()->end_date
+				Stats::get()->start_date,
+				Stats::get()->end_date
+			)
 		);
-		$data = $wpdb->get_results( $query ); // phpcs:ignore
 
 		return $data;
 	}
@@ -700,8 +721,9 @@ class Keywords {
 		$keywords      = \array_map( 'esc_sql', $keywords );
 		$keywords      = '(\'' . join( '\', \'', $keywords ) . '\')';
 
-		$query = $wpdb->prepare(
-			"SELECT a.query, a.position, t.max_created AS date, t.range_group
+		$data = DB_Helper::get_results( // phpcs:disable -- The $sql_daterange, $keywords, $sub_query are sanitized.
+			$wpdb->prepare(
+				"SELECT a.query, a.position, t.max_created AS date, t.range_group
 			FROM {$wpdb->prefix}rank_math_analytics_gsc AS a
 			INNER JOIN (
 				SELECT
@@ -717,11 +739,11 @@ class Keywords {
 			) t
 			ON a.query = t.query AND a.created = t.max_created
 			ORDER BY a.created ASC",
-			Stats::get()->start_date,
-			Stats::get()->end_date
-		);
-		$data  = $wpdb->get_results( $query );
-		$data  = Stats::get()->filter_graph_rows( $data );
+				Stats::get()->start_date,
+				Stats::get()->end_date
+			)
+		); // phpcs:enable
+		$data = Stats::get()->filter_graph_rows( $data );
 
 		return array_map( [ Stats::get(), 'normalize_graph_rows' ], $data );
 	}
@@ -735,28 +757,30 @@ class Keywords {
 	public function get_keyword_pages( WP_REST_Request $request ) {
 		global $wpdb;
 
-		$query = $wpdb->prepare(
-			"SELECT DISTINCT g.page
+		$keyword = esc_sql( $request->get_param( 'query' ) );
+		$data    = DB_Helper::get_results( // phpcs:ignore -- Direct DB query required.
+			$wpdb->prepare(
+				"SELECT DISTINCT g.page
 			FROM {$wpdb->prefix}rank_math_analytics_gsc as g
 			WHERE g.query = %s AND g.created BETWEEN %s AND %s
-			ORDER BY g.created DESC
-			LIMIT 5",
-			$request->get_param( 'query' ),
-			Stats::get()->start_date,
-			Stats::get()->end_date
+			ORDER BY g.created DESC",
+				$keyword,
+				Stats::get()->start_date,
+				Stats::get()->end_date
+			)
 		);
 
-		$data    = $wpdb->get_results( $query ); // phpcs:ignore
 		$pages   = wp_list_pluck( $data, 'page' );
 		$console = Stats::get()->get_analytics_data(
 			[
+				'action'    => 'get_keyword_pages',
+				'keyword'   => $keyword,
 				'objects'   => true,
 				'pageview'  => true,
-				'sub_where' => " AND page IN ('" . join( "', '", $pages ) . "')",
+				'sub_where' => " AND page IN ('" . join( "', '", $pages ) . "') AND query = '" . $keyword . "'",
 			]
 		);
 		return $console;
-
 	}
 
 	/**

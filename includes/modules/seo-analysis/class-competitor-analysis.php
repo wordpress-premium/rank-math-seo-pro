@@ -23,7 +23,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class Competitor_Analysis {
 
-	use Hooker, Ajax;
+	use Hooker;
+	use Ajax;
 
 	/**
 	 * Constructor.
@@ -39,12 +40,9 @@ class Competitor_Analysis {
 	/**
 	 * ALlow competitor URLs to be analyzed with the SEO Analyzer.
 	 *
-	 * @param bool   $allowed Allowed or not.
-	 * @param string $url     Site URL.
-	 *
 	 * @return bool
 	 */
-	public function allow_competitor_urls( $allowed, $url ) {
+	public function allow_competitor_urls() {
 		return true;
 	}
 
@@ -56,11 +54,7 @@ class Competitor_Analysis {
 	 * @return string
 	 */
 	public function set_ca_param( $url ) {
-		if ( ! Param::request( 'competitor_analyzer' ) ) {
-			return $url;
-		}
-
-		return add_query_arg( 'ca', '1', $url );
+		return ! Param::request( 'competitor_analyzer' ) ? $url : add_query_arg( 'ca', '1', $url );
 	}
 
 	/**
@@ -84,11 +78,7 @@ class Competitor_Analysis {
 	 * @param object $seo_analyzer SEO Analyzer object.
 	 */
 	public function load_previous_results( $seo_analyzer ) {
-		if ( 'competitor_analyzer' !== Param::get( 'view' ) ) {
-			return;
-		}
-
-		$seo_analyzer->get_results_from_storage( 'rank_math_seo_analysis_competitor' );
+		return 'competitor_analyzer' !== Param::get( 'view' ) ? null : $seo_analyzer->get_results_from_storage( 'rank_math_seo_analysis_competitor' );
 	}
 
 	/**

@@ -78,7 +78,7 @@ class KML_File {
 			if ( ! empty( $locations_data['address'] ) && isset( $locations_data['address']['@type'] ) ) {
 				unset( $locations_data['address']['@type'] );
 				$address = array_map(
-					function( $value ) use ( $rm_location ) {
+					function ( $value ) use ( $rm_location ) {
 						return Helper::replace_vars( $value, $rm_location );
 					},
 					$locations_data['address']

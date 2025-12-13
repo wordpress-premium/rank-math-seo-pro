@@ -39,15 +39,8 @@ class Ajax {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
 		$this->has_cap_ajax( 'analytics' );
 
-		$dates   = Base::get_dates();
-		$success = Adsense::get_adsense(
-			[
-				'start_date' => $dates['start_date'],
-				'end_date'   => $dates['end_date'],
-			]
-		);
-
-		if ( is_wp_error( $success ) ) {
+		$success = Adsense::test_connection();
+		if ( false === $success ) {
 			$this->error( esc_html__( 'Data import will not work for this service as sufficient permissions are not given.', 'rank-math-pro' ) );
 		}
 
@@ -77,7 +70,7 @@ class Ajax {
 			);
 
 			if ( is_wp_error( $request ) ) {
-				$this->error( esc_html__( 'Data import will not work for this service as sufficient permissions are not given.', 'rank-math' ) );
+				$this->error( esc_html__( 'Data import will not work for this service as sufficient permissions are not given.', 'rank-math-pro' ) );
 			}
 		}
 

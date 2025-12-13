@@ -68,29 +68,45 @@ class Import_Row {
 	private $thumbnail = [];
 
 	/**
+	 * The meta data to be updated or deleted.
+	 *
+	 * @var array|false
+	 */
+	public $meta_data = [];
+
+	/**
 	 * Constructor.
 	 *
-	 * @param array $data     Row data.
-	 * @param array $settings Import settings.
+	 * @param array $data            Row data.
+	 * @param array $settings        Import settings.
+	 * @param bool  $should_query_db Whether to query the database. If false, the prepared meta data will only be stored in $this->meta_data.
+	 *
 	 * @return void
 	 */
-	public function __construct( $data, $settings ) {
+	public function __construct( $data, $settings, $should_query_db = true ) {
 		$this->data     = $data;
 		$this->settings = $settings;
+		if ( $should_query_db ) {
+			$this->meta_data = false;
+		}
 
 		foreach ( $this->data as $key => $value ) {
+			$clear_method        = "clear_{$key}";
+			$clear_method_exists = method_exists( $this, $clear_method );
 			// Skip empty or n/a.
 			if ( empty( $value ) || $this->is_not_applicable( $value ) ) {
+				if ( 'redirect_to' !== $key && empty( $value ) && $clear_method_exists ) {
+					$this->$clear_method(); // Clear meta if value read from CSV is empty. See issue #1851.
+				}
 				continue;
 			}
 
-			$clear_method = "clear_{$key}";
-			if ( $this->is_clear_command( $value ) && method_exists( $this, $clear_method ) ) {
+			if ( $this->is_clear_command( $value ) && $clear_method_exists ) {
 				$this->$clear_method();
 				continue;
 			}
 
-			if ( $this->settings['no_overwrite'] ) {
+			if ( 'false' !== $this->settings['no_overwrite'] ) {
 				$is_empty_method = "is_empty_{$key}";
 				if ( ! method_exists( $this, $is_empty_method ) || ! $this->$is_empty_method() ) {
 					continue;
@@ -447,7 +463,7 @@ class Import_Row {
 	 * @return void
 	 */
 	public function import_schema_data( $value ) {
-		$value = preg_replace('/u([\da-fA-F]{4})/', '\\u$1', $value);
+		$value = preg_replace( '/u([\da-fA-F]{4})/', '\\u$1', $value );
 		$value = json_decode( $value, true );
 		if ( ! $value ) {
 			return;
@@ -535,10 +551,9 @@ class Import_Row {
 	/**
 	 * Import Redirection URL column. Only if 'redirect_type' column is set, too.
 	 *
-	 * @param string $value Column value.
 	 * @return void
 	 */
-	public function import_redirect_to( $value ) {
+	public function import_redirect_to() {
 		if ( empty( $this->data['redirect_type'] ) ) {
 			return;
 		}
@@ -767,8 +782,16 @@ class Import_Row {
 	 * @return void
 	 */
 	public function update_meta( $key, $value ) {
-		$update_meta = "update_{$this->object_type}_meta";
-		$update_meta( $this->id, 'rank_math_' . $key, $value );
+		if ( false === $this->meta_data ) {
+			$update_meta = "update_{$this->object_type}_meta";
+			$update_meta( $this->id, 'rank_math_' . $key, $value );
+			return;
+		}
+		$this->meta_data['update'][] = [
+			$this->object_type . '_id' => $this->id,
+			'meta_key'                 => 'rank_math_' . $key,
+			'meta_value'               => maybe_serialize( $value ),
+		];
 	}
 
 	/**
@@ -789,8 +812,15 @@ class Import_Row {
 	 * @return void
 	 */
 	public function delete_meta( $key ) {
-		$delete_meta = "delete_{$this->object_type}_meta";
-		$delete_meta( $this->id, 'rank_math_' . $key );
+		if ( false === $this->meta_data ) {
+			$delete_meta = "delete_{$this->object_type}_meta";
+			$delete_meta( $this->id, 'rank_math_' . $key );
+			return;
+		}
+		$this->meta_data['delete'][] = [
+			$this->object_type . '_id' => $this->id,
+			'meta_key'                 => 'rank_math_' . $key,
+		];
 	}
 
 	/**
@@ -829,7 +859,7 @@ class Import_Row {
 		// Use copy and unlink because rename breaks streams.
 		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 		@copy( $tmp_file_name, $uploads_file_path );
-		unlink( $tmp_file_name );
+		wp_delete_file( $tmp_file_name );
 
 		$wp_filetype = wp_check_filetype( $file_name, null );
 		$attachment  = [
@@ -843,7 +873,7 @@ class Import_Row {
 		$attachment_id = wp_insert_attachment( $attachment );
 
 		// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
-		require_once ABSPATH . 'wp-admin/includes/image.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php'; // @phpstan-ignore-line
 		// Generate the metadata for the attachment, and update the database record.
 		$attach_data = wp_generate_attachment_metadata( $attachment_id, $uploads_file_path );
 		update_post_meta( $attachment_id, '_wp_attached_file', $attach_data['file'] );
@@ -854,5 +884,4 @@ class Import_Row {
 		];
 		return $this->thumbnail[ $url ];
 	}
-
 }

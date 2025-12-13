@@ -99,7 +99,7 @@ class Video_Schema_Generator extends \WP_Background_Process {
 				$this->convert( $post );
 			}
 			return false;
-		} catch ( Exception $error ) {
+		} catch ( \Exception $error ) {
 			return true;
 		}
 	}
@@ -128,7 +128,7 @@ class Video_Schema_Generator extends \WP_Background_Process {
 		// Schema Posts.
 		$post_types = array_filter(
 			Helper::get_accessible_post_types(),
-			function( $post_type ) {
+			function ( $post_type ) {
 				return 'attachment' !== $post_type && Helper::get_settings( "titles.pt_{$post_type}_autodetect_video", 'on' );
 			}
 		);

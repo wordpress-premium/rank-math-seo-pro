@@ -25,8 +25,7 @@ if ( $schema['name'] === $post_title && $post->ID === get_the_ID() ) {
 /**
  * Filter: 'rank_math/schema/podcast_episode_title' - Allow changing the title of the podcast episode. Pass false to disable.
  *
- * @var string $post_title The title of the podcast episode.
- *
+ * @param string $episode_title The title of the podcast episode.
  * @param WP_Post $post   The post object.
  * @param array   $schema The schema array.
  */
@@ -35,11 +34,18 @@ $episode_title = apply_filters( 'rank_math/schema/podcast_episode_title', $episo
 $season        = ! empty( $schema['partOfSeason'] ) ? $schema['partOfSeason'] : [];
 $time_required = [];
 if ( isset( $schema['timeRequired'] ) && Helper::get_formatted_duration( $schema['timeRequired'] ) ) {
-	$duration        = new \DateInterval( $schema['timeRequired'] );
+	$duration = new \DateInterval( $schema['timeRequired'] );
+
+	/* translators: %d Time in hours */
 	$time_required[] = ! empty( $duration->h ) ? sprintf( esc_html__( '%d Hour', 'rank-math-pro' ), $duration->h ) : '';
+
+	/* translators: %d Time in minutes */
 	$time_required[] = ! empty( $duration->i ) ? sprintf( esc_html__( '%d Min', 'rank-math-pro' ), $duration->i ) : '';
+
+	/* translators: %d Time in seconds */
 	$time_required[] = ! empty( $duration->s ) ? sprintf( esc_html__( '%d Sec', 'rank-math-pro' ), $duration->s ) : '';
-	$time_required   = array_filter( $time_required );
+
+	$time_required = array_filter( $time_required );
 }
 
 ob_start();
@@ -82,7 +88,7 @@ ob_start();
 						: <?php if ( ! empty( $season['url'] ) ) { ?>
 							<a href="<?php echo esc_url( $season['url'] ); ?>"><?php echo esc_html( $season['name'] ); ?></a>
 						<?php } else { ?>
-							<?php echo esc_html( $season['name'] ); ?>
+								<?php echo esc_html( $season['name'] ); ?>
 						<?php } ?>
 					<?php } ?> &#183;
 				<?php } ?>

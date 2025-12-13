@@ -1,2039 +1,17 @@
-# Translation of Rank Math - Rank Math Pro in Swedish
-# This file is distributed under the same license as the Rank Math - Rank Math Pro package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rank Math - Rank Math Pro\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-08-25 11:45+0200\n"
+"Report-Msgid-Bugs-To: \n"
 "Last-Translator: FX Bénard <fx@wp-translations.pro>\n"
 "Language-Team: \n"
-"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2023-08-25 11:45+0200\n"
+"Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 3.3.2\n"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Your Templates"
-msgstr "Dina mallar"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Schema Builder"
-msgstr "Schemabyggare"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Display Conditions"
-msgstr "Visa villkor"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Custom Schema"
-msgstr "Anpassat schema"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Please consider using %1$s Block instead."
-msgstr "Överväg att använda blocket %1$s istället."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Note: Please save the post as a draft first to see the actual data."
-msgstr "Observera: Spara först inlägget som ett utkast för att se de faktiska uppgifterna."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Add New Condition"
-msgstr "Lägg till nytt villkor"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Set up display rules to control where this Schema template is used on your website. For example, choose \"Entire Site\" to use the template on all pages on your website."
-msgstr "Ställ in visningsregler för att styra var på din webbplats denna schemamall används. Välj till exempel ”Hela webbplatsen” om du vill använda mallen på alla sidor på webbplatsen."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Where do you want to use this Schema template?"
-msgstr "Var vill du använda denna schema-mall?"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Enter Schema Type"
-msgstr "Ange schematyp"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Empty for All Authors, or User IDs separated by comma"
-msgstr "Tomt för ”alla författare”, eller användar-ID:n separerade med kommatecken"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In Author (on Single Posts)"
-msgstr "Under författare (på enstaka inlägg)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In WebPage Schema"
-msgstr "Under schema för webbsida"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In WebSite Schema"
-msgstr "Under webbplats-schema"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In Publisher (Organization or Person Schema)"
-msgstr "Under utgivare (organisations- eller personschema)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Singular"
-msgstr "Singular"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Archives"
-msgstr "Arkiv"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Entire Site"
-msgstr "Hela webbplatsen"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Insert"
-msgstr "Infoga"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Exclude"
-msgstr "Exkludera"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Include"
-msgstr "Inkludera"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "All Post Types"
-msgstr "Alla inläggstyper"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Author"
-msgstr "Författare"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "All Archives"
-msgstr "Alla arkiv"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Manually create and edit your own custom Schema – fully control all of your properties, property groups, and the associated attributes. Please proceed with caution and validate your code to ensure it aligns with Google's Structured Data guidelines and standards."
-msgstr "Skapa och redigera ditt eget anpassade schema manuellt – ha full kontroll över alla egenskaper, egenskapsgrupper och tillhörande attribut. Var försiktig och validera din kod för att säkerställa att den stämmer mot Googles riktlinjer och standarder för strukturerade data."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use"
-msgstr "Använd"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Schema Found"
-msgstr "Schema hittades"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "JSON-LD/Custom Code"
-msgstr "JSON-LD/anpassad kod"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL / Online Page"
-msgstr "URL/online-sida"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Import Schema Code from"
-msgstr "Importera schemakod från"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Test with Google"
-msgstr "Testa med Google"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Copied!"
-msgstr "Kopierad!"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Copy"
-msgstr "Kopiera"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "JSON-LD Code"
-msgstr "JSON-LD kod"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Importing…"
-msgstr "Importerar …"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Page URL"
-msgstr "URL för sida"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Process HTML"
-msgstr "Bearbeta HTML"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "HTML Code"
-msgstr "HTML-kod"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Process Code"
-msgstr "Bearbeta kod"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Custom JSON-LD Code"
-msgstr "Anpassad JSON-LD-kod"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Make schema Primary"
-msgstr "Gör schemat primärt"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "For example, Game, Multimedia"
-msgstr "Till exempel spel, multimedia"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Application Category"
-msgstr "Ansökningkategori"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "For example, Windows 7, OSX 10.6, Android 1.6"
-msgstr "Till exempel, Windows 7, OSX 10.6, Android 1.6"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Operating System"
-msgstr "Operativsystem"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "End date and time of the event"
-msgstr "Slutdatum och tid för händelsen"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "End Date"
-msgstr "Slutdatum"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Date and time of the event"
-msgstr "Datum och tid för händelsen"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Start Date"
-msgstr "Startdatum"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Indicates whether the event occurs online, offline at a physical location, or a mix of both online and offline."
-msgstr "Indicates whether the event occurs online, offline at a physical location, or a mixture of both online and offline."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Event Attendance Mode"
-msgstr "Event Attendance Mode"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Current status of the event (optional)"
-msgstr "Current status of the event (optional)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Event Status"
-msgstr "Händelsestatus"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type of the event"
-msgstr "Typ av händelse"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Event Type"
-msgstr "Händelsetyp"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Editions"
-msgstr "Utgåvor"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Position of the episode within an ordered group of episodes (1, 2, 3, etc)."
-msgstr "Avsnittets ordningsnummer i en sorterad grupp av avsnitt (1, 2, 3 osv)."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Number"
-msgstr "Avsnittets nummer"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Is episode family friendly?"
-msgstr "Är avsnittet familjevänligt?"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "If empty, podcast channel image will be used from the Settings page."
-msgstr "Om fältet är tomt används bilden för podcastkanalen på sidan inställningar."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Image URL"
-msgstr "URL till bild för avsnittet"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "By default, current post URL is used."
-msgstr "Som standard används aktuell URL för inlägget."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode URL"
-msgstr "URL för avsnitt"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "ISO 8601 duration format. Example: PT37M. Use <a href=https://www.345tool.com/time-util/time-duration-calculator target=_blank>this tool</a> to convert standard time to ISO8601 format."
-msgstr "Varaktighet i formatet ISO 8601. Exempel: PT37M. Använd <a href=https://www.345tool.com/time-util/time-duration-calculator target=_blank>detta verktyg</a> för att konvertera standardtid till ISO8601-formatet."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Duration"
-msgstr "Avsnittets längd"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A plaintext description of the episode without HTML tags."
-msgstr "En beskrivning av avsnittet i klartext, utan HTML-taggar."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Description"
-msgstr "Beskrivning av avsnitt"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Name"
-msgstr "Avsnittets namn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Podcast Episode"
-msgstr "Podcast-avsnitt"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "If set to true, this property indicates whether a job posting will accept experience in place of its formal educational qualifications. If set to true, you must include both the experienceRequirements and educationRequirements properties."
-msgstr "Om denna egenskap är satt till true anger den om en platsannons accepterar erfarenhet som ersättning för formella krav på utbildning. Om den är satt till true måste du inkludera både egenskaperna experienceRequirements och educationRequirements."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use Exp in place of Education"
-msgstr "Använd Exp i stället för Education"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Remote Job Location (Optional)"
-msgstr "Arbetsplats på distans (valfritt)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use this property to specify that the job is a Work From Home (remote) job. keep address empty if job is 100% remote."
-msgstr "Använd denna egenskap för att ange att jobbet är ett distansjobb. Fyll inte i adressen om jobbet är helt på distans."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Is Telecommute Job"
-msgstr "Är distansarbete"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The hiring organization's unique identifier for the job."
-msgstr "Den anställande organisationens unika ID för jobbet."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Posting ID (Recommended)"
-msgstr "Publicerings-ID (Rekommenderat)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type of employment. You can choose more than one value"
-msgstr "Type of employment. You can choose more than one value"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Employment Type (Recommended)"
-msgstr "Employment Type (Recommended)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "If checked, post status will be changed to Draft and its URL will return a 404 error, as required by the Rich Result guidelines"
-msgstr "If checked, post status will be changed to Draft and its URL will return a 404 error, as required by the Rich Result guidelines"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date when the job posting will expire. If a job posting never expires, or you do not know when the job will expire, do not include this property"
-msgstr "The date when the job posting will expire. If a job posting never expires, or you do not know when the job will expire, do not include this property"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The original date on which employer posted the job. You can leave it empty to use the post publication date as job posted date"
-msgstr "The original date on which employer posted the job. You can leave it empty to use the post publication date as job posted date"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Steps"
-msgstr "Steg"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Supplies"
-msgstr "Förnödenheter"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Example: P12DT23H15M"
-msgstr "Exempel: P12DT23H15M"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "HowTo"
-msgstr "HowTo"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Questions"
-msgstr "Frågor"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The rating of the video. Supported values are float numbers in the range 0.0 (low) to 5.0 (high), inclusive. (Used in the Video Sitemap only)"
-msgstr "Videons betyg. Kan ha ett flyttalsvärde från och med 0,0 (lägsta betyg) till och med 5,0 (högsta). (Används endast i webbplatskarta för video)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "An arbitrary string tag describing the video. Add coma separated video tags. (Used in the Video Sitemap only)"
-msgstr "En etikett med godtycklig textsträng som beskriver videon. Lägg till flera videoetiketter separerarade med kommatecken. (Används endast i webbplatskarta för video)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Tags"
-msgstr "Etiketter för video"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A short description of the broad category that the video belongs to. Add coma separated video categories. (Used in the Video Sitemap only)"
-msgstr "En kort beskrivning av till vilken bred kategori videon hör. Lägg till videokategorier, separerade med kommatecken. (Används endast i webbplatskarta för video)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Category"
-msgstr "Videokategori"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Mark this video as Family-friendly"
-msgstr "Markera denna video som familjevänlig"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Is Family Friendly Video"
-msgstr "Är en familjevänlig video"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Height"
-msgstr "Höjd"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Width"
-msgstr "Bredd"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A video thumbnail URL"
-msgstr "URL för en video-miniatyr"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Upload Date"
-msgstr "Uppladdningsdatum"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL pointing to the actual video media file like MP4, MOV, etc. Please leave it empty if you don't know the URL."
-msgstr "A URL pointing to the actual video media file like MP4, MOV, etc. Please leave it empty if you don't know the URL."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL pointing to the embeddable player for the video. Example: <code>https://www.youtube.com/embed/VIDEOID</code>"
-msgstr "A URL pointing to the embeddable player for the video. Example: <code>https://www.youtube.com/embed/VIDEOID</code>"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Embed URL"
-msgstr "Bädda in URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "sameAs"
-msgstr "sameAs"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The job title of the person (for example, Financial Manager)."
-msgstr "The job title of the person (for example, Financial Manager)."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Job title"
-msgstr "Jobbtitel"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Gender"
-msgstr "Kön"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Keep this section empty if this is an <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>editorial reviews</a>."
-msgstr "Lämna detta avsnitt tomt om detta är en <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>redaktionell recension</a>."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The manufacturer of the product. If enabled, the Organization data from Local SEO settings will be used."
-msgstr "Produktens tillverkare. Om detta är aktiverat kommer organisationsdata från de lokala SEO-inställningarna att användas."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Add Manufacturer"
-msgstr "Lägg till tillverkare"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Specify another Schema.org type to further describe the product that is referenced. You can also insert a URL to an external vocabulary such as Wikidata or Wikipedia."
-msgstr "Ange en annan typ av schema.org för att ytterligare beskriva den refererade produkten. Du kan också infoga en URL till en extern vokabulär, såsom Wikidata eller Wikipedia."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Additional Type"
-msgstr "Extra typ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Product URL"
-msgstr "Produkt-URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Product name"
-msgstr "Produktnamn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Instruction Type"
-msgstr "Instruktionstyp"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe ingredients, add one item per line"
-msgstr "Recipe ingredients, add one item per line"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Quantity produced by the recipe, for example 4 servings"
-msgstr "Quantity produced by the recipe, for example 4 servings"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Other terms for your recipe such as the season, the holiday, or other descriptors. Separate multiple entries with commas."
-msgstr "Other terms for your recipe, such as the season, the holiday, or other descriptors. Separate multiple entries with commas."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The cuisine of the recipe (for example, French or Ethiopian)."
-msgstr "The cuisine of the recipe (for example, French or Ethiopian)."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type of dish, for example appetizer, or dessert."
-msgstr "Typ av rätt, till exempel förrätt eller dessert."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL pointing to the menu of the restaurant."
-msgstr "URL pointing to the menu of the restaurant."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Menu URL"
-msgstr "Meny-URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Serves Cuisine"
-msgstr "Serves Cuisine"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "You can either use this shortcode or Schema Block in the block editor to print the schema data in the content in order to meet the Google's guidelines. Read more about it <a href=https://developers.google.com/search/docs/guides/sd-policies#content target=_blank>here</a>."
-msgstr "You can either use this shortcode or Schema Block in the block editor to print the schema data in the content in order to meet the Google's guidelines. Read more about it <a href=https://developers.google.com/search/docs/guides/sd-policies#content target=_blank>here</a>."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The timezone is used to calculate the Open now functionality."
-msgstr "Tidszonen används för funktionen ”öppet nu”."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Select Timezone"
-msgstr "Välj tidszon"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use 24h Format"
-msgstr "Använd 24-timmarsformat"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Area Served"
-msgstr "Betjänat område"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Payment Accepted"
-msgstr "Betalningsmetoder som stöds"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Currencies Accepted"
-msgstr "Valutor som godtas"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The price range of the business."
-msgstr "Företagets prisintervall."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Business FAX"
-msgstr "Företagsfax"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Secondary Number"
-msgstr "Sekundärt nummer"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Primary Number"
-msgstr "Primärt nummer"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "You can use the Local Business Block in the block editor, or copy and paste this in the content. <a href=https://rankmath.com/kb/location-data-shortcode/ target=_blank>Learn more</a>"
-msgstr "Du kan använda blocket för lokala företag i blockredigeraren eller kopiera och klistra in det ditt innehåll. <a href=https://rankmath.com/kb/location-data-shortcode/ target=_blank>Läs mer</a>"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "DataSets"
-msgstr "Datauppsättningar"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid " Only include this property if the dataset has a spatial dimension."
-msgstr " Inkludera denna egenskap endast om datauppsättningen har en rumslig dimension."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Spatial Coverage"
-msgstr "Täckt område"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The data in the dataset covers a specific time interval. Only include this property if the dataset has a temporal dimension."
-msgstr "Uppgifterna i datauppsättningen täcker ett visst tidsintervall. Inkludera denna egenskap endast om datauppsättningen har en tidsdimension."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Keywords summarizing the dataset. Add one keyword per line."
-msgstr "Nyckelord som sammanfattar datauppsättningen. Lägg till ett nyckelord per rad."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "An identifier, such as a DOI or a Compact Identifier. Add one identifier per line."
-msgstr "En identifierare, t.ex. en DOI eller en Compact Identifier. Lägg till en identifierare per rad."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL of a reference Web page that unambiguously indicates the dataset's identity, usually in a different repository."
-msgstr "URL till en referenswebbsida som entydigt anger datauppsättningens identitet, vanligtvis i något annat filarkiv."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Same As"
-msgstr "Samma som"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Location of a page describing the dataset."
-msgstr "Plats för en sida som beskriver datauppsättningen."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "You can use the Schema Block in the block editor, or copy and paste this in the content. This shortcode will work on this page only."
-msgstr "Du kan använda schemablocket i blockredigeraren eller kopiera och klistra in detta i innehållet. Den här kortkoden fungerar bara på denna sida."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date the movie was released."
-msgstr "Datumet filmen släpptes."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Copy & paste this shortcode in the content."
-msgstr "Kopiera och klistra in denna kortkod i innehållet."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Shortcode"
-msgstr "Kortkod"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The review or rating must be displayed on the page to comply with Google's Schema guidelines."
-msgstr "The review or rating must be displayed on the page to comply with Google's Schema guidelines."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Review Location"
-msgstr "Granska platsen"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Movie Director"
-msgstr "Filmregissör"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Movie Name"
-msgstr "Filmnamn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Article Section"
-msgstr "Sektion för artikel"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Google does not allow Person as the Publisher for articles. Organization will be used instead."
-msgstr "Google does not allow Person as the Publisher for articles. Organisation will be used instead."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Article Type"
-msgstr "Artikeltyp"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Add speakable attributes to Article Schema."
-msgstr "Lägg till speakable-attribut i schemat för artikel."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Enable Speakable"
-msgstr "Aktivera ”uttalbar”"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Website or Social Link"
-msgstr "Webbplats eller social länk"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Performer"
-msgstr "Scenartist"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Performer Information"
-msgstr "Information om scenartist"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The URL of the online event, where people can join. This property is required if your event is happening online"
-msgstr "The URL of the online event, where people can join. This property is required if your event is happening online"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Online Event URL"
-msgstr "URL till online-evenemang"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Course Provider URL"
-msgstr "Kursleverantörens URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Course Provider Name"
-msgstr "Kursleverantörens namn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Course Provider"
-msgstr "Kursleverantör"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Book Format"
-msgstr "Bokformat"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Date of first publication of this tome"
-msgstr "Date of first publication of this tome"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Date Published"
-msgstr "Datum publicerad"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL specific to this edition if one exists"
-msgstr "URL specific to this edition if one exists"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The ISBN of the print book"
-msgstr "ISBN för den tryckta boken"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The edition of the book"
-msgstr "Utgåvan av boken"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The title of the tome. Use for the title of the tome if it differs from the book. *Optional when tome has the same title as the book"
-msgstr "The title of the tome. Use for the title of the tome if it differs from the book. *Optional when tome has the same title as the book"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Edition"
-msgstr "Utgåva"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Season URL"
-msgstr "Säsongens URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Season Name"
-msgstr "Säsongsnamn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Position of the season within an ordered group of seasons (1, 2, 3, etc)."
-msgstr "Säsongens ordningsnummer i en sorterad grupp av säsonger (1, 2, 3 osv)."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Season Number"
-msgstr "Säsongsnummer"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Fully-qualified URL of the episode audio file, including the format extension (for example, .wav, .mp3)"
-msgstr "Fullständig URL till avsnittets ljudfil, inklusive filändelse (t.ex. .wav, .mp3)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Audio File URL"
-msgstr "URL för ljudfil"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The educational background needed for the job posting. If there aren't any educational requirements, use the no requirements value. If you don't know the educational requirements, don't add this property."
-msgstr "Den utbildningsbakgrund som krävs för det utannonserade jobbet. Om det inte finns några utbildningskrav, anger du värdet ”no requirements”. Om du inte känner till utbildningskraven ska du inte ange denna egenskap."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use this property to specify geographic location(s) in which employees may be located for work from home jobs. At least one country is required."
-msgstr "Använd denna egenskap för att ange en eller flera geografiska platser där anställda kan befinna sig vid arbete hemifrån. Minst ett land måste anges."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Location Type"
-msgstr "Typ av plats"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The experience that's required for the job posting. If there aren't any requirements, use 0."
-msgstr "Erfarenheten som krävs för det utannonserade jobbet. Om det inte finns några krav, anger du 0."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Months of Experience"
-msgstr "Månader av erfarenhet"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Website URL of the venue"
-msgstr "Webbplats-URL för platsen"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Venue URL"
-msgstr "Platsens URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The venue name."
-msgstr "Platsens namn."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Venue Name"
-msgstr "Platsens namn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Logo URL of the organization offering the job position. Leave empty to use your own company information"
-msgstr "Logo URL of the organisation offering the job position. Leave empty to use your own company information"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Organization Logo (Recommended)"
-msgstr "Organisationens logga (rekommenderat)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The URL of the organization offering the job position. Leave empty to use your own company information"
-msgstr "The URL of the organisation offering the job position. Leave empty to use your own company information"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Organization URL (Recommended)"
-msgstr "Organisationens URL (rekommenderat)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The name of the company. Leave empty to use your own company information."
-msgstr "Namnet på företaget. Lämna tomt för att använda din egen företagsinformation."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Hiring Organization"
-msgstr "Anställande organisation"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Salary amount is for"
-msgstr "The salary amount is for"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Payroll (Recommended)"
-msgstr "Payroll (Recommended)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Insert amount, e.g. 50.00, or a salary range, e.g. 40.00-50.00"
-msgstr "Insert amount, e.g. 50.00, or a salary range, e.g. 40.00-50.00"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Salary (Recommended)"
-msgstr "Lön (rekommenderat)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Step"
-msgstr "Steg"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Tool"
-msgstr "Verktyg"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "ISO 4217 Currency code. Example: EUR"
-msgstr "ISO 4217 valutakod. Exempel: EUR"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The estimated cost of the supplies consumed when performing instructions."
-msgstr "Den uppskattade kostnaden för de förnödenheter som förbrukas när man följer instruktionerna."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Cost"
-msgstr "Kostnad"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Question"
-msgstr "Fråga"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Answer"
-msgstr "Svar"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL that points to the start time of the clip. The clip URL must point to the same URL path as the video with additional query parameters that specify the time."
-msgstr "En URL som pekar till klippets starttid. Klippets URL måste peka till samma URL-sökväg som videon med tillagda query-parametrar som anger tiden."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Clip URL"
-msgstr "Klippets URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The end time of the clip expressed as the number of seconds from the beginning of the work."
-msgstr "Klippets sluttid uttryckt som antalet sekunder från verkets början."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "End Offset"
-msgstr "Offset för sluttid"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The start time of the clip expressed as the number of seconds from the beginning of the work."
-msgstr "Klippets starttid uttryckt som antalet sekunder från verkets början."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Start Offset"
-msgstr "Offset för starttid"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Clip Name"
-msgstr "Klippets namn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Clip"
-msgstr "Videoklipp"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Inventory Level"
-msgstr "Lagernivå"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date after which the price will no longer be available"
-msgstr "Det datum efter vilket priset inte längre är tillgängligt"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date when the item becomes valid."
-msgstr "Datumet då objektet blir giltigt."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Price Valid From"
-msgstr "Pris giltigt från"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Offer availability"
-msgstr "Offer availability"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Availability"
-msgstr "Tillgänglig"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Currency"
-msgstr "Valuta"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Price"
-msgstr "Pris"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Offers"
-msgstr "Erbjudanden"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Brand URL"
-msgstr "URL för varumärket"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Brand Name"
-msgstr "Märkesnamn"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Instruction Texts"
-msgstr "Instruktionstexter"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Instruction name of the recipe."
-msgstr "Instruction name of the recipe."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Upload Date"
-msgstr "Uppladdningsdatum för videoklipp"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "ISO 8601 duration format. Example: PT1H30M"
-msgstr "ISO 8601 varaktighetsformat. Till exempel: PT1H30M"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Duration"
-msgstr "Varaktighet"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A recipe video thumbnail URL"
-msgstr "En URL till miniatyr för receptvideo"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL pointing to the actual video media file"
-msgstr "En URL som pekar på videoklippets faktiska mediafil"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A video URL. Optional."
-msgstr "En video-URL. Valfritt."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video URL"
-msgstr "Video-URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A recipe video Name"
-msgstr "Ett namn för receptvideo"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The number of calories in the recipe. Optional."
-msgstr "Antalet kalorier i receptet. Valfritt."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Closing Time"
-msgstr "Stängningstid"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Opening Time"
-msgstr "Öppningstid"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Open Days"
-msgstr "Open Days"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Longitude"
-msgstr "Longitud"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Latitude"
-msgstr "Latitud"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Geo Cordinates"
-msgstr "Geokoordinater"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Postal Code"
-msgstr "Postnummer"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Region"
-msgstr "Region"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Locality"
-msgstr "Plats"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Street Address"
-msgstr "Gatuadress"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The link for the download."
-msgstr "Nedladdningslänken."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Content URL"
-msgstr "Innehålls-URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The file format of the distribution."
-msgstr "Distributionens filformat."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Encoding Format"
-msgstr "Kodningsformat"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A license under which the dataset is distributed."
-msgstr "En licens, under vilken datauppsättningen distribueras."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A short summary describing a dataset."
-msgstr "En kort sammanfattning som beskriver en datauppsättning."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A descriptive name of a dataset."
-msgstr "Ett beskrivande namn för en datauppsättning."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Either a specific edition of the written work, or the volume of the work"
-msgstr "Either a specific edition of the written work, or the volume of the work"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Data Set"
-msgstr "Datauppsättning"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The catalog name."
-msgstr "Katalogens namn."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The same dataset can be included in more than one such repository. You can refer to a data catalog that this dataset belongs to by referencing it directly."
-msgstr "Samma datauppsättning kan ingå i mer än ett sådant filarkiv. Du kan hänvisa till en datakatalog denna datauppsättning tillhör genom att referera direkt till den."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Data Catalog"
-msgstr "Datakatalog"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Claim"
-msgstr "Anspråk"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Headline"
-msgstr "Rubrik"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Appearance"
-msgstr "Utseende"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Negative notes, add one item per line"
-msgstr "Negativa anmärkningar, en post per rad"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Positive notes, add one item per line"
-msgstr "Positiva kommentarer, ett objekt per rad"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use this section only for <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>editorial reviews</a>."
-msgstr "Använd detta avsnitt endast för <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>redaktionella recensioner</a>."
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Modified Date"
-msgstr "Senast ändrad"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Review"
-msgstr "Recension"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The truthfulness rating assigned to ClaimReview.reviewRating, as a human-readible short word or phrase. This value is displayed in the fact check in search results. Examples: <code>True, Mostly true</code>"
-msgstr "Det sanningsbetyg som tilldelats ClaimReview.reviewRating, som ett kort ord eller fras som kan läsas av människor. Detta värde visas i faktakontrollen i sökresultaten. Exempel: <code>Sant, Mestadels sant</code>"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating maximum score"
-msgstr "Högsta betygspoäng"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating Maximum"
-msgstr "Maximum Rating"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating minimum score"
-msgstr "Lägsta betygspoäng"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating Minimum"
-msgstr "Lägsta betyg"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating score"
-msgstr "Betyg"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating"
-msgstr "Betyg"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Image URL"
-msgstr "Bild-URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "cssSelectors"
-msgstr "css-Selektorer"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Speakable"
-msgstr "Går att uttala"
-
-#: includes/modules/schema/assets/js/schema.js:1
-msgid "Delete"
-msgstr "Ta bort"
-
-#: includes/modules/schema/assets/js/schema.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Global Templates in Use"
-msgstr "Globala mallar som används"
-
-#: includes/modules/news-sitemap/assets/js/news-sitemap.js:1
-msgid "Using an \"Index\" or \"NoIndex\" option allows you to control what Google News Bot (not to be confused with Google Search Bot) can include or not include in the Google News Index."
-msgstr "Med alternativet ”Index” eller ”NoIndex” kan du styra vad Google News Bot (inte att förväxla med Google Search Bot) kan inkludera eller inte inkludera i Google News Index."
-
-#: includes/modules/news-sitemap/assets/js/news-sitemap.js:1
-msgid "Googlebot-News index"
-msgstr "Googlebot-News index"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "When you're done editing, don't forget to hit \"publish\" to create this location."
-msgstr "När du är klar med redigeringen ska du komma ihåg att trycka på ”publicera” för att lägga till denna plats."
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Publish your location!"
-msgstr "Publicera din plats!"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Make sure to add the Local Business Block or %s to display your business data."
-msgstr "Se till att lägga till blocket för lokalt företag eller %s för att visa dina företagsuppgifter."
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Show Business Information"
-msgstr "Visa företagsinformation"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Add your local business's details here with \"Local Business\" Schema Markup in order to be eligible for local SERP features."
-msgstr "Lägg till uppgifter om ditt lokala företag här med märkschemat ”Local Business” för att vara möjliggöra funktioner för visning av lokalt baserade sökresultat."
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Local Business Schema"
-msgstr "Schema för lokalt företag"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Give your business's new location a name here. This field is required and will be visible to users."
-msgstr "Ge ditt företags nya plats ett namn här. Fältet är obligatoriskt och kommer att vara synligt för användare."
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Local Business Name"
-msgstr "Namnet på det lokala företaget"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Dismiss"
-msgstr "Avfärda"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Next"
-msgstr "Nästa"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Finish"
-msgstr "Slutför"
-
-#: includes/modules/content-ai/assets/js/content-ai.js:1
-#: includes/modules/content-ai/assets/src/content-ai.js:12
-msgid "You have used all of your AI credits and need to purchase more from your SEO service provider."
-msgstr "Du har använt alla dina AI-krediter och behöver köpa fler från din SEO-tjänsteleverantör."
-
-#: includes/modules/content-ai/assets/js/content-ai.js:1
-#: includes/modules/content-ai/assets/src/content-ai.js:8
-msgid "Contact your SEO service provider for more AI credits."
-msgstr "Kontakta din SEO-tjänsteleverantör för att be om fler AI-krediter."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 5 years"
-msgstr "De senaste 5 åren"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past day"
-msgstr "Senaste dygnet"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "6 Months"
-msgstr "6 månader"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "90 Days"
-msgstr "90 dagar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "30 Days"
-msgstr "30 dagar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "15 Days"
-msgstr "15 dagar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "7 Days"
-msgstr "7 dagar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Issue Message"
-msgstr "Problemmeddelande"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Items"
-msgstr "Objekt"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rich Result Types"
-msgstr "Berikade resultattyper"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "detectedItems"
-msgstr "upptäcktaObjekt"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Severity"
-msgstr "Allvarlighetsgrad"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Message"
-msgstr "Meddelande"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Issues"
-msgstr "Problem"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Mobile Usability Result"
-msgstr "Resultat för mobil användbarhet"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Unspecified"
-msgstr "Ospecificerad"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Referring URLs"
-msgstr "Hänvisande URL:er"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Index Status Result"
-msgstr "Resultatstatus för index"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "User Canonical"
-msgstr "Användare Canonical"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Google Canonical"
-msgstr "Google Canonical"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Page Fetch State"
-msgstr "Status för inhämtning av sidan"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Not Available"
-msgstr "Inte tillgängligt"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Last Crawl Time"
-msgstr "Tid för senaste genomsökning"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Indexing State"
-msgstr "Indexerings-status"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Robots.txt State"
-msgstr "Robots.txt-status"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Verdict"
-msgstr "Utslag"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Last Crawl: "
-msgstr "Senaste genomsökning: "
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Submit now with Instant Indexing"
-msgstr "Skicka nu med omedelbar Indexing"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Google: "
-msgstr "Google: "
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "hours ago"
-msgstr "timmar sedan"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "days ago"
-msgstr "dagar sedan"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top Statuses"
-msgstr "Toppstatusar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Excluded"
-msgstr "Uteslutet"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Only 6 keywords can be added in the graph"
-msgstr "Endast 6 nyckelord kan läggas till i diagrammet"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Remove from graph"
-msgstr "Ta bort ur diagram"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Add to graph"
-msgstr "Lägg till i diagram"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Allowed"
-msgstr "Tillåten"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Remaining"
-msgstr "Återstår"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Used"
-msgstr "Använd"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Delete All"
-msgstr "Ta bort alla"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Save"
-msgstr "Spara"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Keyword"
-msgstr "Nyckelord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Keyword Manager"
-msgstr "Nyckelordshanterare"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Added"
-msgstr "Tillagt"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Adding…"
-msgstr "Lägger till …"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Add"
-msgstr "Lägg till"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Keyword…"
-msgstr "Sök nyckelord …"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Save Settings"
-msgstr "Spara inställningar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Select Post Types"
-msgstr "Välj inläggstyper"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Include Secondary KWs"
-msgstr "Inkludera sekundära nyckelord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Options will be applied to old & new posts. By default, only Primary keyword will be imported."
-msgstr "Alternativen kommer att tillämpas på gamla och nya inlägg. Som standard kommer endast primära nyckelord att importeras."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Enable Auto Import"
-msgstr "Aktivera automatisk import"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Auto Add Focus Keywords"
-msgstr "Lägg till fokusord automatiskt"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "No new Focus Keywords found."
-msgstr "Inga nya fokusord hittades."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Successfully Completed."
-msgstr "Slutförd."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Adding Focus Keywords.."
-msgstr "Lägger till fokusord …"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "↳"
-msgstr "↳"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rest of the Keywords"
-msgstr "Resten av nyckelorden"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Add in Keyword Manager"
-msgstr "Lägg till i sökordshanteraren"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Added in Keyword Manager"
-msgstr "Tillagd i sökordshanteraren"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Delete from Keyword Manager"
-msgstr "Ta bort från nyckelordshanteraren"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Losing Keywords"
-msgstr "Topp 5 förlorande nyckelord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Winning Keywords"
-msgstr "Topp 5 vinnande sökord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is how many times your site has been clicked on in the search results."
-msgstr "Detta är hur många gånger din webbplats har klickats på i sökresultaten."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Avg.CTR"
-msgstr "Avg.CTR"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Read more"
-msgstr "Läs mer"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Average click-through rate. Search clicks divided by search impressions."
-msgstr "Genomsnittlig klickfrekvens. Klick på sökningar dividerat med antalet sökvisningar."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "How many times your site was clicked on in the search results."
-msgstr "Hur många gånger din webbplats klickades i sökresultaten."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Open Report"
-msgstr "Öppna rapport"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is your total AdSense earning from the time period."
-msgstr "Detta är dina totala AdSense-intäkter under tidsperioden."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Adsense"
-msgstr "Adsense"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Average position of all the ranking keywords below 100 position."
-msgstr "Average position of all the ranking keywords below 100 position."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Total number of keywords your site ranking below 100 position."
-msgstr "Total number of keywords your site ranking below 100 position."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "How many times your site was clicked."
-msgstr "Hur många gånger din webbplats klickats på."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "How many times your site showed up in the search results."
-msgstr "Hur många gånger din webbplats visades i sökresultat."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Content"
-msgstr "Innehåll"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Traffic"
-msgstr "Trafik"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Links"
-msgstr "Länkar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "All"
-msgstr "Alla"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Pageviews"
-msgstr "Sidvisningar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranking Keywords"
-msgstr "Ranking av nyckelord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the average position of your site in the search results."
-msgstr "Detta är den genomsnittliga placeringen för din webbplats i sökresultaten."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Avg. Position"
-msgstr "Genomsnittlig position"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the average click-through rate (search clicks divided by search impressions)."
-msgstr "Detta är den genomsnittliga klickfrekvensen (klick i sökningar dividerat med antalet sökvisningar)."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "CTR"
-msgstr "CTR"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is how many times your site was clicked on in the search results."
-msgstr "Detta är hur många gånger din webbplats har klickats på i sökresultaten."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Clicks"
-msgstr "Klick från sökningar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the total number of keywords your site ranked for."
-msgstr "Detta är det totala antalet sökord din webbplats rankas för."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is how many times your site showed up in the search results."
-msgstr "Detta är hur många gånger din webbplats visades i sökresultaten."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Impressions"
-msgstr "Sökvisningar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Page Fetch"
-msgstr "Sidhämtning"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Robots state"
-msgstr "Status för robotar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Crawled As"
-msgstr "Genomsökte som"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rich Results"
-msgstr "Formaterat resultat"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Mobile Usability"
-msgstr "Användbarhet på mobil"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Indexing Allowed"
-msgstr "Indexering tillåtet"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Status"
-msgstr "Status"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Index Status"
-msgstr "Indexstatus"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Trend"
-msgstr "Trend"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Loading…"
-msgstr "Laddar …"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Please set the Focus Keyword for this page."
-msgstr "Ange fokusordet för denna sida."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Suggested Changes"
-msgstr "Förslagna ändringar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Coming Soon"
-msgstr "Kommer snart"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Save spending time and money"
-msgstr "Spara tid och pengar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "SEO suggestions"
-msgstr "SEO-förslag"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Periodically analyze post"
-msgstr "Analysera inlägget regelbundet"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Intelligent Suggestions"
-msgstr "Intelligenta förslag"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Keywords"
-msgstr "Rankad för flest sökord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Clicks"
-msgstr "Rankad för flest klick"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Impressions"
-msgstr "Rankad för flest visningar"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Search Traffic"
-msgstr "Rankad för mest söktrafik"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Schema type of the post."
-msgstr "Inläggets schematyp."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "The primary focus keyword set for the post."
-msgstr "Det primära fokusord som angetts för inlägget."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Primary Keyword"
-msgstr "Primärt sökord"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rank Math’s SEO Analyzer Score."
-msgstr "Rank Maths SEO Analyzer-betyg."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rank Math SEO score."
-msgstr "Rank Math SEO-betyg."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Content Score"
-msgstr "Innehållspoäng"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "SEO Score"
-msgstr "SEO-poäng"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Timeframe"
-msgstr "Tidsram"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "[Edit]"
-msgstr "[Redigera]"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Losing Posts"
-msgstr "De 5 inlägg som tappat mest"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Winning Posts"
-msgstr "Topp 5 vinnande inlägg"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Avg. CTR"
-msgstr "Genomsnittlig CTR"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Clicks"
-msgstr "Klick"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "#"
-msgstr "#"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Post URL"
-msgstr "Sök URL för inlägget"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "No results found matching your search query."
-msgstr "Inga resultat hittades som matchar din sökfråga."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Position History"
-msgstr "Positionshistorik"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Are you sure you want to delete all the Manually Tracked keywords from Rank Tracker? This action is irreversible."
-msgstr "Är du säker på att du vill ta bort alla manuellt spårade nyckelord från Rank Tracker? Åtgärden kan inte ångras."
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Upgrade your plan!"
-msgstr "Uppgradera paketet!"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Your keyword quota has expired. Please upgrade your plan to increase the limit."
-msgstr "Ditt tillåtna antal nyckelord är uppnått. Uppgradera ditt paket för att höja gränsen."
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the number of pageviews carried out by visitors from Google."
-msgstr "This is the number of pageviews carried out by visitors from Google."
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Refresh"
-msgstr "Uppdatera"
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Google PageSpeed score for desktop and mobile."
-msgstr "Google PageSpeed-poäng för datorskärm resp. mobil."
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "PageSpeed"
-msgstr "PageSpeed"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Link"
-msgstr "Länk"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Link edited."
-msgstr "Länk redigerad."
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Warning: the link has been inserted but may have errors. Please test it."
-msgstr "Varning: länken har infogats men kan innehålla fel. Testa den."
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "%s (opens in a new tab)"
-msgstr "%s (öppnas i en ny flik)"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to mentions."
-msgstr "Ange till omnämnanden."
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to about."
-msgstr "Ange ungefärligt."
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to sponsored."
-msgstr "Ange som sponsrad."
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to nofollow."
-msgstr "Ange till följ inte."
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Open in new tab."
-msgstr "Öppna i ny flik."
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Close"
-msgstr "Stäng"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-msgid "Google Trends"
-msgstr "Google Trends"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Interest"
-msgstr "Intresse"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 12 months"
-msgstr "Senaste 12 månaderna"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 90 days"
-msgstr "Senaste 90 dagarna"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 30 days"
-msgstr "Senaste 30 dagarna"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 7 days"
-msgstr "Senaste 7 dagarna"
-
-#: assets/admin/js/blocks.js:1
-msgid "Move down"
-msgstr "Flytta ner"
-
-#: assets/admin/js/blocks.js:1
-msgid "Move up"
-msgstr "Flytta upp"
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Material"
-msgstr "Material"
-
-#: assets/admin/js/blocks.js:1
-msgid "Add one tool per line."
-msgstr "Lägg till ett verktyg per rad."
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Tools"
-msgstr "Verktyg"
-
-#: assets/admin/js/blocks.js:1
-msgid "Add one supply element per line."
-msgstr "Lägg till en utbudspost per rad."
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Supply"
-msgstr "Utbud"
-
-#: assets/admin/js/blocks.js:1
-msgid "USD"
-msgstr "USD"
-
-#: assets/admin/js/blocks.js:1
-msgid "Estimated Cost"
-msgstr "Uppskattad kostnad"
-
-#: assets/admin/js/blocks.js:1
-msgid "Rank Math's Local Business block"
-msgstr "Rank Maths block för lokala företag"
-
-#: assets/admin/js/blocks.js:1
-msgid "Local Business by Rank Math"
-msgstr "Lokala företag av Rank Math"
-
-#: assets/admin/js/blocks.js:1
-msgid "Contact"
-msgstr "Kontakt"
-
-#: assets/admin/js/blocks.js:1
-msgid "All Locations"
-msgstr "Alla platser"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show open now label after opening hour for current day"
-msgstr "Visa texten ”Öppet nu” efter öppettiden för aktuell dag"
-
-#: assets/admin/js/blocks.js:1
-msgid "Hide Closed Days"
-msgstr "Dölj stängda dagar"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show %s"
-msgstr "Visa %s"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Opening Hours"
-msgstr "Visa öppettider"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Price Indication"
-msgstr "Visa prisangivelse"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show COC number"
-msgstr "Visa COC-nummer"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show TAX ID"
-msgstr "Visa moms-ID"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show VAT number"
-msgstr "Visa momsregistreringsnummer"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Logo"
-msgstr "Visa logga"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Business URL"
-msgstr "Visa företagets URL"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Email"
-msgstr "Visa e-postadress"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show FAX number"
-msgstr "Visa faxnummer"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Secondary number"
-msgstr "Visa sekundärt nummer"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Primary number"
-msgstr "Visa primärt nummer"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Country"
-msgstr "Visa land"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show State"
-msgstr "Visa delstat"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show address on one line"
-msgstr "Visa adressen på en rad"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Company Address"
-msgstr "Visa företagets adress"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Company Name"
-msgstr "Visa företagsnamn"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show nearest location if none is found within radius"
-msgstr "Visa den närmaste platsen om ingen träff finns inom radien"
-
-#: assets/admin/js/blocks.js:1
-msgid "Add dropdown to filter results by category"
-msgstr "Lägg till rullgardinsmeny för filtrering av resultat efter kategori"
-
-#: assets/admin/js/blocks.js:1
-msgid "Search Locations within the radius"
-msgstr "Sök platser inom radien"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show radius"
-msgstr "Visa radie"
-
-#: assets/admin/js/blocks.js:1
-msgid "Route Label"
-msgstr "Etikett för rutten"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Route Planner"
-msgstr "Visa navigering"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show InfoWindow"
-msgstr "Visa infofönster"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Marker Clustering"
-msgstr "Visa märkeskluster"
-
-#: assets/admin/js/blocks.js:1
-msgid "Allow Dragging"
-msgstr "Tillåt dra-och-släpp"
-
-#: assets/admin/js/blocks.js:1
-msgid "Allow Zoom by scroll"
-msgstr "Tillåt zoomning via skrollning"
-
-#: assets/admin/js/blocks.js:1
-msgid "Allow Zoom"
-msgstr "Tillåt zoomning"
-
-#: assets/admin/js/blocks.js:1
-msgid "Zoom Level"
-msgstr "Zoom-nivå"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Category filter"
-msgstr "Visa kategorifilter"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Height"
-msgstr "Kartans höjd"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Width"
-msgstr "Kartans bredd"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Type"
-msgstr "Karttyp"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Map"
-msgstr "Visa karta"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Settings"
-msgstr "Kartinställningar"
-
-#: assets/admin/js/blocks.js:1
-msgid "Opening Hours Settings"
-msgstr "Inställningar för öppettider"
-
-#: assets/admin/js/blocks.js:1
-msgid "Address Settings"
-msgstr "Adressinställningar"
-
-#: assets/admin/js/blocks.js:1
-msgid "Preview Image"
-msgstr "Bild för förhandsvisning"
-
-#: assets/admin/js/blocks.js:1
-msgid "Location Categories"
-msgstr "Platskategorier"
-
-#: assets/admin/js/blocks.js:1
-msgid "Locations"
-msgstr "Platser"
-
-#: assets/admin/js/blocks.js:1
-msgid "Store Locator"
-msgstr "Hitta butik"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map"
-msgstr "Karta"
-
-#: assets/admin/js/blocks.js:1
-msgid "Settings"
-msgstr "Inställningar"
 
 #: rank-math-pro.php:115
 msgid "Please update Rank Math Free to the latest version first before using Rank Math PRO."
@@ -2344,7 +322,8 @@ msgstr "Ange namnet på din webbplats som det ska visas i sökresultaten."
 msgid "Website Name"
 msgstr "Webbplatsnamn"
 
-#: includes/modules/local-seo/class-admin.php:81 assets/admin/js/blocks.js:1
+#: includes/modules/local-seo/class-admin.php:81
+#: assets/admin/js/blocks.js:1
 #: includes/modules/schema/assets/js/schemaFilters.js:1
 msgid "Local Business"
 msgstr "Lokalt företag"
@@ -2379,7 +358,8 @@ msgstr "Aktivera Schema-modulen för att använda denna modul."
 msgid "Make your podcasts discoverable via Google Podcasts, Apple Podcasts, and similar services with Podcast RSS feed and Schema Markup generated by Rank Math."
 msgstr "Gör det möjligt att hitta din podcast via Google Podcasts, Apple Podcasts och liknande tjänster med hjälp av podcast-RSS-flöde och Schema-märkning, genererad av Rank Math."
 
-#: includes/admin/class-post-filters.php:79 includes/class-modules.php:75
+#: includes/admin/class-post-filters.php:79
+#: includes/class-modules.php:75
 #: includes/modules/podcast/class-podcast.php:82
 msgid "Podcast"
 msgstr "Podcast"
@@ -2472,8 +452,10 @@ msgstr "Falklandsöarna (Malvinerna)"
 msgid "Côte d'Ivoire"
 msgstr "Elfenbenskusten"
 
-#: includes/admin/class-admin-helper.php:434 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:434
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Czechia"
 msgstr "Tjeckien"
@@ -2519,15 +501,19 @@ msgid "United States Minor Outlying Islands"
 msgstr "Förenta staternas mindre öar i Oceanien och Västindien"
 
 #: includes/admin/class-admin-helper.php:352
-#: includes/admin/class-admin-helper.php:605 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:605
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "United States"
 msgstr "USA"
 
 #: includes/admin/class-admin-helper.php:351
-#: includes/admin/class-admin-helper.php:604 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:604
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "United Kingdom"
 msgstr "Storbritannien"
@@ -2618,8 +604,10 @@ msgid "Korea, Democratic People's Republic of"
 msgstr "Nordkorea"
 
 #: includes/admin/class-admin-helper.php:228
-#: includes/admin/class-admin-helper.php:479 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:479
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Ireland"
 msgstr "Irland"
@@ -2667,8 +655,10 @@ msgid "American Samoa"
 msgstr "Amerikanska Samoa"
 
 #: includes/admin/class-admin-helper.php:125
-#: includes/admin/class-admin-helper.php:376 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:376
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Worldwide"
 msgstr "Över hela världen"
@@ -2676,11 +666,6 @@ msgstr "Över hela världen"
 #. Author URI of the plugin
 msgid "https://rankmath.com/?utm_source=Plugin&utm_medium=Readme%20Author%20URI&utm_campaign=WP"
 msgstr "https://rankmath.com/?utm_source=Plugin&utm_medium=Readme%20Author%20URI&utm_campaign=WP"
-
-#. Author of the plugin
-#: assets/admin/js/blocks.js:1
-msgid "Rank Math"
-msgstr "Rank Math"
 
 #. Description of the plugin
 msgid "Super-charge your website’s SEO with the Rank Math PRO options like Site Analytics, SEO Performance, Custom Schema Templates, News/Video Sitemaps, etc."
@@ -2694,53 +679,13 @@ msgstr "https://rankmath.com/wordpress/plugin/seo-suite/"
 msgid "Rank Math SEO PRO"
 msgstr "Rank Math SEO PRO"
 
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Instructions"
-msgstr "Receptinstruktioner"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Ingredients"
-msgstr "Receptingredienser"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Video Thumbnail"
-msgstr "Recipe Video Thumbnail"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A recipe video Description"
-msgstr "A recipe video Description"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Cooking Time"
-msgstr "Tillagningstid"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Preparation Time"
-msgstr "Förberedelsetid"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Calories"
-msgstr "Kalorier"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Yield"
-msgstr "Recipe Yield"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Cuisine"
-msgstr "Kök"
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type"
-msgstr "Typ"
-
 #: includes/modules/schema/shortcode/claimreview.php:68
 #: includes/modules/schema/assets/js/schemaFilters.js:1
 msgid "Alternate Name"
 msgstr "Alternativt namn"
 
-#: includes/class-register-vars.php:40 includes/class-register-vars.php:51
+#: includes/class-register-vars.php:40
+#: includes/class-register-vars.php:51
 msgid "Random Word"
 msgstr "Slumpmässigt ord"
 
@@ -2935,10 +880,6 @@ msgstr "Salary Currency"
 #: includes/modules/schema/assets/js/schemaFilters.js:1
 msgid "Salary"
 msgstr "Lön"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Total Time"
-msgstr "Total tid"
 
 #: includes/modules/schema/shortcode/dataset.php:109
 #: includes/modules/schema/assets/js/schemaFilters.js:1
@@ -3421,7 +1362,8 @@ msgstr "Wallis and Futuna"
 
 #: includes/admin/class-admin-helper.php:610
 #: includes/modules/local-seo/views/titles-options.php:261
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Vietnam"
@@ -3472,7 +1414,8 @@ msgstr "Förenade Arabemiraten"
 #: includes/admin/class-admin-helper.php:349
 #: includes/admin/class-admin-helper.php:602
 #: includes/modules/local-seo/views/titles-options.php:252
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Ukraine"
@@ -3504,7 +1447,8 @@ msgstr "Turkmenistan"
 #: includes/admin/class-admin-helper.php:344
 #: includes/admin/class-admin-helper.php:596
 #: includes/modules/local-seo/views/titles-options.php:247
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Turkey"
@@ -3547,7 +1491,8 @@ msgstr "Östtimor"
 #: includes/admin/class-admin-helper.php:337
 #: includes/admin/class-admin-helper.php:590
 #: includes/modules/local-seo/views/titles-options.php:240
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Thailand"
@@ -3566,7 +1511,8 @@ msgstr "Tadzjikistan"
 
 #: includes/admin/class-admin-helper.php:587
 #: includes/modules/local-seo/views/titles-options.php:237
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Taiwan"
@@ -3580,7 +1526,8 @@ msgstr "Syrien"
 #: includes/admin/class-admin-helper.php:332
 #: includes/admin/class-admin-helper.php:584
 #: includes/modules/local-seo/views/titles-options.php:235
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Switzerland"
@@ -3589,7 +1536,8 @@ msgstr "Schweiz"
 #: includes/admin/class-admin-helper.php:331
 #: includes/admin/class-admin-helper.php:583
 #: includes/modules/local-seo/views/titles-options.php:234
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Sweden"
@@ -3637,7 +1585,8 @@ msgstr "South Sudan"
 
 #: includes/admin/class-admin-helper.php:569
 #: includes/modules/local-seo/views/titles-options.php:226
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "South Korea"
@@ -3650,7 +1599,8 @@ msgstr "SydGeorgien/SydSandwichöarna"
 #: includes/admin/class-admin-helper.php:323
 #: includes/admin/class-admin-helper.php:568
 #: includes/modules/local-seo/views/titles-options.php:224
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "South Africa"
@@ -3683,7 +1633,8 @@ msgstr "Slovakien"
 #: includes/admin/class-admin-helper.php:318
 #: includes/admin/class-admin-helper.php:562
 #: includes/modules/local-seo/views/titles-options.php:219
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Singapore"
@@ -3715,7 +1666,8 @@ msgstr "Senegal"
 #: includes/admin/class-admin-helper.php:313
 #: includes/admin/class-admin-helper.php:557
 #: includes/modules/local-seo/views/titles-options.php:214
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Saudi Arabia"
@@ -3776,7 +1728,8 @@ msgstr "Rwanda"
 
 #: includes/admin/class-admin-helper.php:552
 #: includes/modules/local-seo/views/titles-options.php:202
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Russia"
@@ -3785,7 +1738,8 @@ msgstr "Ryssland"
 #: includes/admin/class-admin-helper.php:302
 #: includes/admin/class-admin-helper.php:551
 #: includes/modules/local-seo/views/titles-options.php:201
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Romania"
@@ -3809,7 +1763,8 @@ msgstr "Qatar"
 #: includes/admin/class-admin-helper.php:298
 #: includes/admin/class-admin-helper.php:548
 #: includes/modules/local-seo/views/titles-options.php:197
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Portugal"
@@ -3818,7 +1773,8 @@ msgstr "Portugal"
 #: includes/admin/class-admin-helper.php:297
 #: includes/admin/class-admin-helper.php:547
 #: includes/modules/local-seo/views/titles-options.php:196
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Poland"
@@ -3832,7 +1788,8 @@ msgstr "Pitcairnöarna"
 #: includes/admin/class-admin-helper.php:295
 #: includes/admin/class-admin-helper.php:546
 #: includes/modules/local-seo/views/titles-options.php:194
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Philippines"
@@ -3881,7 +1838,8 @@ msgstr "Oman"
 #: includes/admin/class-admin-helper.php:286
 #: includes/admin/class-admin-helper.php:537
 #: includes/modules/local-seo/views/titles-options.php:186
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Norway"
@@ -3907,7 +1865,8 @@ msgstr "Niue"
 #: includes/admin/class-admin-helper.php:282
 #: includes/admin/class-admin-helper.php:532
 #: includes/modules/local-seo/views/titles-options.php:182
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Nigeria"
@@ -3928,7 +1887,8 @@ msgstr "Nicaragua"
 #: includes/admin/class-admin-helper.php:279
 #: includes/admin/class-admin-helper.php:529
 #: includes/modules/local-seo/views/titles-options.php:179
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "New Zealand"
@@ -3948,7 +1908,8 @@ msgstr "Nederländska Antillerna"
 #: includes/admin/class-admin-helper.php:276
 #: includes/admin/class-admin-helper.php:527
 #: includes/modules/local-seo/views/titles-options.php:176
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Netherlands"
@@ -4025,7 +1986,8 @@ msgstr "Micronesia"
 #: includes/admin/class-admin-helper.php:263
 #: includes/admin/class-admin-helper.php:514
 #: includes/modules/local-seo/views/titles-options.php:163
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Mexico"
@@ -4082,7 +2044,8 @@ msgstr "Maldives"
 #: includes/admin/class-admin-helper.php:254
 #: includes/admin/class-admin-helper.php:505
 #: includes/modules/local-seo/views/titles-options.php:154
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Malaysia"
@@ -4181,7 +2144,8 @@ msgstr "Kiribati"
 #: includes/admin/class-admin-helper.php:235
 #: includes/admin/class-admin-helper.php:488
 #: includes/modules/local-seo/views/titles-options.php:137
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Kenya"
@@ -4207,7 +2171,8 @@ msgstr "Jersey"
 #: includes/admin/class-admin-helper.php:232
 #: includes/admin/class-admin-helper.php:484
 #: includes/modules/local-seo/views/titles-options.php:133
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Japan"
@@ -4226,7 +2191,8 @@ msgstr "Elfenbenskusten"
 #: includes/admin/class-admin-helper.php:230
 #: includes/admin/class-admin-helper.php:482
 #: includes/modules/local-seo/views/titles-options.php:130
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Italy"
@@ -4235,7 +2201,8 @@ msgstr "Italien"
 #: includes/admin/class-admin-helper.php:229
 #: includes/admin/class-admin-helper.php:481
 #: includes/modules/local-seo/views/titles-options.php:129
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Israel"
@@ -4260,7 +2227,8 @@ msgstr "Iran"
 #: includes/admin/class-admin-helper.php:225
 #: includes/admin/class-admin-helper.php:476
 #: includes/modules/local-seo/views/titles-options.php:125
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Indonesia"
@@ -4269,7 +2237,8 @@ msgstr "Indonesien"
 #: includes/admin/class-admin-helper.php:224
 #: includes/admin/class-admin-helper.php:475
 #: includes/modules/local-seo/views/titles-options.php:124
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "India"
@@ -4284,7 +2253,8 @@ msgstr "Island"
 #: includes/admin/class-admin-helper.php:222
 #: includes/admin/class-admin-helper.php:473
 #: includes/modules/local-seo/views/titles-options.php:122
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Hungary"
@@ -4293,7 +2263,8 @@ msgstr "Ungern"
 #: includes/admin/class-admin-helper.php:221
 #: includes/admin/class-admin-helper.php:472
 #: includes/modules/local-seo/views/titles-options.php:121
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Hong Kong"
@@ -4365,7 +2336,8 @@ msgstr "Grönland"
 #: includes/admin/class-admin-helper.php:208
 #: includes/admin/class-admin-helper.php:460
 #: includes/modules/local-seo/views/titles-options.php:109
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Greece"
@@ -4386,7 +2358,8 @@ msgstr "Ghana"
 #: includes/admin/class-admin-helper.php:205
 #: includes/admin/class-admin-helper.php:457
 #: includes/modules/local-seo/views/titles-options.php:106
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Germany"
@@ -4430,7 +2403,8 @@ msgstr "Franska Guyana"
 #: includes/admin/class-admin-helper.php:198
 #: includes/admin/class-admin-helper.php:451
 #: includes/modules/local-seo/views/titles-options.php:99
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "France"
@@ -4439,7 +2413,8 @@ msgstr "Frankrike"
 #: includes/admin/class-admin-helper.php:197
 #: includes/admin/class-admin-helper.php:450
 #: includes/modules/local-seo/views/titles-options.php:98
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Finland"
@@ -4494,7 +2469,8 @@ msgstr "El Salvador"
 #: includes/admin/class-admin-helper.php:188
 #: includes/admin/class-admin-helper.php:441
 #: includes/modules/local-seo/views/titles-options.php:89
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Egypt"
@@ -4527,7 +2503,8 @@ msgstr "Djibouti"
 #: includes/admin/class-admin-helper.php:183
 #: includes/admin/class-admin-helper.php:436
 #: includes/modules/local-seo/views/titles-options.php:84
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Denmark"
@@ -4590,7 +2567,8 @@ msgstr "Komorerna"
 #: includes/admin/class-admin-helper.php:172
 #: includes/admin/class-admin-helper.php:424
 #: includes/modules/local-seo/views/titles-options.php:73
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Colombia"
@@ -4616,7 +2594,8 @@ msgstr "Kina"
 #: includes/admin/class-admin-helper.php:168
 #: includes/admin/class-admin-helper.php:421
 #: includes/modules/local-seo/views/titles-options.php:69
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Chile"
@@ -4649,7 +2628,8 @@ msgstr "Cape Verde"
 #: includes/admin/class-admin-helper.php:163
 #: includes/admin/class-admin-helper.php:415
 #: includes/modules/local-seo/views/titles-options.php:64
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Canada"
@@ -4704,7 +2684,8 @@ msgstr "Brittiska territoriet i Indiska oceanen"
 #: includes/admin/class-admin-helper.php:155
 #: includes/admin/class-admin-helper.php:406
 #: includes/modules/local-seo/views/titles-options.php:55
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Brazil"
@@ -4763,7 +2744,8 @@ msgstr "Belize"
 #: includes/admin/class-admin-helper.php:146
 #: includes/admin/class-admin-helper.php:398
 #: includes/modules/local-seo/views/titles-options.php:45
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Belgium"
@@ -4812,7 +2794,8 @@ msgstr "Azerbaijan"
 #: includes/admin/class-admin-helper.php:139
 #: includes/admin/class-admin-helper.php:391
 #: includes/modules/local-seo/views/titles-options.php:37
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Austria"
@@ -4821,7 +2804,8 @@ msgstr "Österrike"
 #: includes/admin/class-admin-helper.php:138
 #: includes/admin/class-admin-helper.php:390
 #: includes/modules/local-seo/views/titles-options.php:36
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Australia"
@@ -4842,7 +2826,8 @@ msgstr "Armenien"
 #: includes/admin/class-admin-helper.php:135
 #: includes/admin/class-admin-helper.php:387
 #: includes/modules/local-seo/views/titles-options.php:33
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Argentina"
@@ -5478,10 +3463,6 @@ msgstr "Synkronisera till .htaccess"
 msgid "Publication Date"
 msgstr "Publiceringsdatum"
 
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Image"
-msgstr "Images"
-
 #. translators: xsl value count
 #. translators: Sitemap index link.
 #: includes/modules/news-sitemap/sitemap-xsl.php:148
@@ -6031,8 +4012,10 @@ msgstr "Var 15:e dag"
 msgid "Logo"
 msgstr "Logga"
 
-#: includes/modules/analytics/class-analytics.php:475 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/modules/analytics/class-analytics.php:475
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 msgid "Analytics"
 msgstr "Analys"
 
@@ -7159,7 +5142,8 @@ msgstr "Aktivera modulen för schema-märkning och webbplatskarta för att anvä
 msgid "For your video content, a Video Sitemap is a recommended step for better rankings and inclusion in the Video search."
 msgstr "För ditt videoinnehåll rekommenderas en webbplatskarta för video som ett bra steg för att ranka bättre och inkluderas i videosökningar."
 
-#: includes/admin/wizard/class-sitemap.php:162 includes/class-modules.php:63
+#: includes/admin/wizard/class-sitemap.php:162
+#: includes/class-modules.php:63
 #: includes/modules/video-sitemap/class-video-sitemap.php:62
 #: includes/modules/video-sitemap/sitemap-xsl.php:103
 msgid "Video Sitemap"
@@ -7173,7 +5157,8 @@ msgstr "Aktivera modulen för webbplatskarta för att använda denna modul."
 msgid "Create a News Sitemap for your news-related content. You only need a News sitemap if you plan on posting news-related content on your website."
 msgstr "Skapa en webbplatskarta för nyheter för ditt nyhetsinnehåll. Du behöver en webbplatskarta för nyheter endast om du planerar att publicera nyhetsrelaterat innehåll på webbplatsen."
 
-#: includes/admin/wizard/class-sitemap.php:118 includes/class-modules.php:51
+#: includes/admin/wizard/class-sitemap.php:118
+#: includes/class-modules.php:51
 #: includes/modules/news-sitemap/class-news-sitemap.php:131
 msgid "News Sitemap"
 msgstr "News webbplatskarta"

@@ -23,7 +23,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class BBPress {
 
-	use Hooker, Ajax;
+	use Hooker;
+	use Ajax;
 
 	/**
 	 * Post meta key for solved answers.
@@ -46,7 +47,7 @@ class BBPress {
 	 * Init hooks.
 	 */
 	public function hooks() {
-		if ( ! is_singular( 'topic' ) || ! current_user_can( 'moderate', get_the_ID() ) ) {
+		if ( ! is_singular( 'topic' ) || ! current_user_can( 'moderate', get_the_ID() ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown -- The capability is exists for the BBPress.
 			return;
 		}
 
@@ -106,7 +107,7 @@ class BBPress {
 	public function mark_answer_solved() {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
 		$topic = Param::post( 'topic' );
-		if ( ! current_user_can( 'moderate', $topic ) ) {
+		if ( ! current_user_can( 'moderate', $topic ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown -- The capability is exists for the BBPress.
 			return false;
 		}
 

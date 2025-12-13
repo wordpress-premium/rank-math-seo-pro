@@ -29,6 +29,7 @@ class Elementor {
 	public function __construct() {
 		$this->action( 'elementor/editor/before_enqueue_scripts', 'editor_scripts' );
 		$this->action( 'elementor/widgets/register', 'add_breadcrumb_widget' );
+		$this->action( 'elementor/element/nested-accordion/section_items/before_section_end', 'add_faq_setting', 99 );
 		$this->action( 'elementor/element/accordion/section_title/before_section_end', 'add_faq_setting', 99 );
 		$this->filter( 'rank_math/json_ld', 'add_faq_schema', 99 );
 	}
@@ -106,8 +107,8 @@ class Elementor {
 			$elementor_data = json_decode( $elementor_data, true );
 		}
 
-		$accordion_data = $this->get_accordion_data( $elementor_data );
-		if ( empty( $accordion_data ) ) {
+		$faqs = $this->get_accordion_data( $elementor_data );
+		if ( empty( $faqs ) ) {
 			return $data;
 		}
 
@@ -115,17 +116,15 @@ class Elementor {
 			'@type' => 'FAQPage',
 		];
 
-		foreach ( $accordion_data as $faqs ) {
-			foreach ( $faqs as $faq ) {
-				$data['faq-data']['mainEntity'][] = [
-					'@type'          => 'Question',
-					'name'           => $faq['tab_title'],
-					'acceptedAnswer' => [
-						'@type' => 'Answer',
-						'text'  => $faq['tab_content'],
-					],
-				];
-			}
+		foreach ( $faqs as $faq ) {
+			$data['faq-data']['mainEntity'][] = [
+				'@type'          => 'Question',
+				'name'           => $faq['title'],
+				'acceptedAnswer' => [
+					'@type' => 'Answer',
+					'text'  => $faq['content'],
+				],
+			];
 		}
 
 		return $data;
@@ -144,12 +143,69 @@ class Elementor {
 		}
 
 		$results = [];
+
+		$widget_type    = $elements['widgetType'] ?? '';
+		$add_faq_schema = $elements['settings']['rank_math_add_faq_schema'] ?? '';
+
 		if (
-			isset( $elements['rank_math_add_faq_schema'] ) &&
-			'yes' === $elements['rank_math_add_faq_schema'] &&
-			! empty( $elements['tabs'] )
+			'yes' === $add_faq_schema &&
+			( 'nested-accordion' === $widget_type || 'accordion' === $widget_type )
 		) {
-			$results[] = $elements['tabs'];
+			$tabs = $elements['settings']['tabs'] ?? [];
+			foreach ( $tabs as $tab ) {
+				$title   = $tab['tab_title'] ?? '';
+				$content = $tab['tab_content'] ?? '';
+				if ( $title && $content ) {
+					$results[] = [
+						'title'   => $title,
+						'content' => $content,
+					];
+				}
+			}
+
+			$items = $elements['settings']['items'] ?? [];
+			if ( $items ) {
+				foreach ( $items as $index => $item ) {
+					$content   = $elements['elements'][ $index ] ?? '';
+					$unique_id = apply_filters( 'elementor/element_cache/unique_id', '' );
+					$shortcode = '[elementor-element  k="' . esc_attr( $unique_id ) . '" data="' . esc_attr( base64_encode( wp_json_encode( $content ) ) ) . '"]'; // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Required for safely encoding JSON data in shortcode as per Elementor code.
+					$output    = wp_strip_all_tags( apply_shortcodes( $shortcode ) );
+
+					// Added only allowed HTML tags.
+					// @see https://developers.google.com/search/docs/appearance/structured-data/faqpage#answer.
+					$output    = wp_kses(
+						$output,
+						[
+							'h1'     => [],
+							'h2'     => [],
+							'h3'     => [],
+							'h4'     => [],
+							'h5'     => [],
+							'h6'     => [],
+							'br'     => [],
+							'ol'     => [],
+							'ul'     => [],
+							'li'     => [],
+							'a'      => [
+								'href'   => [],
+								'target' => [],
+								'rel'    => [],
+							],
+							'p'      => [],
+							'b'      => [],
+							'i'      => [],
+							'div'    => [],
+							'strong' => [],
+							'em'     => [],
+						]
+					);
+					$output    = trim( $output );
+					$results[] = [
+						'title'   => $item['item_title'] ?? '',
+						'content' => $output,
+					];
+				}
+			}
 		}
 
 		foreach ( $elements as $element ) {

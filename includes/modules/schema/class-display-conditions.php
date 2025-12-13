@@ -12,6 +12,7 @@ namespace RankMathPro\Schema;
 
 use RankMath\Helper;
 use RankMath\Schema\DB;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Traits\Hooker;
 
 defined( 'ABSPATH' ) || exit;
@@ -47,7 +48,7 @@ class Display_Conditions {
 	 */
 	public static function get_schema_templates( $data = [], $jsonld = [] ) {
 		global $wpdb;
-		$templates = $wpdb->get_col( "SELECT ID FROM {$wpdb->prefix}posts WHERE post_type='rank_math_schema' AND post_status='publish'" );
+		$templates = DB_Helper::get_col( "SELECT ID FROM {$wpdb->prefix}posts WHERE post_type='rank_math_schema' AND post_status='publish'" );
 
 		if ( empty( $templates ) ) {
 			return;
@@ -96,10 +97,25 @@ class Display_Conditions {
 	 *
 	 * @return boolean
 	 */
-	private static function can_add( $schema ) {
+	public static function can_add( $schema ) {
 		if ( empty( $schema ) || empty( $schema['metadata']['displayConditions'] ) ) {
 			return false;
 		}
+
+		$post_ids      = [];
+		$post_terms    = [];
+		$post_types    = [];
+		$all_singulars = [];
+
+		$archive_ids   = [];
+		$archive_terms = [];
+		$archive_types = [];
+		$all_archives  = [];
+
+		$searches = [];
+		$generals = [];
+
+		$group = [];
 
 		foreach ( $schema['metadata']['displayConditions'] as $condition ) {
 			$operator = $condition['condition'];
@@ -107,39 +123,187 @@ class Display_Conditions {
 				// We handle the insert condition in the prepare_inserted_schemas() method.
 				continue;
 			}
-
 			$category = $condition['category'];
 			$taxonomy = ! empty( $condition['postTaxonomy'] ) ? $condition['postTaxonomy'] : '';
 			$type     = $condition['type'];
-			$value    = $condition['value'];
+			$value    = (int) $condition['value'];
 
-			$method = "can_add_{$category}";
-
-			// Skip if already confirmed.
-			if ( 'include' === $operator && self::$conditions[ $category ] ) {
-				continue;
+			if ( 'singular' === $category ) {
+				if ( $taxonomy ) {
+					self::add_to_conditions( $post_terms, $condition, $operator );
+				} elseif ( $value && ! $taxonomy ) {
+					self::add_to_conditions( $post_ids, $condition, $operator );
+				} elseif ( 'all' === $type ) {
+					self::add_to_conditions( $all_singulars, $condition, $operator );
+				} else {
+					self::add_to_conditions( $post_types, $condition, $operator );
+				}
+			} elseif ( 'archive' === $category && 'search' !== $type ) {
+				if ( $taxonomy ) {
+					self::add_to_conditions( $archive_terms, $condition, $operator );
+				} elseif ( $value && ! $taxonomy ) {
+					self::add_to_conditions( $archive_ids, $condition, $operator );
+				} elseif ( 'all' === $type ) {
+					self::add_to_conditions( $all_archives, $condition, $operator );
+				} else {
+					self::add_to_conditions( $archive_types, $condition, $operator );
+				}
+			} elseif ( 'archive' === $category && 'search' === $type ) {
+				self::add_to_conditions( $searches, $condition, $operator );
+			} elseif ( 'general' === $category ) {
+				self::add_to_conditions( $generals, $condition, $operator );
 			}
-			if ( 'exclude' === $operator && ! self::$conditions[ $category ] ) {
-				continue;
+		}
+
+		$all = [
+			'singulars' => array_merge( $post_ids, $post_terms, $post_types, $all_singulars ),
+			'archives'  => array_merge( $archive_ids, $archive_terms, $archive_types, $all_archives ),
+			'searches'  => $searches,
+			'generals'  => $generals,
+		];
+
+		/**
+		 * Singular
+		 */
+		if ( ( is_singular() || is_admin() ) && isset( $all['singulars'] ) ) {
+			global $post;
+			if ( is_admin() && is_null( $post ) ) {
+				return false;
 			}
 
-			self::$conditions[ $category ] = self::$method( $operator, $type, $value, $taxonomy );
+			$post_id = is_admin() ? $post->ID : get_the_ID();
+			if ( empty( $post_id ) ) {
+				return false;
+			}
+			$post_type = get_post_type( $post_id );
+
+			foreach ( $all['singulars'] as $condition ) {
+				$operator = $condition['condition'];
+				$category = $condition['category'];
+				$taxonomy = ! empty( $condition['postTaxonomy'] ) ? $condition['postTaxonomy'] : '';
+				$type     = $condition['type'];
+				$value    = (int) $condition['value'];
+
+				$method = "can_add_{$category}";
+
+				$result = self::$method( $operator, $type, $value, $taxonomy );
+
+				// Is post ID matches?
+				if ( $post_id === $value ) {
+					return $result;
+				}
+
+				// Has term?
+				if ( $taxonomy && has_term( $value, $taxonomy ) ) {
+					return $result;
+				}
+
+				// Is post type matches?
+				if ( $post_type === $type && ! $taxonomy && ! $value ) {
+					return $result;
+				}
+
+				// All.
+				if ( 'all' === $type ) {
+					return $result;
+				}
+			}
 		}
 
-		// Add Schema if the only condition is "Include / Entire Site".
-		if ( ! empty( self::$conditions['general'] ) && 1 === count( $schema['metadata']['displayConditions'] ) ) {
-			return true;
+		/**
+		 * Search
+		 */
+		if ( is_search() && $all['searches'] ) {
+			foreach ( $all['searches'] as $condition ) {
+				$operator = $condition['condition'];
+				$category = $condition['category'];
+				$taxonomy = ! empty( $condition['postTaxonomy'] ) ? $condition['postTaxonomy'] : '';
+				$type     = $condition['type'];
+				$value    = (int) $condition['value'];
+
+				$method = "can_add_{$category}";
+
+				$result = self::$method( $operator, $type, $value, $taxonomy );
+
+				return $result;
+			}
 		}
 
-		if ( ( is_singular() || is_admin() ) && isset( self::$conditions['singular'] ) ) {
-			return self::$conditions['singular'];
+		/**
+		 * Archive
+		 */
+		if ( ( is_search() || is_archive() ) && $all['archives'] ) {
+			$object_id = is_archive() ? get_queried_object_id() : null;
+
+			foreach ( $all['archives'] as $condition ) {
+				$operator = $condition['condition'];
+				$category = $condition['category'];
+				$taxonomy = ! empty( $condition['postTaxonomy'] ) ? $condition['postTaxonomy'] : '';
+				$type     = $condition['type'];
+				$value    = (int) $condition['value'];
+				$result   = 'include' === $operator;
+
+				if ( 'author' === $type && is_author() ) {
+					if ( is_author( $value ) && $object_id === $value ) {
+						return $result;
+					} elseif ( ! $value ) {
+						return $result;
+					}
+				} elseif ( 'category' === $type ) {
+					if ( is_category( $value ) && $object_id === $value ) {
+						return $result;
+					} elseif ( ! $value && is_category() ) {
+						return $result;
+					}
+				} elseif ( 'post_tag' === $type ) {
+					if ( is_tag( $value ) && $object_id === $value ) {
+						return $result;
+					} elseif ( ! $value && is_tag() ) {
+						return $result;
+					}
+				} elseif ( is_tax( $type ) && $object_id === $value ) {
+					return $result;
+				} elseif ( ! $value && is_tax( $type ) ) {
+					return $result;
+				} elseif ( 'all' === $type ) {
+					return $result;
+				}
+			}
 		}
 
-		if ( ( is_archive() || is_search() ) && isset( self::$conditions['archive'] ) ) {
-			return self::$conditions['archive'];
+		/**
+		 * General
+		 */
+		if ( isset( $all['generals'] ) ) {
+			foreach ( $all['generals'] as $condition ) {
+				$operator = $condition['condition'];
+				$category = $condition['category'];
+				$taxonomy = ! empty( $condition['postTaxonomy'] ) ? $condition['postTaxonomy'] : '';
+				$type     = $condition['type'];
+				$value    = (int) $condition['value'];
+
+				$method = "can_add_{$category}";
+
+				return self::$method( $operator, $type, $value, $taxonomy );
+			}
 		}
 
-		return ! empty( self::$conditions['general'] );
+		return false;
+	}
+
+	/**
+	 * Add to conditions.
+	 *
+	 * @param array  $data      Array of conditions.
+	 * @param array  $condition Condition to add.
+	 * @param string $operator  Comparision Operator.
+	 */
+	public static function add_to_conditions( &$data, $condition, $operator ) {
+		if ( self::is_exclude( $operator ) ) {
+			array_unshift( $data, $condition );
+		} else {
+			$data[] = $condition;
+		}
 	}
 
 	/**
@@ -277,7 +441,7 @@ class Display_Conditions {
 			return 'include' === $operator;
 		}
 
-		if ( $taxonomy && 'exclude' === $operator ) {
+		if ( $taxonomy && self::is_exclude( $operator ) ) {
 			return ! has_term( $value, $taxonomy );
 		}
 
@@ -289,6 +453,15 @@ class Display_Conditions {
 			return 'include' === $operator;
 		}
 
+		return self::is_exclude( $operator );
+	}
+
+	/**
+	 * Is excluded operator
+	 *
+	 * @param string $operator Comparision Operator.
+	 */
+	private static function is_exclude( $operator ) {
 		return 'exclude' === $operator;
 	}
 }

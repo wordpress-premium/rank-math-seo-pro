@@ -207,7 +207,6 @@ class Schema {
 			implode( '</li><li>', $supplies ),
 			__( 'Supply:', 'rank-math-pro' )
 		);
-
 	}
 
 	/**

@@ -52,7 +52,7 @@ $negative_notes = $shortcode->get_field_value( 'review.negativeNotes' );
 			empty( $negative_notes )
 		)
 	) {
-	?>
+		?>
 
 		<?php
 		$shortcode->get_field(

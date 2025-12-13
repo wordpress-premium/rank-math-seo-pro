@@ -58,6 +58,10 @@ class Redirections {
 	 * @return void
 	 */
 	public function add_export_tab_content() {
+		if ( ! Helper::has_cap( 'edit_htaccess' ) ) {
+			return;
+		}
+
 		?>
 		<div class="rank-math-redirections-csv-export">
 			<h4><?php esc_html_e( 'Sync to .htaccess', 'rank-math-pro' ); ?></h4>
@@ -85,7 +89,7 @@ class Redirections {
 		if ( ! wp_verify_nonce( Param::post( '_wpnonce_htaccess' ), 'rank_math_pro_htaccess_sync_redirections' ) ) {
 			wp_die( esc_html__( 'Invalid nonce.', 'rank-math-pro' ) );
 		}
-		if ( ! current_user_can( 'export' ) || ! current_user_can( 'rank_math_redirections' ) || ! Helper::has_cap( 'edit_htaccess' ) ) {
+		if ( ! current_user_can( 'rank_math_redirections' ) || ! Helper::has_cap( 'edit_htaccess' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to export redirections on this site.', 'rank-math-pro' ) );
 		}
 
@@ -164,10 +168,10 @@ class Redirections {
 
 		foreach ( $sources as $from ) {
 			$url = $from['pattern'];
-			if ( 'regex' !== $from['comparison'] && strpos( $url, '?' ) !== false || strpos( $url, '&' ) !== false ) {
-				$url_parts = parse_url( $url );
+			if ( 'regex' !== $from['comparison'] && ( strpos( $url, '?' ) !== false || strpos( $url, '&' ) !== false ) ) {
+				$url_parts = wp_parse_url( $url );
 				$url       = $url_parts['path'];
-				$output[]  = sprintf( 'RewriteCond %%{QUERY_STRING} ^%s$', preg_quote( $url_parts['query'] ) );
+				$output[]  = sprintf( 'RewriteCond %%{QUERY_STRING} ^%s$', preg_quote( $url_parts['query'], null ) );
 			}
 
 			// Get rewrite string.
@@ -183,7 +187,7 @@ class Redirections {
 	 * @return string
 	 */
 	private function encode2nd( $url ) {
-		$url = urlencode( $url );
+		$url = rawurlencode( $url );
 		$url = str_replace( '%2F', '/', $url );
 		$url = str_replace( '%3F', '?', $url );
 		$url = str_replace( '%3A', ':', $url );
@@ -252,7 +256,7 @@ class Redirections {
 			'end'      => '{url}/?$',
 		];
 
-		$url = preg_quote( $url );
+		$url = preg_quote( $url, null );
 		return isset( $hash[ $comparison ] ) ? str_replace( '{url}', $url, $hash[ $comparison ] ) : $url;
 	}
 
@@ -368,17 +372,18 @@ class Redirections {
 		$url = RANK_MATH_PRO_URL . 'includes/modules/redirections/assets/';
 		wp_enqueue_style( 'rank-math-pro-redirections', $url . 'css/redirections.css', [], RANK_MATH_PRO_VERSION );
 		wp_enqueue_script( 'rank-math-pro-redirections', $url . 'js/redirections.js', [ 'lodash' ], RANK_MATH_PRO_VERSION, true );
+		wp_set_script_translations( 'rank-math-pro-redirections', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 	}
 
 	/**
 	 * Add support for query parameters in redirections.
 	 *
-	 * @param bool  $match       Whether the redirection matches the current URL.
+	 * @param bool  $text       Whether the redirection matches the current URL.
 	 * @param array $redirection The redirection data.
 	 */
-	public function match_query_parameters( $match, $redirection ) {
-		if ( empty( $redirection ) || $match ) {
-			return $match;
+	public function match_query_parameters( $text, $redirection ) {
+		if ( empty( $redirection ) || $text ) {
+			return $text;
 		}
 
 		$full_uri = Redirection::get_full_uri();

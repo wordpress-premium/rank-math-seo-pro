@@ -247,7 +247,7 @@ class Frontend {
 	public function convert_schema_to_item_list( $data, $jsonld ) {
 		$schemas = array_filter(
 			$data,
-			function( $schema ) {
+			function ( $schema ) {
 				if ( isset( $schema['@type'] ) && in_array( $schema['@type'], [ 'Course', 'Movie', 'Recipe', 'Restaurant' ], true ) ) {
 					return true;
 				}
@@ -280,7 +280,7 @@ class Frontend {
 				'item'     => $schema,
 			];
 
-			$count++;
+			++$count;
 		}
 
 		return $data;
@@ -355,7 +355,7 @@ class Frontend {
 
 				foreach ( $schema_data as $key => $value ) {
 					if ( ! isset( $data[ $insert_key ][ $key ] ) ) {
-						$data[ $insert_key ][ $key ] = $value;	
+						$data[ $insert_key ][ $key ] = $value;
 					}
 				}
 			}
@@ -423,7 +423,7 @@ class Frontend {
 	 * @return array
 	 */
 	public function filter_item_list_schema( $schema ) {
-		if ( ! is_archive() ) {
+		if ( ! is_archive() || ! empty( $schema['isCustom'] ) ) {
 			return $schema;
 		}
 
@@ -437,7 +437,7 @@ class Frontend {
 				'url'      => get_the_permalink(),
 			];
 
-			$count++;
+			++$count;
 		}
 
 		wp_reset_postdata();

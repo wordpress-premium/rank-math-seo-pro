@@ -33,7 +33,7 @@ class Modules {
 
 		$this->filter( 'rank_math/modules', 'setup_core', 1 );
 		$this->action( 'admin_enqueue_scripts', 'enqueue' );
-		$this->action( 'rank_math/module_changed', 'flush_rewrite_rules', 10, 2 );
+		$this->action( 'rank_math/module_changed', 'flush_rewrite_rules', 10 );
 	}
 
 	/**
@@ -51,7 +51,7 @@ class Modules {
 			'desc'          => esc_html__( 'Create a News Sitemap for your news-related content. You only need a News sitemap if you plan on posting news-related content on your website.', 'rank-math-pro' ),
 			'class'         => 'RankMathPro\Sitemap\News_Sitemap',
 			'icon'          => 'post',
-			'settings'      => Helper::get_admin_url( 'options-sitemap' ) . '#setting-panel-news-sitemap',
+			'settings'      => Helper::get_settings_url( 'sitemap', 'news-sitemap' ),
 			'probadge'      => defined( 'RANK_MATH_PRO_FILE' ),
 			'disabled'      => ( ! in_array( 'sitemap', $active_modules, true ) ),
 			'dep_modules'   => [ 'sitemap' ],
@@ -63,7 +63,7 @@ class Modules {
 			'desc'          => esc_html__( 'For your video content, a Video Sitemap is a recommended step for better rankings and inclusion in the Video search.', 'rank-math-pro' ),
 			'class'         => 'RankMathPro\Sitemap\Video_Sitemap',
 			'icon'          => 'video',
-			'settings'      => Helper::get_admin_url( 'options-sitemap' ) . '#setting-panel-video-sitemap',
+			'settings'      => Helper::get_settings_url( 'sitemap', 'video-sitemap' ),
 			'probadge'      => defined( 'RANK_MATH_PRO_FILE' ),
 			'disabled'      => ( ! in_array( 'rich-snippet', $active_modules, true ) || ! in_array( 'sitemap', $active_modules, true ) ),
 			'dep_modules'   => [ 'sitemap', 'rich-snippet' ],
@@ -76,7 +76,7 @@ class Modules {
 			'class'         => 'RankMathPro\Podcast\Podcast',
 			'icon'          => 'podcast',
 			'betabadge'     => true,
-			'settings'      => Helper::get_admin_url( 'options-general' ) . '#setting-panel-podcast',
+			'settings'      => Helper::get_settings_url( 'general', 'podcast' ),
 			'probadge'      => defined( 'RANK_MATH_PRO_FILE' ),
 			'disabled'      => ! in_array( 'rich-snippet', $active_modules, true ),
 			'dep_modules'   => [ 'rich-snippet' ],
@@ -103,9 +103,8 @@ class Modules {
 	 * Function to run when Module is enabled/disabled.
 	 *
 	 * @param string $module Module.
-	 * @param string $state  Module state.
 	 */
-	public function flush_rewrite_rules( $module, $state ) {
+	public function flush_rewrite_rules( $module ) {
 		if ( 'podcast' === $module ) {
 			Helper::schedule_flush_rewrite();
 		}

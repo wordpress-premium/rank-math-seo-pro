@@ -11,6 +11,7 @@
 namespace RankMathPro\Admin\CSV_Import_Export;
 
 use RankMath\Helpers\Arr;
+use RankMath\Helpers\DB as DB_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -127,7 +128,7 @@ class Importer {
 		$file->seek( $count );
 		$contents = $file->current();
 		if ( empty( trim( $contents ) ) ) {
-			$count--;
+			--$count;
 		}
 
 		// Unlock file.
@@ -185,34 +186,228 @@ class Importer {
 	}
 
 	/**
-	 * Import specified line.
+	 * Imports batch of rows started getting processed by WP_Background_Process.
 	 *
-	 * @param int $line_number Selected line number.
+	 * @param array $item Array of line numbers.
+	 *
 	 * @return void
 	 */
-	public function import_line( $line_number ) {
+	public function import_batch( $item ) {
+		$data = [];
+		foreach ( $item as $line_number ) {
+			$row_data = $this->get_row_data( $line_number );
+			if ( ! $row_data ) {
+				continue;
+			}
+			$row_importer = new Import_Row( $row_data, $this->settings, false );
+			$object_type  = $row_importer->object_type;
+			foreach ( [ 'update', 'delete' ] as $action ) {
+				if ( ! empty( $row_importer->meta_data[ $action ] ) ) {
+					if ( empty( $data[ $object_type ][ $action ] ) ) {
+						$data[ $object_type ][ $action ] = [];
+					}
+					$data[ $object_type ][ $action ] = array_merge( $data[ $object_type ][ $action ], $row_importer->meta_data[ $action ] );
+				}
+			}
+			$this->row_imported( $line_number );
+		}
+		foreach ( $data as $object_type => $object_data ) {
+			if ( ! empty( $object_data['update'] ) ) {
+				$this->update_object_metas( $object_data['update'], $object_type );
+			}
+			if ( ! empty( $object_data['delete'] ) ) {
+				$this->delete_object_metas( $object_data['delete'], $object_type );
+			}
+		}
+	}
+
+	/**
+	 * Get the table name to update for the current row being imported.
+	 *
+	 * @param string $object_type  Object type. Either of 'post', 'term' or 'user'.
+	 *
+	 * @return string
+	 */
+	private function get_table_name( $object_type ) {
+		global $wpdb;
+		$type = "{$object_type}meta";
+		return $wpdb->$type;
+	}
+
+	/**
+	 * Deletes object metas.
+	 * Note: We would delete the entry from the meta table, when the value read from CSV is empty for each meta.
+	 *
+	 * @param array  $metas_to_delete  Array of metas to delete.
+	 * @param string $object_type      Object type. Either of 'post', 'term' or 'user'.
+	 *
+	 * @return void
+	 */
+	public function delete_object_metas( $metas_to_delete, $object_type ) {
+		global $wpdb;
+		$where_conditions = [];
+		$table_name       = $this->get_table_name( $object_type );
+		$id_column_name   = "{$object_type}_id"; // Can be post_id, term_id or user_id.
+		foreach ( $metas_to_delete as $meta_to_delete ) {
+			$where_conditions[] = $wpdb->prepare(
+				'(%i=%d AND meta_key=%s)',
+				$id_column_name,
+				$meta_to_delete[ $id_column_name ],
+				$meta_to_delete['meta_key']
+			);
+		}
+		$wpdb->query( "DELETE FROM {$table_name} WHERE " . implode( ' OR ', $where_conditions ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+	}
+
+	/**
+	 * Updates the object metas tables.
+	 *
+	 * @param array  $meta_updates Array of object metas to update.
+	 * @param string $object_type  Object type. Either of 'post', 'term' or 'user'.
+	 *
+	 * @return void
+	 */
+	public function update_object_metas( $meta_updates, $object_type ) {
+		if ( empty( $meta_updates ) ) {
+			return;
+		}
+		$this->update_existing_metas( $meta_updates, $object_type );
+		$this->insert_new_metas( $meta_updates, $object_type );
+	}
+
+	/**
+	 * Updates existing metas.
+	 *
+	 * @param array  $meta_updates Array of object metas to update.
+	 * @param string $object_type  Object type. Either of 'post', 'term' or 'user'.
+	 *
+	 * @return void
+	 */
+	private function update_existing_metas( $meta_updates, $object_type ) {
+		global $wpdb;
+		$table_name = $this->get_table_name( $object_type );
+
+		$id_column_name = "{$object_type}_id";
+		$values_sql     = [];
+		foreach ( $meta_updates as $i => $row ) {
+			$post_id    = (int) $row[ $id_column_name ];
+			$meta_key   = addslashes( $row['meta_key'] );
+			$meta_value = addslashes( $row['meta_value'] );
+
+			if ( $i === 0 ) {
+				$values_sql[] = "SELECT {$post_id} AS $id_column_name, '{$meta_key}' AS meta_key, '{$meta_value}' AS meta_value";
+			} else {
+				$values_sql[] = "SELECT {$post_id}, '{$meta_key}', '{$meta_value}'";
+			}
+		}
+		$values_union_sql = implode( " UNION ALL\n", $values_sql );
+
+		//phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$wpdb->query(
+			"
+				UPDATE $table_name pm JOIN ( {$values_union_sql} ) AS new_values
+				ON pm.$id_column_name = new_values.$id_column_name AND pm.meta_key = new_values.meta_key
+				SET pm.meta_value = new_values.meta_value;
+			"
+		);
+		//phpcs:enable
+	}
+
+	/**
+	 * Inserts new metas.
+	 *
+	 * @param array  $meta_updates Array of object metas to update.
+	 * @param string $object_type  Object type. Either of 'post', 'term' or 'user'.
+	 *
+	 * @return void
+	 */
+	private function insert_new_metas( $meta_updates, $object_type ) {
+		global $wpdb;
+		$id_column_name   = "{$object_type}_id";
+		$where_conditions = [];
+
+		foreach ( $meta_updates as $update ) {
+			$where_conditions[] = $wpdb->prepare(
+				'( %i = %d AND meta_key = %s)',
+				$id_column_name,
+				$update[ $id_column_name ],
+				$update['meta_key']
+			);
+		}
+
+		$table_name     = $this->get_table_name( $object_type );
+		$existing_metas = $wpdb->get_results(
+			$wpdb->prepare(
+				'SELECT %i, meta_key FROM %i WHERE ' . implode( ' OR ', $where_conditions ), // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$id_column_name,
+				$table_name
+			)
+		);
+
+		foreach ( $meta_updates as $key => $update ) {
+			$metas_with_matching_post_id = array_filter(
+				$existing_metas,
+				function ( $row ) use ( $update, $id_column_name ) {
+					return $row->{$id_column_name} === $update[ $id_column_name ];
+				}
+			);
+
+			$meta_key_exists = false !== array_search( $update['meta_key'], array_column( $metas_with_matching_post_id, 'meta_key' ), true );
+			if ( $meta_key_exists ) {
+				unset( $meta_updates[ $key ] );
+				continue;
+			}
+
+			$meta_updates[ $key ] = $wpdb->prepare(
+				'(%d, %s, %s)',
+				$update[ $id_column_name ],
+				$update['meta_key'],
+				$update['meta_value']
+			);
+		}
+		if ( empty( $meta_updates ) ) {
+			return;
+		}
+		$wpdb->query(
+			$wpdb->prepare(
+				'INSERT INTO %i ( %i, meta_key, meta_value ) VALUES ' . implode( ',', $meta_updates ), // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$table_name,
+				$id_column_name
+			)
+		);
+	}
+
+	/**
+	 * Get row data.
+	 * Returns false if the line number is 0 or if the CSV structure is not validated.
+	 *
+	 * @param int $line_number Line number.
+	 *
+	 * @return array|false
+	 */
+	public function get_row_data( $line_number ) {
 		// Skip headers.
 		if ( 0 === $line_number ) {
-			return;
+			return false;
 		}
 
 		$file = get_option( 'rank_math_csv_import' );
 		if ( ! $file ) {
 			$this->add_error( esc_html__( 'Missing import file.', 'rank-math-pro' ), 'missing_file' );
 			CSV_Import_Export::cancel_import( true );
-			return;
+			return false;
 		}
 
 		$headers = $this->get_column_headers( $file );
 		if ( empty( $headers ) ) {
 			$this->add_error( esc_html__( 'Missing CSV headers.', 'rank-math-pro' ), 'missing_headers' );
-			return;
+			return false;
 		}
 
 		$required_columns = [ 'id', 'object_type', 'slug' ];
 		if ( count( array_intersect( $headers, $required_columns ) ) !== count( $required_columns ) ) {
 			$this->add_error( esc_html__( 'Missing one or more required columns.', 'rank-math-pro' ), 'missing_required_columns' );
-			return;
+			return false;
 		}
 
 		$raw_data = $this->get_line( $file, $line_number );
@@ -225,7 +420,7 @@ class Importer {
 				$this->row_failed( $line_number );
 			}
 
-			return;
+			return false;
 		}
 
 		$csv_separator = apply_filters( 'rank_math/csv_import/separator', ',' );
@@ -233,13 +428,28 @@ class Importer {
 		if ( count( $headers ) !== count( $decoded ) ) {
 			$this->add_error( esc_html__( 'Columns number mismatch.', 'rank-math-pro' ), 'columns_number_mismatch' );
 			$this->row_failed( $line_number );
-			return;
+			return false;
 		}
 
 		$data = array_combine( $headers, $decoded );
 		if ( ! in_array( $data['object_type'], array_keys( CSV_Import_Export::get_possible_object_types() ), true ) ) {
 			$this->add_error( esc_html__( 'Unknown object type.', 'rank-math-pro' ), 'unknown_object_type' );
 			$this->row_failed( $line_number );
+			return false;
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Import specified line.
+	 *
+	 * @param int $line_number Selected line number.
+	 * @return void
+	 */
+	public function import_line( $line_number ) {
+		$data = $this->get_row_data( $line_number );
+		if ( ! $data ) {
 			return;
 		}
 
@@ -260,7 +470,7 @@ class Importer {
 			return self::$term_ids[ $term_slug ];
 		}
 
-		self::$term_ids[ $term_slug ] = $wpdb->get_var(
+		self::$term_ids[ $term_slug ] = DB_Helper::get_var(
 			$wpdb->prepare( "SELECT term_id FROM {$wpdb->terms} WHERE slug = %s", $term_slug )
 		);
 

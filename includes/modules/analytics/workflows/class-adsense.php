@@ -67,7 +67,7 @@ class Adsense extends Base {
 				PRIMARY KEY  (id)
 			) $collate;";
 
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php'; // @phpstan-ignore-line
 		try {
 			dbDelta( $schema );
 		} catch ( Exception $e ) { // phpcs:ignore
@@ -80,11 +80,11 @@ class Adsense extends Base {
 	 *
 	 * @param integer $days Number of days to fetch from past.
 	 * @param string  $prev Previous saved value.
-	 * @param string  $new  New posted value.
+	 * @param string  $new_value  New posted value.
 	 */
-	public function create_data_jobs( $days, $prev, $new ) {
+	public function create_data_jobs( $days, $prev, $new_value ) {
 		// If saved and new profile are same.
-		if ( ! $this->is_profile_updated( 'adsense_id', $prev, $new ) ) {
+		if ( ! $this->is_profile_updated( 'adsense_id', $prev, $new_value ) ) {
 			return;
 		}
 

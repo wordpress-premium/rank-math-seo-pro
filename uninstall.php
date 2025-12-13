@@ -12,6 +12,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
+delete_option( 'rank_math_reseller_data' ); // Delete the reseller data when plugin is removed from the site.
+
 // Set rank_math_clear_data_on_uninstall to TRUE to delete all data on uninstall.
 if ( true === apply_filters( 'rank_math_clear_data_on_uninstall', false ) ) {
 

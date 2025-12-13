@@ -14,6 +14,7 @@ use RankMath\Helper;
 use RankMath\Post;
 use RankMath\Schema\DB;
 use RankMath\Helpers\Param;
+use RankMath\Helpers\DB as DB_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -54,7 +55,7 @@ class Store_Locator {
 								<?php
 								foreach ( [ 1, 5, 10, 20, 40, 50, 75, 100, 200, 300, 400, 500, 1000 ] as $value ) {
 									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaping not needed as it is a static value.
-									echo "<option value='{$value}' " . selected( $radius, $value, true ) . ">{$value}{$unit}</option>";
+									echo "<option value='{$value}' " . selected( $radius, $value, false ) . ">{$value}{$unit}</option>";
 								}
 								?>
 							</select>
@@ -90,8 +91,6 @@ class Store_Locator {
 
 	/**
 	 * Add detect current location button.
-	 *
-	 * @return string
 	 */
 	private function detect_location() {
 		if ( ! Helper::get_settings( 'titles.enable_location_detection' ) ) {
@@ -132,7 +131,7 @@ class Store_Locator {
 			);
 		}
 
-		$nearby_locations = $wpdb->get_results(
+		$nearby_locations = DB_Helper::get_results(
 			$wpdb->prepare(
 				"SELECT DISTINCT
 				p.*,

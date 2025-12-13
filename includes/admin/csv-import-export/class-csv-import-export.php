@@ -11,6 +11,7 @@
 namespace RankMathPro\Admin\CSV_Import_Export;
 
 use RankMath\Helper;
+use RankMath\Helpers\Param;
 use RankMath\Traits\Hooker;
 
 defined( 'ABSPATH' ) || exit;
@@ -25,19 +26,35 @@ class CSV_Import_Export {
 	use Hooker;
 
 	/**
+	 * The cron interval for csv import in minutes.
+	 *
+	 * @var int
+	 */
+	const CSV_IMPORT_CRON_INTERVAL = 1;
+
+	/**
 	 * Register hooks.
 	 */
 	public function __construct() {
 		$this->filter( 'rank_math/admin/import_export_panels', 'add_panel', 15 );
 		$this->action( 'admin_enqueue_scripts', 'enqueue' );
 
-		$this->action( 'admin_init', 'maybe_do_import', 99 );
 		$this->action( 'admin_init', 'maybe_do_export', 110 );
-		$this->action( 'admin_init', 'maybe_cancel_import', 120 );
 
 		$this->action( 'wp_ajax_csv_import_progress', 'csv_import_progress' );
 
+		$this->filter( 'rank_math_csv_import_cron_interval', 'update_cron_interval' );
+
 		Import_Background_Process::get();
+	}
+
+	/**
+	 * Updates the cron interval for csv import.
+	 *
+	 * @return int
+	 */
+	public static function update_cron_interval() {
+		return self::CSV_IMPORT_CRON_INTERVAL;
 	}
 
 	/**
@@ -109,12 +126,16 @@ class CSV_Import_Export {
 		if ( ! is_admin() || empty( $_POST['rank_math_pro_csv_export'] ) ) {
 			return;
 		}
+
 		if ( empty( $_POST['object_types'] ) || ! is_array( $_POST['object_types'] ) ) {
 			wp_die( esc_html__( 'Please select at least one object type to export.', 'rank-math-pro' ) );
 		}
-		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '', 'rank_math_pro_csv_export' ) ) {
+
+		$nonce = Param::request( '_wpnonce' );
+		if ( ! wp_verify_nonce( $nonce, 'rank_math_pro_csv_export' ) ) {
 			wp_die( esc_html__( 'Invalid nonce.', 'rank-math-pro' ) );
 		}
+
 		if ( ! current_user_can( 'export' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to export the content of this site.', 'rank-math-pro' ) );
 		}
@@ -134,40 +155,41 @@ class CSV_Import_Export {
 	/**
 	 * Start import if requested and allowed.
 	 *
-	 * @return void
+	 * @param File    $import_file  File to import the data from.
+	 * @param boolean $no_overwrite Whether to overwrite the metadata.
+	 *
+	 * @return string
 	 */
-	public function maybe_do_import() {
-		if ( ! is_admin() || empty( $_POST['object_id'] ) || 'csv-import-plz' !== $_POST['object_id'] ) {
-			return;
-		}
-		if ( empty( $_FILES['csv-import-me'] ) || empty( $_FILES['csv-import-me']['name'] ) ) {
-			wp_die( esc_html__( 'Please select a file to import.', 'rank-math-pro' ) );
-		}
-		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '', 'rank_math_pro_csv_import' ) ) {
-			wp_die( esc_html__( 'Invalid nonce.', 'rank-math-pro' ) );
-		}
-		if ( ! current_user_can( 'import' ) ) {
-			wp_die( esc_html__( 'Sorry, you are not allowed to import contents to this site.', 'rank-math-pro' ) );
-		}
-
+	public static function import( $import_file, $no_overwrite = true ) {
 		// Rename file.
-		$info                            = pathinfo( $_FILES['csv-import-me']['name'] );
-		$_FILES['csv-import-me']['name'] = uniqid( 'rm-csv-' ) . ( ! empty( $info['extension'] ) ? '.' . $info['extension'] : '' );
+		$info                = pathinfo( $import_file['name'] );
+		$import_file['name'] = uniqid( 'rm-csv-' ) . ( ! empty( $info['extension'] ) ? '.' . $info['extension'] : '' );
 
 		// Handle file.
-		$this->filter( 'upload_mimes', 'allow_csv_upload' );
-		$file = wp_handle_upload( $_FILES['csv-import-me'], [ 'test_form' => false ] );
-		$this->remove_filter( 'upload_mimes', 'allow_csv_upload', 10 );
-		if ( ! $this->validate_file( $file ) ) {
+		add_filter( 'upload_mimes', [ __CLASS__, 'allow_csv_upload' ] );
+		if ( ! function_exists( 'wp_handle_upload' ) ) {
+			$required_file = ABSPATH . 'wp-admin/includes/file.php';
+			if ( file_exists( $required_file ) ) {
+				require_once $required_file; // @phpstan-ignore-line
+			}
+		}
+		$file = wp_handle_upload( $import_file, [ 'test_form' => false ] );
+		remove_filter( 'upload_mimes', [ __CLASS__, 'allow_csv_upload' ] );
+
+		if ( ! self::validate_file( $file ) ) {
 			return false;
 		}
 
 		$settings = [
-			'no_overwrite' => ! empty( $_POST['no_overwrite'] ),
+			'no_overwrite' => $no_overwrite,
 		];
 
 		$importer = new Importer();
 		$importer->start( $file['file'], $settings );
+
+		ob_start();
+		self::import_progress_details();
+		return ob_get_clean();
 	}
 
 	/**
@@ -176,7 +198,7 @@ class CSV_Import_Export {
 	 * @param array $types    Mime types keyed by the file extension regex corresponding to those types.
 	 * @return array
 	 */
-	public function allow_csv_upload( $types ) {
+	public static function allow_csv_upload( $types ) {
 		$types['csv'] = 'text/csv';
 
 		return $types;
@@ -188,7 +210,7 @@ class CSV_Import_Export {
 	 * @param mixed $file File array or object.
 	 * @return bool
 	 */
-	public function validate_file( $file ) {
+	public static function validate_file( $file ) {
 		if ( is_wp_error( $file ) ) {
 			Helper::add_notification( esc_html__( 'CSV could not be imported:', 'rank-math-pro' ) . ' ' . $file->get_error_message(), [ 'type' => 'error' ] );
 			return false;
@@ -205,7 +227,7 @@ class CSV_Import_Export {
 		}
 
 		if ( ! isset( $file['type'] ) || 'text/csv' !== $file['type'] ) {
-			\unlink( $file['file'] );
+			wp_delete_file( $file['file'] );
 			Helper::add_notification( esc_html__( 'CSV could not be imported: File type error.', 'rank-math-pro' ), [ 'type' => 'error' ] );
 			return false;
 		}
@@ -271,36 +293,24 @@ class CSV_Import_Export {
 	}
 
 	/**
-	 * Check if cancel request is valid.
-	 *
-	 * @return void
-	 */
-	public static function maybe_cancel_import() {
-		if ( ! is_admin() || empty( $_GET['rank_math_cancel_csv_import'] ) ) {
-			return;
-		}
-		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '', 'rank_math_pro_cancel_csv_import' ) ) {
-			Helper::add_notification( esc_html__( 'Import could not be canceled: invalid nonce. Please try again.', 'rank-math-pro' ), [ 'type' => 'error' ] );
-			wp_safe_redirect( remove_query_arg( 'rank_math_cancel_csv_import' ) );
-			exit;
-		}
-		if ( ! current_user_can( 'import' ) ) {
-			Helper::add_notification( esc_html__( 'Import could not be canceled: you are not allowed to import content to this site.', 'rank-math-pro' ), [ 'type' => 'error' ] );
-			wp_safe_redirect( remove_query_arg( 'rank_math_cancel_csv_import' ) );
-			exit;
-		}
-
-		self::cancel_import();
-	}
-
-	/**
 	 * Cancel import.
 	 *
 	 * @param bool $silent Cancel silently.
-	 * @return void
+	 * @return array
 	 */
 	public static function cancel_import( $silent = false ) {
 		$file_path = get_option( 'rank_math_csv_import' );
+		if ( ! $file_path ) {
+			if ( ! $silent ) {
+				return [
+					'type'    => 'error',
+					'message' => esc_html__( 'Import could not be canceled.', 'rank-math-pro' ),
+				];
+			}
+
+			wp_safe_redirect( remove_query_arg( 'rank_math_cancel_csv_import' ) );
+			exit;
+		}
 
 		delete_option( 'rank_math_csv_import' );
 		delete_option( 'rank_math_csv_import_total' );
@@ -308,24 +318,12 @@ class CSV_Import_Export {
 		delete_option( 'rank_math_csv_import_settings' );
 		Import_Background_Process::get()->cancel_process();
 
-		if ( ! $file_path ) {
-			if ( ! $silent ) {
-				Helper::add_notification( esc_html__( 'Import could not be canceled.', 'rank-math-pro' ), [ 'type' => 'error' ] );
-			}
-
-			wp_safe_redirect( remove_query_arg( 'rank_math_cancel_csv_import' ) );
-			exit;
-		}
-
-		unlink( $file_path );
+		wp_delete_file( $file_path );
 		if ( ! $silent ) {
-			Helper::add_notification(
-				__( 'CSV import canceled.', 'rank-math-pro' ),
-				[
-					'type'    => 'success',
-					'classes' => 'is-dismissible',
-				]
-			);
+			return [
+				'type'    => 'success',
+				'message' => esc_html__( 'CSV import canceled.', 'rank-math-pro' ),
+			];
 		}
 		wp_safe_redirect( remove_query_arg( 'rank_math_cancel_csv_import' ) );
 		exit;

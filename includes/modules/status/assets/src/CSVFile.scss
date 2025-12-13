@@ -1,0 +1,70 @@
+// compileCompressed: ../css/$1.css
+
+@import '../../../../../assets/admin/scss/variables';
+
+.#{$namespace}-box {
+
+    .rank-math-import-csv-form footer {
+        justify-content: flex-start;
+    }
+
+    .csv-import-cancel {
+        color: $error;
+        border-color: $error;
+
+        &.disabled {
+            pointer-events: none;
+        }
+    }
+
+    #csv-import-warning {
+        background: $white;
+        border: 1px solid $gray;
+        border-left-width: 4px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.04);
+        padding: 7px 12px 2px;
+        border-left-color: #ffb900;
+        margin: 1em 0 15px;
+    }
+
+    .no-overwrite-description {
+        margin-left: 25px;
+    }
+
+    #csv-import-progress {
+        &-bar {
+            .total {
+                width: 100%;
+                background: #e9e9ea;
+            }
+
+            .progress-bar {
+                height: 4px;
+                background: linear-gradient(-135deg, #ff4492, #434e8f);
+                min-width: 1%;
+            }
+        }
+
+        &-details {
+            .import-finished {
+                color: darken($success, 15);
+            }
+        }
+    }
+
+    form {
+        .input-loading {
+            visibility: hidden;
+            margin-top: 0.5rem;
+        }
+    }
+
+    .csv-advanced-options {
+        margin: 5px 24px 10px;
+
+        &.readonly-columns {
+            margin-left: 0;
+        }
+    }
+
+}

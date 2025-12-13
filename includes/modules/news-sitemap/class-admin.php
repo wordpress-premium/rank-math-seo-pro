@@ -17,6 +17,7 @@ use RankMath\Traits\Hooker;
 use RankMath\Admin\Admin_Helper;
 use RankMath\Sitemap\Router;
 use RankMath\Sitemap\Cache_Watcher;
+use RankMathPro\Sitemap\News_Sitemap_Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -33,6 +34,7 @@ class Admin {
 	public function __construct() {
 		$this->action( 'rest_api_init', 'init_rest_api' );
 		$this->action( 'transition_post_status', 'status_transition', 10, 3 );
+		$this->action( 'rank_math/module_changed', 'format_news_sitemap_exclude_terms', 10, 2 );
 
 		if ( ! Helper::has_cap( 'sitemap' ) ) {
 			return;
@@ -44,6 +46,48 @@ class Admin {
 
 		$this->filter( 'rank_math/settings/sitemap', 'add_settings', 11 );
 		$this->action( 'admin_enqueue_scripts', 'enqueue_settings_scripts' );
+	}
+
+	/**
+	 * Watch for React UI module change.
+	 *
+	 * @param  string $module Module name.
+	 * @param  string $state  Module state.
+	 */
+	public static function format_news_sitemap_exclude_terms( $module, $state ) {
+		if ( $module !== 'react-settings' ) {
+			return;
+		}
+
+		$post_types = Helper::get_settings( 'sitemap.news_sitemap_post_type', [] );
+		if ( empty( $post_types ) ) {
+			return;
+		}
+
+		$all_opts         = rank_math()->settings->all_raw();
+		$sitemap_settings = $all_opts['sitemap'];
+		foreach ( $post_types as $post_type ) {
+			$key           = "news_sitemap_exclude_{$post_type}_terms";
+			$exclude_terms = isset( $sitemap_settings[ $key ] ) ? $sitemap_settings[ $key ] : [];
+			if ( empty( $exclude_terms ) ) {
+				continue;
+			}
+
+			// When React UI is disabled, convert News sitemap exclude terms value to support legacy settings.
+			if ( $state === 'off' && ! isset( $exclude_terms[0] ) ) {
+				$exclude_terms = [ $exclude_terms ];
+			}
+
+			// When React UI is enabled, convert News sitemap exclude terms value to the new format.
+			if ( $state === 'on' && isset( $exclude_terms[0] ) ) {
+				$exclude_terms = current( $exclude_terms );
+			}
+
+			$sitemap_settings[ $key ] = $exclude_terms;
+		}
+
+		Helper::update_all_settings( null, null, $sitemap_settings );
+		rank_math()->settings->reset();
 	}
 
 	/**
@@ -130,16 +174,19 @@ class Admin {
 		$sitemap_slug         = Router::get_sitemap_slug( 'news' );
 		$sitemap_url          = Router::get_base_url( "{$sitemap_slug}-sitemap.xml" );
 		$tabs['news-sitemap'] = [
-			'icon'      => 'fa fa-newspaper-o',
 			'title'     => esc_html__( 'News Sitemap', 'rank-math-pro' ),
 			'icon'      => 'rm-icon rm-icon-post',
 			'desc'      => wp_kses_post(
 				/* translators: News Sitemap KB link */
 				sprintf( __( 'News Sitemaps allow you to control which content you submit to Google News. More information: <a href="%s" target="_blank">News Sitemaps overview</a>', 'rank-math-pro' ), KB::get( 'news-sitemap', 'Options Panel Sitemap News Tab' ) )
 			),
-			'file'      => dirname( __FILE__ ) . '/settings-news.php',
+			'file'      => __DIR__ . '/settings-news.php',
 			/* translators: News Sitemap Url */
 			'after_row' => '<div class="notice notice-alt notice-info info inline rank-math-notice"><p>' . sprintf( esc_html__( 'Your News Sitemap index can be found here: : %s', 'rank-math-pro' ), '<a href="' . $sitemap_url . '" target="_blank">' . $sitemap_url . '</a>' ) . '</p></div>',
+			'json'      => [
+				'newsSitemapUrl' => $sitemap_url,
+				'excludeTerms'   => $this->get_exclude_terms(),
+			],
 		];
 
 		return $tabs;
@@ -182,5 +229,54 @@ class Admin {
 			(array) Helper::get_settings( 'sitemap.news_sitemap_post_type' ),
 			true
 		);
+	}
+
+	/**
+	 * Get exclude terms.
+	 *
+	 * @return array
+	 */
+	private function get_exclude_terms() {
+		$post_types = Helper::get_settings( 'sitemap.news_sitemap_post_type', [] );
+		if ( empty( $post_types ) ) {
+			return [];
+		}
+
+		$exclude_terms = [];
+		foreach ( $post_types as $post_type ) {
+			$taxonomies = Helper::get_object_taxonomies( $post_type, 'objects' );
+			if ( empty( $taxonomies ) ) {
+				continue;
+			}
+
+			$terms = Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms", [] );
+
+			$post_type_obj   = get_post_type_object( $post_type );
+			$post_type_label = $post_type_obj->labels->singular_name;
+
+			foreach ( $taxonomies as $taxonomy => $data ) {
+				if ( empty( $data->show_ui ) ) {
+					continue;
+				}
+
+				$selected = [];
+				if ( isset( $terms[ $taxonomy ] ) ) {
+					$selected = $terms[ $taxonomy ];
+				}
+
+				if ( isset( $terms[0] ) && isset( $terms[0][ $taxonomy ] ) ) {
+					$selected = $terms[0][ $taxonomy ];
+				}
+
+				$terms = News_Sitemap_Helper::get_taxonomy_terms( $taxonomy, $selected );
+				if ( empty( $terms ) ) {
+					continue;
+				}
+
+				$exclude_terms[ $post_type ][ $taxonomy ] = $terms;
+			}
+		}
+
+		return $exclude_terms;
 	}
 }

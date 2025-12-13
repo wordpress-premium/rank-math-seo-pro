@@ -96,7 +96,7 @@ class Snippet_Pro_Shortcode extends Snippet_Shortcode {
 	/**
 	 * Display Pros & Cons.
 	 *
-	 * @since 3.0.18
+	 * @param object $shortcode Shortcode class instance.
 	 */
 	public function show_review_notes( $shortcode ) {
 		$labels = [

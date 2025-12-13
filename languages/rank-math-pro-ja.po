@@ -1,2039 +1,17 @@
-# Translation of Rank Math - Rank Math Pro in Japanese
-# This file is distributed under the same license as the Rank Math - Rank Math Pro package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rank Math - Rank Math Pro\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-08-25 11:45+0200\n"
+"Report-Msgid-Bugs-To: \n"
 "Last-Translator: FX Bénard <fx@wp-translations.pro>\n"
 "Language-Team: \n"
-"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2023-08-25 11:45+0200\n"
+"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.3.2\n"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Your Templates"
-msgstr "あなたのテンプレート"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Schema Builder"
-msgstr "Schema Builder"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Display Conditions"
-msgstr "条件を表示"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Custom Schema"
-msgstr "カスタムスキーマ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Please consider using %1$s Block instead."
-msgstr "代わりに %1$s ブロックの使用を検討してください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Note: Please save the post as a draft first to see the actual data."
-msgstr "注: 実際のデータを確認するには、まず投稿を下書きとして保存してください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Add New Condition"
-msgstr "新しい条件を追加"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Set up display rules to control where this Schema template is used on your website. For example, choose \"Entire Site\" to use the template on all pages on your website."
-msgstr "表示ルールを設定して、Web サイト上でこのスキーマ テンプレートが使用される場所を制御します。 たとえば、Web サイトのすべてのページでテンプレートを使用するには、「サイト全体」を選択します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Where do you want to use this Schema template?"
-msgstr "このスキーマ テンプレートをどこで使用しますか?"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Enter Schema Type"
-msgstr "スキーマタイプを入力してください"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Empty for All Authors, or User IDs separated by comma"
-msgstr "すべての投稿者の場合は空、またはカンマで区切られたユーザー ID"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In Author (on Single Posts)"
-msgstr "投稿者で (個別投稿で)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In WebPage Schema"
-msgstr "WebPage スキーマで"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In WebSite Schema"
-msgstr "WebSite スキーマで"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "In Publisher (Organization or Person Schema)"
-msgstr "パブリッシャー内 (組織または個人スキーマ)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Singular"
-msgstr "Singular"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Archives"
-msgstr "アーカイブ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Entire Site"
-msgstr "サイト全体"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Insert"
-msgstr "挿入"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Exclude"
-msgstr "除外"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Include"
-msgstr "含める"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "All Post Types"
-msgstr "すべての投稿タイプ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Author"
-msgstr "投稿者"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "All Archives"
-msgstr "すべてのアーカイブ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Manually create and edit your own custom Schema – fully control all of your properties, property groups, and the associated attributes. Please proceed with caution and validate your code to ensure it aligns with Google's Structured Data guidelines and standards."
-msgstr "独自のカスタム スキーマを手動で作成および編集します。すべてのプロパティ、プロパティ グループ、および関連する属性を完全に制御します。 慎重に作業を進め、コードが Google の構造化データのガイドラインと標準に準拠していることを確認して検証してください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use"
-msgstr "使用"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Schema Found"
-msgstr "スキーマが見つかりました"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "JSON-LD/Custom Code"
-msgstr "JSON-LD/カスタムコード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL / Online Page"
-msgstr "URL / オンラインページ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Import Schema Code from"
-msgstr "ここからスキーマコードをインポート"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Test with Google"
-msgstr "Google でテストする"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Copied!"
-msgstr "コピーしました。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Copy"
-msgstr "コピー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "JSON-LD Code"
-msgstr "JSON-LD コード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Importing…"
-msgstr "インポート中…"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Page URL"
-msgstr "ページ URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Process HTML"
-msgstr "HTMLを処理"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "HTML Code"
-msgstr "HTML コード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Process Code"
-msgstr "プロセスコード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Custom JSON-LD Code"
-msgstr "カスタム JSON-LD コード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Make schema Primary"
-msgstr "スキーマをプライマリにする"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "For example, Game, Multimedia"
-msgstr "例えば、ゲーム、マルチメディア"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Application Category"
-msgstr "アプリのカテゴリー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "For example, Windows 7, OSX 10.6, Android 1.6"
-msgstr "たとえば、Windows 7、OSX 10.6、Android 1.6"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Operating System"
-msgstr "オペレーティング・システム"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "End date and time of the event"
-msgstr "イベントの終了日時"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "End Date"
-msgstr "終了日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Date and time of the event"
-msgstr "イベントの日時"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Start Date"
-msgstr "開始日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Indicates whether the event occurs online, offline at a physical location, or a mix of both online and offline."
-msgstr "イベントがオンラインで発生するか、物理的な場所でオフラインで発生するか、オンラインとオフラインの両方で発生するかを示します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Event Attendance Mode"
-msgstr "イベント出席モード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Current status of the event (optional)"
-msgstr "イベントの現在のステータス（オプション）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Event Status"
-msgstr "イベントのステータス"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type of the event"
-msgstr "イベントのタイプ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Event Type"
-msgstr "イベント種別"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Editions"
-msgstr "エディション"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Position of the episode within an ordered group of episodes (1, 2, 3, etc)."
-msgstr "順序付けられたエピソード グループ (1、2、3 など) 内でのエピソードの位置。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Number"
-msgstr "エピソード番号"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Is episode family friendly?"
-msgstr "エピソードはファミリー向けですか?"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "If empty, podcast channel image will be used from the Settings page."
-msgstr "空の場合、ポッドキャスト チャンネルの画像が設定ページから使用されます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Image URL"
-msgstr "エピソードの画像 URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "By default, current post URL is used."
-msgstr "デフォルトでは、現在の投稿 URL が使用されます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode URL"
-msgstr "エピソードの URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "ISO 8601 duration format. Example: PT37M. Use <a href=https://www.345tool.com/time-util/time-duration-calculator target=_blank>this tool</a> to convert standard time to ISO8601 format."
-msgstr "ISO 8601 の継続時間形式。 例: PT37M。<a href=https://www.345tool.com/time-util/time-duration-calculator target=_blank>このツール</a>を使用して、標準時間を ISO8601 形式に変換します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Duration"
-msgstr "エピソードの長さ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A plaintext description of the episode without HTML tags."
-msgstr "HTML タグを含まない、エピソードのプレーンテキストの説明。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Description"
-msgstr "エピソードの説明"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Episode Name"
-msgstr "エピソード名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Podcast Episode"
-msgstr "ポッドキャストのエピソード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "If set to true, this property indicates whether a job posting will accept experience in place of its formal educational qualifications. If set to true, you must include both the experienceRequirements and educationRequirements properties."
-msgstr "true に設定すると、このプロパティは、求人情報が正式な学歴の代わりに経験を受け入れるかどうかを示します。 true に設定した場合は、 experienceRequirements プロパティと educationRequirements プロパティの両方を含める必要があります。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use Exp in place of Education"
-msgstr "Use Exp in place of Education"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Remote Job Location (Optional)"
-msgstr "リモート ジョブ ロケーション (オプション)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use this property to specify that the job is a Work From Home (remote) job. keep address empty if job is 100% remote."
-msgstr "このプロパティを使用して、ジョブが在宅勤務 (リモート) ジョブであることを指定します。 ジョブが 100% リモートの場合は、アドレスを空にしてください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Is Telecommute Job"
-msgstr "在宅勤務の仕事です"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The hiring organization's unique identifier for the job."
-msgstr "雇用組織のジョブの一意の識別子。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Posting ID (Recommended)"
-msgstr "投稿 ID（推奨）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type of employment. You can choose more than one value"
-msgstr "雇用の種類。 複数の値を選択できます"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Employment Type (Recommended)"
-msgstr "雇用形態（推奨）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "If checked, post status will be changed to Draft and its URL will return a 404 error, as required by the Rich Result guidelines"
-msgstr "チェックすると、投稿ステータスがドラフトに変更され、Rich Result ガイドラインで要求されているように、そのURLは404エラーを返します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date when the job posting will expire. If a job posting never expires, or you do not know when the job will expire, do not include this property"
-msgstr "求人情報の有効期限が切れる日付。 ジョブの投稿が期限切れにならない場合、またはジョブがいつ期限切れになるかわからない場合は、このプロパティを含めないでください "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The original date on which employer posted the job. You can leave it empty to use the post publication date as job posted date"
-msgstr "雇用主が仕事を投稿した元の日付。 空のままにして、投稿の公開日を求人の投稿日として使用できます "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Steps"
-msgstr "ステップ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Supplies"
-msgstr "用品"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Example: P12DT23H15M"
-msgstr "例：P12DT23H15M"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "HowTo"
-msgstr "HowTo"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Questions"
-msgstr "質問"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The rating of the video. Supported values are float numbers in the range 0.0 (low) to 5.0 (high), inclusive. (Used in the Video Sitemap only)"
-msgstr "動画の評価。 サポートされている値は、0.0 (低) ～ 5.0 (高) の範囲の浮動小数点数です。 (ビデオ サイトマップでのみ使用されます)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "An arbitrary string tag describing the video. Add coma separated video tags. (Used in the Video Sitemap only)"
-msgstr "動画を説明する任意の文字列タグ。 コマ区切りの動画タグを追加します。 (動画サイトマップでのみ使用されます)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Tags"
-msgstr "動画タグ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A short description of the broad category that the video belongs to. Add coma separated video categories. (Used in the Video Sitemap only)"
-msgstr "動画が属する広いカテゴリの短い説明。 カンマ区切りの動画 カテゴリを追加します。 (動画 サイトマップでのみ使用されます)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Category"
-msgstr "動画カテゴリー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Mark this video as Family-friendly"
-msgstr "この動画を家族向けとしてマークします"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Is Family Friendly Video"
-msgstr "家族向けの動画です"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Height"
-msgstr "高さ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Width"
-msgstr "幅"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A video thumbnail URL"
-msgstr "動画サムネイルの URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Upload Date"
-msgstr "アップロード日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL pointing to the actual video media file like MP4, MOV, etc. Please leave it empty if you don't know the URL."
-msgstr "MP4、MOV などの実際のビデオメディアファイルを指す URL。URL がわからない場合は、空のままにしてください。 "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL pointing to the embeddable player for the video. Example: <code>https://www.youtube.com/embed/VIDEOID</code>"
-msgstr "動画の埋め込み可能なプレーヤーを指すURL。 例：<code>https://www.youtube.com/embed/VIDEOID</code>"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Embed URL"
-msgstr "表示先の投稿またはページ URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "sameAs"
-msgstr "sameAs"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The job title of the person (for example, Financial Manager)."
-msgstr "個人の役職 (例: 財務管理者)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Job title"
-msgstr "役職名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Gender"
-msgstr "性別"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Keep this section empty if this is an <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>editorial reviews</a>."
-msgstr "これが<a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>編集レビュー</a>の場合は、このセクションを空にしてください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The manufacturer of the product. If enabled, the Organization data from Local SEO settings will be used."
-msgstr "製品の製造元。 有効にすると、ローカル SEO 設定の組織データが使用されます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Add Manufacturer"
-msgstr "メーカーを追加"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Specify another Schema.org type to further describe the product that is referenced. You can also insert a URL to an external vocabulary such as Wikidata or Wikipedia."
-msgstr "参照される製品をさらに詳しく説明するには、別の Schema.org タイプを指定します。 Wikidata や Wikipedia などの外部語彙への URL を挿入することもできます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Additional Type"
-msgstr "追加のタイプ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Product URL"
-msgstr "製品の URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Product name"
-msgstr "商品名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Instruction Type"
-msgstr "説明 タイプ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe ingredients, add one item per line"
-msgstr "レシピの材料、1行に1つのアイテムを追加"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Quantity produced by the recipe, for example 4 servings"
-msgstr "レシピによって生成された量、たとえば4人前"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Other terms for your recipe such as the season, the holiday, or other descriptors. Separate multiple entries with commas."
-msgstr "季節、休日、その他の記述子など、レシピの他の用語。 複数のエントリはコンマで区切ります。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The cuisine of the recipe (for example, French or Ethiopian)."
-msgstr "レシピの料理（たとえば、フランス料理やエチオピア料理）。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type of dish, for example appetizer, or dessert."
-msgstr "前菜やデザートなどの料理の種類。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL pointing to the menu of the restaurant."
-msgstr "レストランのメニューを指す URL。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Menu URL"
-msgstr "メニューの URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Serves Cuisine"
-msgstr "料理"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "You can either use this shortcode or Schema Block in the block editor to print the schema data in the content in order to meet the Google's guidelines. Read more about it <a href=https://developers.google.com/search/docs/guides/sd-policies#content target=_blank>here</a>."
-msgstr "Googleのガイドラインを満たすために、このショートコードまたはブロックエディタのスキーマブロックを使用して、コンテンツのスキーマデータを印刷できます。 詳しくは<a href=https://developers.google.com/search/docs/guides/sd-policies#content target=_blank>こちら</a>をご覧ください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The timezone is used to calculate the Open now functionality."
-msgstr "タイムゾーンは、今すぐ開く機能を計算するために使用されます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Select Timezone"
-msgstr "タイムゾーンの選択"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use 24h Format"
-msgstr "24 時間形式を使用する"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Area Served"
-msgstr "サービスエリア"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Payment Accepted"
-msgstr "受け入れられた支払い"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Currencies Accepted"
-msgstr "使用できる通貨"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The price range of the business."
-msgstr "ビジネスの価格帯。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Business FAX"
-msgstr "ビジネス FAX"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Secondary Number"
-msgstr "セコンダリー番号"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Primary Number"
-msgstr "プライマリー番号"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "You can use the Local Business Block in the block editor, or copy and paste this in the content. <a href=https://rankmath.com/kb/location-data-shortcode/ target=_blank>Learn more</a>"
-msgstr "ブロック エディターでローカル ビジネス ブロックを使用するか、これをコピーしてコンテンツに貼り付けることができます。<a href=https://rankmath.com/kb/location-data-shortcode/ target=_blank>さらに詳しく</a>"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "DataSets"
-msgstr "データセット"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid " Only include this property if the dataset has a spatial dimension."
-msgstr " クリップの開始時間を指す URL。 クリップ URL は、時間を指定する追加のクエリ パラメーターを含むビデオと同じ URL パスを指す必要があります。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Spatial Coverage"
-msgstr "空間範囲"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The data in the dataset covers a specific time interval. Only include this property if the dataset has a temporal dimension."
-msgstr "データセット内のデータは、特定の時間間隔をカバーします。 データセットに時間次元がある場合にのみ、このプロパティを含めます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Keywords summarizing the dataset. Add one keyword per line."
-msgstr "データセットを要約するキーワード。 1 行に 1 つのキーワードを追加します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "An identifier, such as a DOI or a Compact Identifier. Add one identifier per line."
-msgstr "DOI やコンパクト識別子などの識別子。 1 行に 1 つの識別子を追加します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL of a reference Web page that unambiguously indicates the dataset's identity, usually in a different repository."
-msgstr "データセットの ID を明確に示す参照 Web ページの URL (通常は別のリポジトリにあります)。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Same As"
-msgstr "これと同じ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Location of a page describing the dataset."
-msgstr "データセットを説明するページの場所。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "You can use the Schema Block in the block editor, or copy and paste this in the content. This shortcode will work on this page only."
-msgstr "ブロック エディターでスキーマ ブロックを使用するか、これをコピーしてコンテンツに貼り付けることができます。 このショートコードはこのページでのみ機能します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date the movie was released."
-msgstr "映画が公開された日。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Copy & paste this shortcode in the content."
-msgstr "このショートコードをコピーしてコンテンツに貼り付けます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Shortcode"
-msgstr "ショートコード"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The review or rating must be displayed on the page to comply with Google's Schema guidelines."
-msgstr "Google のスキーマガイドラインに準拠するには、レビューまたは評価をページに表示する必要があります。 "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Review Location"
-msgstr "場所を確認する"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Movie Director"
-msgstr "映画監督"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Movie Name"
-msgstr "映画名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Article Section"
-msgstr "投稿セクション"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Google does not allow Person as the Publisher for articles. Organization will be used instead."
-msgstr "Googleは、投稿の発行者として個人を許可していません。 代わりに組織が使用されます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Article Type"
-msgstr "投稿タイプ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Add speakable attributes to Article Schema."
-msgstr "記事スキーマに speakable 属性を追加します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Enable Speakable"
-msgstr "Speakable を有効"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Website or Social Link"
-msgstr "サイトまたはソーシャルリンク"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Performer"
-msgstr "演奏者"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Performer Information"
-msgstr "出演者情報"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The URL of the online event, where people can join. This property is required if your event is happening online"
-msgstr "参加可能なオンラインイベントの URL。イベントがオンラインで行われている場合、このプロパティは必須です"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Online Event URL"
-msgstr "オンラインイベントの URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Course Provider URL"
-msgstr "コースプロバイダーのURL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Course Provider Name"
-msgstr "コースプロバイダーの名前"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Course Provider"
-msgstr "コースプロバイダー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Book Format"
-msgstr "本のフォーマット"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Date of first publication of this tome"
-msgstr "この本の最初の発行日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Date Published"
-msgstr "公開日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "URL specific to this edition if one exists"
-msgstr "このエディションに固有の URL（存在する場合）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The ISBN of the print book"
-msgstr "印刷された本の ISBN"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The edition of the book"
-msgstr "本の版"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The title of the tome. Use for the title of the tome if it differs from the book. *Optional when tome has the same title as the book"
-msgstr "本の巻のタイトル。 本と異なる場合は、本の巻のタイトルに使用します。 *本の巻が本と同じタイトルの場合はオプション"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Edition"
-msgstr "エディション"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Season URL"
-msgstr "シーズン URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Season Name"
-msgstr "シーズンの名前"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Position of the season within an ordered group of seasons (1, 2, 3, etc)."
-msgstr "順序付けられたシーズングループ (1、2、3 など) 内でのシーズンの位置。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Season Number"
-msgstr "シーズン番号"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Fully-qualified URL of the episode audio file, including the format extension (for example, .wav, .mp3)"
-msgstr "形式拡張子 (.wav、.mp3 など) を含む、エピソード オーディオ ファイルの完全修飾 URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Audio File URL"
-msgstr "音声ファイルの URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The educational background needed for the job posting. If there aren't any educational requirements, use the no requirements value. If you don't know the educational requirements, don't add this property."
-msgstr "求人に必要な学歴。 教育要件がない場合は、要件なしの値を使用します。 教育要件がわからない場合は、このプロパティを追加しないでください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use this property to specify geographic location(s) in which employees may be located for work from home jobs. At least one country is required."
-msgstr "このプロパティを使用して、従業員が在宅勤務を行う地理的場所を指定します。 少なくとも 1 か国が必要です。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Location Type"
-msgstr "場所の種類"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The experience that's required for the job posting. If there aren't any requirements, use 0."
-msgstr "求人に必要な経験。 要件がない場合は、0 を使用します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Months of Experience"
-msgstr "経験 (月)"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Website URL of the venue"
-msgstr "会場のサイトURL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Venue URL"
-msgstr "会場の URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The venue name."
-msgstr "会場名。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Venue Name"
-msgstr "会場名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Logo URL of the organization offering the job position. Leave empty to use your own company information"
-msgstr "役職を提供している組織のロゴのURL。 自分の会社情報を使用するには、空のままにします "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Organization Logo (Recommended)"
-msgstr "組織のロゴ（推奨）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The URL of the organization offering the job position. Leave empty to use your own company information"
-msgstr "役職を提供している組織のURL。 自分の会社情報を使用するには、空のままにします "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Organization URL (Recommended)"
-msgstr "組織のURL（推奨）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The name of the company. Leave empty to use your own company information."
-msgstr "会社の名前。 自分の会社情報を使用するには、空のままにします。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Hiring Organization"
-msgstr "雇用する組織"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Salary amount is for"
-msgstr "給与額"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Payroll (Recommended)"
-msgstr "給与（推奨）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Insert amount, e.g. 50.00, or a salary range, e.g. 40.00-50.00"
-msgstr "挿入量、例： 50.00、または給与範囲、例： 40.00 - 50.00"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Salary (Recommended)"
-msgstr "給与（推奨）"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Step"
-msgstr "ステップ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Tool"
-msgstr "道具"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "ISO 4217 Currency code. Example: EUR"
-msgstr "ISO 4217通貨コード。例: EUR"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The estimated cost of the supplies consumed when performing instructions."
-msgstr "指示を実行するときに消費される消耗品の推定コスト。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Cost"
-msgstr "値段"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Question"
-msgstr "質問"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Answer"
-msgstr "答え"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL that points to the start time of the clip. The clip URL must point to the same URL path as the video with additional query parameters that specify the time."
-msgstr "クリップの開始時間を指す URL。 クリップ URL は、時間を指定する追加のクエリ パラメーターを含むビデオと同じ URL パスを指す必要があります。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Clip URL"
-msgstr "クリップの URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The end time of the clip expressed as the number of seconds from the beginning of the work."
-msgstr "クリップの終了時刻。作品の開始からの秒数で表されます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "End Offset"
-msgstr "オフセットを終了"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The start time of the clip expressed as the number of seconds from the beginning of the work."
-msgstr "クリップの開始時間を作品の開始からの秒数で表します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Start Offset"
-msgstr "オフセットを開始"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Clip Name"
-msgstr "クリップ名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Clip"
-msgstr "動画クリップ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Inventory Level"
-msgstr "在庫レベル"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date after which the price will no longer be available"
-msgstr "価格が利用できなくなる日付。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The date when the item becomes valid."
-msgstr "項目が有効になる日付。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Price Valid From"
-msgstr "有効な価格"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Offer availability"
-msgstr "申し出の可用性"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Availability"
-msgstr "在庫状態"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Currency"
-msgstr "通貨"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Price"
-msgstr "金額"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Offers"
-msgstr "オファー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Brand URL"
-msgstr "ブランド URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Brand Name"
-msgstr "ブランド名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Instruction Texts"
-msgstr "指示テキスト"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Instruction name of the recipe."
-msgstr "レシピ指示名。 "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video Upload Date"
-msgstr "動画のアップロード日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "ISO 8601 duration format. Example: PT1H30M"
-msgstr "ISO8601期間形式。 例：PT1H30M "
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Duration"
-msgstr "期間"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A recipe video thumbnail URL"
-msgstr "レシピ動画サムネイル URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A URL pointing to the actual video media file"
-msgstr "実際の動画メディアファイルを指すURL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A video URL. Optional."
-msgstr "動画のURL。 オプションです。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Video URL"
-msgstr "動画 URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A recipe video Name"
-msgstr "レシピ動画名"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The number of calories in the recipe. Optional."
-msgstr "レシピに含まれるカロリー (オプション)。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Closing Time"
-msgstr "閉店時間"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Opening Time"
-msgstr "開始時間"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Open Days"
-msgstr "営業日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Longitude"
-msgstr "経度"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Latitude"
-msgstr "緯度"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Geo Cordinates"
-msgstr "地理座標"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Postal Code"
-msgstr "郵便番号"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Region"
-msgstr "地域"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Locality"
-msgstr "地域"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Street Address"
-msgstr "住所"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The link for the download."
-msgstr "ダウンロード用のリンク。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Content URL"
-msgstr "コンテンツ URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The file format of the distribution."
-msgstr "ディストリビューションのファイル形式。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Encoding Format"
-msgstr "エンコード形式"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A license under which the dataset is distributed."
-msgstr "データセットが配布されるライセンス。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A short summary describing a dataset."
-msgstr "データセットを説明する短い概要。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A descriptive name of a dataset."
-msgstr "データセットのわかりやすい名前。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Either a specific edition of the written work, or the volume of the work"
-msgstr "書かれた作品の特定の版、または作品のボリュームのいずれか"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Data Set"
-msgstr "データセット"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The catalog name."
-msgstr "カタログ名。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The same dataset can be included in more than one such repository. You can refer to a data catalog that this dataset belongs to by referencing it directly."
-msgstr "同じデータセットを複数のそのようなリポジトリに含めることができます。 このデータセットが属するデータ カタログは、直接参照することで参照できます。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Data Catalog"
-msgstr "データカタログ"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Claim"
-msgstr "請求"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Headline"
-msgstr "見出し"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Appearance"
-msgstr "外観"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Negative notes, add one item per line"
-msgstr "否定的なメモ。1 行に 1 つの項目を追加します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Positive notes, add one item per line"
-msgstr "ポジティブなメモ。1 行に 1 つの項目を追加します。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Use this section only for <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>editorial reviews</a>."
-msgstr "このセクションは <a href=https://rankmath.com/kb/review-schema/#editorial-reviews?utm_source=Plugin&utm_medium=Review+Schema&utm_campaign=WP target=_blank>編集上のレビュー</a>にのみ使用してください。"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Modified Date"
-msgstr "変更日"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Review"
-msgstr "レビュー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "The truthfulness rating assigned to ClaimReview.reviewRating, as a human-readible short word or phrase. This value is displayed in the fact check in search results. Examples: <code>True, Mostly true</code>"
-msgstr "ClaimReview.reviewRating に割り当てられる真実性の評価 (人間が読める短い単語またはフレーズとして)。 この値は、検索結果のファクト チェックに表示されます。例: <code>正しい、ほとんど正しい</code>"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating maximum score"
-msgstr "最高スコアの評価"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating Maximum"
-msgstr "最大定格"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating minimum score"
-msgstr "評価の最低スコア"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating Minimum"
-msgstr "最小評価"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating score"
-msgstr "評価スコア"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Rating"
-msgstr "評価"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Image URL"
-msgstr "画像 URL"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "cssSelectors"
-msgstr "cssSelectors"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Speakable"
-msgstr "Speakable"
-
-#: includes/modules/schema/assets/js/schema.js:1
-msgid "Delete"
-msgstr "削除"
-
-#: includes/modules/schema/assets/js/schema.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Global Templates in Use"
-msgstr "使用中のグローバル テンプレート"
-
-#: includes/modules/news-sitemap/assets/js/news-sitemap.js:1
-msgid "Using an \"Index\" or \"NoIndex\" option allows you to control what Google News Bot (not to be confused with Google Search Bot) can include or not include in the Google News Index."
-msgstr "「インデックス」または「インデックスなし」オプションを使用すると、Google ニュース ボット (Google 検索ボットと混同しないでください) が Google ニュース インデックスに何を含めるか、含めないかを制御できます。"
-
-#: includes/modules/news-sitemap/assets/js/news-sitemap.js:1
-msgid "Googlebot-News index"
-msgstr "Googlebot-ニュースのインデックス"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "When you're done editing, don't forget to hit \"publish\" to create this location."
-msgstr "編集が完了したら、忘れずに「公開」をクリックしてこの場所を作成してください。"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Publish your location!"
-msgstr "自分の居場所を公開しましょう！"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Make sure to add the Local Business Block or %s to display your business data."
-msgstr "ビジネス データを表示するには、必ずローカル ビジネス ブロックまたは %s を追加してください。"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Show Business Information"
-msgstr "ビジネス情報を表示"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Add your local business's details here with \"Local Business\" Schema Markup in order to be eligible for local SERP features."
-msgstr "ローカル SERP 機能の対象となるように、「ローカル ビジネス」スキーマ マークアップを使用してローカル ビジネスの詳細をここに追加します。"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Local Business Schema"
-msgstr "ローカル ビジネススキーマ"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Give your business's new location a name here. This field is required and will be visible to users."
-msgstr "ここでビジネスの新しい場所に名前を付けます。 このフィールドは必須であり、ユーザーに表示されます。"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Local Business Name"
-msgstr "ロカルビジネスの名前"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Dismiss"
-msgstr "非表示"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Next"
-msgstr "次"
-
-#: includes/modules/local-seo/assets/js/rank-math-pointers.js:1
-msgid "Finish"
-msgstr "仕上げる"
-
-#: includes/modules/content-ai/assets/js/content-ai.js:1
-#: includes/modules/content-ai/assets/src/content-ai.js:12
-msgid "You have used all of your AI credits and need to purchase more from your SEO service provider."
-msgstr "AI クレジットをすべて使用してしまったので、SEO サービス プロバイダーからさらに購入する必要があります。"
-
-#: includes/modules/content-ai/assets/js/content-ai.js:1
-#: includes/modules/content-ai/assets/src/content-ai.js:8
-msgid "Contact your SEO service provider for more AI credits."
-msgstr "AI クレジットの詳細については、SEO サービス プロバイダーにお問い合わせください。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 5 years"
-msgstr "過去5年間"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past day"
-msgstr "過去の日"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "6 Months"
-msgstr "6ヵ月"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "90 Days"
-msgstr "90日"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "30 Days"
-msgstr "30日"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "15 Days"
-msgstr "15日"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "7 Days"
-msgstr "7日"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Issue Message"
-msgstr "問題メッセージ"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Items"
-msgstr "項目"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rich Result Types"
-msgstr "リッチリザルトタイプ"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "detectedItems"
-msgstr "detectedItems"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Severity"
-msgstr "重大度"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Message"
-msgstr "メッセージ"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Issues"
-msgstr "問題"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Mobile Usability Result"
-msgstr "モバイルユーザビリティの結果"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Unspecified"
-msgstr "不特定"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Referring URLs"
-msgstr "参照元 URL"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Index Status Result"
-msgstr "インデックスステータスの結果"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "User Canonical"
-msgstr "ユーザー正規"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Google Canonical"
-msgstr "Google 正規"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Page Fetch State"
-msgstr "ページフェッチ状態"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Not Available"
-msgstr "利用不可"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Last Crawl Time"
-msgstr "最終クロール時間"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Indexing State"
-msgstr "インデックス状態"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Robots.txt State"
-msgstr "Robots.txt 状態"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Verdict"
-msgstr "評決"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Last Crawl: "
-msgstr "最後のクロール："
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Submit now with Instant Indexing"
-msgstr "インスタントインデックスで今すぐ送信"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Google: "
-msgstr "Google: "
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "hours ago"
-msgstr "時間前"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "days ago"
-msgstr "数日前"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top Statuses"
-msgstr "トップのステータス"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Excluded"
-msgstr "除外"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Only 6 keywords can be added in the graph"
-msgstr "グラフに追加できるキーワードは 6 つだけです"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Remove from graph"
-msgstr "グラフから削除"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Add to graph"
-msgstr "グラフに追加"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Allowed"
-msgstr "許可された"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Remaining"
-msgstr "残り"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Used"
-msgstr "中古"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Delete All"
-msgstr "すべてを削除"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Save"
-msgstr "保存"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Keyword"
-msgstr "キーワード"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Keyword Manager"
-msgstr "キーワードマネージャー"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Added"
-msgstr "追加しました"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Adding…"
-msgstr "追加してます・・・"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Add"
-msgstr "追加"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Keyword…"
-msgstr "キーワードを検索・・・"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Save Settings"
-msgstr "設定を保存"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Select Post Types"
-msgstr "投稿タイプを選択"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Include Secondary KWs"
-msgstr "セコンダリーキーワードを含める"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Options will be applied to old & new posts. By default, only Primary keyword will be imported."
-msgstr "オプションは古い投稿と新しい投稿に適用されます。 デフォルトでは、プライマリーキーワードのみがインポートされます。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Enable Auto Import"
-msgstr "自動インポートを有効"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Auto Add Focus Keywords"
-msgstr "フォーカスキーワードを自動追加"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "No new Focus Keywords found."
-msgstr "新しいフォーカスキーワードは見つかりませんでした。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Successfully Completed."
-msgstr "正常に完了しました。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Adding Focus Keywords.."
-msgstr "フォーカスのキーワードを追加しています・・・"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "↳"
-msgstr "↳"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rest of the Keywords"
-msgstr "残りのキーワード"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Add in Keyword Manager"
-msgstr "キーワードマネージャーに追加"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Added in Keyword Manager"
-msgstr "キーワードマネージャーに追加した"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Delete from Keyword Manager"
-msgstr "キーワードマネージャーから削除"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Losing Keywords"
-msgstr "失われたキーワード トップ 5"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Winning Keywords"
-msgstr "ウイニングキーワード トップ 5"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is how many times your site has been clicked on in the search results."
-msgstr "これは、検索結果でサイトがクリックされた回数です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Avg.CTR"
-msgstr "平均クリック率"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Read more"
-msgstr "続きを読む"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Average click-through rate. Search clicks divided by search impressions."
-msgstr "平均クリック率。 検索クリック数を検索インプレッション数で割ったもの。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "How many times your site was clicked on in the search results."
-msgstr "検索結果でサイトがクリックされた回数。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Open Report"
-msgstr "レポートを開く"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is your total AdSense earning from the time period."
-msgstr "これは、その期間における AdSense の合計収益です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Adsense"
-msgstr "Adsense"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Average position of all the ranking keywords below 100 position."
-msgstr "100 位未満のすべてのランキングキーワードの平均掲載順位。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Total number of keywords your site ranking below 100 position."
-msgstr "サイトが100位以下にランク付けしているキーワードの総数。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "How many times your site was clicked."
-msgstr "サイトがクリックされた回数。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "How many times your site showed up in the search results."
-msgstr "サイトが検索結果に表示された回数。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Content"
-msgstr "コンテンツ"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Traffic"
-msgstr "トラフィック"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Links"
-msgstr "リンク"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "All"
-msgstr "すべて"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Pageviews"
-msgstr "ページビュー"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranking Keywords"
-msgstr "Ranking keywords"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the average position of your site in the search results."
-msgstr "これは、検索結果におけるサイトの平均掲載順位です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Avg. Position"
-msgstr "平均 ポジション"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the average click-through rate (search clicks divided by search impressions)."
-msgstr "これは平均クリックスルー率 (検索クリック数を検索インプレッション数で割ったもの) です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "CTR"
-msgstr "CTR"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is how many times your site was clicked on in the search results."
-msgstr "これは、検索結果でサイトがクリックされた回数です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Clicks"
-msgstr "検索のクリック数"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the total number of keywords your site ranked for."
-msgstr "これは、サイトがランク付けされたキーワードの合計数です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is how many times your site showed up in the search results."
-msgstr "これは、サイトが検索結果に表示された回数です。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Impressions"
-msgstr "検索の印象"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Page Fetch"
-msgstr "ページのフェッチ"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Robots state"
-msgstr "Robots state"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Crawled As"
-msgstr "Crawled As"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rich Results"
-msgstr "Rich Results"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Mobile Usability"
-msgstr "モバイルユーザビリティ"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Indexing Allowed"
-msgstr "インデックスが許可されました"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Status"
-msgstr "ステータス"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Index Status"
-msgstr "インデックスステータス"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Trend"
-msgstr "トレンド"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Loading…"
-msgstr "読み込み中・・・"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Please set the Focus Keyword for this page."
-msgstr "このページのフォーカスキーワードを設定してください。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Suggested Changes"
-msgstr "提案された変更"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Coming Soon"
-msgstr "近日公開"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Save spending time and money"
-msgstr "時間とお金を節約"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "SEO suggestions"
-msgstr "SEO の提案"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Periodically analyze post"
-msgstr "投稿を定期的に分析する"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Intelligent Suggestions"
-msgstr "インテリジェントな提案"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Keywords"
-msgstr "ほとんどのキーワードでランクイン"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Clicks"
-msgstr "クリック数が多いランキング"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Impressions"
-msgstr "最もインプレッション数が多いランキング"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Ranked for most Search Traffic"
-msgstr "最も検索トラフィックが多いランキング"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Schema type of the post."
-msgstr "投稿のスキーマタイプ。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "The primary focus keyword set for the post."
-msgstr "投稿に設定された主な重点キーワード。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Primary Keyword"
-msgstr "プライマリーのキーワード"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rank Math’s SEO Analyzer Score."
-msgstr "Rank Math の SEO アナライザースコア。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Rank Math SEO score."
-msgstr "Rank Math の SEO スコア。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Content Score"
-msgstr "コンテンツスコア"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "SEO Score"
-msgstr "SEO スコア"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Timeframe"
-msgstr "時間枠"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "[Edit]"
-msgstr "[編集]"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Losing Posts"
-msgstr "失われた投稿トップ 5"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Top 5 Winning Posts"
-msgstr "トップ 5 のウイニングポスト"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Avg. CTR"
-msgstr "平均 クリック率"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Clicks"
-msgstr "クリック"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "#"
-msgstr "#"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Search Post URL"
-msgstr "投稿 URL を検索"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "No results found matching your search query."
-msgstr "検索クエリに一致する結果は見つかりませんでした。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Position History"
-msgstr "ポジションの歴史"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Are you sure you want to delete all the Manually Tracked keywords from Rank Tracker? This action is irreversible."
-msgstr "すべての手動で追跡されたキーワードをランク トラッカーから削除してもよろしいですか? この操作は元に戻せません。"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Upgrade your plan!"
-msgstr "プランをアップグレード！"
-
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Your keyword quota has expired. Please upgrade your plan to increase the limit."
-msgstr "キーワードの割り当てが期限切れになりました。 制限を増やすにはプランをアップグレードしてください。"
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "This is the number of pageviews carried out by visitors from Google."
-msgstr "これは、Google からの訪問者によって実行されたページビューの数です。"
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Refresh"
-msgstr "リフレッシュ"
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Google PageSpeed score for desktop and mobile."
-msgstr "デスクトップとモバイルの Google PageSpeed スコア。"
-
-#: includes/modules/analytics/assets/js/admin-bar.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "PageSpeed"
-msgstr "Page Speed"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Link"
-msgstr "リンク"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Link edited."
-msgstr "リンクを編集しました。"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Warning: the link has been inserted but may have errors. Please test it."
-msgstr "警告: リンクは挿入されましたが、エラーがあるかもしれません。テストしてください。"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "%s (opens in a new tab)"
-msgstr "%s (新しいタブで開く)"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to mentions."
-msgstr "メンションに設定します。"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to about."
-msgstr "「ついてに」に設定します。"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to sponsored."
-msgstr "スポンサーに設定します。"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Set to nofollow."
-msgstr "nofollow に設定します。"
-
-#: assets/admin/js/gutenberg-formats.js:1
-msgid "Open in new tab."
-msgstr "新しいタブで開く。"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Close"
-msgstr "閉じる"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-msgid "Google Trends"
-msgstr "Google トレンド"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Interest"
-msgstr "Interest"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 12 months"
-msgstr "過去 12 か月"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 90 days"
-msgstr "過去90日間"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 30 days"
-msgstr "過去30日間"
-
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
-#: assets/admin/js/gutenberg.js:1
-#: includes/modules/analytics/assets/js/stats.js:1
-msgid "Past 7 days"
-msgstr "過去7日間"
-
-#: assets/admin/js/blocks.js:1
-msgid "Move down"
-msgstr "下に移動"
-
-#: assets/admin/js/blocks.js:1
-msgid "Move up"
-msgstr "上に移動"
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Material"
-msgstr "材料"
-
-#: assets/admin/js/blocks.js:1
-msgid "Add one tool per line."
-msgstr "1 行に 1 つのツールを追加します。"
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Tools"
-msgstr "ツール"
-
-#: assets/admin/js/blocks.js:1
-msgid "Add one supply element per line."
-msgstr "1 行に 1 つの供給要素を追加します。"
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Supply"
-msgstr "供給"
-
-#: assets/admin/js/blocks.js:1
-msgid "USD"
-msgstr "USD"
-
-#: assets/admin/js/blocks.js:1
-msgid "Estimated Cost"
-msgstr "見積もり金額"
-
-#: assets/admin/js/blocks.js:1
-msgid "Rank Math's Local Business block"
-msgstr "Rank Mathのローカル・ビジネスのブロック"
-
-#: assets/admin/js/blocks.js:1
-msgid "Local Business by Rank Math"
-msgstr "Rank Math のロカル・ビジネス"
-
-#: assets/admin/js/blocks.js:1
-msgid "Contact"
-msgstr "連絡先セクション"
-
-#: assets/admin/js/blocks.js:1
-msgid "All Locations"
-msgstr "すべての場所"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show open now label after opening hour for current day"
-msgstr "当日の営業時間後に「今開く」ラベルを表示する"
-
-#: assets/admin/js/blocks.js:1
-msgid "Hide Closed Days"
-msgstr "休業日を隠す"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show %s"
-msgstr "%sを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Opening Hours"
-msgstr "営業時間を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Price Indication"
-msgstr "価格表示を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show COC number"
-msgstr "商工会議所番号を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show TAX ID"
-msgstr "納税者番号を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show VAT number"
-msgstr "VAT 番号を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Logo"
-msgstr "ロゴを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Business URL"
-msgstr "ビジネスの URL を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Email"
-msgstr "メールを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show FAX number"
-msgstr "ファックス番号を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Secondary number"
-msgstr "セコンダリー番号を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Primary number"
-msgstr "プライマリー番号を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Country"
-msgstr "国を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show State"
-msgstr "州を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show address on one line"
-msgstr "住所を一行で表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Company Address"
-msgstr "会社住所を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Company Name"
-msgstr "会社名を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show nearest location if none is found within radius"
-msgstr "半径内に何も見つからない場合は、最も近い場所を表示します"
-
-#: assets/admin/js/blocks.js:1
-msgid "Add dropdown to filter results by category"
-msgstr "カテゴリー別に結果をフィルタリングするためのドロップダウンを追加します"
-
-#: assets/admin/js/blocks.js:1
-msgid "Search Locations within the radius"
-msgstr "半径内の場所を検索"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show radius"
-msgstr "半径を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Route Label"
-msgstr "ルートラベル"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Route Planner"
-msgstr "ルートプランナーを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show InfoWindow"
-msgstr "InfoWindow を表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Marker Clustering"
-msgstr "マーカークラスタリングを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Allow Dragging"
-msgstr "ドラッグを許可"
-
-#: assets/admin/js/blocks.js:1
-msgid "Allow Zoom by scroll"
-msgstr "スクロールによるズームを許可"
-
-#: assets/admin/js/blocks.js:1
-msgid "Allow Zoom"
-msgstr "ズームを許可"
-
-#: assets/admin/js/blocks.js:1
-msgid "Zoom Level"
-msgstr "ズームレベル"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Category filter"
-msgstr "カテゴリーフィルターを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Height"
-msgstr "マップの高さ"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Width"
-msgstr "マップの幅"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Type"
-msgstr "マップの種類"
-
-#: assets/admin/js/blocks.js:1
-msgid "Show Map"
-msgstr "マップを表示"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map Settings"
-msgstr "マップ設定"
-
-#: assets/admin/js/blocks.js:1
-msgid "Opening Hours Settings"
-msgstr "営業時間の設定"
-
-#: assets/admin/js/blocks.js:1
-msgid "Address Settings"
-msgstr "アドレス設定"
-
-#: assets/admin/js/blocks.js:1
-msgid "Preview Image"
-msgstr "画像をプレビュー"
-
-#: assets/admin/js/blocks.js:1
-msgid "Location Categories"
-msgstr "場所のカテゴリー"
-
-#: assets/admin/js/blocks.js:1
-msgid "Locations"
-msgstr "位置情報"
-
-#: assets/admin/js/blocks.js:1
-msgid "Store Locator"
-msgstr "店舗検索機能"
-
-#: assets/admin/js/blocks.js:1
-msgid "Map"
-msgstr "地図"
-
-#: assets/admin/js/blocks.js:1
-msgid "Settings"
-msgstr "設定"
 
 #: rank-math-pro.php:115
 msgid "Please update Rank Math Free to the latest version first before using Rank Math PRO."
@@ -2344,7 +322,8 @@ msgstr "検索結果に表示するサイトの名前を入力します。"
 msgid "Website Name"
 msgstr "サイト名"
 
-#: includes/modules/local-seo/class-admin.php:81 assets/admin/js/blocks.js:1
+#: includes/modules/local-seo/class-admin.php:81
+#: assets/admin/js/blocks.js:1
 #: includes/modules/schema/assets/js/schemaFilters.js:1
 msgid "Local Business"
 msgstr "Local Business"
@@ -2379,7 +358,8 @@ msgstr "このモジュールを使用するには、Schema モジュールを�
 msgid "Make your podcasts discoverable via Google Podcasts, Apple Podcasts, and similar services with Podcast RSS feed and Schema Markup generated by Rank Math."
 msgstr "Podcast RSS フィードと Rank Math によって生成されたスキーマ マークアップを使用して、Google Podcast、Apple Podcast、および同様のサービスを介してポッドキャストを検出できるようにします。"
 
-#: includes/admin/class-post-filters.php:79 includes/class-modules.php:75
+#: includes/admin/class-post-filters.php:79
+#: includes/class-modules.php:75
 #: includes/modules/podcast/class-podcast.php:82
 msgid "Podcast"
 msgstr "ポッドキャスト"
@@ -2472,8 +452,10 @@ msgstr "フォークランド諸島（マルビナス）"
 msgid "Côte d'Ivoire"
 msgstr "コートジボワール"
 
-#: includes/admin/class-admin-helper.php:434 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:434
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Czechia"
 msgstr "チェコ"
@@ -2519,15 +501,19 @@ msgid "United States Minor Outlying Islands"
 msgstr "アメリカ合衆国外諸島"
 
 #: includes/admin/class-admin-helper.php:352
-#: includes/admin/class-admin-helper.php:605 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:605
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "United States"
 msgstr "アメリカ合衆国"
 
 #: includes/admin/class-admin-helper.php:351
-#: includes/admin/class-admin-helper.php:604 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:604
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "United Kingdom"
 msgstr "イギリス"
@@ -2618,8 +604,10 @@ msgid "Korea, Democratic People's Republic of"
 msgstr "朝鮮民主主義人民共和国"
 
 #: includes/admin/class-admin-helper.php:228
-#: includes/admin/class-admin-helper.php:479 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:479
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Ireland"
 msgstr "アイルランド"
@@ -2667,8 +655,10 @@ msgid "American Samoa"
 msgstr "アメリカ領サモア"
 
 #: includes/admin/class-admin-helper.php:125
-#: includes/admin/class-admin-helper.php:376 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/admin/class-admin-helper.php:376
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Worldwide"
 msgstr "世界的に"
@@ -2676,11 +666,6 @@ msgstr "世界的に"
 #. Author URI of the plugin
 msgid "https://rankmath.com/?utm_source=Plugin&utm_medium=Readme%20Author%20URI&utm_campaign=WP"
 msgstr "https://rankmath.com/?utm_source=Plugin&utm_medium=Readme%20Author%20URI&utm_campaign=WP"
-
-#. Author of the plugin
-#: assets/admin/js/blocks.js:1
-msgid "Rank Math"
-msgstr "Rank Math"
 
 #. Description of the plugin
 msgid "Super-charge your website’s SEO with the Rank Math PRO options like Site Analytics, SEO Performance, Custom Schema Templates, News/Video Sitemaps, etc."
@@ -2694,53 +679,13 @@ msgstr "https://rankmath.com/wordpress/plugin/seo-suite/"
 msgid "Rank Math SEO PRO"
 msgstr "Rank Math SEO PRO"
 
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Instructions"
-msgstr "レシピーの説明"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Ingredients"
-msgstr "レシピー材料"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Video Thumbnail"
-msgstr "レシピ動画サムネイル"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "A recipe video Description"
-msgstr "Recipe Video Description"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Cooking Time"
-msgstr "調理時間"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Preparation Time"
-msgstr "準備時間"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Calories"
-msgstr "カロリー"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Recipe Yield"
-msgstr "レシピー歩留まり"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Cuisine"
-msgstr "料理"
-
-#: assets/admin/js/blocks.js:1
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Type"
-msgstr "タイプ"
-
 #: includes/modules/schema/shortcode/claimreview.php:68
 #: includes/modules/schema/assets/js/schemaFilters.js:1
 msgid "Alternate Name"
 msgstr "代替名"
 
-#: includes/class-register-vars.php:40 includes/class-register-vars.php:51
+#: includes/class-register-vars.php:40
+#: includes/class-register-vars.php:51
 msgid "Random Word"
 msgstr "ランダムワード"
 
@@ -2935,10 +880,6 @@ msgstr "給与の通貨"
 #: includes/modules/schema/assets/js/schemaFilters.js:1
 msgid "Salary"
 msgstr "給料"
-
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Total Time"
-msgstr "所要時間"
 
 #: includes/modules/schema/shortcode/dataset.php:109
 #: includes/modules/schema/assets/js/schemaFilters.js:1
@@ -3421,7 +1362,8 @@ msgstr "ウォリス・フツナ"
 
 #: includes/admin/class-admin-helper.php:610
 #: includes/modules/local-seo/views/titles-options.php:261
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Vietnam"
@@ -3472,7 +1414,8 @@ msgstr "アラブ首長国連邦"
 #: includes/admin/class-admin-helper.php:349
 #: includes/admin/class-admin-helper.php:602
 #: includes/modules/local-seo/views/titles-options.php:252
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Ukraine"
@@ -3504,7 +1447,8 @@ msgstr "トルクメニスタン"
 #: includes/admin/class-admin-helper.php:344
 #: includes/admin/class-admin-helper.php:596
 #: includes/modules/local-seo/views/titles-options.php:247
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Turkey"
@@ -3547,7 +1491,8 @@ msgstr "東ティモール"
 #: includes/admin/class-admin-helper.php:337
 #: includes/admin/class-admin-helper.php:590
 #: includes/modules/local-seo/views/titles-options.php:240
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Thailand"
@@ -3566,7 +1511,8 @@ msgstr "タジキスタン"
 
 #: includes/admin/class-admin-helper.php:587
 #: includes/modules/local-seo/views/titles-options.php:237
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Taiwan"
@@ -3580,7 +1526,8 @@ msgstr "シリア"
 #: includes/admin/class-admin-helper.php:332
 #: includes/admin/class-admin-helper.php:584
 #: includes/modules/local-seo/views/titles-options.php:235
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Switzerland"
@@ -3589,7 +1536,8 @@ msgstr "スイス"
 #: includes/admin/class-admin-helper.php:331
 #: includes/admin/class-admin-helper.php:583
 #: includes/modules/local-seo/views/titles-options.php:234
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Sweden"
@@ -3637,7 +1585,8 @@ msgstr "南スーダン"
 
 #: includes/admin/class-admin-helper.php:569
 #: includes/modules/local-seo/views/titles-options.php:226
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "South Korea"
@@ -3650,7 +1599,8 @@ msgstr "サウスジョージア・サウスサンドウィッチ諸島"
 #: includes/admin/class-admin-helper.php:323
 #: includes/admin/class-admin-helper.php:568
 #: includes/modules/local-seo/views/titles-options.php:224
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "South Africa"
@@ -3683,7 +1633,8 @@ msgstr "スロバキア"
 #: includes/admin/class-admin-helper.php:318
 #: includes/admin/class-admin-helper.php:562
 #: includes/modules/local-seo/views/titles-options.php:219
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Singapore"
@@ -3715,7 +1666,8 @@ msgstr "セネガル"
 #: includes/admin/class-admin-helper.php:313
 #: includes/admin/class-admin-helper.php:557
 #: includes/modules/local-seo/views/titles-options.php:214
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Saudi Arabia"
@@ -3776,7 +1728,8 @@ msgstr "ルワンダ"
 
 #: includes/admin/class-admin-helper.php:552
 #: includes/modules/local-seo/views/titles-options.php:202
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Russia"
@@ -3785,7 +1738,8 @@ msgstr "ロシア"
 #: includes/admin/class-admin-helper.php:302
 #: includes/admin/class-admin-helper.php:551
 #: includes/modules/local-seo/views/titles-options.php:201
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Romania"
@@ -3809,7 +1763,8 @@ msgstr "カタール"
 #: includes/admin/class-admin-helper.php:298
 #: includes/admin/class-admin-helper.php:548
 #: includes/modules/local-seo/views/titles-options.php:197
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Portugal"
@@ -3818,7 +1773,8 @@ msgstr "ポルトガル"
 #: includes/admin/class-admin-helper.php:297
 #: includes/admin/class-admin-helper.php:547
 #: includes/modules/local-seo/views/titles-options.php:196
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Poland"
@@ -3832,7 +1788,8 @@ msgstr "ピトケアン諸島"
 #: includes/admin/class-admin-helper.php:295
 #: includes/admin/class-admin-helper.php:546
 #: includes/modules/local-seo/views/titles-options.php:194
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Philippines"
@@ -3881,7 +1838,8 @@ msgstr "オマーン"
 #: includes/admin/class-admin-helper.php:286
 #: includes/admin/class-admin-helper.php:537
 #: includes/modules/local-seo/views/titles-options.php:186
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Norway"
@@ -3907,7 +1865,8 @@ msgstr "ニウエ"
 #: includes/admin/class-admin-helper.php:282
 #: includes/admin/class-admin-helper.php:532
 #: includes/modules/local-seo/views/titles-options.php:182
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Nigeria"
@@ -3928,7 +1887,8 @@ msgstr "ニカラグア"
 #: includes/admin/class-admin-helper.php:279
 #: includes/admin/class-admin-helper.php:529
 #: includes/modules/local-seo/views/titles-options.php:179
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "New Zealand"
@@ -3948,7 +1908,8 @@ msgstr "オランダ領アンティル"
 #: includes/admin/class-admin-helper.php:276
 #: includes/admin/class-admin-helper.php:527
 #: includes/modules/local-seo/views/titles-options.php:176
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Netherlands"
@@ -4025,7 +1986,8 @@ msgstr "ミクロネシア"
 #: includes/admin/class-admin-helper.php:263
 #: includes/admin/class-admin-helper.php:514
 #: includes/modules/local-seo/views/titles-options.php:163
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Mexico"
@@ -4082,7 +2044,8 @@ msgstr "モルディブ"
 #: includes/admin/class-admin-helper.php:254
 #: includes/admin/class-admin-helper.php:505
 #: includes/modules/local-seo/views/titles-options.php:154
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Malaysia"
@@ -4181,7 +2144,8 @@ msgstr "キリバス"
 #: includes/admin/class-admin-helper.php:235
 #: includes/admin/class-admin-helper.php:488
 #: includes/modules/local-seo/views/titles-options.php:137
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Kenya"
@@ -4207,7 +2171,8 @@ msgstr "ジャージー島"
 #: includes/admin/class-admin-helper.php:232
 #: includes/admin/class-admin-helper.php:484
 #: includes/modules/local-seo/views/titles-options.php:133
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Japan"
@@ -4226,7 +2191,8 @@ msgstr "コートジボワール"
 #: includes/admin/class-admin-helper.php:230
 #: includes/admin/class-admin-helper.php:482
 #: includes/modules/local-seo/views/titles-options.php:130
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Italy"
@@ -4235,7 +2201,8 @@ msgstr "イタリア"
 #: includes/admin/class-admin-helper.php:229
 #: includes/admin/class-admin-helper.php:481
 #: includes/modules/local-seo/views/titles-options.php:129
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Israel"
@@ -4260,7 +2227,8 @@ msgstr "イラン"
 #: includes/admin/class-admin-helper.php:225
 #: includes/admin/class-admin-helper.php:476
 #: includes/modules/local-seo/views/titles-options.php:125
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Indonesia"
@@ -4269,7 +2237,8 @@ msgstr "インドネシア"
 #: includes/admin/class-admin-helper.php:224
 #: includes/admin/class-admin-helper.php:475
 #: includes/modules/local-seo/views/titles-options.php:124
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "India"
@@ -4284,7 +2253,8 @@ msgstr "アイスランド"
 #: includes/admin/class-admin-helper.php:222
 #: includes/admin/class-admin-helper.php:473
 #: includes/modules/local-seo/views/titles-options.php:122
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Hungary"
@@ -4293,7 +2263,8 @@ msgstr "ハンガリー"
 #: includes/admin/class-admin-helper.php:221
 #: includes/admin/class-admin-helper.php:472
 #: includes/modules/local-seo/views/titles-options.php:121
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Hong Kong"
@@ -4365,7 +2336,8 @@ msgstr "グリーンランド"
 #: includes/admin/class-admin-helper.php:208
 #: includes/admin/class-admin-helper.php:460
 #: includes/modules/local-seo/views/titles-options.php:109
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Greece"
@@ -4386,7 +2358,8 @@ msgstr "ガーナ"
 #: includes/admin/class-admin-helper.php:205
 #: includes/admin/class-admin-helper.php:457
 #: includes/modules/local-seo/views/titles-options.php:106
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Germany"
@@ -4430,7 +2403,8 @@ msgstr "フランス領ギアナ"
 #: includes/admin/class-admin-helper.php:198
 #: includes/admin/class-admin-helper.php:451
 #: includes/modules/local-seo/views/titles-options.php:99
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "France"
@@ -4439,7 +2413,8 @@ msgstr "フランス"
 #: includes/admin/class-admin-helper.php:197
 #: includes/admin/class-admin-helper.php:450
 #: includes/modules/local-seo/views/titles-options.php:98
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Finland"
@@ -4494,7 +2469,8 @@ msgstr "エルサルバドル"
 #: includes/admin/class-admin-helper.php:188
 #: includes/admin/class-admin-helper.php:441
 #: includes/modules/local-seo/views/titles-options.php:89
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Egypt"
@@ -4527,7 +2503,8 @@ msgstr "ジブチ"
 #: includes/admin/class-admin-helper.php:183
 #: includes/admin/class-admin-helper.php:436
 #: includes/modules/local-seo/views/titles-options.php:84
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Denmark"
@@ -4590,7 +2567,8 @@ msgstr "コモロ"
 #: includes/admin/class-admin-helper.php:172
 #: includes/admin/class-admin-helper.php:424
 #: includes/modules/local-seo/views/titles-options.php:73
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Colombia"
@@ -4616,7 +2594,8 @@ msgstr "中国"
 #: includes/admin/class-admin-helper.php:168
 #: includes/admin/class-admin-helper.php:421
 #: includes/modules/local-seo/views/titles-options.php:69
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Chile"
@@ -4649,7 +2628,8 @@ msgstr "カーボベルデ"
 #: includes/admin/class-admin-helper.php:163
 #: includes/admin/class-admin-helper.php:415
 #: includes/modules/local-seo/views/titles-options.php:64
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Canada"
@@ -4704,7 +2684,8 @@ msgstr "イギリス領インド洋地域"
 #: includes/admin/class-admin-helper.php:155
 #: includes/admin/class-admin-helper.php:406
 #: includes/modules/local-seo/views/titles-options.php:55
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Brazil"
@@ -4763,7 +2744,8 @@ msgstr "ベリーズ"
 #: includes/admin/class-admin-helper.php:146
 #: includes/admin/class-admin-helper.php:398
 #: includes/modules/local-seo/views/titles-options.php:45
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Belgium"
@@ -4812,7 +2794,8 @@ msgstr "アゼルバイジャン"
 #: includes/admin/class-admin-helper.php:139
 #: includes/admin/class-admin-helper.php:391
 #: includes/modules/local-seo/views/titles-options.php:37
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Austria"
@@ -4821,7 +2804,8 @@ msgstr "オーストリア"
 #: includes/admin/class-admin-helper.php:138
 #: includes/admin/class-admin-helper.php:390
 #: includes/modules/local-seo/views/titles-options.php:36
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Australia"
@@ -4842,7 +2826,8 @@ msgstr "アルメリア"
 #: includes/admin/class-admin-helper.php:135
 #: includes/admin/class-admin-helper.php:387
 #: includes/modules/local-seo/views/titles-options.php:33
-#: assets/admin/js/divi.js:1 assets/admin/js/elementor.js:1
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
 #: assets/admin/js/gutenberg.js:1
 #: includes/modules/analytics/assets/js/stats.js:1
 msgid "Argentina"
@@ -5478,10 +3463,6 @@ msgstr ".htaccess に同期する"
 msgid "Publication Date"
 msgstr "公開日"
 
-#: includes/modules/schema/assets/js/schemaFilters.js:1
-msgid "Image"
-msgstr "Images"
-
 #. translators: xsl value count
 #. translators: Sitemap index link.
 #: includes/modules/news-sitemap/sitemap-xsl.php:148
@@ -6034,8 +4015,10 @@ msgstr "15日ごと"
 msgid "Logo"
 msgstr "ロゴ"
 
-#: includes/modules/analytics/class-analytics.php:475 assets/admin/js/divi.js:1
-#: assets/admin/js/elementor.js:1 assets/admin/js/gutenberg.js:1
+#: includes/modules/analytics/class-analytics.php:475
+#: assets/admin/js/divi.js:1
+#: assets/admin/js/elementor.js:1
+#: assets/admin/js/gutenberg.js:1
 msgid "Analytics"
 msgstr "分析"
 
@@ -7161,7 +5144,8 @@ msgstr "このモジュールを使用するには、スキーマとサイトマ
 msgid "For your video content, a Video Sitemap is a recommended step for better rankings and inclusion in the Video search."
 msgstr "動画コンテンツの場合、動画サイトマップは、ランキングを上げて動画検索に含めるための推奨手順です。"
 
-#: includes/admin/wizard/class-sitemap.php:162 includes/class-modules.php:63
+#: includes/admin/wizard/class-sitemap.php:162
+#: includes/class-modules.php:63
 #: includes/modules/video-sitemap/class-video-sitemap.php:62
 #: includes/modules/video-sitemap/sitemap-xsl.php:103
 msgid "Video Sitemap"
@@ -7175,7 +5159,8 @@ msgstr "このモジュールを使用するには、サイトマップモジュ
 msgid "Create a News Sitemap for your news-related content. You only need a News sitemap if you plan on posting news-related content on your website."
 msgstr "ニュース関連のコンテンツのニュースサイトマップを作成します。 ニュース関連のコンテンツをサイトに投稿する場合にのみ、ニュースサイトマップが必要です。"
 
-#: includes/admin/wizard/class-sitemap.php:118 includes/class-modules.php:51
+#: includes/admin/wizard/class-sitemap.php:118
+#: includes/class-modules.php:51
 #: includes/modules/news-sitemap/class-news-sitemap.php:131
 msgid "News Sitemap"
 msgstr "ニュースサイトマップ"

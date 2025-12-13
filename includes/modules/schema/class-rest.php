@@ -45,13 +45,7 @@ class Rest extends WP_REST_Controller {
 			[
 				'methods'             => WP_REST_Server::CREATABLE,
 				'callback'            => [ $this, 'save_template' ],
-				'args'                => [
-					'schema' => [
-						'required'          => true,
-						'description'       => esc_html__( 'Schema to add.', 'rank-math-pro' ),
-						'validate_callback' => [ '\\RankMath\\Rest\\Rest_Helper', 'is_param_empty' ],
-					],
-				],
+				'args'                => $this->get_save_template_args(),
 				'permission_callback' => [ $this, 'get_permissions_check' ],
 			]
 		);
@@ -96,7 +90,7 @@ class Rest extends WP_REST_Controller {
 	public function save_template( WP_REST_Request $request ) {
 		$sanitizer = Sanitize::get();
 		$schema    = $request->get_param( 'schema' );
-		$post_id   = $request->get_param( 'postId' );
+		$post_id   = absint( $request->get_param( 'postId' ) );
 
 		foreach ( $schema as $id => $value ) {
 			$schema[ $id ] = $sanitizer->sanitize( $id, $value );
@@ -124,6 +118,28 @@ class Rest extends WP_REST_Controller {
 	}
 
 	/**
+	 * Get save template arguments.
+	 *
+	 * @return array
+	 */
+	private function get_save_template_args() {
+		return [
+			'postId' => [
+				'type'              => 'integer',
+				'required'          => false,
+				'description'       => esc_html__( 'Post ID.', 'rank-math-pro' ),
+				'validate_callback' => [ '\\RankMath\\Rest\\Rest_Helper', 'is_param_empty' ],
+			],
+			'schema' => [
+				'type'              => 'object',
+				'required'          => true,
+				'description'       => esc_html__( 'Schema data.', 'rank-math-pro' ),
+				'validate_callback' => [ '\\RankMath\\Rest\\Rest_Helper', 'is_param_empty' ],
+			],
+		];
+	}
+
+	/**
 	 * Checks whether a given request has permission to read post.
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
@@ -131,7 +147,38 @@ class Rest extends WP_REST_Controller {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public static function get_permissions_check( $request ) { // phpcs:ignore
-		if ( current_user_can( 'edit_posts' ) ) {
+		$post_id = absint( $request->get_param( 'postId' ) );
+
+		// When updating an existing template, require post-specific capability
+		// and ensure the target is a Schema Template post.
+		if ( $post_id ) {
+			$post = \RankMath\Rest\Rest_Helper::get_post( $post_id );
+			if ( is_wp_error( $post ) ) {
+				return $post;
+			}
+
+			if ( $post->post_type !== 'rank_math_schema' ) {
+				return new WP_Error(
+					'rest_forbidden',
+					__( 'Cannot modify non-template posts.', 'rank-math-pro' ),
+					[ 'status' => rest_authorization_required_code() ]
+				);
+			}
+
+			if ( current_user_can( 'edit_post', $post_id ) ) {
+				return true;
+			}
+
+			return new WP_Error(
+				'rest_cannot_edit',
+				__( 'Sorry, you are not allowed to edit this template.', 'rank-math-pro' ),
+				[ 'status' => rest_authorization_required_code() ]
+			);
+		}
+
+		// Creating a new template: require the dedicated create capability of the schema post type.
+		$post_type_object = get_post_type_object( 'rank_math_schema' );
+		if ( $post_type_object && ! empty( $post_type_object->cap->create_posts ) && current_user_can( $post_type_object->cap->create_posts ) ) {
 			return true;
 		}
 

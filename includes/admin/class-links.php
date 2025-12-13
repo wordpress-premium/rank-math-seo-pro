@@ -133,9 +133,9 @@ class Links {
 			'rank-math-pro-links',
 			RANK_MATH_PRO_URL . 'assets/admin/js/links.js',
 			[ 'wp-hooks' ],
-			rank_math_pro()->version
+			rank_math_pro()->version,
+			true
 		);
 		Helper::add_json( 'affiliate_link_prefixes', $prefixes );
 	}
-
 }

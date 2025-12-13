@@ -149,9 +149,8 @@ class Ajax {
 	 * @param string $search   Searched String.
 	 * @param string $type     Object type.
 	 * @param int    $value    Term ID.
-	 * @param string $taxonomy Taxonomy name.
 	 */
-	private function get_terms( $search, $type, $value, $taxonomy ) {
+	private function get_terms( $search, $type, $value ) {
 		$data = [];
 		if ( 'author' === $type ) {
 			return $this->get_authors( $search, $value );

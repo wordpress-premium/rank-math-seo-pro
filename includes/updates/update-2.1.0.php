@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignore WordPress.Files.FileName.NotHyphenatedLowercase -- This filename format is intentionally used to match the plugin version.
 /**
  * The Updates routine for version 2.1.0
  *
@@ -22,7 +22,7 @@ function rank_math_pro_2_1_0_update_opening_hours() {
 		]
 	);
 
-	if ( empty( $locations ) || is_wp_error( $locations ) ) {
+	if ( empty( $locations ) ) {
 		return;
 	}
 

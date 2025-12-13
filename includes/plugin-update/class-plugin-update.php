@@ -20,6 +20,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Plugin_Update class
+ *
+ * @method action()
  */
 class Plugin_Update {
 
@@ -69,13 +71,21 @@ class Plugin_Update {
 	public function __construct() {
 		$this->action( 'admin_enqueue_scripts', 'enqueue' );
 		$this->action( 'admin_notices', 'admin_license_notice', 20 );
-		$this->action( 'in_plugin_update_message-seo-by-rank-math-pro/rank-math-pro.php', 'beta_update_message', 20, 2 );
+		$this->action( 'in_plugin_update_message-seo-by-rank-math-pro/rank-math-pro.php', 'beta_update_message', 20 );
 		$this->action( 'in_plugin_update_message-' . plugin_basename( RANK_MATH_PRO_FILE ), 'in_plugin_update_message', 30, 2 );
 		$this->action( 'add_option_rank_math_connect_data', 'check_and_inject' );
 		$this->action( 'update_option_rank_math_connect_data', 'check_and_inject' );
 		$this->action( 'delete_option_rank_math_connect_data', 'check_and_inject' );
 		$this->action( 'rank_math/settings/toggle_auto_update', 'toggle_auto_update', 10, 1 );
-		$this->action( 'update_site_option_auto_update_plugins', 'connect_auto_update_toggles', 20, 4 );
+		$this->action( 'update_site_option_auto_update_plugins', 'connect_auto_update_toggles', 20, 3 );
+		$this->action( 'admin_action_rank_math_pro_force_check', 'handle_force_check' );
+		$this->action( 'admin_notices', 'force_check_notice' );
+
+		// For multisite, trigger network update from sub-site if PRO isn’t network-active.
+		if ( is_multisite() ) {
+			$this->action( 'load-plugins.php', 'prime_network_update_from_subsite', 9 );
+			$this->action( 'load-update-core.php', 'prime_network_update_from_subsite', 9 );
+		}
 
 		$this->filter( 'plugin_action_links_' . plugin_basename( RANK_MATH_PRO_FILE ), 'plugin_action_links', 50 );
 		$this->filter( 'pre_set_site_transient_update_plugins', 'maybe_inject_update', 20, 1 );
@@ -150,7 +160,7 @@ class Plugin_Update {
 			return;
 		}
 		?>
-			<div class="notice notice-success rank-math-notice">
+			<div class="notice notice-success rank-math-notice rank-math-admin-license-notice">
 				<p>
 					<?php
 					esc_html_e( 'Rank Math PRO is installed but it is not connected to your account, so you are missing out on important SEO features.', 'rank-math-pro' );
@@ -193,7 +203,84 @@ class Plugin_Update {
 			$links['activate_license'] = sprintf( '<a href="%s" class="rank-math-pro-activate-link" style="color:green">%s</a>', esc_url( Admin_Helper::get_activate_url( network_admin_url( 'plugins.php' ) ) ), __( 'Enable updates', 'rank-math-pro' ) );
 		}
 
+		// Add row action to check updates from sub-site when PRO isn’t network-active.
+		if ( is_multisite() && ! is_network_admin() && current_user_can( 'update_plugins' ) && ! $this->is_network_activated() ) {
+			$links['rank_math_pro_check'] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( wp_nonce_url( admin_url( 'plugins.php?action=rank_math_pro_force_check' ), 'rank_math_pro_force_check_update' ) ),
+				esc_html__( 'Check for updates', 'rank-math-pro' )
+			);
+		}
+
 		return $links;
+	}
+
+	/**
+	 * Handle the sub-site force check action to fetch & inject update data.
+	 *
+	 * @return void
+	 */
+	public function handle_force_check() {
+		if ( ! current_user_can( 'update_plugins' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to update plugins on this site.', 'rank-math-pro' ) );
+		}
+
+		check_admin_referer( 'rank_math_pro_force_check_update' );
+
+		// Force refetch and inject the update into the site-wide transient.
+		$this->inject_update( $this->fetch_latest_version( true ) );
+
+		// Redirect back to Plugins with a flag to show a notice.
+		$redirect = remove_query_arg( [ 'action', '_wpnonce' ], wp_get_referer() ? wp_get_referer() : admin_url( 'plugins.php' ) );
+		$redirect = add_query_arg( 'rank_math_pro_force_checked', '1', $redirect );
+		wp_safe_redirect( $redirect );
+		exit;
+	}
+
+	/**
+	 * Show an admin notice after a manual force-check is performed.
+	 *
+	 * @return void
+	 */
+	public function force_check_notice() {
+		if ( ! is_admin() || ! current_user_can( 'update_plugins' ) ) {
+			return;
+		}
+
+		if ( ! Param::get( 'rank_math_pro_force_checked' ) ) {
+			return;
+		}
+
+		$message = __( 'Checked for Rank Math SEO PRO updates.', 'rank-math-pro' );
+		if ( is_multisite() && ! is_network_admin() ) {
+			$updates_link = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( network_admin_url( 'update-core.php' ) ),
+				esc_html__( 'Network Admin → Updates', 'rank-math-pro' )
+			);
+			/* translators: 1: linked text "Network Admin → Updates" */
+			$message .= ' ' . sprintf( __( 'If an update is available, it will appear in %s.', 'rank-math-pro' ), $updates_link );
+		}
+		?>
+		<div class="notice notice-success is-dismissible"><p><?php echo wp_kses_post( $message ); ?></p></div>
+		<?php
+	}
+
+	/**
+	 * Check if PRO is network-activated in multisite.
+	 *
+	 * @return bool
+	 */
+	private function is_network_activated() {
+		if ( ! is_multisite() ) {
+			return false;
+		}
+
+		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php'; // @phpstan-ignore-line
+		}
+
+		return function_exists( 'is_plugin_active_for_network' ) && is_plugin_active_for_network( 'seo-by-rank-math-pro/rank-math-pro.php' );
 	}
 
 	/**
@@ -212,6 +299,43 @@ class Plugin_Update {
 	 */
 	public function check_and_inject() {
 		$this->inject_update( $this->fetch_latest_version( true ) );
+	}
+
+	/**
+	 * Populate network 'update_plugins' transient with PRO data when active only on a sub-site.
+	 * Runs from sub-site admin to make updates visible in Network Admin.
+	 *
+	 * @return void
+	 */
+	public function prime_network_update_from_subsite() {
+		// Only act outside Network Admin and for users capable of updating plugins.
+		if ( is_network_admin() || ! current_user_can( 'update_plugins' ) ) {
+			return;
+		}
+
+		// Throttle priming to avoid repeated work across admin requests.
+		if ( get_site_transient( 'rank_math_pro_prime_throttle' ) ) {
+			return;
+		}
+
+		$plugin    = 'seo-by-rank-math-pro/rank-math-pro.php';
+		$transient = get_site_transient( 'update_plugins' );
+
+		// Skip if network transient already has plugin entry.
+		if (
+			is_object( $transient ) && (
+				( isset( $transient->response[ $plugin ] ) && is_object( $transient->response[ $plugin ] ) ) ||
+				( isset( $transient->no_update[ $plugin ] ) && is_object( $transient->no_update[ $plugin ] ) )
+			)
+		) {
+			return;
+		}
+
+		// Use cache if warm; else run version check and update network transient.
+		$this->inject_update( $this->fetch_latest_version( false ) );
+
+		// Avoid running again for 2 hours.
+		set_site_transient( 'rank_math_pro_prime_throttle', 1, 120 * MINUTE_IN_SECONDS );
 	}
 
 	/**
@@ -391,10 +515,9 @@ class Plugin_Update {
 	/**
 	 * Show beta update message on the Plugins screen.
 	 *
-	 * @param  array  $plugin_data An array of plugin metadata.
-	 * @param  object $response    An array of metadata about the available plugin update.
+	 * @param  array $plugin_data An array of plugin metadata.
 	 */
-	public function beta_update_message( $plugin_data, $response ) {
+	public function beta_update_message( $plugin_data ) {
 		if ( empty( $plugin_data['is_beta'] ) ) {
 			return;
 		}
@@ -495,7 +618,7 @@ class Plugin_Update {
 	/**
 	 * Check if plugin update data & info object contain a valid beta update.
 	 *
-	 * @param object $plugin_info
+	 * @param object $plugin_info Plugin info object.
 	 * @return boolean
 	 */
 	private function has_beta_update( $plugin_info ) {
@@ -784,12 +907,12 @@ class Plugin_Update {
 	 * Get unavailability reason message.
 	 *
 	 * @param string $reason  Unavailability reason ID, like 'not_connected'.
-	 * @param mixed  $default Default text to return when specified ID has no message attached to it.
+	 * @param mixed  $defaults Default text to return when specified ID has no message attached to it.
 	 * @return string
 	 */
-	public function get_update_message( $reason = '', $default = null ) {
-		if ( is_null( $default ) ) {
-			$default = '';
+	public function get_update_message( $reason = '', $defaults = null ) {
+		if ( is_null( $defaults ) ) {
+			$defaults = '';
 		}
 
 		$unavailability_reasons = [
@@ -815,7 +938,7 @@ class Plugin_Update {
 			return $unavailability_reasons[ $reason ];
 		}
 
-		return $default;
+		return $defaults;
 	}
 
 	/**
@@ -991,10 +1114,9 @@ class Plugin_Update {
 	 * @param string $option     Option name.
 	 * @param mixed  $value      Option value.
 	 * @param mixed  $old_value  Previous option value before the change.
-	 * @param int    $network_id Network ID.
 	 * @return void
 	 */
-	public function connect_auto_update_toggles( $option, $value, $old_value, $network_id ) {
+	public function connect_auto_update_toggles( $option, $value, $old_value ) {
 		$this->remove_action( 'update_site_option_auto_update_plugins', 'connect_auto_update_toggles', 20 );
 		if ( ! is_array( $value ) ) {
 			return;

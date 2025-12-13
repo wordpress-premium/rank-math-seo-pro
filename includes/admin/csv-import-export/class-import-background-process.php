@@ -102,11 +102,13 @@ class Import_Background_Process extends \WP_Background_Process {
 	 * @return mixed
 	 */
 	protected function task( $item ) {
+		// Define constant so it can be used in the code elsewhere in the update post hook like save_post to prevent unnecessary actions.
+		if ( ! defined( 'RANK_MATH_IMPORTING_CSV' ) ) {
+			define( 'RANK_MATH_IMPORTING_CSV', true );
+		}
 		try {
 			$this->importer = new Importer();
-			foreach ( $item as $row ) {
-				$this->importer->import_line( $row );
-			}
+			$this->importer->import_batch( $item );
 			$this->importer->batch_done( $item );
 			return false;
 		} catch ( \Exception $error ) {
@@ -120,7 +122,7 @@ class Import_Background_Process extends \WP_Background_Process {
 	 * @return void
 	 */
 	protected function complete() {
-		unlink( get_option( 'rank_math_csv_import' ) );
+		wp_delete_file( get_option( 'rank_math_csv_import' ) );
 		delete_option( 'rank_math_csv_import' );
 		delete_option( 'rank_math_csv_import_total' );
 		delete_option( 'rank_math_csv_import_settings' );

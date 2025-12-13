@@ -66,15 +66,17 @@ class Taxonomy extends Admin {
 	 */
 	public function enqueue() {
 		global $pagenow;
-		$cmb = cmb2_get_metabox( 'rank_math_metabox' );
-		if ( false === $cmb || 'edit-tags.php' === $pagenow ) {
+
+		// Get term ID directly.
+		$term_id = $this->get_term_id();
+		if ( false === $term_id || 'edit-tags.php' === $pagenow ) {
 			return;
 		}
 
-		$schemas = $this->get_schema_data( $cmb->object_id() );
+		$schemas = $this->get_schema_data( $term_id );
 		Helper::add_json( 'schemas', $schemas );
 		Helper::add_json( 'customSchemaImage', esc_url( rank_math()->plugin_url() . 'includes/modules/schema/assets/img/custom-schema-builder.jpg' ) );
-		Helper::add_json( 'postLink', get_term_link( (int) $cmb->object_id() ) );
+		Helper::add_json( 'postLink', get_term_link( (int) $term_id ) );
 		Helper::add_json( 'activeTemplates', $this->get_active_templates() );
 		wp_enqueue_style( 'rank-math-schema', rank_math()->plugin_url() . 'includes/modules/schema/assets/css/schema.css', [ 'wp-components', 'rank-math-editor' ], rank_math()->version );
 		wp_enqueue_script( 'rank-math-schema', rank_math()->plugin_url() . 'includes/modules/schema/assets/js/schema-gutenberg.js', [ 'rank-math-editor', 'clipboard' ], rank_math()->version, true );
@@ -95,6 +97,8 @@ class Taxonomy extends Admin {
 		);
 
 		wp_enqueue_script( 'rank-math-schema-pro', RANK_MATH_PRO_URL . 'includes/modules/schema/assets/js/schema.js', [ 'rank-math-editor' ], rank_math_pro()->version, true );
+		wp_set_script_translations( 'rank-math-pro-schema-filters', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
+		wp_set_script_translations( 'rank-math-schema-pro', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 	}
 
 	/**
@@ -113,7 +117,7 @@ class Taxonomy extends Admin {
 		$queried_object = get_queried_object();
 		if (
 			empty( $queried_object ) ||
-			is_wp_error( $queried_object ) ||
+			is_wp_error( $queried_object ) || // @phpstan-ignore-line The get_queried_object() internal function can return a WP_Error object.
 			! $this->can_add( $queried_object->taxonomy )
 		) {
 			return $data;
@@ -143,6 +147,22 @@ class Taxonomy extends Admin {
 		$schemas = $jsonld->filter( $schemas, $jsonld, $data );
 
 		return array_merge( $data, $schemas );
+	}
+
+	/**
+	 * Get the current term ID.
+	 *
+	 * @return int|false Term ID or false if not available.
+	 */
+	private function get_term_id() {
+		// Try to get from query string.
+		if ( isset( $_GET['tag_ID'] ) ) {
+			return absint( $_GET['tag_ID'] );
+		}
+
+		// Try to get from global.
+		global $tag;
+		return isset( $tag->term_id ) ? $tag->term_id : false;
 	}
 
 	/**

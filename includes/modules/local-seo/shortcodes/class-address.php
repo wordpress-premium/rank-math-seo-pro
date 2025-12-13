@@ -130,7 +130,7 @@ class Address {
 		$data = Shortcodes::get_address( $hash, $address, $format );
 
 		if ( ! empty( $atts['show_on_one_line'] ) ) {
-			$data = str_replace( "<br />", ' ', $data );
+			$data = str_replace( '<br />', ' ', $data );
 		}
 
 		return '<h5>' . esc_html__( 'Address:', 'rank-math-pro' ) . '</h5><address>' . wp_kses_post( $data ) . '</address>';

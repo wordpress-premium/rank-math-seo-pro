@@ -60,6 +60,7 @@ class Trends_Tool {
 			RANK_MATH_PRO_VERSION,
 			true
 		);
+		wp_set_script_translations( 'rank-math-pro-editor', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 		wp_enqueue_style( 'rank-math-pro-editor', RANK_MATH_PRO_URL . 'assets/admin/css/gutenberg.css', [], RANK_MATH_PRO_VERSION );
 	}
 }

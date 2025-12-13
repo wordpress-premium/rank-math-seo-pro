@@ -42,7 +42,7 @@ class Opening_Hours {
 		<div class="rank-math-business-opening-hours">
 			<?php
 			foreach ( $days as $day => $hours ) {
-				$time = ! empty( $hours['time'] ) ? implode( ' and ', $hours['time'] ) : esc_html__( 'Closed', 'rank-math-pro' );
+				$time = ! empty( $hours['time'] ) ? implode( esc_html__( ' and ', 'rank-math-pro' ), $hours['time'] ) : esc_html__( 'Closed', 'rank-math-pro' );
 				$time = str_replace( '-', ' &ndash; ', $time );
 
 				printf(

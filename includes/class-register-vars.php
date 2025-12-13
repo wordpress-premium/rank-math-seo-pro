@@ -60,12 +60,12 @@ class Register_Vars {
 	/**
 	 * Get random word from list of words. Use the object ID for the seed if persistent.
 	 *
-	 * @param  string $list       Words list in spintax-like format.
+	 * @param  string $words       Words list in spintax-like format.
 	 * @param  string $persistent Get persistent return value.
 	 * @return string             Random word.
 	 */
-	public function get_randomword( $list = null, $persistent = true ) {
-		$words = Arr::from_string( $list, '|' );
+	public function get_randomword( $words = null, $persistent = true ) {
+		$words = Arr::from_string( $words, '|' );
 		$max   = count( $words );
 		if ( ! $max ) {
 			return '';
@@ -75,11 +75,11 @@ class Register_Vars {
 
 		if ( $persistent ) {
 			$queried_id = (int) get_queried_object_id();
-			$hash       = (int) crc32( serialize( $words ) . $queried_id );
-			mt_srand( $hash );
+			$hash       = (int) crc32( serialize( $words ) . $queried_id ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize -- Required to serialize the data.
+			wp_rand( $hash );
 		}
 
-		$rand = mt_rand( 0, $max - 1 );
+		$rand = wp_rand( 0, $max - 1 );
 
 		return $words[ $rand ];
 	}
@@ -87,10 +87,10 @@ class Register_Vars {
 	/**
 	 * Get random word from list of words.
 	 *
-	 * @param  string $list Words list in spintax-like format.
+	 * @param  string $words Words list in spintax-like format.
 	 * @return string       Random word.
 	 */
-	public function get_randomword_np( $list = null ) {
-		return $this->get_randomword( $list, false );
+	public function get_randomword_np( $words = null ) {
+		return $this->get_randomword( $words, false );
 	}
 }

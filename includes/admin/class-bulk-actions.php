@@ -14,6 +14,7 @@ use RankMath\Helper;
 use RankMath\Helpers\Param;
 use RankMath\Traits\Hooker;
 use RankMath\Admin\Admin_Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMathPro\Admin\Admin_Helper as ProAdminHelper;
 
 defined( 'ABSPATH' ) || exit;
@@ -72,14 +73,15 @@ class Bulk_Actions {
 				'rank_math_bulk_schema_none',
 				'rank_math_bulk_schema_default',
 				'rank_math_bulk_remove_canonical',
+				'rank_math_bulk_determine_search_intent',
 			],
 			$redirect
 		);
 
-		$edited  = 0;
-		$message = '';
-
-		$post_type_object = false;
+		$notification_type = 'success';
+		$edited            = 0;
+		$message           = '';
+		$post_type_object  = false;
 
 		switch ( $doaction ) {
 			case 'rank_math_bulk_robots_noindex':
@@ -110,7 +112,7 @@ class Bulk_Actions {
 					$robots = array_unique( $robots );
 
 					update_post_meta( $post_id, 'rank_math_robots', $robots );
-					$edited++;
+					++$edited;
 
 					if ( 'index' === $action || 'noindex' === $action ) {
 						$this->do_action( 'sitemap/invalidate_object_type', 'post', $post_id );
@@ -126,7 +128,7 @@ class Bulk_Actions {
 				foreach ( $object_ids as $post_id ) {
 					$post_url = get_permalink( $post_id );
 					$redirect = add_query_arg( "urls[{$i}]", $post_url, $redirect );
-					$i++;
+					++$i;
 				}
 				break;
 
@@ -135,7 +137,7 @@ class Bulk_Actions {
 					$redirection = \RankMath\Redirections\Cache::get_by_object_id( $post_id, 'post' );
 					if ( $redirection ) {
 						\RankMath\Redirections\DB::change_status( $redirection->redirection_id, 'trashed' );
-						$edited++;
+						++$edited;
 					}
 				}
 				// Translators: placeholder is the number of redirections deleted.
@@ -150,7 +152,7 @@ class Bulk_Actions {
 					update_post_meta( $post_id, 'rank_math_rich_snippet', 'off' );
 					$this->delete_schema( $post_id );
 
-					$edited++;
+					++$edited;
 				}
 				// Translators: 1 The number of posts edited. 2 The post type name.
 				$message = sprintf( __( 'Schema edited for %1$d %2$s.', 'rank-math-pro' ), $edited, ( $edited > 1 ? $post_type_object->labels->name : $post_type_object->labels->singular_name ) );
@@ -164,7 +166,7 @@ class Bulk_Actions {
 					delete_post_meta( $post_id, 'rank_math_rich_snippet' );
 					$this->delete_schema( $post_id );
 
-					$edited++;
+					++$edited;
 				}
 				// Translators: 1 The number of posts edited. 2 The post type name.
 				$message = sprintf( __( 'Schema edited for %1$d %2$s.', 'rank-math-pro' ), $edited, ( $edited > 1 ? $post_type_object->labels->name : $post_type_object->labels->singular_name ) );
@@ -178,16 +180,55 @@ class Bulk_Actions {
 
 					if ( get_post_meta( $post_id, 'rank_math_canonical_url', true ) ) {
 						delete_post_meta( $post_id, 'rank_math_canonical_url' );
-						$edited++;
+						++$edited;
 					}
 				}
 				// Translators: 1 The number of posts edited. 2 The post type name.
 				$message = sprintf( __( 'Custom Canonical URL removed from %1$d %2$s.', 'rank-math-pro' ), $edited, ( $edited > 1 ? $post_type_object->labels->name : $post_type_object->labels->singular_name ) );
 				break;
+			case 'rank_math_bulk_determine_search_intent':
+				$focus_keywords = [];
+				foreach ( $object_ids as $object_id ) {
+					$keyword = get_post_meta( $object_id, 'rank_math_focus_keyword', true );
+					if ( $keyword ) {
+						$keywords         = explode( ',', $keyword );
+						$focus_keywords[] = strtolower( current( $keywords ) );
+					}
+				}
+
+				if ( empty( $focus_keywords ) ) {
+					$message = esc_html__( 'Focus keywords are not added for the selected posts. Please add the Focus keywords and try again.', 'rank-math-pro' );
+				} else {
+					$response = ProAdminHelper::determine_search_intent(
+						[
+							'focus_keywords' => $focus_keywords,
+						],
+						'bulk_keyword_intent'
+					);
+
+					if ( isset( $response['error'] ) ) {
+						$message           = $response['error'];
+						$notification_type = 'error';
+					} else {
+						$response       = json_decode( $response, true );
+						$search_intents = [];
+						foreach ( $response as $data ) {
+							$keyword                    = strtolower( $data['focus_keyword'] );
+							$search_intents[ $keyword ] = $data['intent'];
+						}
+
+						ProAdminHelper::get_search_intent( $search_intents );
+
+						$count = count( $response );
+						// Translators: placeholder is the number of Keyword intent.
+						$message = sprintf( _n( 'Search Intent updated for %d Focus Keyword.', 'Search Intent updated for %d Focus Keywords.', $count, 'rank-math-pro' ), $count );
+					}
+				}
+				break;
 		}
 
 		if ( $message ) {
-			Helper::add_notification( $message );
+			Helper::add_notification( $message, [ 'type' => $notification_type ] );
 		}
 
 		return $redirect;
@@ -202,7 +243,7 @@ class Bulk_Actions {
 		global $wpdb;
 
 		$where = $wpdb->prepare( 'WHERE post_id = %d AND meta_key LIKE %s', $post_id, $wpdb->esc_like( 'rank_math_schema_' ) . '%' );
-		$wpdb->query( "DELETE FROM {$wpdb->postmeta} {$where}" ); // phpcs:ignore
+		DB_Helper::query( "DELETE FROM {$wpdb->postmeta} {$where}" );
 	}
 
 	/**
@@ -233,7 +274,6 @@ class Bulk_Actions {
 		$message = '';
 
 		$tax_object = false;
-
 		switch ( $doaction ) {
 			case 'rank_math_bulk_robots_noindex':
 			case 'rank_math_bulk_robots_index':
@@ -263,7 +303,7 @@ class Bulk_Actions {
 					$robots = array_unique( $robots );
 
 					update_term_meta( $term_id, 'rank_math_robots', $robots );
-					$edited++;
+					++$edited;
 
 					if ( 'index' === $action || 'noindex' === $action ) {
 						$this->do_action( 'sitemap/invalidate_object_type', 'term', $term_id );
@@ -283,7 +323,7 @@ class Bulk_Actions {
 					}
 
 					$redirect = add_query_arg( "urls[{$i}]", $term_url, $redirect );
-					$i++;
+					++$i;
 				}
 				break;
 
@@ -292,7 +332,7 @@ class Bulk_Actions {
 					$redirection = \RankMath\Redirections\Cache::get_by_object_id( $term_id, 'term' );
 					if ( $redirection ) {
 						\RankMath\Redirections\DB::change_status( $redirection->redirection_id, 'trashed' );
-						$edited++;
+						++$edited;
 					}
 				}
 				// Translators: placeholder is the number of redirections deleted.
@@ -317,7 +357,7 @@ class Bulk_Actions {
 	 * @return void
 	 */
 	public function save_post_primary_term( $post_id ) {
-		if ( Param::get( 'rank_math_quick_edit_nonce' ) ) {
+		if ( Param::get( 'rank_math_quick_edit_nonce' ) || Param::get( 'rank_math_quick_edit_nonce_bulk' ) ) {
 			return;
 		}
 		if ( ! wp_verify_nonce( Param::get( 'rank_math_bulk_edit_primary_term' ), 'rank-math-edit-primary-term' ) ) {

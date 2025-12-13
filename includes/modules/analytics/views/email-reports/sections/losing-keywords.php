@@ -39,7 +39,10 @@ $keywords = (array) $this->get_variable( 'losing_keywords' );
 					</td>
 				</tr>
 				<?php foreach ( $keywords as $keyword => $data ) : ?>
-					<?php if ( ! is_array( $data ) ) { continue; } ?>
+					<?php
+					if ( ! is_array( $data ) ) {
+						continue; }
+					?>
 					<tr>
 						<td style="width:280px;box-sizing:border-box;">
 							<span title="<?php echo esc_html( $keyword ); ?>"><?php echo esc_html( Str::truncate( $keyword, 36, '...' ) ); ?></span>

@@ -23,7 +23,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class Location_Shortcode {
 
-	use Hooker, Shortcode;
+	use Hooker;
+	use Shortcode;
 
 	/**
 	 * Shortcode attributes.
@@ -96,8 +97,8 @@ class Location_Shortcode {
 			return;
 		}
 
-		wp_register_script( 'rank-math-google-maps', '//maps.googleapis.com/maps/api/js?&key=' . rawurlencode( $this->api_key ), [], rank_math_pro()->version, true );
-		wp_register_script( 'rank-math-google-maps-cluster', 'https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/javascript/examples/markerclusterer/markerclustererplus@4.0.1.min.js', [], rank_math_pro()->version, true );
+		wp_register_script( 'rank-math-google-maps', '//maps.googleapis.com/maps/api/js?&key=' . rawurlencode( $this->api_key ) . '&loading=async&callback=rankMathInitMap&libraries=marker', [], rank_math_pro()->version, true );
+		wp_register_script( 'rank-math-google-maps-cluster', 'https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js', [], rank_math_pro()->version, true );
 		wp_register_script( 'rank-math-local', RANK_MATH_PRO_URL . 'includes/modules/local-seo/assets/js/rank-math-local.js', [ 'jquery', 'lodash', 'rank-math-google-maps', 'rank-math-google-maps-cluster' ], rank_math_pro()->version, true );
 	}
 
@@ -129,7 +130,7 @@ class Location_Shortcode {
 			return sprintf(
 				/* Translators: %s expands to General Settings Link. */
 				esc_html__( 'This page can\'t load Google Maps correctly. Please add %s.', 'rank-math-pro' ),
-				'<a href="' . Helper::get_admin_url( 'options-titles#setting-panel-local' ) . '" target="_blank">' . esc_html__( 'API Key', 'rank-math-pro' ) . '</a>'
+				'<a href="' . Helper::get_settings_url( 'titles', 'local' ) . '" target="_blank">' . esc_html__( 'API Key', 'rank-math-pro' ) . '</a>'
 			);
 		}
 

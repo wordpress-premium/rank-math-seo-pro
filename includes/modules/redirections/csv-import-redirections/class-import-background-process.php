@@ -107,7 +107,7 @@ class Import_Background_Process extends \WP_Background_Process {
 	 * @return void
 	 */
 	protected function complete() {
-		unlink( get_option( 'rank_math_csv_import_redirections' ) );
+		wp_delete_file( get_option( 'rank_math_csv_import_redirections' ) );
 		delete_option( 'rank_math_csv_import_redirections' );
 		delete_option( 'rank_math_csv_import_redirections_total' );
 		delete_option( 'rank_math_csv_import_redirections_settings' );

@@ -315,7 +315,7 @@ $cmb->add_field(
 		'id'   => 'organization_description',
 		'type' => 'textarea_small',
 		'name' => esc_html__( 'Description', 'rank-math-pro' ),
-		'desc' => esc_html__( 'Provide a detailed description of your organization.', 'rank-math' ),
+		'desc' => esc_html__( 'Provide a detailed description of your organization.', 'rank-math-pro' ),
 		'dep'  => $hide_on_multiple_locations,
 	]
 );
@@ -335,7 +335,7 @@ $cmb->add_field(
 		'id'      => 'url',
 		'type'    => 'text_url',
 		'name'    => esc_html__( 'URL', 'rank-math-pro' ),
-		'desc'    => esc_html__( 'URL of your website or your company’s website.', 'rank-math' ),
+		'desc'    => esc_html__( 'URL of your website or your company’s website.', 'rank-math-pro' ),
 		'default' => home_url(),
 	]
 );
@@ -360,7 +360,7 @@ $cmb->add_field(
 		'id'   => 'email',
 		'type' => 'text',
 		'name' => esc_html__( 'Email', 'rank-math-pro' ),
-		'desc' => esc_html__( 'Enter the contact email address that could be displayed on search engines.', 'rank-math' ),
+		'desc' => esc_html__( 'Enter the contact email address that could be displayed on search engines.', 'rank-math-pro' ),
 	]
 );
 

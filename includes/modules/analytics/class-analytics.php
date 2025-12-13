@@ -17,7 +17,6 @@ use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Traits\Hooker;
 use RankMath\Analytics\Stats;
 
-
 // Analytics.
 use RankMathPro\Google\Adsense;
 use RankMath\Google\Permissions;
@@ -28,6 +27,7 @@ use RankMathPro\Analytics\Workflow\Workflow;
 use RankMathPro\Admin\Admin_Helper as ProAdminHelper;
 use RankMathPro\Analytics\DB;
 use RankMath\Google\Analytics as GoogleAnalytics;
+use RankMath\Analytics\Email_Reports as Email_Reports_Base;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -48,7 +48,6 @@ class Analytics {
 		$this->action( 'update_option_rank_math_analytics_last_updated', 'send_summary' );
 		$this->action( 'rank_math/admin/settings/analytics', 'add_new_settings' );
 		$this->filter( 'rank_math/analytics/schedule_gap', 'schedule_gap' );
-		$this->filter( 'rank_math/analytics/fetch_gap', 'fetch_gap' );
 		$this->filter( 'rank_math/analytics/max_days_allowed', 'data_retention_period' );
 		$this->filter( 'rank_math/analytics/options/cache_control/description', 'change_description' );
 		$this->filter( 'rank_math/analytics/check_all_services', 'check_all_services' );
@@ -60,9 +59,13 @@ class Analytics {
 		$this->filter( 'rank_math/analytics/pre_filter_data', 'filter_winning_losing_posts', 10, 3 );
 		$this->filter( 'rank_math/analytics/pre_filter_data', 'filter_winning_keywords', 10, 3 );
 		$this->action( 'cmb2_save_options-page_fields_rank-math-options-general_options', 'sync_global_settings', 25, 2 );
+		$this->action( 'rank_math/settings/before_save', 'before_settings_save', 25, 2 );
 		$this->filter( 'rank_math/metabox/post/values', 'add_metadata', 10, 2 );
 		$this->filter( 'rank_math/analytics/date_exists_tables', 'date_exists_tables', 10 );
 		$this->filter( 'rank_math/analytics/rows', 'add_analytics_rows', 10, 3 );
+		$this->filter( 'rank_math/analytics/adsense', 'adsense_options', 10, 3 );
+		$this->filter( 'rank_math/analytics/options/data', 'options_data' );
+		$this->filter( 'rank_math/cache/generate_hash', 'generate_hash' );
 
 		if ( Helper::has_cap( 'analytics' ) ) {
 			$this->action( 'rank_math/admin_bar/items', 'admin_bar_items', 11 );
@@ -82,6 +85,99 @@ class Analytics {
 		new Ajax();
 		new Email_Reports();
 		new Url_Inspection();
+	}
+
+	/**
+	 * Add options data.
+	 *
+	 * @param array $data Data to be added.
+	 */
+	public function options_data( $data ) {
+		$registered = Admin_Helper::get_registration_data();
+
+		$data['analytics']['console_email_frequency']         = Helper::get_settings( 'general.console_email_frequency' );
+		$data['analytics']['console_email_send_to']           = Helper::get_settings( 'general.console_email_send_to', $registered['email'] ?? '' );
+		$data['analytics']['console_email_subject']           = Helper::get_settings( 'general.console_email_subject', Email_Reports::get()->get_subject_default() );
+		$data['analytics']['console_email_logo']              = Helper::get_settings( 'general.console_email_logo', Email_Reports::get()->get_logo_url_default() );
+		$data['analytics']['console_email_logo_link']         = KB::get( 'email-reports-logo', 'PRO Email Report Logo' );
+		$data['analytics']['console_email_header_background'] = Helper::get_settings( 'general.console_email_header_background', Email_Reports::get()->get_header_bg_default() );
+		$data['analytics']['console_email_link_full_report']  = Helper::get_settings( 'general.console_email_link_full_report', true );
+		$data['analytics']['console_email_sections']          = Helper::get_settings( 'general.console_email_sections', [ 'summary', 'positions', 'winning_posts', 'winning_keywords', 'losing_keywords' ] );
+		$data['analytics']['console_email_footer_text']       = Helper::get_settings( 'general.console_email_footer_text', Email_Reports::get()->get_default_footer_text() );
+
+		// Extra fields.
+		$data['hideEmailReportOptions'] = Email_Reports_Base::are_fields_hidden();
+
+		return $data;
+	}
+
+	/**
+	 * Add AdSense markup
+	 *
+	 * @param string $html      HTML markup.
+	 * @param array  $analytics Analytics data.
+	 * @param array  $all_services All services data.
+	 */
+	public function adsense_options( $html, $analytics, $all_services ) {
+		$adsense_id           = $analytics['adsense_id'] ?? '';
+		$is_adsense_connected = ! empty( $adsense_id );
+		$is_valid_connection  = Adsense::is_valid_connection();
+
+		$adsense_classes        = Helper::classnames(
+			'rank-math-box no-padding rank-math-accordion rank-math-connect-adsense',
+			[
+				'connected'    => $is_valid_connection,
+				'disconnected' => ! $is_valid_connection,
+				'disabled'     => ! Permissions::has_adsense(),
+			]
+		);
+		$adsense_status_classes = Helper::classnames(
+			'rank-math-connection-status',
+			[
+				'rank-math-connection-status-success' => Permissions::has_adsense() && $is_valid_connection,
+				'rank-math-connection-status-error'   => Permissions::has_adsense() && ! $is_valid_connection,
+			]
+		);
+		$adsense_status         = $is_valid_connection ? 'Connected' : 'Not Connected';
+		ob_start();
+		?>
+		<div class="<?php echo esc_attr( $adsense_classes ); ?>" tabindex="0">
+			<header>
+				<h3><span class="rank-math-connection-status-wrap"><span class="<?php echo esc_attr( $adsense_status_classes ); ?>" title="<?php echo esc_attr( $adsense_status ); ?>"></span></span><?php esc_html_e( 'AdSense', 'rank-math-pro' ); ?></h3>
+			</header>
+			<div class="rank-math-accordion-content">
+		
+				<?php
+				if ( ! Permissions::has_adsense() ) {
+					Permissions::print_warning();
+				}
+				?>
+		
+				<div class="cmb-row cmb-type-select">
+					<div class="cmb-row-col">
+						<label for="site-adsense-account"><?php esc_html_e( 'Account', 'rank-math-pro' ); ?></label>
+						<select class="cmb2_select site-adsense-account notrack" name="site-adsense-account" id="site-adsense-account" data-selected="<?php echo esc_attr( $adsense_id ); ?>" disabled="disabled">
+							<option value=""><?php esc_html_e( 'Select Account', 'rank-math-pro' ); ?></option>
+							<?php
+							if ( $is_adsense_connected ) :
+								$adsense = $all_services['adsenseAccounts'][ $adsense_id ];
+								?>
+							<option value="<?php echo esc_attr( $adsense_id ); ?>" <?php selected( $adsense_id, 'accounts/' . $adsense['name'], true ); ?>><?php echo esc_html( $adsense['name'] ); ?></option>
+							<?php endif; ?>
+						</select>
+					</div>
+				</div>
+
+				<?php if ( ! Adsense::is_valid_connection() ) : ?>
+					<div class="rank-math-notice rank-math-notice--error">
+						<p><?php esc_html_e( 'Data import will not work for this service as sufficient permissions are not given.', 'rank-math-pro' ); ?></p>
+					</div>
+				<?php endif; ?>
+
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
 	}
 
 	/**
@@ -129,8 +225,10 @@ class Analytics {
 		$uri = untrailingslashit( plugin_dir_url( __FILE__ ) );
 		wp_enqueue_style( 'rank-math-analytics-pro-stats', $uri . '/assets/css/admin-bar.css', [ 'rank-math-analytics-stats' ], rank_math_pro()->version );
 		wp_enqueue_script( 'rank-math-analytics-pro-stats', $uri . '/assets/js/admin-bar.js', [ 'rank-math-analytics-stats' ], rank_math_pro()->version, true );
+		wp_set_script_translations( 'rank-math-analytics-pro-stats', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 
 		Helper::add_json( 'dateFormat', get_option( 'date_format' ) );
+		Helper::add_json( 'isLocalhost', Helper::is_localhost() );
 	}
 
 	/**
@@ -158,6 +256,7 @@ class Analytics {
 		Helper::add_json( 'isSchemaModuleActive', Helper::is_module_active( 'rich-snippet' ) );
 		Helper::add_json( 'isAnalyticsConnected', GoogleAnalytics::is_analytics_connected() );
 		Helper::add_json( 'dateFormat', get_option( 'date_format' ) );
+		Helper::add_json( 'isLocalhost', Helper::is_localhost() );
 
 		$preference['topKeywords']['ctr']    = false;
 		$preference['topKeywords']['ctr']    = false;
@@ -182,15 +281,6 @@ class Analytics {
 	 */
 	public function schedule_gap() {
 		return 10;
-	}
-
-	/**
-	 * Data retrival fetch gap in days.
-	 *
-	 * @return int
-	 */
-	public function fetch_gap() {
-		return 3;
 	}
 
 	/**
@@ -259,6 +349,7 @@ class Analytics {
 			rank_math_pro()->version,
 			true
 		);
+		wp_set_script_translations( 'rank-math-pro-analytics', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 	}
 
 	/**
@@ -407,6 +498,26 @@ class Analytics {
 	}
 
 	/**
+	 * Add/remove/change scheduled action when the report on/off or the frequency options are changed.
+	 *
+	 * @param string $type     Settings type.
+	 * @param array  $settings Settings data.
+	 */
+	public function before_settings_save( $type, $settings ) {
+		if ( $type !== 'general' ) {
+			return;
+		}
+
+		$value = Helper::get_settings( 'general.sync_global_setting' );
+		if ( ! isset( $settings['sync_global_setting'] ) || $settings['sync_global_setting'] === $value ) {
+			return;
+		}
+
+		\RankMathPro\Admin\Api::get()->sync_setting( $settings['sync_global_setting'] );
+		$this->send_summary();
+	}
+
+	/**
 	 * Check if certain fields got updated.
 	 *
 	 * @param int   $object_id The ID of the current object.
@@ -504,15 +615,12 @@ class Analytics {
 	 * @param array $data Array of System status data.
 	 */
 	public function google_permission_info( $data ) {
-		$data['fields']['permissions']['value'] = array_merge(
-			$data['fields']['permissions']['value'],
-			[
-				esc_html__( 'AdSense', 'rank-math-pro' )   => Permissions::get_status_text( Permissions::has_adsense() ),
-				esc_html__( 'Analytics', 'rank-math-pro' ) => Permissions::get_status_text( Permissions::has_analytics() ),
-			]
-		);
+		$permissions  = $data['fields']['permissions']['value'] . ', ';
+		$permissions .= esc_html__( 'AdSense: ', 'rank-math-pro' ) . Permissions::get_status_text( Permissions::has_adsense() ) . ', ';
+		$permissions .= esc_html__( 'Analytics: ', 'rank-math-pro' ) . Permissions::get_status_text( Permissions::has_analytics() );
 
-		ksort( $data['fields']['permissions']['value'] );
+		$data['fields']['permissions']['value'] = $permissions;
+
 		return $data;
 	}
 
@@ -542,19 +650,19 @@ class Analytics {
 	/**
 	 * Filter winning and losing posts if needed.
 	 *
-	 * @param null  $null Null.
+	 * @param null  $defaults Null.
 	 * @param array $data Analytics data array.
 	 * @param array $args Query arguments.
 	 *
 	 * @return mixed
 	 */
-	public function filter_winning_losing_posts( $null, $data, $args ) {
+	public function filter_winning_losing_posts( $defaults, $data, $args ) {
 		$order_by_field = $args['orderBy'];
 		$type           = $args['type'];
 		$objects        = $args['objects'];
 
 		if ( ! in_array( $type, [ 'win', 'lose' ], true ) ) {
-			return $null;
+			return $defaults;
 		}
 
 		// Filter array by $type value.
@@ -562,7 +670,7 @@ class Analytics {
 		if ( ( 'win' === $type && $order_by_position ) || ( 'lose' === $type && ! $order_by_position ) ) {
 			$data = array_filter(
 				$data,
-				function( $row ) use ( $order_by_field, $objects ) {
+				function ( $row ) use ( $order_by_field, $objects ) {
 					if ( $objects ) {
 						// Show Winning posts if difference is 80 or less.
 						return $row[ $order_by_field ] < 0 && $row[ $order_by_field ] > -80;
@@ -574,7 +682,7 @@ class Analytics {
 		} elseif ( ( 'lose' === $type && $order_by_position ) || ( 'win' === $type && ! $order_by_position ) ) {
 			$data = array_filter(
 				$data,
-				function( $row ) use ( $order_by_field ) {
+				function ( $row ) use ( $order_by_field ) {
 					return $row[ $order_by_field ] > 0;
 				}
 			);
@@ -588,24 +696,24 @@ class Analytics {
 	/**
 	 * Filter winning keywords if needed.
 	 *
-	 * @param null  $null Null.
+	 * @param null  $defaults Null.
 	 * @param array $data Analytics data array.
 	 * @param array $args Query arguments.
 	 *
 	 * @return mixed
 	 */
-	public function filter_winning_keywords( $null, $data, $args ) {
+	public function filter_winning_keywords( $defaults, $data, $args ) {
 		$order_by_field = $args['orderBy'];
 		$dimension      = $args['dimension'];
 
 		if ( 'query' !== $dimension || 'diffPosition' !== $order_by_field || 'ASC' !== $args['order'] ) {
-			return $null;
+			return $defaults;
 		}
 
 		// Filter array by $type value.
 		$data = array_filter(
 			$data,
-			function( $row ) use ( $order_by_field ) {
+			function ( $row ) use ( $order_by_field ) {
 				return $row[ $order_by_field ] < 0 && $row[ $order_by_field ] > -80;
 			}
 		);
@@ -699,7 +807,7 @@ class Analytics {
 
 		$post_ids = array_filter(
 			array_map(
-				function( $post ) {
+				function ( $post ) {
 					return isset( $post->ID ) ? $post->ID : '';
 				},
 				$wp_query->posts
@@ -707,5 +815,22 @@ class Analytics {
 		);
 
 		return $post_ids;
+	}
+
+	/**
+	 * Generate hash for cache key
+	 *
+	 * @param string $value The cache key value.
+	 */
+	public function generate_hash( $value = '' ) {
+		$new_value = json_decode( $value, true );
+
+		if ( ! $new_value ) {
+			return $value;
+		}
+
+		$new_value['ai_only'] = ProAdminHelper::ai_traffic_enabled();
+
+		return wp_json_encode( $new_value, true );
 	}
 }

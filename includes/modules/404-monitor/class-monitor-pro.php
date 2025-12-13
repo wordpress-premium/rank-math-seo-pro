@@ -11,6 +11,7 @@
 namespace RankMathPro;
 
 use RankMath\Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Helpers\Param;
 use RankMath\Traits\Hooker;
 use RankMath\Admin\Database\Database;
@@ -115,12 +116,10 @@ class Monitor_Pro extends CSV {
 		}
 
 		if ( ! current_user_can( 'export' ) || ! Helper::has_cap( '404_monitor' ) ) {
-			// Todo: add error notice instead of wp_die()?
 			wp_die( esc_html__( 'Sorry, your user does not seem to have the necessary capabilities to export.', 'rank-math-pro' ) );
 		}
 
 		if ( wp_verify_nonce( Param::get( '_nonce' ), 'export_404' ) ) {
-			// Todo: add error notice instead of wp_die()?
 			wp_die( esc_html__( 'Nonce error. Please try again.', 'rank-math-pro' ) );
 		}
 
@@ -159,7 +158,7 @@ class Monitor_Pro extends CSV {
 			$where .= " AND accessed < '{$time_to} 23:59:59'";
 		}
 		$query .= $where;
-		$items  = $wpdb->get_results( $query, ARRAY_A ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$items  = DB_Helper::get_results( $query, ARRAY_A );
 
 		if ( empty( $items ) ) {
 			return [
@@ -174,7 +173,6 @@ class Monitor_Pro extends CSV {
 			'columns' => $columns,
 			'items'   => $items,
 		];
-
 	}
 
 	/**
@@ -254,5 +252,4 @@ class Monitor_Pro extends CSV {
 		$args['uri'] = $uri;
 		return $args;
 	}
-
 }

@@ -4,8 +4,22 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0d9f807883abadeb2577675a9c386005
+class ComposerStaticInit45c0464206bdd642ddbc9360399d920d
 {
+    public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WPMedia\\PluginFamily\\' => 21,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'WPMedia\\PluginFamily\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wp-media/plugin-family/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'RankMathPro\\ACF\\ACF' => __DIR__ . '/../..' . '/includes/modules/acf/class-acf.php',
@@ -21,12 +35,12 @@ class ComposerStaticInit0d9f807883abadeb2577675a9c386005
         'RankMathPro\\Admin\\CSV_Import_Export\\Import_Background_Process' => __DIR__ . '/../..' . '/includes/admin/csv-import-export/class-import-background-process.php',
         'RankMathPro\\Admin\\CSV_Import_Export\\Import_Row' => __DIR__ . '/../..' . '/includes/admin/csv-import-export/class-import-row.php',
         'RankMathPro\\Admin\\CSV_Import_Export\\Importer' => __DIR__ . '/../..' . '/includes/admin/csv-import-export/class-importer.php',
+        'RankMathPro\\Admin\\Licence_Activation' => __DIR__ . '/../..' . '/includes/admin/class-licence-activation.php',
         'RankMathPro\\Admin\\Links' => __DIR__ . '/../..' . '/includes/admin/class-links.php',
         'RankMathPro\\Admin\\Media_Filters' => __DIR__ . '/../..' . '/includes/admin/class-media-filters.php',
         'RankMathPro\\Admin\\Misc' => __DIR__ . '/../..' . '/includes/admin/class-misc.php',
         'RankMathPro\\Admin\\Post_Filters' => __DIR__ . '/../..' . '/includes/admin/class-post-filters.php',
         'RankMathPro\\Admin\\Quick_Edit' => __DIR__ . '/../..' . '/includes/admin/class-quick-edit.php',
-        'RankMathPro\\Admin\\Setup_Wizard' => __DIR__ . '/../..' . '/includes/admin/class-setup-wizard.php',
         'RankMathPro\\Admin\\Trends_Tool' => __DIR__ . '/../..' . '/includes/admin/class-trends-tool.php',
         'RankMathPro\\Analytics\\Ajax' => __DIR__ . '/../..' . '/includes/modules/analytics/class-ajax.php',
         'RankMathPro\\Analytics\\Analytics' => __DIR__ . '/../..' . '/includes/modules/analytics/class-analytics.php',
@@ -82,6 +96,7 @@ class ComposerStaticInit0d9f807883abadeb2577675a9c386005
         'RankMathPro\\Redirections\\Schedule' => __DIR__ . '/../..' . '/includes/modules/redirections/class-schedule.php',
         'RankMathPro\\Register_Vars' => __DIR__ . '/../..' . '/includes/class-register-vars.php',
         'RankMathPro\\Rest\\Rest' => __DIR__ . '/../..' . '/includes/class-rest.php',
+        'RankMathPro\\Robots_Txt' => __DIR__ . '/../..' . '/includes/modules/robots-txt/class-robots-txt.php',
         'RankMathPro\\SEO_Analysis\\Competitor_Analysis' => __DIR__ . '/../..' . '/includes/modules/seo-analysis/class-competitor-analysis.php',
         'RankMathPro\\SEO_Analysis\\SEO_Analysis_Pro' => __DIR__ . '/../..' . '/includes/modules/seo-analysis/class-seo-analysis-pro.php',
         'RankMathPro\\Schema\\Admin' => __DIR__ . '/../..' . '/includes/modules/schema/class-admin.php',
@@ -104,6 +119,7 @@ class ComposerStaticInit0d9f807883abadeb2577675a9c386005
         'RankMathPro\\Schema\\Video\\WordPress' => __DIR__ . '/../..' . '/includes/modules/schema/video/class-wordpress.php',
         'RankMathPro\\Schema\\Video\\Youtube' => __DIR__ . '/../..' . '/includes/modules/schema/video/class-youtube.php',
         'RankMathPro\\Schema\\Video_Schema_Generator' => __DIR__ . '/../..' . '/includes/modules/schema/class-video-schema-generator.php',
+        'RankMathPro\\Setup_Wizard' => __DIR__ . '/../..' . '/includes/class-setup-wizard.php',
         'RankMathPro\\Sitemap\\News_Provider' => __DIR__ . '/../..' . '/includes/modules/news-sitemap/class-news-provider.php',
         'RankMathPro\\Sitemap\\News_Sitemap' => __DIR__ . '/../..' . '/includes/modules/news-sitemap/class-news-sitemap.php',
         'RankMathPro\\Sitemap\\News_Sitemap\\Admin' => __DIR__ . '/../..' . '/includes/modules/news-sitemap/class-admin.php',
@@ -113,17 +129,23 @@ class ComposerStaticInit0d9f807883abadeb2577675a9c386005
         'RankMathPro\\Sitemap\\Video_Provider' => __DIR__ . '/../..' . '/includes/modules/video-sitemap/class-video-provider.php',
         'RankMathPro\\Sitemap\\Video_Sitemap' => __DIR__ . '/../..' . '/includes/modules/video-sitemap/class-video-sitemap.php',
         'RankMathPro\\Status\\System_Status' => __DIR__ . '/../..' . '/includes/modules/status/class-system-status.php',
+        'RankMathPro\\ThirdParty\\Plugin_Family' => __DIR__ . '/../..' . '/includes/3rdparty/plugin-family/class-plugin-family.php',
         'RankMathPro\\Thumbnail_Overlays' => __DIR__ . '/../..' . '/includes/class-thumbnail-overlays.php',
         'RankMathPro\\Updates' => __DIR__ . '/../..' . '/includes/class-updates.php',
-        'RankMathPro\\Wizard\\Sitemap' => __DIR__ . '/../..' . '/includes/admin/wizard/class-sitemap.php',
         'RankMathPro\\WooCommerce' => __DIR__ . '/../..' . '/includes/modules/woocommerce/class-woocommerce-pro.php',
         'RankMathPro\\WooCommerce\\Migrate_GTIN' => __DIR__ . '/../..' . '/includes/modules/woocommerce/class-migrate-gtin.php',
+        'WPMedia\\PluginFamily\\Controller\\PluginFamily' => __DIR__ . '/..' . '/wp-media/plugin-family/src/Controller/PluginFamily.php',
+        'WPMedia\\PluginFamily\\Controller\\PluginFamilyInterface' => __DIR__ . '/..' . '/wp-media/plugin-family/src/Controller/PluginFamilyInterface.php',
+        'WPMedia\\PluginFamily\\Model\\PluginFamily' => __DIR__ . '/..' . '/wp-media/plugin-family/src/Model/PluginFamily.php',
+        'WPMedia\\PluginFamily\\PostInstall' => __DIR__ . '/..' . '/wp-media/plugin-family/src/PostInstall.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit0d9f807883abadeb2577675a9c386005::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit45c0464206bdd642ddbc9360399d920d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit45c0464206bdd642ddbc9360399d920d::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit45c0464206bdd642ddbc9360399d920d::$classMap;
 
         }, null, ClassLoader::class);
     }

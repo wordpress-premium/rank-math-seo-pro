@@ -28,7 +28,7 @@ class Url_Inspection {
 		$this->filter( 'rank_math/analytics/url_inspection_map_properties', 'map_inspection_properties', 10, 2 );
 		$this->action( 'rank_math/analytics/get_inspections_query', 'add_filter_params', 10, 2 );
 		$this->action( 'rank_math/analytics/get_inspections_count_query', 'add_filter_params', 10, 2 );
-		$this->filter( 'rank_math/analytics/post_data', 'add_index_verdict_data', 10, 2 );
+		$this->filter( 'rank_math/analytics/post_data', 'add_index_verdict_data' );
 
 		// Enqueue.
 		$this->action( 'rank_math/admin/enqueue_scripts', 'enqueue_scripts' );
@@ -37,10 +37,10 @@ class Url_Inspection {
 	/**
 	 * Filter to alter the where clause used in the get_inspections function.
 	 *
-	 * @param string $where  WHERE clause.
-	 * @param array  $params Parameters.
+	 * @param string $query  Query object.
+	 * @param array  $params Query parameters.
 	 *
-	 * @return string
+	 * @return void
 	 */
 	public function add_filter_params( $query, $params ) {
 		if ( empty( $params['indexingFilter'] ) ) {
@@ -88,11 +88,10 @@ class Url_Inspection {
 	/**
 	 * Change user perference.
 	 *
-	 * @param  array           $data array.
-	 * @param  WP_REST_Request $request post object.
+	 * @param  array $data array.
 	 * @return array $data sorted array.
 	 */
-	public function add_index_verdict_data( $data, \WP_REST_Request $request ) {
+	public function add_index_verdict_data( $data ) {
 		if ( ! Helper::can_add_index_status() ) {
 			return $data;
 		}

@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignore WordPress.Files.FileName.NotHyphenatedLowercase -- This filename format is intentionally used to match the plugin version.
 /**
  * The Updates routine for version 3.0.17.
  *
@@ -20,8 +20,8 @@ function rank_math_pro_3_0_17_update_podcast_settings() {
 	$general  = $all_opts['general'];
 
 	$general['podcast_title']                 = '%sitename%';
-    $general['podcast_description']           = '%sitedesc%';
-    $general['podcast_tipodcast_explicittle'] = 'off';
+	$general['podcast_description']           = '%sitedesc%';
+	$general['podcast_tipodcast_explicittle'] = 'off';
 
 	Helper::update_all_settings( $general, null, null );
 	rank_math()->settings->reset();

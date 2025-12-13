@@ -117,7 +117,7 @@ class CSV_Import_Export_Redirections {
 		?>
 		<div class="rank-math-redirections-csv-import">
 		<?php if ( ! $import_in_progress ) : ?>
-					<p><label for="csv-import-me"><strong><?php esc_html_e( 'CSV File', 'rank-math-pro' ); ?></label></strong><p>
+					<p><label for="csv-import-me"><strong><?php esc_html_e( 'CSV File', 'rank-math-pro' ); ?></strong></label><p>
 					<input type="file" name="csv-redirections-import-me" id="csv-redirections-import-me" value="" accept=".csv">
 					<br>
 					<span class="validation-message"><?php esc_html_e( 'Please select a CSV file to import.', 'rank-math-pro' ); ?></span>
@@ -208,10 +208,10 @@ class CSV_Import_Export_Redirections {
 		if ( ! is_admin() || Param::post( 'rank-math-redirections-export' ) !== 'csv' ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '', 'rank_math_pro_csv_export_redirections' ) ) {
+		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? sanitize_key( $_REQUEST['_wpnonce'] ) : '', 'rank_math_pro_csv_export_redirections' ) ) {
 			wp_die( esc_html__( 'Invalid nonce.', 'rank-math-pro' ) );
 		}
-		if ( ! current_user_can( 'export' ) || ! current_user_can( 'rank_math_redirections' ) ) {
+		if ( ! current_user_can( 'rank_math_redirections' ) ) {
 			wp_die( esc_html__( 'Sorry, you are not allowed to export redirections on this site.', 'rank-math-pro' ) );
 		}
 
@@ -234,7 +234,7 @@ class CSV_Import_Export_Redirections {
 		if ( empty( $_FILES['csv-redirections-import-me'] ) || empty( $_FILES['csv-redirections-import-me']['name'] ) ) {
 			wp_die( esc_html__( 'Please select a file to import.', 'rank-math-pro' ) );
 		}
-		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '', 'rank_math_pro_csv_import_redirections' ) ) {
+		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? sanitize_key( $_REQUEST['_wpnonce'] ) : '', 'rank_math_pro_csv_import_redirections' ) ) {
 			wp_die( esc_html__( 'Invalid nonce.', 'rank-math-pro' ) );
 		}
 		if ( ! current_user_can( 'import' ) || ! current_user_can( 'rank_math_redirections' ) ) {
@@ -242,7 +242,7 @@ class CSV_Import_Export_Redirections {
 		}
 
 		// Rename file.
-		$info = pathinfo( $_FILES['csv-redirections-import-me']['name'] );
+		$info = pathinfo( sanitize_file_name( $_FILES['csv-redirections-import-me']['name'] ) );
 		$_FILES['csv-redirections-import-me']['name'] = uniqid( 'rm-csv-redirections-' ) . ( ! empty( $info['extension'] ) ? '.' . $info['extension'] : '' );
 
 		// Handle file.
@@ -296,7 +296,7 @@ class CSV_Import_Export_Redirections {
 		}
 
 		if ( ! isset( $file['type'] ) || 'text/csv' !== $file['type'] ) {
-			\unlink( $file['file'] );
+			\wp_delete_file( $file['file'] );
 			Helper::add_notification( esc_html__( 'CSV could not be imported: File type error.', 'rank-math-pro' ), [ 'type' => 'error' ] );
 			return false;
 		}
@@ -353,7 +353,7 @@ class CSV_Import_Export_Redirections {
 		if ( ! is_admin() || empty( $_GET['rank_math_cancel_csv_import_redirections'] ) ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? $_REQUEST['_wpnonce'] : '', 'rank_math_cancel_csv_import_redirections' ) ) {
+		if ( ! wp_verify_nonce( isset( $_REQUEST['_wpnonce'] ) ? sanitize_key( $_REQUEST['_wpnonce'] ) : '', 'rank_math_cancel_csv_import_redirections' ) ) {
 			Helper::add_notification( esc_html__( 'Import could not be canceled: invalid nonce. Please try again.', 'rank-math-pro' ), [ 'type' => 'error' ] );
 			wp_safe_redirect( remove_query_arg( 'rank_math_cancel_csv_import_redirections' ) );
 			exit;
@@ -391,7 +391,7 @@ class CSV_Import_Export_Redirections {
 			exit;
 		}
 
-		unlink( $file_path );
+		wp_delete_file( $file_path );
 		if ( ! $silent ) {
 			Helper::add_notification(
 				__( 'CSV import canceled.', 'rank-math-pro' ),

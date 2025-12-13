@@ -186,6 +186,8 @@ class Admin {
 			true
 		);
 
+		wp_set_script_translations( 'rank-math-pro-schema-filters', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
+
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
 		if ( $screen instanceof WP_Screen && 'rank_math_schema' === $screen->post_type ) {
 			Helper::add_json( 'isTemplateScreen', true );
@@ -207,10 +209,13 @@ class Admin {
 				true
 			);
 
+			wp_set_script_translations( 'rank-math-schema-pro', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
+
 			return;
 		}
 
 		wp_enqueue_script( 'rank-math-schema-pro', RANK_MATH_PRO_URL . 'includes/modules/schema/assets/js/schema.js', [ 'rank-math-schema' ], rank_math_pro()->version, true );
+		wp_set_script_translations( 'rank-math-schema-pro', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 	}
 
 	/**
@@ -260,7 +265,7 @@ class Admin {
 	public function save( $post_id, $post ) {
 		if (
 			! isset( $_POST['security'] ) ||
-			! wp_verify_nonce( $_POST['security'], 'rank_math_schema_template' ) ||
+			! wp_verify_nonce( sanitize_key( $_POST['security'] ), 'rank_math_schema_template' ) ||
 			! isset( $_POST['rank_math_schema'] )
 		) {
 			return $post_id;
@@ -272,7 +277,7 @@ class Admin {
 		}
 
 		$sanitizer = Sanitize::get();
-		$schema    = stripslashes_deep( $_POST['rank_math_schema'] );
+		$schema    = stripslashes_deep( $_POST['rank_math_schema'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitization done in the next line.
 		$schema    = json_decode( $schema, true );
 		$schema    = $sanitizer->sanitize( 'rank_math_schema', $schema );
 

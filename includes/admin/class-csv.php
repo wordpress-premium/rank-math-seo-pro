@@ -89,14 +89,14 @@ class CSV {
 	/**
 	 * Escape CSV: quotes and slashes
 	 *
-	 * @param string $string String to escape.
+	 * @param string $text String to escape.
 	 * @return string
 	 */
-	public function escape_csv( $string ) {
-		if ( is_null( $string ) ) {
+	public function escape_csv( $text ) {
+		if ( is_null( $text ) ) {
 			return '';
 		}
 
-		return '"' . str_replace( [ '"', '\\' ], [ '""', '\\\\' ], $string ) . '"';
+		return '"' . str_replace( [ '"', '\\' ], [ '""', '\\\\' ], $text ) . '"';
 	}
 }

@@ -42,7 +42,7 @@ class Admin {
 	 * @return array
 	 */
 	public function add_settings( $tabs ) {
-		$tabs['local']['file'] = dirname( __FILE__ ) . '/views/titles-options.php';
+		$tabs['local']['file'] = __DIR__ . '/views/titles-options.php';
 
 		return $tabs;
 	}
@@ -59,10 +59,14 @@ class Admin {
 		$tabs['kml-file'] = [
 			'icon'      => 'rm-icon rm-icon-local-seo',
 			'title'     => esc_html__( 'Local Sitemap', 'rank-math-pro' ),
+			/* translators: KML File Url */
 			'desc'      => wp_kses_post( sprintf( __( 'KML is a file format used to display geographic data in an Earth browser such as Google Earth. More information: <a href="%s" target="_blank">Locations KML</a>', 'rank-math-pro' ), KB::get( 'kml-sitemap', 'Options Panel Sitemap Local Tab' ) ) ),
-			'file'      => dirname( __FILE__ ) . '/views/sitemap-settings.php',
+			'file'      => __DIR__ . '/views/sitemap-settings.php',
 			/* translators: KML File Url */
 			'after_row' => '<div class="notice notice-alt notice-info info inline rank-math-notice"><p>' . sprintf( esc_html__( 'Your Locations KML file can be found here: %s', 'rank-math-pro' ), '<a href="' . $sitemap_url . '" target="_blank">' . $sitemap_url . '</a>' ) . '</p></div>',
+			'json'      => [
+				'kmlFile' => $sitemap_url,
+			],
 		];
 
 		return $tabs;

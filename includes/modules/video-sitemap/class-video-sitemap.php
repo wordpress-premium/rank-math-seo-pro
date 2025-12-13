@@ -62,10 +62,14 @@ class Video_Sitemap {
 		$tabs['video-sitemap'] = [
 			'icon'      => 'rm-icon rm-icon-video',
 			'title'     => esc_html__( 'Video Sitemap', 'rank-math-pro' ),
+			/* translators: Video Sitemap Url */
 			'desc'      => wp_kses_post( sprintf( __( 'Video Sitemaps give search engines information about video content on your site. More information: <a href="%s" target="_blank">Video Sitemaps</a>', 'rank-math-pro' ), KB::get( 'video-sitemap', 'Options Panel Sitemap Video' ) ) ),
-			'file'      => dirname( __FILE__ ) . '/settings-video.php',
+			'file'      => __DIR__ . '/settings-video.php',
 			/* translators: Video Sitemap Url */
 			'after_row' => '<div class="notice notice-alt notice-info info inline rank-math-notice"><p>' . sprintf( esc_html__( 'Your Video Sitemap index can be found here: %s', 'rank-math-pro' ), '<a href="' . $sitemap_url . '" target="_blank">' . $sitemap_url . '</a>' ) . '</p></div>',
+			'json'      => [
+				'videoSitemapUrl' => $sitemap_url,
+			],
 		];
 
 		return $tabs;
@@ -110,7 +114,7 @@ class Video_Sitemap {
 	 *
 	 * @param string $title Title for stylesheet.
 	 */
-	public function sitemap_xsl( $title ) {
+	public function sitemap_xsl( $title ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- It is used in the required file.
 		require_once 'sitemap-xsl.php';
 	}
 
@@ -199,7 +203,7 @@ class Video_Sitemap {
 			return true;
 		}
 
-		return isset( $_SERVER['HTTP_USER_AGENT'] ) && preg_match( '/bot|crawl|slurp|spider|mediapartners/i', $_SERVER['HTTP_USER_AGENT'] );
+		return isset( $_SERVER['HTTP_USER_AGENT'] ) && preg_match( '/bot|crawl|slurp|spider|mediapartners/i', sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) );
 	}
 
 	/**

@@ -6,6 +6,8 @@
  * @subpackage RankMath\Settings
  */
 
+use RankMathPro\Admin\Admin_Helper;
+
 defined( 'ABSPATH' ) || exit;
 
 $cmb->add_field(
@@ -162,9 +164,9 @@ $replacement_fields = $cmb->add_field( //phpcs:ignore
 $cmb->add_group_field(
 	$replacement_fields,
 	[
-		'id'         => 'find',
-		'type'       => 'text',
-		'attributes' => [ 'placeholder' => esc_attr__( 'Find', 'rank-math-pro' ) ],
+		'id'              => 'find',
+		'type'            => 'text',
+		'attributes'      => [ 'placeholder' => esc_attr__( 'Find', 'rank-math-pro' ) ],
 		'sanitization_cb' => [ '\\RankMathPro\\Image_Seo_Pro', 'sanitize_replace_value' ],
 	]
 );
@@ -192,3 +194,22 @@ $cmb->add_group_field(
 		],
 	]
 );
+
+if ( Admin_Helper::can_activate_imagify() ) {
+	$cmb->add_field(
+		[
+			'id'         => 'image_size_enhancement',
+			'type'       => 'notice',
+			'what'       => 'info',
+			'classes'    => 'rank-math-plugin-cross-sell',
+			'save_field' => false,
+			'content'    => sprintf(
+				/* translators: Description and link texts */
+				esc_html__( '%1$s Install Imagify to automatically optimize all your images to improve site performance and enhance your SEO visibility. %2$s or %3$s', 'rank-math-pro' ),
+				'<strong>' . esc_html__( 'Optimize Images:', 'rank-math-pro' ) . '</strong>',
+				'<a href="#" class="activate-now action">' . esc_html__( 'Install Now', 'rank-math-pro' ) . '</a>',
+				'<a href="https://rankmath.com/kb/install-imagify-plugin/" target="_blank">' . esc_html__( 'Learn More.', 'rank-math-pro' ) . '</a>'
+			),
+		]
+	);
+}

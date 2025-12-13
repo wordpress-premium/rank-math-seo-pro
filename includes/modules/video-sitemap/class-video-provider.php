@@ -11,6 +11,7 @@
 namespace RankMathPro\Sitemap;
 
 use RankMath\Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Sitemap\Router;
 use RankMath\Sitemap\Providers\Post_Type;
 
@@ -67,7 +68,7 @@ class Video_Provider extends Post_Type {
 						GROUP BY p.ID
 						ORDER BY p.post_modified_gmt DESC";
 
-		$posts       = $wpdb->get_results( $sql, ARRAY_A ); // phpcs:ignore
+		$posts       = DB_Helper::get_results( $sql, ARRAY_A );
 		$total_count = count( $posts );
 		if ( 0 === $total_count ) {
 			return [];
@@ -202,7 +203,7 @@ class Video_Provider extends Post_Type {
 			return false;
 		}
 		unset( $canonical );
-		$schemas = get_post_meta( $post->ID, 'rank_math_schema_VideoObject' );
+		$schemas = get_post_meta( $post->ID, 'rank_math_schema_VideoObject' ); // phpcs:ignore
 		if ( empty( $schemas ) ) {
 			return false;
 		}
@@ -248,7 +249,6 @@ class Video_Provider extends Post_Type {
 						ORDER BY p.post_modified DESC
 						LIMIT %d OFFSET %d";
 
-		return $wpdb->get_results( $wpdb->prepare( $sql, $count, $offset ) ); // phpcs:ignore
-
+		return DB_Helper::get_results( $wpdb->prepare( $sql, $count, $offset ) );
 	}
 }

@@ -1,4 +1,4 @@
-<?php
+<?php //phpcs:ignore WordPress.Files.FileName.NotHyphenatedLowercase -- This filename format is intentionally used to match the plugin version.
 /**
  * WooCommerce module.
  *
@@ -52,8 +52,8 @@ class WooCommerce {
 	 * Constructor.
 	 */
 	public function __construct() {
+		$this->filter( 'rank_math/database/tools', 'add_gtin_migration_tool' );
 		if ( is_admin() ) {
-			$this->filter( 'rank_math/database/tools', 'add_gtin_migration_tool' );
 			new Admin();
 			return;
 		}
@@ -167,7 +167,7 @@ class WooCommerce {
 			$post_id = get_the_ID();
 			$product = wc_get_product( $post_id );
 
-			if ( 'grouped' === $product->get_type() ) {
+			if ( empty( $product ) || 'grouped' === $product->get_type() ) {
 				continue;
 			}
 
@@ -273,7 +273,7 @@ class WooCommerce {
 
 		$taxonomy = Helper::get_settings( 'general.product_brand' );
 		if ( ! empty( $entity['brand'] ) && $taxonomy && taxonomy_exists( $taxonomy ) ) {
-			$brands                 = get_the_terms( $product_id, $taxonomy );
+			$brands                 = get_the_terms( get_the_ID(), $taxonomy );
 			$entity['brand']['url'] = is_wp_error( $brands ) || empty( $brands[0] ) ? '' : get_term_link( $brands[0], $taxonomy );
 		}
 

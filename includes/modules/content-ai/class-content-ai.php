@@ -48,5 +48,6 @@ class Content_AI {
 			rank_math_pro()->version,
 			true
 		);
+		wp_set_script_translations( 'rank-math-pro-content-ai', 'rank-math-pro', RANK_MATH_PRO_PATH . 'languages/' );
 	}
 }

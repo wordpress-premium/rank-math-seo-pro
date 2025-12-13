@@ -11,6 +11,7 @@
 namespace RankMathPro\Sitemap;
 
 use RankMath\Helper;
+use RankMath\Helpers\DB as DB_Helper;
 use RankMath\Sitemap\Router;
 use RankMath\Sitemap\Providers\Post_Type;
 
@@ -160,41 +161,46 @@ class News_Provider extends Post_Type {
 		 * Get posts for the last two days only.
 		 */
 		$sql = "
-            SELECT *
-            FROM {$wpdb->posts}
-            WHERE post_status='publish'
-                AND ( TIMESTAMPDIFF( MINUTE, post_date_gmt, UTC_TIMESTAMP() ) <= ( 48 * 60 ) )
-                AND post_type IN ( '" . join( "', '", esc_sql( $post_types ) ) . "' )
-        ";
+			SELECT *
+			FROM {$wpdb->posts}
+			WHERE post_status='publish'
+				AND ( TIMESTAMPDIFF( MINUTE, post_date_gmt, UTC_TIMESTAMP() ) <= ( 48 * 60 ) )
+				AND post_type IN ( '" . join( "', '", esc_sql( $post_types ) ) . "' )
+		";
 
 		$terms_query = '';
 		foreach ( $post_types as $post_type ) {
-			$terms = current( Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms", [] ) );
+			$terms = Helper::get_settings( "sitemap.news_sitemap_exclude_{$post_type}_terms", [] );
+			if ( count( $terms ) === 1 && isset( $terms[0] ) ) {
+				$terms = $terms[0];
+			}
 			if ( empty( $terms ) ) {
 				continue;
 			}
 
 			array_map(
 				function ( $key ) use ( $terms, &$terms_query, $wpdb ) {
+					if ( empty( $terms[ $key ] ) ) {
+						return;
+					}
 					$placeholders = implode( ', ', array_fill( 0, count( $terms[ $key ] ), '%d' ) );
 					$terms_sql    = "(
-                    {$wpdb->posts}.ID NOT IN (
-                        SELECT object_id
-                        FROM {$wpdb->term_relationships}
-                        WHERE term_taxonomy_id IN ($placeholders)
-                    )";
+					{$wpdb->posts}.ID NOT IN (
+						SELECT object_id
+						FROM {$wpdb->term_relationships}
+						WHERE term_taxonomy_id IN ($placeholders)
+					)";
 					// Check mutiple category selected.
 					$terms_or_sql = "
-                    OR {$wpdb->posts}.ID IN (
-                        SELECT DISTINCT object_id
-                        FROM {$wpdb->term_relationships}
-                        WHERE term_taxonomy_id NOT IN ($placeholders)
-                    ))
-                    AND";
+					OR {$wpdb->posts}.ID IN (
+						SELECT DISTINCT object_id
+						FROM {$wpdb->term_relationships}
+						WHERE term_taxonomy_id NOT IN ($placeholders)
+					))
+					AND";
 
 					$terms_query .= $wpdb->prepare( $terms_sql, $terms[ $key ] ); // phpcs:ignore
 					$terms_query .= $wpdb->prepare( $terms_or_sql, $terms[ $key ] ); // phpcs:ignore
-
 				},
 				array_keys( $terms )
 			);
@@ -209,13 +215,13 @@ class News_Provider extends Post_Type {
 		}
 
 		$sql .= "
-            AND post_password = ''
-            ORDER BY post_date_gmt DESC
-            LIMIT 0, %d
-        ";
+			AND post_password = ''
+			ORDER BY post_date_gmt DESC
+			LIMIT 0, %d
+		";
 
 		$count = max( 1, min( 1000, $count ) );
-		return $wpdb->get_results( $wpdb->prepare( $sql, $count ) ); // phpcs:ignore
+		return DB_Helper::get_results( $wpdb->prepare( $sql, $count ) );
 	}
 
 	/**

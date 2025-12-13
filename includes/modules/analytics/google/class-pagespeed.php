@@ -10,6 +10,7 @@
 
 namespace RankMathPro\Google;
 
+use WP_Error;
 use RankMath\Google\Api;
 
 defined( 'ABSPATH' ) || exit;
@@ -25,12 +26,12 @@ class PageSpeed {
 	 * @param string $url      Url to get pagespeed for.
 	 * @param string $strategy Data for desktop or mobile.
 	 *
-	 * @return array
+	 * @return array|WP_Error
 	 */
 	public static function get_pagespeed( $url, $strategy = 'desktop' ) {
 		$response = Api::get()->http_get( 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?category=PERFORMANCE&url=' . \rawurlencode( $url ) . '&strategy=' . \strtoupper( $strategy ), [], 30 );
 		if ( ! Api::get()->is_success() ) {
-			return false;
+			return new WP_Error( 'pagespeed_error', Api::get()->get_error() );
 		}
 
 		return [

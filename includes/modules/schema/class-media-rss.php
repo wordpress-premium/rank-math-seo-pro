@@ -42,7 +42,7 @@ class Media_RSS {
 	 */
 	public function add_namespace() {
 		if ( apply_filters( 'rank_math/rss/add_media_namespace', true ) ) {
-			echo ' xmlns:media="http://search.yahoo.com/mrss/" ';
+			echo 'xmlns:media="http://search.yahoo.com/mrss/" ';
 		}
 	}
 

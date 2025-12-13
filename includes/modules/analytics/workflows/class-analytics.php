@@ -66,11 +66,12 @@ class Analytics extends Base {
 				created timestamp NOT NULL,
 				pageviews mediumint(6) NOT NULL,
 				visitors mediumint(6) NOT NULL,
+				referrer varchar(500) NOT NULL,
 				PRIMARY KEY  (id),
 				KEY analytics_object_analytics (page(190))
 			) $collate;";
 
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php'; // @phpstan-ignore-line
 		try {
 			dbDelta( $schema );
 		} catch ( Exception $e ) { // phpcs:ignore
@@ -83,16 +84,15 @@ class Analytics extends Base {
 	 *
 	 * @param integer $days Number of days to fetch from past.
 	 * @param string  $prev Previous saved value.
-	 * @param string  $new  New posted value.
+	 * @param string  $new_value  New posted value.
 	 */
-	public function create_data_jobs( $days, $prev, $new ) {
+	public function create_data_jobs( $days, $prev, $new_value ) {
 		// If saved and new profile are same.
-		if ( ! $this->is_profile_updated( 'view_id', $prev, $new ) ) {
+		if ( ! $this->is_profile_updated( 'view_id', $prev, $new_value ) ) {
 			return;
 		}
 
 		// Fetch now.
 		$this->schedule_single_action( $days, 'analytics' );
-
 	}
 }

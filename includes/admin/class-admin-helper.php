@@ -262,8 +262,6 @@ class Admin_Helper {
 			'YT'  => __( 'Mayotte', 'rank-math-pro' ),
 			'MX'  => __( 'Mexico', 'rank-math-pro' ),
 			'FM'  => __( 'Micronesia, Federated States of', 'rank-math-pro' ),
-			'MC'  => __( 'Moldova, Republic of', 'rank-math-pro' ),
-			'MP'  => __( 'Northern Mariana Islands', 'rank-math-pro' ),
 			'MC'  => __( 'Monaco', 'rank-math-pro' ),
 			'MN'  => __( 'Mongolia', 'rank-math-pro' ),
 			'MS'  => __( 'Montserrat', 'rank-math-pro' ),
@@ -433,7 +431,6 @@ class Admin_Helper {
 			'CUW' => __( 'Curaçao', 'rank-math-pro' ),
 			'CYP' => __( 'Cyprus', 'rank-math-pro' ),
 			'CZE' => __( 'Czechia', 'rank-math-pro' ),
-			'DJI' => __( "Côte d'Ivoire", 'rank-math-pro' ),
 			'DNK' => __( 'Denmark', 'rank-math-pro' ),
 			'DJI' => __( 'Djibouti', 'rank-math-pro' ),
 			'DMA' => __( 'Dominica', 'rank-math-pro' ),
@@ -616,5 +613,88 @@ class Admin_Helper {
 			'ZWE' => __( 'Zimbabwe', 'rank-math-pro' ),
 			'ZZZ' => __( 'Unknown Region', 'rank-math-pro' ),
 		];
+	}
+
+	/**
+	 * Get Keyword Intent for the given Focus Keyword(s).
+	 *
+	 * @param array  $args      Array of arguments to send to the API.
+	 * @param string $endpoint Keyword Intent endpoint.
+	 *
+	 * @return array|string
+	 */
+	public static function determine_search_intent( $args, $endpoint = 'keyword_intent' ) {
+		$registered = Free_Admin_Helper::get_registration_data();
+		$response   = wp_remote_post(
+			CONTENT_AI_URL . '/ai/' . $endpoint,
+			[
+				'body' => array_merge(
+					$args,
+					[
+						'username'       => $registered['username'],
+						'api_key'        => $registered['api_key'],
+						'site_url'       => $registered['site_url'],
+						'plugin_version' => RANK_MATH_PRO_VERSION,
+					]
+				),
+			]
+		);
+
+		if ( is_wp_error( $response ) ) {
+			return [
+				'error' => $response->get_error_message(),
+			];
+		}
+
+		$response = json_decode( wp_remote_retrieve_body( $response ), true );
+		if ( ! empty( $response['error'] ) ) {
+			$errors        = Helper::get_content_ai_errors();
+			$error_message = isset( $response['message'] ) ? $response['message'] : esc_html__( 'Could not generate. Please try again later.', 'rank-math-pro' );
+			if ( isset( $response['err_key'] ) && isset( $errors[ $response['err_key'] ] ) ) {
+				$error_message = $errors[ $response['err_key'] ];
+			}
+
+			return [
+				'error' => $error_message,
+			];
+		}
+
+		return current( $response['results'] );
+	}
+
+	/**
+	 * Update and return the Search Intent
+	 *
+	 * @param array $intent Search Intent to update.
+	 *
+	 * @return array
+	 */
+	public static function get_search_intent( $intent = null ) {
+		$stored_search_intent = (array) get_option( 'rank_math_search_intent', [] );
+		if ( is_null( $intent ) ) {
+			return $stored_search_intent;
+		}
+
+		$stored_search_intent = array_merge( $stored_search_intent, $intent );
+
+		update_option( 'rank_math_search_intent', $stored_search_intent, false );
+
+		return $stored_search_intent;
+	}
+
+	/**
+	 * Check if current user can install the imgagify plugin.
+	 *
+	 * @return boolean
+	 */
+	public static function can_activate_imagify() {
+		return ! defined( 'IMAGIFY_VERSION' ) && current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' );
+	}
+
+	/**
+	 * Check if AI traffic only is enabled.
+	 */
+	public static function ai_traffic_enabled() {
+		return isset( $_COOKIE['rank_math_analytics_ai_only'] ) && 'true' === sanitize_text_field( wp_unslash( $_COOKIE['rank_math_analytics_ai_only'] ) );
 	}
 }

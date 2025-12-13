@@ -46,8 +46,8 @@ class Publish_Podcast {
 	 * @param int $post_id Current Post ID.
 	 */
 	public function has_podcast_schema( $post_id ) {
-		$schema_types = DB::get_schema_types( $post_id );
-		$this->has_podcast_schema =  ! empty( $schema_types ) && in_array( 'PodcastEpisode', explode( ', ', $schema_types ), true );
+		$schema_types             = DB::get_schema_types( $post_id );
+		$this->has_podcast_schema = ! empty( $schema_types ) && in_array( 'PodcastEpisode', explode( ', ', $schema_types ), true );
 	}
 
 	/**
@@ -77,7 +77,7 @@ class Publish_Podcast {
 			'user-agent' => "$user_agent; PubSubHubbub/WebSub",
 			'body'       => "hub.mode=publish&hub.url={$podcast_feed}",
 		];
-		
+
 		foreach ( $hub_urls as $hub_url ) {
 			wp_remote_post( $hub_url, $args );
 		}
